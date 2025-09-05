@@ -15,6 +15,11 @@ run/main_scene="uid://catmh6bdnn6fa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[layer_names]
+
+3d_physics/layer_1="default"
+3d_physics/layer_5="interactable"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
