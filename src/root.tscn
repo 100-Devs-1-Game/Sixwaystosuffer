@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=14 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="1_pyidc"]
@@ -27,7 +27,7 @@ tracks/0/path = NodePath("Camera Point:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.566667, 0.766667),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.566667, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.0174533, -0.00698132, 0.00698132), Vector3(0, 0, 0), Vector3(0.00698132, 0.00698132, -0.00698132), Vector3(0, 0, 0)]
@@ -52,6 +52,67 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_28aoi"),
 &"idle": SubResource("Animation_vvh5c")
+}
+
+[sub_resource type="Animation" id="Animation_jnlp7"]
+resource_name = "take_revolver"
+length = 0.800003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.429237), Vector3(0.175, 0.375, 0.496)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.77636e-15, 1.0472, -1.5708), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l8v81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.429237)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.77636e-15, 1.0472, -1.5708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyht1"]
+_data = {
+&"RESET": SubResource("Animation_l8v81"),
+&"take_revolver": SubResource("Animation_jnlp7")
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
@@ -95,6 +156,14 @@ speed_scale = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165358, 0.938852, -0.486662)
 
 [node name="Revolver" parent="World3D/Play Room/Player/Player Hand" instance=ExtResource("1_pq8q7")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World3D/Play Room/Player/Player Hand"]
+root_node = NodePath("../../../Table/Revolver Place")
+libraries = {
+&"": SubResource("AnimationLibrary_vyht1")
+}
+speed_scale = 2.0
 
 [node name="Table" type="Node3D" parent="World3D/Play Room"]
 
@@ -106,7 +175,7 @@ mesh = SubResource("BoxMesh_jnlp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553246, 0)
 
 [node name="Revolver" parent="World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, 0, 3.78552e-08, -0.866025, 0.5, 0, 0, -0.429237)
+transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, -1.77636e-15, 3.78552e-08, -0.866025, 0.5, 0, 0, -0.429237)
 
 [node name="Patron" parent="World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25593, 0.552589, 0.00978923)
