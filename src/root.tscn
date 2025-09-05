@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=11 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="1_pyidc"]
@@ -15,6 +15,44 @@ sky_material = SubResource("ProceduralSkyMaterial_pyidc")
 background_mode = 2
 sky = SubResource("Sky_vvh5c")
 tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_vvh5c"]
+resource_name = "idle"
+length = 0.76667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Point:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.566667, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, -0.00698132, 0.00698132), Vector3(0, 0, 0), Vector3(0.00698132, 0.00698132, -0.00698132), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_28aoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0174533, -0.0174533, 0.0174533)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnlp7"]
+_data = {
+&"RESET": SubResource("Animation_28aoi"),
+&"idle": SubResource("Animation_vvh5c")
+}
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
 size = Vector3(1, 1, 1.6)
@@ -40,8 +78,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_pyidc")
 mouse_sensitivity = 0.001
 
-[node name="Camera3D" type="Camera3D" parent="World3D/Play Room/Player/Player Head"]
+[node name="Camera Point" type="Node3D" parent="World3D/Play Room/Player/Player Head"]
+transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174497, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="World3D/Play Room/Player/Player Head/Camera Point"]
 fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World3D/Play Room/Player/Player Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_jnlp7")
+}
+autoplay = "idle"
+speed_scale = 0.1
 
 [node name="Player Hand" type="Marker3D" parent="World3D/Play Room/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165358, 0.938852, -0.486662)
