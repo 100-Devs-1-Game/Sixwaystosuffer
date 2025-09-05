@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Six Ways To Suffer"
+run/main_scene="uid://catmh6bdnn6fa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
