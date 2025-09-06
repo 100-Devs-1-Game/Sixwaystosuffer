@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs8wjjhrmln2d"]
+
+[ext_resource type="PackedScene" uid="uid://dxiprt4wlm70e" path="res://assets/revolver/revolver.gltf" id="1_ae3hd"]
+[ext_resource type="Material" uid="uid://crr2rtuyv5uib" path="res://assets/revolver/M_revolver.tres" id="2_128ko"]
+
+[node name="revolver" instance=ExtResource("1_ae3hd")]
+
+[node name="revolver_base" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_128ko")
+
+[node name="revolver_chamber" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_128ko")
+
+[node name="revolver_base_back" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_128ko")
+
+[node name="revolver_base_trigger" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_128ko")
