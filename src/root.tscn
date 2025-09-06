@@ -1,119 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=6 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
-[ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="1_pyidc"]
+[ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pyidc"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_vvh5c"]
-sky_material = SubResource("ProceduralSkyMaterial_pyidc")
-
 [sub_resource type="Environment" id="Environment_28aoi"]
-background_mode = 2
-sky = SubResource("Sky_vvh5c")
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.374222, 0.417906, 0.428344, 1)
+ambient_light_energy = 1.67
 tonemap_mode = 2
-
-[sub_resource type="Animation" id="Animation_vvh5c"]
-resource_name = "idle"
-length = 0.76667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera Point:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.566667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0174533, -0.00698132, 0.00698132), Vector3(0, 0, 0), Vector3(0.00698132, 0.00698132, -0.00698132), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_28aoi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera Point:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0174533, -0.0174533, 0.0174533)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnlp7"]
-_data = {
-&"RESET": SubResource("Animation_28aoi"),
-&"idle": SubResource("Animation_vvh5c")
-}
-
-[sub_resource type="Animation" id="Animation_jnlp7"]
-resource_name = "take_revolver"
-length = 0.800003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Revolver:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -0.429237), Vector3(0.175, 0.375, 0.496)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Revolver:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1.77636e-15, 1.0472, -1.5708), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_l8v81"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Revolver:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.429237)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Revolver:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.77636e-15, 1.0472, -1.5708)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyht1"]
-_data = {
-&"RESET": SubResource("Animation_l8v81"),
-&"take_revolver": SubResource("Animation_jnlp7")
-}
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
 size = Vector3(1, 1, 1.6)
@@ -124,58 +20,30 @@ size = Vector3(1, 1, 1.6)
 environment = SubResource("Environment_28aoi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(0.690441, -0.626473, 0.361695, -9.83849e-09, 0.5, 0.866025, -0.723388, -0.59794, 0.34522, 0, 0, 0)
 shadow_enabled = true
 
 [node name="World3D" type="Node3D" parent="."]
 
 [node name="Play Room" type="Node3D" parent="World3D"]
 
-[node name="Player" type="Node3D" parent="World3D/Play Room"]
+[node name="Player" parent="World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="Player Head" type="Node3D" parent="World3D/Play Room/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_pyidc")
-mouse_sensitivity = 0.001
-
-[node name="Camera Point" type="Node3D" parent="World3D/Play Room/Player/Player Head"]
-transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174497, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="World3D/Play Room/Player/Player Head/Camera Point"]
-fov = 60.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World3D/Play Room/Player/Player Head"]
-libraries = {
-&"": SubResource("AnimationLibrary_jnlp7")
-}
-autoplay = "idle"
-speed_scale = 0.1
-
-[node name="Player Hand" type="Marker3D" parent="World3D/Play Room/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165358, 0.938852, -0.486662)
-
-[node name="Revolver" parent="World3D/Play Room/Player/Player Hand" instance=ExtResource("1_pq8q7")]
-visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World3D/Play Room/Player/Player Hand"]
-root_node = NodePath("../../../Table/Revolver Place")
-libraries = {
-&"": SubResource("AnimationLibrary_vyht1")
-}
-speed_scale = 2.0
-
 [node name="Table" type="Node3D" parent="World3D/Play Room"]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.368759)
+visible = false
 mesh = SubResource("BoxMesh_jnlp7")
 
 [node name="Revolver Place" type="Marker3D" parent="World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553246, 0)
+visible = false
 
 [node name="Revolver" parent="World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, -1.77636e-15, 3.78552e-08, -0.866025, 0.5, 0, 0, -0.429237)
+transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, 2.08426e-14, 3.78552e-08, -0.866025, 0.5, 0, 0, -0.429237)
 
 [node name="Patron" parent="World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25593, 0.552589, 0.00978923)

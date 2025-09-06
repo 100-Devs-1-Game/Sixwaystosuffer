@@ -12,6 +12,8 @@ var target_rotation := Vector2.ZERO
 var current_rotation := Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
+	return # 
+	
 	if not event is InputEventMouseMotion:
 		return
 	

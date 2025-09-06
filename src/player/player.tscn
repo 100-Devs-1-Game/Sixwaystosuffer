@@ -1,0 +1,324 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2tor451umskh"]
+
+[ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
+[ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
+[ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
+[ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
+
+[sub_resource type="Animation" id="Animation_28aoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0174533, -0.0174533, 0.0174533)]
+}
+
+[sub_resource type="Animation" id="Animation_vvh5c"]
+resource_name = "idle"
+length = 0.76667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Point:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.566667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, -0.00698132, 0.00698132), Vector3(0, 0, 0), Vector3(0.00698132, 0.00698132, -0.00698132), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnlp7"]
+_data = {
+&"RESET": SubResource("Animation_28aoi"),
+&"idle": SubResource("Animation_vvh5c")
+}
+
+[sub_resource type="Animation" id="Animation_yw30f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Hand/Revolver/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player Head/Camera Point/Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00252759, 0.144804, 0.00252795)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player Head/Camera Point/Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10)]
+}
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "close_drum"
+length = 0.500004
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.06, 0.824, -0.392), Vector3(0.165, 0.894, -0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.298451, 0.349066, -0.190241), Vector3(0, 0, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Hand/Revolver/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("close_drum"),
+"times": PackedFloat32Array(0.0416667)
+}
+
+[sub_resource type="Animation" id="Animation_g1dw6"]
+resource_name = "open_drum"
+length = 0.500004
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.06, 0.824, -0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.298451, 0.349066, -0.190241)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Hand/Revolver/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("RESET", "RESET", "open_drum"),
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Player Head/Camera Point/Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.161888, 0.291667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00252759, 0.144804, 0.00252795), Vector3(0.00252759, 0.144804, 0.00252795), Vector3(0.003, 0.11, 0.133), Vector3(-0.3, 0.6, -0.4), Vector3(-0.281224, 0.513961, -0.267985)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Player Head/Camera Point/Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.166667, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(0.174533, 0, 0), Vector3(-0.671145, 0.00532053, 0.00797387)]
+}
+
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "idle"
+length = 1.66667
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.70833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.91, -0.392), Vector3(0.165, 0.894, -0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.70833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, 0.0174533, 0.0174533), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boad6"]
+resource_name = "self_aim"
+length = 0.500005
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.902, -0.392), Vector3(-0.298, -0.604, -0.614), Vector3(-0.297827, -0.423972, -0.763867)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0820305, -0.225147, -0.20944), Vector3(1.86576, -0.10472, 0.174533), Vector3(1.86623, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
+_data = {
+&"RESET": SubResource("Animation_yw30f"),
+&"close_drum": SubResource("Animation_qjkh3"),
+&"idle": SubResource("Animation_g6k8r"),
+&"open_drum": SubResource("Animation_g1dw6"),
+&"self_aim": SubResource("Animation_boad6")
+}
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_g1dw6")
+
+[node name="Player Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322175, 1.35497, 1.24169)
+script = ExtResource("2_yw30f")
+mouse_sensitivity = 0.001
+
+[node name="Camera Point" type="Node3D" parent="Player Head"]
+transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player Head/Camera Point"]
+transform = Transform3D(1, 6.38723e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
+fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_jnlp7")
+}
+autoplay = "idle"
+speed_scale = 0.1
+
+[node name="Player Hand" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165, 0.894, -0.392)
+
+[node name="Revolver" parent="Player Hand" instance=ExtResource("3_qjkh3")]
+unique_name_in_owner = true
+
+[node name="Revolver Hand" parent="Player Hand/Revolver" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.103854, 0.0988467)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player Hand"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_qjkh3")
+}
+autoplay = "idle"
+
+[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "revolver")]
+script = ExtResource("4_yw30f")
+target_point = NodePath("../Patron Pickup Trajectory")
+revolver = NodePath("../Player Hand/Revolver")
+
+[node name="Patron Pickup Trajectory" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066723, 0.906402, -0.281028)
+
+[editable path="Player Hand/Revolver"]
+[editable path="Player Hand/Revolver/Revolver Hand/revolver"]
