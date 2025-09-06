@@ -1,9 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=19 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
+[ext_resource type="Script" uid="uid://cob23grtlvb82" path="res://player/states/player_reload_revolver_state.gd" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://1yyenj6p76lf" path="res://player/states/player_self_aiming_state.gd" id="8_rgyib"]
+[ext_resource type="Script" uid="uid://bnlv7dn4y50h0" path="res://player/debug_player.gd" id="9_hg6s5"]
 
 [sub_resource type="Animation" id="Animation_28aoi"]
 length = 0.001
@@ -143,6 +148,36 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.0416667)
 }
 
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "idle"
+length = 1.66667
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.70833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.91, -0.392), Vector3(0.165, 0.894, -0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.70833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0174533, 0.0174533, 0.0174533), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_g1dw6"]
 resource_name = "open_drum"
 length = 0.500004
@@ -206,36 +241,6 @@ tracks/4/keys = {
 "values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(0.174533, 0, 0), Vector3(-0.671145, 0.00532053, 0.00797387)]
 }
 
-[sub_resource type="Animation" id="Animation_g6k8r"]
-resource_name = "idle"
-length = 1.66667
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player Hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.833333, 1.70833),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.91, -0.392), Vector3(0.165, 0.894, -0.392)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player Hand:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.833333, 1.70833),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0174533, 0.0174533, 0.0174533), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_boad6"]
 resource_name = "self_aim"
 length = 0.500005
@@ -286,7 +291,7 @@ mouse_sensitivity = 0.001
 transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player Head/Camera Point"]
-transform = Transform3D(1, 6.38723e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
+transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
 fov = 60.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player Head"]
@@ -319,6 +324,32 @@ revolver = NodePath("../Player Hand/Revolver")
 
 [node name="Patron Pickup Trajectory" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066723, 0.906402, -0.281028)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_qjkh3")
+initial_state = NodePath("PlayerIdleState")
+metadata/_custom_type_script = "uid://dfrwjwp73xpko"
+
+[node name="PlayerIdleState" type="Node" parent="StateMachine"]
+script = ExtResource("6_boad6")
+metadata/_custom_type_script = "uid://deqs4bhyfhrhb"
+
+[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
+script = ExtResource("6_g6k8r")
+player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+revolver = NodePath("../../Player Hand/Revolver")
+metadata/_custom_type_script = "uid://cob23grtlvb82"
+
+[node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation")]
+script = ExtResource("8_rgyib")
+player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+metadata/_custom_type_script = "uid://1yyenj6p76lf"
+
+[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver")]
+script = ExtResource("9_hg6s5")
+state_machine = NodePath("../StateMachine")
+revolver = NodePath("../Player Hand/Revolver")
+metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
 
 [editable path="Player Hand/Revolver"]
 [editable path="Player Hand/Revolver/Revolver Hand/revolver"]

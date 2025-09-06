@@ -9,14 +9,6 @@ extends Node3D
 
 var _tween: Tween
 
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
-			spin_up()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
-			spin_down()
-
 func get_current_drum_position() -> Node3D:
 	return current_position_hover
 
