@@ -3,8 +3,13 @@ extends Node
 
 @export var state_machine: StateMachine
 @export var revolver: Revolver
+@export var pickup: PatronPickup
+@export var debug_patron: Patron
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_load"):
+		pickup.load_patron(debug_patron)
+	
 	if event.is_action_pressed("debug_back"):
 		state_machine.switch_to(PlayerIdleState)
 	

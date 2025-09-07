@@ -2,34 +2,27 @@ class_name PatronPickup
 extends Node
 
 @export var target_point: Node3D
+@export var drum_target_point: Node3D
 @export var revolver: Revolver
 
-func _on_patron_picked(patron: Patron) -> void:
-	patron.get_parent().remove_child(patron)
-	revolver.drum.add_child(patron)
-	_animate_bullet_to_drum(patron, revolver.get_current_drum_position())
+@export var base_path: Path3D
+@export var path_follow: PathFollow3D
+@export var target_chamber: Node3D
 
-func _animate_bullet_to_drum(patron: Patron, target_position: Node3D) -> void:
+@export var chamber_node: Node3D
+
+func load_patron(target: Patron) -> void:
+	path_follow.progress_ratio = 1
+	target.reparent(path_follow)
+	target.position = Vector3.ZERO
+	
 	var tween := create_tween()
-	tween.tween_method(
-		_update_bullet_position.bind(patron.position, target_position, patron), 
-		0.0, 
-		1.0, 
-		0.5)
+	tween.tween_property(path_follow, "progress_ratio", 0.0, 1.0)
+	var chamber_point := revolver.get_current_chamber_position()
+	tween.parallel().tween_property(target, "global_rotation", drum_target_point.global_rotation, 1.0)
+	tween.tween_callback(_on_start_loading_to_chamber.bind(target))
+	tween.tween_property(target, "global_position", chamber_point.global_position, 0.3)
 
-func _update_bullet_position(
-	progress: float,
-	start_position: Vector3,
-	target: Node3D,
-	patron: Patron) -> void:
-	
-	var cp1 = start_position + Vector3.UP / 4 + Vector3.LEFT / 4
-	var cp2 = target.global_position + Vector3.LEFT / 4 + Vector3.BACK / 4
-	
-	var position = start_position * pow(1 - progress, 3) + \
-	cp1 * 3 * pow(1 - progress, 2) * progress + \
-	cp2 * 3 * (1 - progress) * pow(progress, 2) + \
-	target.global_position * pow(progress, 3) 
-	
-	patron.global_position = position
-	patron.global_rotation = target.global_rotation
+func _on_start_loading_to_chamber(patron: Patron) -> void:
+	patron.reparent(chamber_node)
+	revolver.load_patron(patron)

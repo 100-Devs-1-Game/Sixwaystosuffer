@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=21 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="5_8t03j"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cob23grtlvb82" path="res://player/states/player_reload_revolver_state.gd" id="6_g6k8r"]
@@ -279,6 +280,13 @@ _data = {
 &"self_aim": SubResource("Animation_boad6")
 }
 
+[sub_resource type="Curve3D" id="Curve3D_hg6s5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.68, 0.9, 0.86, -0.283, 0.09, -0.324, 0.145, 0.155, -0.05, -0.525, -0.455, 0.085, -0.65266, 0.0500675, 0.326765, 0, 0.225, 0.45, 0, 0, 0, -0.572637, -0.885498, -0.500443),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_g1dw6")
 
@@ -317,13 +325,25 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "revolver")]
+[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "base_path", "path_follow", "target_chamber", "chamber_node")]
 script = ExtResource("4_yw30f")
 target_point = NodePath("../Patron Pickup Trajectory")
+drum_target_point = NodePath("../Player Hand/Revolver/Revolver Hand/revolver/Current Position Hover")
 revolver = NodePath("../Player Hand/Revolver")
+base_path = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory")
+path_follow = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
+target_chamber = NodePath("../Player Hand/Revolver/Revolver Hand/revolver/revolver_chamber/Chamber Position")
+chamber_node = NodePath("../Player Hand/Revolver/Revolver Hand/revolver/revolver_chamber")
 
 [node name="Patron Pickup Trajectory" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066723, 0.906402, -0.281028)
+
+[node name="Patron Load Trajectory" type="Path3D" parent="Patron Pickup Trajectory"]
+curve = SubResource("Curve3D_hg6s5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Patron Pickup Trajectory/Patron Load Trajectory"]
+transform = Transform3D(-0.78788, -0.392753, -0.474296, -0.00462398, 0.773945, -0.633211, 0.615782, -0.496707, -0.611606, -0.270668, 0.106501, -0.308019)
+progress = 0.0347852
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_qjkh3")
@@ -345,11 +365,16 @@ script = ExtResource("8_rgyib")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 metadata/_custom_type_script = "uid://1yyenj6p76lf"
 
-[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver")]
+[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver", "pickup", "debug_patron")]
 script = ExtResource("9_hg6s5")
 state_machine = NodePath("../StateMachine")
 revolver = NodePath("../Player Hand/Revolver")
+pickup = NodePath("../Patron Pickup")
+debug_patron = NodePath("../Patron")
 metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
+
+[node name="Patron" parent="." instance=ExtResource("5_8t03j")]
+transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -1.60715, 0, 0)
 
 [editable path="Player Hand/Revolver"]
 [editable path="Player Hand/Revolver/Revolver Hand/revolver"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvbqsel4ymb2x"]
+[gd_scene load_steps=12 format=3 uid="uid://dvbqsel4ymb2x"]
 
 [ext_resource type="Script" uid="uid://nofefg6jsoiu" path="res://revolver/revolver.gd" id="1_su5x2"]
 [ext_resource type="PackedScene" uid="uid://cs8wjjhrmln2d" path="res://assets/revolver/revolver.tscn" id="2_su5x2"]
+[ext_resource type="PackedScene" uid="uid://c477a54eo8ko" path="res://revolver/chamber_position.tscn" id="3_opjbe"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ub1ss"]
 top_radius = 0.04
@@ -103,22 +104,10 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Revolver Hand/revolver/revolver_chamber:rotation")
+tracks/7/path = NodePath("Revolver Hand:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Revolver Hand:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -231,22 +220,10 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Revolver Hand/revolver/revolver_chamber:rotation")
+tracks/5/path = NodePath("Revolver Hand:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.0472)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Revolver Hand:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0.133333, 0.166667, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -293,11 +270,40 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_su5x2"]
+resource_name = "load"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Revolver Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.103854, 0.0988467), Vector3(0, -0.149, 0.019), Vector3(0, -0.103854, 0.0988467)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.389208, 0.226893, 0.00698132), Vector3(-0.677188, 0.226893, 0.00698132), Vector3(-0.607375, 0.174533, 0.00698132), Vector3(-0.275762, 0.10472, 0.00698132), Vector3(-0.389208, 0.226893, 0.00698132)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_arl7n"]
 _data = {
 &"RESET": SubResource("Animation_lhmy8"),
 &"close_drum": SubResource("Animation_8nloj"),
 &"fire": SubResource("Animation_kwryb"),
+&"load": SubResource("Animation_su5x2"),
 &"open_drum": SubResource("Animation_sfe4l")
 }
 
@@ -315,6 +321,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.357555, -0.505617)
 [node name="revolver_chamber" parent="Revolver Hand/revolver" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000376823, 0.001409, -0.0121985)
 
+[node name="Chamber Position" parent="Revolver Hand/revolver/revolver_chamber" index="0" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0862487, 0.0578242)
+
+[node name="Chamber Position2" parent="Revolver Hand/revolver/revolver_chamber" index="1" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0757534, 0.0440505, 0.0578242)
+
+[node name="Chamber Position3" parent="Revolver Hand/revolver/revolver_chamber" index="2" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0752449, -0.0428879, 0.0578242)
+
+[node name="Chamber Position4" parent="Revolver Hand/revolver/revolver_chamber" index="3" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.99365e-08, -0.0866113, 0.0578242)
+
+[node name="Chamber Position5" parent="Revolver Hand/revolver/revolver_chamber" index="4" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0742282, -0.0423794, 0.0578242)
+
+[node name="Chamber Position6" parent="Revolver Hand/revolver/revolver_chamber" index="5" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0742282, 0.0425254, 0.0578242)
+
 [node name="revolver_base_back" parent="Revolver Hand/revolver" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00109884, -0.0738967, 0.349991)
 
@@ -323,7 +347,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000521243, -0.197496, 0.176
 
 [node name="Current Position Hover" type="Node3D" parent="Revolver Hand/revolver"]
 unique_name_in_owner = true
-transform = Transform3D(-6.70552e-08, -1.3411e-07, -1, -1, -3.57628e-06, -1.49012e-08, -3.66569e-06, 1, 2.98023e-08, -0.256078, 0.00140843, 0.144114)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.256078, 0.00140843, 0.144114)
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Revolver Hand/revolver/Current Position Hover"]
