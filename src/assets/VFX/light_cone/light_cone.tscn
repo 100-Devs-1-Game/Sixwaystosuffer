@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqpp7b26nyw"]
+
+[ext_resource type="PackedScene" uid="uid://befj4erigje7p" path="res://assets/VFX/light_cone/light_cone.gltf" id="1_gw3h0"]
+[ext_resource type="Material" uid="uid://lpsl1p5vlfxh" path="res://materials/glass/glass_02_unshaded.tres" id="2_hmht0"]
+
+[node name="light_cone" instance=ExtResource("1_gw3h0")]
+
+[node name="Ray (Spot)" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_hmht0")

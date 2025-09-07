@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn1xctd7xddt2"]
+
+[ext_resource type="PackedScene" uid="uid://bxejs2s1c8k8i" path="res://models/UI/counter/counter_01.gltf" id="1_lo60l"]
+[ext_resource type="Material" uid="uid://bsn2inlnipjsb" path="res://materials/simple/s_gray.tres" id="2_ps44w"]
+[ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://materials/simple_no_spec/s_no_spec_black.tres" id="2_xnqml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps44w"]
+size = Vector3(0.174889, 0.0705338, 0.0845947)
+
+[node name="counter_01" instance=ExtResource("1_lo60l")]
+
+[node name="counter" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ps44w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="counter" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="counter/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249863, 0.0351295, -0.00152588)
+shape = SubResource("BoxShape3D_ps44w")
+
+[node name="counter_screen" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_xnqml")

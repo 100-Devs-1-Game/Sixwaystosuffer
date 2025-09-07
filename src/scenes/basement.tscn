@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5qo0j8ppqqnf"]
+
+[ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://materials/simple_no_spec/s_no_spec_black.tres" id="1_etyrx"]
+[ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://models/furniture/table_01/table_01.tscn" id="1_wvfle"]
+[ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://models/UI/counter/counter_01.tscn" id="2_hc2hy"]
+[ext_resource type="Texture2D" uid="uid://by8ngn7kf1mei" path="res://assets/HDRI/underglow_dark_red.exr" id="2_wiqa1"]
+[ext_resource type="Material" uid="uid://dmtyvttrx8eny" path="res://shaders/posterize.tres" id="3_g4j8u"]
+[ext_resource type="PackedScene" uid="uid://d3q0cad0kja60" path="res://models/props/lamps/lamps_01.tscn" id="6_1ctny"]
+[ext_resource type="PackedScene" uid="uid://caqpp7b26nyw" path="res://assets/VFX/light_cone/light_cone.tscn" id="7_kmq6a"]
+[ext_resource type="Texture2D" uid="uid://c0vjdwnahj6n2" path="res://assets/VFX/light_cone/light_cone_baked01.png" id="8_e0dxi"]
+[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://models/characters/dealer/dealer.tscn" id="8_g4j8u"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wvfle"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ctny"]
+panorama = ExtResource("2_wiqa1")
+energy_multiplier = 0.56
+
+[sub_resource type="Sky" id="Sky_kmq6a"]
+sky_material = SubResource("PanoramaSkyMaterial_1ctny")
+
+[sub_resource type="Environment" id="Environment_e0dxi"]
+background_mode = 2
+sky = SubResource("Sky_kmq6a")
+glow_intensity = 0.15
+glow_bloom = 1.0
+fog_light_color = Color(0.0403304, 0.0482076, 0.0605891, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_e0dxi"]
+flip_faces = true
+
+[node name="Play" type="Node3D"]
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.93409, 0, 0, 0, -4.37114e-08, -1.53943, 0, 1, -6.72907e-08, 0, 0.964, -1.45111)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_wvfle")
+skeleton = NodePath("../Camera & Lights/Camera3D")
+surface_material_override/0 = ExtResource("1_etyrx")
+
+[node name="Camera & Lights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964, 0.758)
+
+[node name="Camera3D" type="Camera3D" parent="Camera & Lights"]
+keep_aspect = 0
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera & Lights"]
+environment = SubResource("Environment_e0dxi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.69182, -0.865)
+shadow_enabled = true
+
+[node name="post_proccesing" type="MeshInstance3D" parent="Camera & Lights"]
+transform = Transform3D(0.555, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.095, -0.343)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_e0dxi")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_g4j8u")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.313104, -0.769525)
+light_color = Color(0.9184, 0.94046, 0.883227, 1)
+spot_angle_attenuation = 2.73208
+
+[node name="counter" type="Node3D" parent="."]
+transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -0.410884, 0.808931, -0.29443)
+
+[node name="counter_01" parent="counter" instance=ExtResource("2_hc2hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000341818, 6.90222e-05, 0.000285476)
+
+[node name="counter_02" parent="counter" instance=ExtResource("2_hc2hy")]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 0.673001, 6.90222e-05, 0.471765)
+
+[node name="furniture" type="Node3D" parent="."]
+
+[node name="table_01" parent="furniture" instance=ExtResource("1_wvfle")]
+
+[node name="VFX" type="Node3D" parent="."]
+
+[node name="lamps_01" parent="." instance=ExtResource("6_1ctny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.233, 0)
+
+[node name="light_cone_baked" type="Sprite3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0.950217, 0)
+visible = false
+texture = ExtResource("8_e0dxi")
+
+[node name="light_cone" parent="." instance=ExtResource("7_kmq6a")]
+transform = Transform3D(0.905, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.085, 0)
+
+[node name="dealer" parent="." instance=ExtResource("8_g4j8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.416, -0.861)
