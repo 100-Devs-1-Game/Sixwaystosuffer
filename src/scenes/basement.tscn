@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5qo0j8ppqqnf"]
+[gd_scene load_steps=16 format=3 uid="uid://c5qo0j8ppqqnf"]
 
 [ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://materials/simple_no_spec/s_no_spec_black.tres" id="1_etyrx"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://models/furniture/table_01/table_01.tscn" id="1_wvfle"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://caqpp7b26nyw" path="res://assets/VFX/light_cone/light_cone.tscn" id="7_kmq6a"]
 [ext_resource type="Texture2D" uid="uid://c0vjdwnahj6n2" path="res://assets/VFX/light_cone/light_cone_baked01.png" id="8_e0dxi"]
 [ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://models/characters/dealer/dealer.tscn" id="8_g4j8u"]
+[ext_resource type="PackedScene" uid="uid://drf01hhhjk27h" path="res://models/props/lamps/lamps_02.tscn" id="10_2efs0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wvfle"]
 
@@ -81,6 +82,7 @@ transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 0.
 
 [node name="lamps_01" parent="." instance=ExtResource("6_1ctny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.233, 0)
+visible = false
 
 [node name="light_cone_baked" type="Sprite3D" parent="."]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0.950217, 0)
@@ -92,3 +94,6 @@ transform = Transform3D(0.905, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.085, 0)
 
 [node name="dealer" parent="." instance=ExtResource("8_g4j8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.416, -0.861)
+
+[node name="lamps_02" parent="." instance=ExtResource("10_2efs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.673, 0)
