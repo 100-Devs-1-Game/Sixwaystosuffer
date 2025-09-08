@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3q0cad0kja60"]
 
-[ext_resource type="PackedScene" uid="uid://do0yyuwmxi70g" path="res://models/props/lamps/lamps_01.gltf" id="1_m4a0m"]
+[ext_resource type="PackedScene" uid="uid://do0yyuwmxi70g" path="res://assets/props/lamps/lamps_01.gltf" id="1_m4a0m"]
 [ext_resource type="Material" uid="uid://vwbbjwfqpqgj" path="res://materials/metallic/m_gray.tres" id="2_20aga"]
 [ext_resource type="Material" uid="uid://df7qdu16o06ko" path="res://materials/glass/glass_01.tres" id="2_hu8cf"]
 [ext_resource type="Material" uid="uid://bsn2inlnipjsb" path="res://materials/simple/s_gray.tres" id="2_uu213"]

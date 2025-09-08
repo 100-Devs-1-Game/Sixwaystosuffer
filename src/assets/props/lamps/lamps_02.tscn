@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drf01hhhjk27h"]
 
-[ext_resource type="PackedScene" uid="uid://dw0lx23y1yggr" path="res://models/props/lamps/lamps_02.gltf" id="1_6c4i2"]
-[ext_resource type="Texture2D" uid="uid://bqyn35f8hj7px" path="res://models/props/lamps/lamp_02_albedo.png" id="2_7l14s"]
+[ext_resource type="PackedScene" uid="uid://dw0lx23y1yggr" path="res://assets/props/lamps/lamps_02.gltf" id="1_6c4i2"]
+[ext_resource type="Texture2D" uid="uid://bqyn35f8hj7px" path="res://assets/props/lamps/lamp_02_albedo.png" id="2_7l14s"]
 [ext_resource type="Material" uid="uid://lpsl1p5vlfxh" path="res://materials/glass/glass_02_unshaded.tres" id="3_7l14s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrnmo"]

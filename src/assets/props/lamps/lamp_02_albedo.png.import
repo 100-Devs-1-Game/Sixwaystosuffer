@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dprkj2y7bluiu"
-path.s3tc="res://.godot/imported/revolver_albedo.png-976cd06750bc25fc72b675b64534297f.s3tc.ctex"
+uid="uid://bqyn35f8hj7px"
+path.s3tc="res://.godot/imported/lamp_02_albedo.png-1b4f7942e1fd77820fed9790b4bb7858.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/weapons/revolver/revolver_albedo.png"
-dest_files=["res://.godot/imported/revolver_albedo.png-976cd06750bc25fc72b675b64534297f.s3tc.ctex"]
+source_file="res://assets/props/lamps/lamp_02_albedo.png"
+dest_files=["res://.godot/imported/lamp_02_albedo.png-1b4f7942e1fd77820fed9790b4bb7858.s3tc.ctex"]
 
 [params]
 

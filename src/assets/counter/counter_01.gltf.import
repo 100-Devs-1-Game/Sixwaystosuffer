@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c12wniiith5nm"
-path="res://.godot/imported/dealer.gltf-8c3bed91b19449c0077b26ada207c4c8.scn"
+uid="uid://bxejs2s1c8k8i"
+path="res://.godot/imported/counter_01.gltf-6ecfad1f2823433cdc5b75930f9f434d.scn"
 
 [deps]
 
-source_file="res://models/characters/dealer/dealer.gltf"
-dest_files=["res://.godot/imported/dealer.gltf-8c3bed91b19449c0077b26ada207c4c8.scn"]
+source_file="res://assets/counter/counter_01.gltf"
+dest_files=["res://.godot/imported/counter_01.gltf-6ecfad1f2823433cdc5b75930f9f434d.scn"]
 
 [params]
 

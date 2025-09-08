@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dw0lx23y1yggr"
-path="res://.godot/imported/lamps_02.gltf-8c99504c78a18f95f2468ca0cfa80735.scn"
+uid="uid://c12wniiith5nm"
+path="res://.godot/imported/dealer.gltf-0aefc97816d61c28967fb3544b75e101.scn"
 
 [deps]
 
-source_file="res://models/props/lamps/lamps_02.gltf"
-dest_files=["res://.godot/imported/lamps_02.gltf-8c99504c78a18f95f2468ca0cfa80735.scn"]
+source_file="res://assets/characters/dealer/dealer.gltf"
+dest_files=["res://.godot/imported/dealer.gltf-0aefc97816d61c28967fb3544b75e101.scn"]
 
 [params]
 

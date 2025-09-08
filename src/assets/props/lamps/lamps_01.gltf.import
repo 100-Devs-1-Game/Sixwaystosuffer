@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxejs2s1c8k8i"
-path="res://.godot/imported/counter_01.gltf-4dc3d1a835fe598ef04815a18c16fae6.scn"
+uid="uid://do0yyuwmxi70g"
+path="res://.godot/imported/lamps_01.gltf-3dfbb16ae44b2e41e076c9d3e82145d6.scn"
 
 [deps]
 
-source_file="res://models/UI/counter/counter_01.gltf"
-dest_files=["res://.godot/imported/counter_01.gltf-4dc3d1a835fe598ef04815a18c16fae6.scn"]
+source_file="res://assets/props/lamps/lamps_01.gltf"
+dest_files=["res://.godot/imported/lamps_01.gltf-3dfbb16ae44b2e41e076c9d3e82145d6.scn"]
 
 [params]
 

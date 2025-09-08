@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://c5qo0j8ppqqnf"]
 
 [ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://materials/simple_no_spec/s_no_spec_black.tres" id="1_etyrx"]
-[ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://models/furniture/table_01/table_01.tscn" id="1_wvfle"]
-[ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://models/UI/counter/counter_01.tscn" id="2_hc2hy"]
+[ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="1_wvfle"]
+[ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="2_hc2hy"]
 [ext_resource type="Texture2D" uid="uid://by8ngn7kf1mei" path="res://assets/HDRI/underglow_dark_red.exr" id="2_wiqa1"]
 [ext_resource type="Material" uid="uid://dmtyvttrx8eny" path="res://shaders/posterize.tres" id="3_g4j8u"]
-[ext_resource type="PackedScene" uid="uid://d3q0cad0kja60" path="res://models/props/lamps/lamps_01.tscn" id="6_1ctny"]
+[ext_resource type="PackedScene" uid="uid://d3q0cad0kja60" path="res://assets/props/lamps/lamps_01.tscn" id="6_1ctny"]
 [ext_resource type="PackedScene" uid="uid://caqpp7b26nyw" path="res://assets/VFX/light_cone/light_cone.tscn" id="7_kmq6a"]
 [ext_resource type="Texture2D" uid="uid://c0vjdwnahj6n2" path="res://assets/VFX/light_cone/light_cone_baked01.png" id="8_e0dxi"]
-[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://models/characters/dealer/dealer.tscn" id="8_g4j8u"]
-[ext_resource type="PackedScene" uid="uid://drf01hhhjk27h" path="res://models/props/lamps/lamps_02.tscn" id="10_2efs0"]
+[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="8_g4j8u"]
+[ext_resource type="PackedScene" uid="uid://drf01hhhjk27h" path="res://assets/props/lamps/lamps_02.tscn" id="10_2efs0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wvfle"]
 

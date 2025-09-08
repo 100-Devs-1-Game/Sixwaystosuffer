@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://vn4ia8o6gxf8"]
 
-[ext_resource type="PackedScene" uid="uid://c12wniiith5nm" path="res://models/characters/dealer/dealer.gltf" id="1_ia121"]
+[ext_resource type="PackedScene" uid="uid://c12wniiith5nm" path="res://assets/characters/dealer/dealer.gltf" id="1_ia121"]
 [ext_resource type="Material" uid="uid://d0el7t0beipg8" path="res://materials/metallic/m_black.tres" id="2_drp5i"]
 [ext_resource type="Material" uid="uid://bsn2inlnipjsb" path="res://materials/simple/s_gray.tres" id="2_lftsr"]
 [ext_resource type="Material" uid="uid://bcc4vybllgsgd" path="res://materials/simple/s_green_olive.tres" id="2_tstr0"]

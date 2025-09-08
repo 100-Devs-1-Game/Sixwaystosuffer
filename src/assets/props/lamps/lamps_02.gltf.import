@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://w1ufvv4iqjio"
-path="res://.godot/imported/bullet.gltf-ef1a43bf09609fa679c002fce015cd54.scn"
+uid="uid://dw0lx23y1yggr"
+path="res://.godot/imported/lamps_02.gltf-22fd4cd4622298966d9763c7c0a6c06c.scn"
 
 [deps]
 
-source_file="res://models/weapons/bullet/bullet.gltf"
-dest_files=["res://.godot/imported/bullet.gltf-ef1a43bf09609fa679c002fce015cd54.scn"]
+source_file="res://assets/props/lamps/lamps_02.gltf"
+dest_files=["res://.godot/imported/lamps_02.gltf-22fd4cd4622298966d9763c7c0a6c06c.scn"]
 
 [params]
 
