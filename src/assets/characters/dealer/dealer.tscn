@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://vn4ia8o6gxf8"]
 
 [ext_resource type="PackedScene" uid="uid://c12wniiith5nm" path="res://assets/characters/dealer/dealer.gltf" id="1_ia121"]
-[ext_resource type="Material" uid="uid://d0el7t0beipg8" path="res://materials/metallic/m_black.tres" id="2_drp5i"]
-[ext_resource type="Material" uid="uid://bsn2inlnipjsb" path="res://materials/simple/s_gray.tres" id="2_lftsr"]
-[ext_resource type="Material" uid="uid://bcc4vybllgsgd" path="res://materials/simple/s_green_olive.tres" id="2_tstr0"]
-[ext_resource type="Material" uid="uid://bpf84xn3medq5" path="res://materials/simple/s_skin_tan.tres" id="2_w3ls2"]
-[ext_resource type="Material" uid="uid://e31lugfyushv" path="res://materials/simple/s_dark_black.tres" id="3_eju0i"]
-[ext_resource type="Material" uid="uid://dj65uc3a7f8wq" path="res://materials/simple/s_silver.tres" id="3_o3cfd"]
-[ext_resource type="Material" uid="uid://db33u6a0xlgq4" path="res://materials/emissive/e_red.tres" id="4_mllun"]
-[ext_resource type="Material" uid="uid://dhs5j6dh10cvn" path="res://materials/simple/s_orange.tres" id="4_wfqud"]
+[ext_resource type="Material" uid="uid://d0el7t0beipg8" path="res://assets/characters/dealer/materials/metallic/m_black.tres" id="2_drp5i"]
+[ext_resource type="Material" uid="uid://bcc4vybllgsgd" path="res://assets/characters/dealer/materials/simple/s_green_olive.tres" id="2_tstr0"]
+[ext_resource type="Material" uid="uid://bpf84xn3medq5" path="res://assets/characters/dealer/materials/simple/s_skin_tan.tres" id="2_w3ls2"]
+[ext_resource type="Material" uid="uid://e31lugfyushv" path="res://assets/characters/dealer/materials/simple/s_dark_black.tres" id="3_eju0i"]
+[ext_resource type="Material" uid="uid://dj65uc3a7f8wq" path="res://assets/characters/dealer/materials/simple/s_silver.tres" id="3_o3cfd"]
+[ext_resource type="Material" uid="uid://db33u6a0xlgq4" path="res://assets/characters/dealer/materials/emissive/e_red.tres" id="4_mllun"]
+[ext_resource type="Material" uid="uid://dhs5j6dh10cvn" path="res://assets/characters/dealer/materials/simple/s_orange.tres" id="4_wfqud"]
+[ext_resource type="Material" uid="uid://bev3cohtxw1lm" path="res://assets/counter/M_counter.tres" id="8_ung2h"]
 
 [node name="dealer" instance=ExtResource("1_ia121")]
 
@@ -45,7 +45,7 @@ surface_material_override/0 = ExtResource("3_eju0i")
 surface_material_override/0 = ExtResource("3_eju0i")
 
 [node name="HG_Leather_Dress_Shoe_Male_003" parent="HG_Dealer/Skeleton3D" index="3"]
-surface_material_override/0 = ExtResource("2_lftsr")
+surface_material_override/0 = ExtResource("8_ung2h")
 
 [node name="HG_Suit_Jacket_Closed_Male_003" parent="HG_Dealer/Skeleton3D" index="4"]
 surface_material_override/0 = ExtResource("3_eju0i")

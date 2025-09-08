@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5qo0j8ppqqnf"]
+[gd_scene load_steps=15 format=3 uid="uid://c5qo0j8ppqqnf"]
 
-[ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://materials/simple_no_spec/s_no_spec_black.tres" id="1_etyrx"]
+[ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://assets/characters/dealer/materials/simple_no_spec/s_no_spec_black.tres" id="1_etyrx"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="2_hc2hy"]
 [ext_resource type="Texture2D" uid="uid://by8ngn7kf1mei" path="res://assets/HDRI/underglow_dark_red.exr" id="2_wiqa1"]
-[ext_resource type="Material" uid="uid://dmtyvttrx8eny" path="res://shaders/posterize.tres" id="3_g4j8u"]
-[ext_resource type="PackedScene" uid="uid://d3q0cad0kja60" path="res://assets/props/lamps/lamps_01.tscn" id="6_1ctny"]
+[ext_resource type="Material" uid="uid://dmtyvttrx8eny" path="res://assets/shaders/posterize.tres" id="3_g4j8u"]
 [ext_resource type="PackedScene" uid="uid://caqpp7b26nyw" path="res://assets/VFX/light_cone/light_cone.tscn" id="7_kmq6a"]
 [ext_resource type="Texture2D" uid="uid://c0vjdwnahj6n2" path="res://assets/VFX/light_cone/light_cone_baked01.png" id="8_e0dxi"]
 [ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="8_g4j8u"]
@@ -50,7 +49,8 @@ current = true
 environment = SubResource("Environment_e0dxi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera & Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.69182, -0.865)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.69182, 7.3092)
+visible = false
 shadow_enabled = true
 
 [node name="post_proccesing" type="MeshInstance3D" parent="Camera & Lights"]
@@ -79,10 +79,6 @@ transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 0.
 [node name="table_01" parent="furniture" instance=ExtResource("1_wvfle")]
 
 [node name="VFX" type="Node3D" parent="."]
-
-[node name="lamps_01" parent="." instance=ExtResource("6_1ctny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.233, 0)
-visible = false
 
 [node name="light_cone_baked" type="Sprite3D" parent="."]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0.950217, 0)

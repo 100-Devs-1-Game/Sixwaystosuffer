@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://btj7p6v75j8f2"]
+
+[ext_resource type="PackedScene" uid="uid://drf01hhhjk27h" path="res://assets/props/lamps/lamps_02.tscn" id="1_ilcwl"]
+
+[sub_resource type="Animation" id="Animation_vs57c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lamps_02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ilcwl"]
+resource_name = "shaking"
+length = 0.400003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lamps_02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.400003),
+"transitions": PackedFloat32Array(0.5, -2, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0349066), Vector3(0, 0, -0.0349066), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13srp"]
+_data = {
+&"RESET": SubResource("Animation_vs57c"),
+&"shaking": SubResource("Animation_ilcwl")
+}
+
+[node name="Lamp" type="Node3D"]
+
+[node name="lamps_02" parent="." instance=ExtResource("1_ilcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0.238)
+
+[node name="Lamp SpotLight" type="SpotLight3D" parent="lamps_02"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0110378, -1.75185, -0.0345973)
+light_color = Color(1, 0.946, 0.82, 1)
+light_energy = 5.0
+spot_range = 8.0
+spot_attenuation = 1.25
+spot_angle = 40.0
+spot_angle_attenuation = 2.46229
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lamps_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00342607, -2.31607, 0)
+light_color = Color(1, 0.871, 0.57, 1)
+light_energy = 5.0
+omni_range = 0.5
+omni_attenuation = -0.46
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_13srp")
+}
+autoplay = "shaking"
+speed_scale = 0.1

@@ -1,53 +1,129 @@
-[gd_scene load_steps=6 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=13 format=3 uid="uid://catmh6bdnn6fa"]
 
+[ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
+[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="4_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
+[ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
+[ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://lamps/lamp.tscn" id="6_vyht1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huihk"]
+shader = ExtResource("1_bf3um")
+shader_parameter/exposure = 1.0
+shader_parameter/contrast = 1.1
+shader_parameter/saturation = 0.9
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_factor = 1.2
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 8.0
+shader_parameter/dither_strength = 0.3
+shader_parameter/chrom_aberration = 0.01
+shader_parameter/vignette_strength = 2.0
+shader_parameter/grain_strength = 0.2
+shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
+shader_parameter/tint_strength = 0.15
+shader_parameter/viewport_size_override = Vector2(0, 0)
 
 [sub_resource type="Environment" id="Environment_28aoi"]
 background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(0.374222, 0.417906, 0.428344, 1)
+ambient_light_source = 1
 ambient_light_energy = 1.67
 tonemap_mode = 2
+adjustment_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
 size = Vector3(1, 1, 1.6)
 
 [node name="Root" type="Node"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Player HUD" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+msaa_3d = 3
+screen_space_aa = 1
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Post Processing" type="PanelContainer" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bf3um")
+
+[node name="Posterize Canvas" type="ColorRect" parent="SubViewportContainer/SubViewport/Post Processing"]
+material = SubResource("ShaderMaterial_huihk")
+layout_mode = 2
+mouse_filter = 2
+
+[node name="World3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/World3D"]
 environment = SubResource("Environment_28aoi")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.690441, -0.626473, 0.361695, -9.83849e-09, 0.5, 0.866025, -0.723388, -0.59794, 0.34522, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/World3D/WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.9826, 0)
+visible = false
 shadow_enabled = true
 
-[node name="World3D" type="Node3D" parent="."]
+[node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
-[node name="Play Room" type="Node3D" parent="World3D"]
+[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
+visible = false
 
-[node name="Player" parent="World3D/Play Room" instance=ExtResource("1_vvh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 
-[node name="Table" type="Node3D" parent="World3D/Play Room"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Play Room/Table"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.368759)
 visible = false
 mesh = SubResource("BoxMesh_jnlp7")
 
-[node name="Revolver Place" type="Marker3D" parent="World3D/Play Room/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553246, 0)
-visible = false
+[node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
 
-[node name="Revolver" parent="World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-2.18557e-08, 0.5, 0.866025, -1, -4.37114e-08, 2.08426e-14, 3.78552e-08, -0.866025, 0.5, 0, 0, -0.429237)
+[node name="Revolver" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
+transform = Transform3D(-1.5299e-08, 0.35, 0.606218, -0.7, -3.0598e-08, 1.42583e-14, 2.64986e-08, -0.606218, 0.35, 0, 0, 0)
 
-[node name="Patron" parent="World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
+[node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)
 
-[node name="Dealer" type="Node3D" parent="World3D/Play Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+[node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 
-[node name="Player HUD" type="CanvasLayer" parent="."]
+[node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
+transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 3.87915, -1.2514)
+text = "READY?"
+
+[node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
+
+[node name="Dealer" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2078)
+
+[node name="dealer2" parent="SubViewportContainer/SubViewport/World3D/Play Room/Dealer" instance=ExtResource("4_jnlp7")]
+transform = Transform3D(1, 0, 0, 0, 0.985583, -0.169195, 0, 0.169195, 0.985583, 0, -2.31534, -0.543338)
+
+[node name="Dealer Spotlight" type="SpotLight3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Dealer/dealer2"]
+transform = Transform3D(1, 0, 0, 0, -0.131962, 0.991255, 0, -0.991255, -0.131962, -0.0110378, 9.11932, 0.900807)
+spot_range = 2.41991
+spot_angle = 34.776
+spot_angle_attenuation = 3.4822
+
+[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
+[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]
+[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver/Revolver Hand/revolver"]

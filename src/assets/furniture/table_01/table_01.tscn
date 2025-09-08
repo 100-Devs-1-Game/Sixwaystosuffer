@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c76i00ukwlksk"]
+[gd_scene load_steps=4 format=3 uid="uid://c76i00ukwlksk"]
 
 [ext_resource type="PackedScene" uid="uid://cnl6cdw6wpno" path="res://assets/furniture/table_01/table_01.gltf" id="1_8n0s3"]
-[ext_resource type="Texture2D" uid="uid://cp5oyu8kj5qvs" path="res://assets/furniture/table_01/table_01.png" id="2_b7w4j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7w4j"]
-albedo_texture = ExtResource("2_b7w4j")
+[ext_resource type="Material" uid="uid://dmd62glk3dd1x" path="res://assets/furniture/table_01/M_table_01.tres" id="2_wenf1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7w4j"]
 size = Vector3(103.561, 73.4915, 81.5358)
@@ -12,7 +9,7 @@ size = Vector3(103.561, 73.4915, 81.5358)
 [node name="table_01" instance=ExtResource("1_8n0s3")]
 
 [node name="Aset_interior_furnituretable" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_b7w4j")
+surface_material_override/0 = ExtResource("2_wenf1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Aset_interior_furnituretable" index="0"]
 

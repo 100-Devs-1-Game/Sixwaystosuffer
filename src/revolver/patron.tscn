@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsrippgh7mwp4"]
+[gd_scene load_steps=7 format=3 uid="uid://bsrippgh7mwp4"]
 
 [ext_resource type="Script" uid="uid://bhjtihgl4s7he" path="res://revolver/patron.gd" id="1_q0qsk"]
-[ext_resource type="PackedScene" uid="uid://ddw103w2g4sqy" path="res://assets/proto/patron-proto.glb" id="2_m1fkb"]
 
 [sub_resource type="Animation" id="Animation_m1fkb"]
 length = 0.001
@@ -59,11 +58,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_yftuu")
 }
 
-[node name="patron-proto" parent="View" instance=ExtResource("2_m1fkb")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="View/patron-proto"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0557325, 0)
 mesh = SubResource("BoxMesh_m1fkb")
+skeleton = NodePath("")
 
 [node name="Interactable" type="Area3D" parent="View"]
 unique_name_in_owner = true
