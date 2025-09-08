@@ -412,14 +412,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_qjkh3")
 }
 
-[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "base_path", "path_follow", "target_chamber", "chamber_node")]
+[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "base_path", "path_follow", "chamber_node")]
 script = ExtResource("4_yw30f")
 target_point = NodePath("../Patron Pickup Trajectory")
 drum_target_point = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
 revolver = NodePath("../Player Hand/Tremor/Revolver")
 base_path = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory")
 path_follow = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
-target_chamber = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber/Chamber Position")
 chamber_node = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
 
 [node name="Patron Pickup Trajectory" type="Node3D" parent="."]
