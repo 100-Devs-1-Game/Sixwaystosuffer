@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://nofefg6jsoiu" path="res://revolver/revolver.gd" id="1_su5x2"]
 [ext_resource type="PackedScene" uid="uid://cs8wjjhrmln2d" path="res://assets/revolver/revolver.tscn" id="2_su5x2"]
-[ext_resource type="PackedScene" uid="uid://c477a54eo8ko" path="res://revolver/chamber_position.tscn" id="3_opjbe"]
+[ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/chamber_position.tscn" id="3_opjbe"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ub1ss"]
-top_radius = 0.04
-bottom_radius = 0.04
+top_radius = 0.03
+bottom_radius = 0.03
 height = 0.04
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su5x2"]
@@ -321,23 +321,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.357555, -0.505617)
 [node name="revolver_chamber" parent="Revolver Hand/revolver" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000376823, 0.001409, -0.0121985)
 
-[node name="Chamber Position" parent="Revolver Hand/revolver/revolver_chamber" index="0" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0862487, 0.0578242)
+[node name="Chamber Position0" parent="Revolver Hand/revolver/revolver_chamber" index="0" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0561504, 0.0324061, 0.009)
 
-[node name="Chamber Position2" parent="Revolver Hand/revolver/revolver_chamber" index="1" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0757534, 0.0440505, 0.0578242)
+[node name="Chamber Position1" parent="Revolver Hand/revolver/revolver_chamber" index="1" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0646524, 0.00860831)
 
-[node name="Chamber Position3" parent="Revolver Hand/revolver/revolver_chamber" index="2" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0752449, -0.0428879, 0.0578242)
+[node name="Chamber Position2" parent="Revolver Hand/revolver/revolver_chamber" index="2" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0561504, 0.0319494, 0.00860831)
 
-[node name="Chamber Position4" parent="Revolver Hand/revolver/revolver_chamber" index="3" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.99365e-08, -0.0866113, 0.0578242)
+[node name="Chamber Position3" parent="Revolver Hand/revolver/revolver_chamber" index="3" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0561504, -0.0328396, 0.00860832)
 
-[node name="Chamber Position5" parent="Revolver Hand/revolver/revolver_chamber" index="4" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0742282, -0.0423794, 0.0578242)
+[node name="Chamber Position4" parent="Revolver Hand/revolver/revolver_chamber" index="4" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.0650859, 0.009)
 
-[node name="Chamber Position6" parent="Revolver Hand/revolver/revolver_chamber" index="5" instance=ExtResource("3_opjbe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0742282, 0.0425254, 0.0578242)
+[node name="Chamber Position5" parent="Revolver Hand/revolver/revolver_chamber" index="5" instance=ExtResource("3_opjbe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0561504, -0.0329999, 0.009)
 
 [node name="revolver_base_back" parent="Revolver Hand/revolver" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00109884, -0.0738967, 0.349991)
@@ -347,11 +347,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000521243, -0.197496, 0.176
 
 [node name="Current Position Hover" type="Node3D" parent="Revolver Hand/revolver"]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.256078, 0.00140843, 0.116785)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.312115, -0.0501525, 0.0852206)
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Revolver Hand/revolver/Current Position Hover"]
-transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, -0.0858769, -0.0250319, 0.000324669)
+transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, -0.0835679, -0.0102037, 2.78045e-05)
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("CylinderMesh_ub1ss")

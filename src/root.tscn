@@ -85,7 +85,9 @@ shadow_enabled = true
 
 [node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
-visible = false
+
+[node name="Camera3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head/Camera Point" index="0"]
+transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 
@@ -98,7 +100,7 @@ mesh = SubResource("BoxMesh_jnlp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
 
 [node name="Revolver" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-1.5299e-08, 0.35, 0.606218, -0.7, -3.0598e-08, 1.42583e-14, 2.64986e-08, -0.606218, 0.35, 0, 0, 0)
+transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.7997e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
 
 [node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)

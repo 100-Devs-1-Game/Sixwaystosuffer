@@ -1,19 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c477a54eo8ko"]
+[gd_scene load_steps=3 format=3 uid="uid://b3jox7dwuvty2"]
 
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="1_4tgr6"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_vdhlu"]
-top_radius = 0.04
-bottom_radius = 0.04
-height = 0.26
+[sub_resource type="CylinderMesh" id="CylinderMesh_4tgr6"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.2
 
 [node name="Chamber Position" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0390266, 1.70591e-09)
 visible = false
-mesh = SubResource("CylinderMesh_vdhlu")
+mesh = SubResource("CylinderMesh_4tgr6")
 skeleton = NodePath("../..")
 
 [node name="Patron" parent="." instance=ExtResource("1_4tgr6")]
