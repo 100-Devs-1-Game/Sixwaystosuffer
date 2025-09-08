@@ -85,6 +85,7 @@ shadow_enabled = true
 
 [node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
+visible = false
 
 [node name="Camera3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head/Camera Point" index="0"]
 transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)

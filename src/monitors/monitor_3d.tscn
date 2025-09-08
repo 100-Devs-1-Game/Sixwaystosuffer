@@ -51,8 +51,8 @@ script = ExtResource("1_phl4j")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.988704, 0.14988, 0, -0.14988, 0.988704, 0.0178061, 0.158101, 0.134663)
 double_sided = false
-modulate = Color(0.3762, 0.99, 0.46827, 1)
-outline_modulate = Color(0.148, 0.37, 0.185, 1)
+modulate = Color(0.376, 0.99, 0.468, 0.7)
+outline_modulate = Color(0.148, 0.37, 0.185, 0.7)
 text = "ROUND:01"
 font = ExtResource("3_phl4j")
 font_size = 18
@@ -63,3 +63,5 @@ uppercase = true
 libraries = {
 &"": SubResource("AnimationLibrary_wu85g")
 }
+
+[editable path="counter_01"]
