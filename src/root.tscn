@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
-[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="4_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://lamps/lamp.tscn" id="6_vyht1"]
+[ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -101,7 +101,7 @@ mesh = SubResource("BoxMesh_jnlp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
 
 [node name="Revolver" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.7997e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
+transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.97734e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
 
 [node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)
@@ -115,17 +115,8 @@ text = "READY?"
 
 [node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
 
-[node name="Dealer" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
+[node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2078)
-
-[node name="dealer2" parent="SubViewportContainer/SubViewport/World3D/Play Room/Dealer" instance=ExtResource("4_jnlp7")]
-transform = Transform3D(1, 0, 0, 0, 0.985583, -0.169195, 0, 0.169195, 0.985583, 0, -2.31534, -0.543338)
-
-[node name="Dealer Spotlight" type="SpotLight3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Dealer/dealer2"]
-transform = Transform3D(1, 0, 0, 0, -0.131962, 0.991255, 0, -0.991255, -0.131962, -0.0110378, 9.11932, 0.900807)
-spot_range = 2.41991
-spot_angle = 34.776
-spot_angle_attenuation = 3.4822
 
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]

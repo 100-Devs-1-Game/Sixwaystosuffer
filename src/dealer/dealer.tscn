@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b33dr7k4v11mv"]
+
+[ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="1_26k6d"]
+[ext_resource type="Script" uid="uid://bd0vq5eerrkbc" path="res://dealer/dealer.gd" id="1_thisu"]
+
+[node name="Dealer" type="Node3D"]
+script = ExtResource("1_thisu")
+
+[node name="dealer2" parent="." instance=ExtResource("1_26k6d")]
+transform = Transform3D(1, 0, 0, 0, 0.985583, -0.169195, 0, 0.169195, 0.985583, 0, -2.31534, -0.543338)
+
+[node name="Dealer Spotlight" type="SpotLight3D" parent="dealer2"]
+transform = Transform3D(1, 0, 0, 0, -0.131962, 0.991255, 0, -0.991255, -0.131962, -0.0110378, 9.11932, 0.900807)
+spot_range = 2.41991
+spot_angle = 34.776
+spot_angle_attenuation = 3.4822
