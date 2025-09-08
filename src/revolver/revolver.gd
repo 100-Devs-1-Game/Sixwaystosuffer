@@ -33,7 +33,7 @@ func spin_down() -> void:
 		return
 	
 	_tween = create_tween()
-	_tween.tween_property(drum, "rotation:z", drum.rotation.z - deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(drum, "rotation:z", drum.rotation.z - deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_CUBIC)
 	_current_index = (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
 
 func spin_up() -> void:
@@ -41,7 +41,7 @@ func spin_up() -> void:
 		return
 	
 	_tween = create_tween()
-	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_CUBIC)
 	_current_index = (_current_index + 1) % MAX_BULLETS_IN_CHAMBER
 
 func fire() -> void:
