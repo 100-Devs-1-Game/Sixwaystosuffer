@@ -8,7 +8,9 @@ extends Node
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_load"):
-		pickup.load_patron(debug_patron)
+		#pickup.load_patron(debug_patron)
+		state_machine.switch_to(PlayerTargetAimingState)
+		
 	
 	if event.is_action_pressed("debug_back") and state_machine.current_state is PlayerIdleState:
 		state_machine.switch_to(PlayerTakeRevolver)

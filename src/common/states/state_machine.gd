@@ -31,8 +31,15 @@ func switch_to(target_state: GDScript) -> void:
 		return
 	
 	if current_state != null:
-		current_state.exit()
+		if current_state is StateAsync:
+			await current_state.exit_async()
+		else:
+			current_state.exit()
 	
 	var next_state := state_mapping[target_state]
 	current_state = next_state
-	current_state.enter()
+	
+	if current_state is StateAsync:
+		await current_state.enter_async()
+	else:
+		current_state.enter()

@@ -1,5 +1,5 @@
 class_name PlayerReloadRevolverState
-extends State
+extends StateAsync
 
 @export var player_hand_animation: AnimationPlayer
 @export var revolver: Revolver
@@ -11,8 +11,10 @@ func handle_input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
 			revolver.spin_down()
 
-func enter() -> void:
+func enter_async() -> void:
 	player_hand_animation.play("open_drum")
+	await current_animation_ended(player_hand_animation)
 
-func exit() -> void:
+func exit_async() -> void:
 	player_hand_animation.play("close_drum")
+	await current_animation_ended(player_hand_animation)
