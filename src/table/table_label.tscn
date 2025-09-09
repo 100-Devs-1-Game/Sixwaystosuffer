@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2q6630p7t6iy"]
+
+[ext_resource type="Script" uid="uid://da60hn08673om" path="res://table/table_label.gd" id="1_adi1r"]
+
+[node name="Table Label" type="Node3D"]
+script = ExtResource("1_adi1r")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.0574172)
+modulate = Color(1, 1, 1, 0.4)
+text = "DEALER"
+font_size = 64
+outline_size = 0
