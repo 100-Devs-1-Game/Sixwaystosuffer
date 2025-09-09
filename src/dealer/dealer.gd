@@ -5,6 +5,7 @@ extends Node3D
 @export var max_face_time_change: float = 2.1
 
 @onready var cube_head: MeshInstance3D = $dealer2/HG_Dealer/Cube_Head
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum DealerFace {
 	UNKNOWN = 0,
@@ -25,6 +26,9 @@ func _ready() -> void:
 		DealerFace.HYPED: 180.0,
 		DealerFace.HYPED_TEETH: 270.0
 	}
+
+func entry() -> void:
+	animation_player.play("entry")
 
 func change_face(new_face: DealerFace) -> void:
 	if face_tweening:

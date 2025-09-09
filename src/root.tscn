@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
+[ext_resource type="Script" uid="uid://lavn4gocuq3b" path="res://gameloop/states/revolver_loading_state.gd" id="14_qt76e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -162,12 +163,18 @@ script = ExtResource("12_qw60f")
 initial_state = NodePath("IntroState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "clicked_on_revolver", "player")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "clicked_on_revolver", "dealer", "player")]
 script = ExtResource("13_qwhpj")
 initial_revolver_position = NodePath("../../../Table/Revolver Place/Initial Revolver Position")
 clicked_on_revolver = NodePath("../../../Table/Revolver Place/Initial Revolver Position/Clicked On Area")
+dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
+
+[node name="RevolverLoadingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("14_qt76e")
+player = NodePath("../../../Player")
+metadata/_custom_type_script = "uid://lavn4gocuq3b"
 
 [node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("dealer_label", "self_label", "dealer", "player")]
 script = ExtResource("13_eji0w")

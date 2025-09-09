@@ -17,3 +17,6 @@ func to_self_aiming() -> void:
 
 func to_idle() -> void:
 	await state_machine.switch_to(PlayerIdleState)
+
+func to_revolver_loading() -> void:
+	await state_machine.switch_to(PlayerReloadRevolverState)
