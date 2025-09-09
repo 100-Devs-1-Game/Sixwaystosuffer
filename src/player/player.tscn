@@ -557,14 +557,16 @@ player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation")]
+[node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
 script = ExtResource("8_rgyib")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://1yyenj6p76lf"
 
-[node name="PlayerTargetAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation")]
+[node name="PlayerTargetAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
 script = ExtResource("10_ebec5")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 
 [node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver", "pickup", "debug_patron")]

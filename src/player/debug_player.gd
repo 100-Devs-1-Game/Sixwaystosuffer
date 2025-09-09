@@ -8,11 +8,7 @@ extends Node
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_load"):
-		#pickup.load_patron(debug_patron)
-		state_machine.switch_to(PlayerTargetAimingState)
-		
-	if event.is_action_pressed("debug_fire"):
-		revolver.fire()
+		pickup.load_patron(debug_patron)
 	
 	if event.is_action_pressed("debug_self_aim"):
 		state_machine.switch_to(PlayerSelfAimingState)
