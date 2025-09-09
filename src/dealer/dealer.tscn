@@ -14,3 +14,12 @@ transform = Transform3D(1, 0, 0, 0, 0.419626, 0.907696, 0, -0.907696, 0.419626, 
 spot_range = 2.41991
 spot_angle = 34.776
 spot_angle_attenuation = 3.4822
+
+[node name="Dealer Spotlight2" type="SpotLight3D" parent="dealer2"]
+transform = Transform3D(0.849819, -0.114603, 0.514465, -0.276318, 0.734322, 0.620015, -0.448839, -0.669056, 0.592374, 0.989178, 7.58249, 1.51411)
+light_energy = 0.15
+spot_range = 2.41991
+spot_angle = 34.776
+spot_angle_attenuation = 3.4822
+
+[editable path="dealer2"]
