@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=14 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
+[ext_resource type="PackedScene" uid="uid://b2q6630p7t6iy" path="res://table/table_label.tscn" id="6_huihk"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://lamps/lamp.tscn" id="6_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
 
@@ -114,6 +115,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.009789
 
 [node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
+
+[node name="Choice Labels" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01"]
+visible = false
+
+[node name="Dealer Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.794756)
+text = "DEALER"
+
+[node name="You Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 0.87533)
+text = "YOU"
 
 [node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
 transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 3.87915, -1.2514)
