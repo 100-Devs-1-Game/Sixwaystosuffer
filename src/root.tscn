@@ -87,8 +87,14 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
 visible = false
 
+[node name="Camera Point" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head" index="0"]
+transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
+
 [node name="Camera3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head/Camera Point" index="0"]
 transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
+
+[node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
+transform = Transform3D(-0.78788, -0.392753, -0.474296, -0.004624, 0.773945, -0.633211, 0.615782, -0.496707, -0.611606, -0.270668, 0.106501, -0.308019)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 
