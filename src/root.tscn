@@ -97,7 +97,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
 
 [node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
-transform = Transform3D(-0.820301, -0.279567, -0.498913, 0, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
+transform = Transform3D(-0.820301, -0.279567, -0.498913, -2.98018e-08, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 

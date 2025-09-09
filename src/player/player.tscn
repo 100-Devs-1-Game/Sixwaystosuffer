@@ -362,7 +362,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_boad6"]
 resource_name = "self_aim"
-length = 0.500005
+length = 0.666671
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -371,10 +371,10 @@ tracks/0/path = NodePath("Player Hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.333333, 0.416667),
+"times": PackedFloat32Array(0, 0.125, 0.291667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.902, -0.392), Vector3(-0.298, -0.604, -0.614), Vector3(-0.297827, -0.423972, -0.763867)]
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.902, -0.392), Vector3(-0.373, -0.2, -0.67), Vector3(-0.298, -0.16, -0.764)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -383,10 +383,22 @@ tracks/1/path = NodePath("Player Hand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.333333, 0.416667),
+"times": PackedFloat32Array(0, 0.0833333, 0.291667, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0820305, -0.225147, -0.20944), Vector3(1.86576, -0.10472, 0.174533), Vector3(1.74533, 0.20944, 0.174533), Vector3(1.86623, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Head/Camera Point/Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.291667, 0.458333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0820305, -0.225147, -0.20944), Vector3(1.86576, -0.10472, 0.174533), Vector3(1.86623, 0, 0)]
+"values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(-0.20944, 0, 0), Vector3(-0.0523599, 0, 0), Vector3(-0.0698132, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yllr7"]
@@ -427,7 +439,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.375),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [60.0, 30.0]
+"values": [60.0, 40.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -482,7 +494,7 @@ autoplay = "idle"
 speed_scale = 0.1
 
 [node name="Player Hand" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
 
 [node name="Tremor" type="Node3D" parent="Player Hand"]
 
@@ -520,7 +532,7 @@ chamber_node = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/r
 curve = SubResource("Curve3D_hg6s5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Patron Pickup Trajectory/Patron Load Trajectory"]
-transform = Transform3D(-0.820253, -0.279553, -0.498893, 0, 0.87231, -0.488814, 0.571867, -0.400974, -0.715584, -0.380372, 0.866075, -0.653451)
+transform = Transform3D(-0.820253, -0.279553, -0.498893, -2.98e-08, 0.87231, -0.488814, 0.571867, -0.400974, -0.715584, -0.380372, 0.866075, -0.653451)
 loop = false
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -564,7 +576,7 @@ debug_patron = NodePath("../Patron")
 metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285715, 1.8688, -0.454168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)
 omni_range = 2.0
 
 [node name="Patron" parent="." instance=ExtResource("5_8t03j")]
