@@ -1,6 +1,9 @@
 class_name Dealer
 extends Node3D
 
+@export var min_face_time_change: float = 1.3
+@export var max_face_time_change: float = 2.1
+
 @onready var cube_head: MeshInstance3D = $dealer2/HG_Dealer/Cube_Head
 
 enum DealerFace {
@@ -30,6 +33,6 @@ func change_face(new_face: DealerFace) -> void:
 	
 	face_tweening = create_tween()
 	var angle_in_rads := deg_to_rad(face_angles[new_face])
-	var duration: float = min(abs(current_face - new_face), 2.0)
+	var duration := clampf(abs(current_face - new_face), min_face_time_change, max_face_time_change)
 	face_tweening.tween_property(cube_head, "rotation:y", angle_in_rads, duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 	current_face = new_face
