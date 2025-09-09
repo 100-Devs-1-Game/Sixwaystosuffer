@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=26 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cob23grtlvb82" path="res://player/states/player_reload_revolver_state.gd" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://bnk40dsy0isd7" path="res://player/states/player_take_revolver.gd" id="7_2ieo8"]
 [ext_resource type="Script" uid="uid://1yyenj6p76lf" path="res://player/states/player_self_aiming_state.gd" id="8_rgyib"]
 [ext_resource type="Script" uid="uid://bnlv7dn4y50h0" path="res://player/debug_player.gd" id="9_hg6s5"]
 
@@ -396,6 +397,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165, 0.894, -0.392)
 
 [node name="Revolver" parent="Player Hand/Tremor" instance=ExtResource("3_qjkh3")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Revolver Hand" parent="Player Hand/Tremor/Revolver" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.103854, 0.0988467)
@@ -439,6 +441,12 @@ metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 [node name="PlayerIdleState" type="Node" parent="StateMachine"]
 script = ExtResource("6_boad6")
 metadata/_custom_type_script = "uid://deqs4bhyfhrhb"
+
+[node name="PlayerTakeRevolver" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "revolver")]
+script = ExtResource("7_2ieo8")
+player = NodePath("../..")
+revolver = NodePath("../../Player Hand/Tremor/Revolver")
+metadata/_custom_type_script = "uid://bnk40dsy0isd7"
 
 [node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
 script = ExtResource("6_g6k8r")

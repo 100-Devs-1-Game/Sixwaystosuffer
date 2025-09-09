@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=16 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
+[ext_resource type="Script" uid="uid://beatoaa760esh" path="res://interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b2q6630p7t6iy" path="res://table/table_label.tscn" id="6_huihk"]
@@ -39,6 +40,9 @@ adjustment_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
 size = Vector3(1, 1, 1.6)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_huihk"]
+size = Vector3(0.289307, 0.739746, 1.37439)
+
 [node name="Root" type="Node"]
 
 [node name="Player HUD" type="CanvasLayer" parent="."]
@@ -55,6 +59,7 @@ stretch = true
 handle_input_locally = false
 msaa_3d = 3
 screen_space_aa = 1
+physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
@@ -84,18 +89,9 @@ shadow_enabled = true
 
 [node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
-[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
+[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" node_paths=PackedStringArray("initial_revolver_position") instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
-visible = false
-
-[node name="Camera Point" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head" index="0"]
-transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
-
-[node name="Camera3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head/Camera Point" index="0"]
-transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
-
-[node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
-transform = Transform3D(-0.78788, -0.392753, -0.474296, -0.004624, 0.773945, -0.633211, 0.615782, -0.496707, -0.611606, -0.270668, 0.106501, -0.308019)
+initial_revolver_position = NodePath("../Table/Revolver Place/Initial Revolver Position")
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 
@@ -107,8 +103,19 @@ mesh = SubResource("BoxMesh_jnlp7")
 [node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
 
-[node name="Revolver" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
+[node name="Initial Revolver Position" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
 transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.97734e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position/Area3D"]
+transform = Transform3D(1, -7.53175e-13, 0, 0, 1, 0, 3.55271e-15, 0, 1, 0.0289307, 0.0617676, -0.460022)
+shape = SubResource("BoxShape3D_huihk")
+
+[node name="Raise On Hover" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position" node_paths=PackedStringArray("target", "monitor")]
+script = ExtResource("5_gd4vy")
+target = NodePath("..")
+monitor = NodePath("../Area3D")
 
 [node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)
