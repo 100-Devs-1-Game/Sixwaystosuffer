@@ -13,7 +13,6 @@ func load_patron(target: Patron) -> void:
 	path_follow.progress_ratio = 1
 	path.curve.set_point_position(2, target.position)
 	target.reparent(path_follow)
-	print(target.position)
 	
 	var tween := create_tween()
 	tween.tween_property(path_follow, "progress_ratio", 0.0, 0.6)

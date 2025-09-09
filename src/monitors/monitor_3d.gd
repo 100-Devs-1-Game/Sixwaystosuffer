@@ -12,5 +12,5 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	if is_blinking:
+	if not Engine.is_editor_hint() and is_blinking:
 		animation_player.play("blinking")

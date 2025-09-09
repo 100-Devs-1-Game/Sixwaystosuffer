@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvuberatoghu0"]
+[gd_scene load_steps=8 format=3 uid="uid://bvuberatoghu0"]
 
 [ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="1_he7nu"]
 [ext_resource type="Script" uid="uid://ji1rm8ch2jps" path="res://monitors/monitor_3d.gd" id="1_phl4j"]
 [ext_resource type="FontFile" uid="uid://dttythi2jdv8j" path="res://assets/fonts/ErbosdracoNovaOpenNbpRegular-yGa5.ttf" id="3_phl4j"]
+[ext_resource type="AudioStream" uid="uid://3f8itkgyo2fo" path="res://assets/sfx/clock_tick.ogg" id="4_axbb4"]
 
 [sub_resource type="Animation" id="Animation_axbb4"]
 length = 0.001
@@ -35,6 +36,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tick Audio Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.324,
+"start_offset": 0.2575,
+"stream": ExtResource("4_axbb4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.5255,
+"stream": ExtResource("4_axbb4")
+}],
+"times": PackedFloat32Array(0.233333, 0.6)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu85g"]
 _data = {
@@ -63,5 +83,7 @@ uppercase = true
 libraries = {
 &"": SubResource("AnimationLibrary_wu85g")
 }
+
+[node name="Tick Audio Player" type="AudioStreamPlayer" parent="."]
 
 [editable path="counter_01"]

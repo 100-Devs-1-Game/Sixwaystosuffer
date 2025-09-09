@@ -7,6 +7,9 @@ extends Node3D
 @onready var cube_head: MeshInstance3D = $dealer2/HG_Dealer/Cube_Head
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var head_rotation_audio_player: AudioStreamPlayer = %"Head Rotation Audio Player"
+@onready var head_rotation_timer: Timer = %"Head Rotation Timer"
+
 enum DealerFace {
 	UNKNOWN = 0,
 	NEUTRAL = 1,
@@ -20,6 +23,7 @@ var current_face: DealerFace = DealerFace.NEUTRAL
 var face_tweening: Tween
 
 func _ready() -> void:
+	head_rotation_timer.timeout.connect(_on_head_rotation_timeout)
 	face_angles = {
 		DealerFace.NEUTRAL: 0.0,
 		DealerFace.HAPPY: 90.0,
@@ -31,6 +35,8 @@ func entry() -> void:
 	animation_player.play("entry")
 
 func change_face(new_face: DealerFace) -> void:
+	head_rotation_timer.stop()
+	
 	if face_tweening:
 		face_tweening.kill()
 		face_tweening = null
@@ -40,3 +46,9 @@ func change_face(new_face: DealerFace) -> void:
 	var duration := clampf(abs(current_face - new_face), min_face_time_change, max_face_time_change)
 	face_tweening.tween_property(cube_head, "rotation:y", angle_in_rads, duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 	current_face = new_face
+	
+	head_rotation_timer.wait_time = duration / 3.0
+	head_rotation_timer.start()
+
+func _on_head_rotation_timeout() -> void:
+	head_rotation_audio_player.play()

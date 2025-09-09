@@ -11,6 +11,8 @@ const MAX_BULLETS_IN_CHAMBER: int = 6
 
 @onready var chamber: MeshInstance3D = $"Revolver Hand/revolver/revolver_chamber"
 
+@onready var chamber_scrolling_audio_player: AudioStreamPlayer = %"Chamber Scrolling Audio Player"
+
 var _chamber_position: Array[Node3D]
 var _partons: Array[Patron]
 var _current_index: int = 0
@@ -35,6 +37,7 @@ func spin_down() -> void:
 	_tween = create_tween()
 	_tween.tween_property(drum, "rotation:z", drum.rotation.z - deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_CUBIC)
 	_current_index = (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
+	chamber_scrolling_audio_player.play()
 
 func spin_up() -> void:
 	if _tween != null and _tween.is_running():
@@ -43,6 +46,7 @@ func spin_up() -> void:
 	_tween = create_tween()
 	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle), 0.25).set_trans(Tween.TRANS_CUBIC)
 	_current_index = (_current_index + 1) % MAX_BULLETS_IN_CHAMBER
+	chamber_scrolling_audio_player.play()
 
 func fire() -> void:
 	animation_player.play("fire")

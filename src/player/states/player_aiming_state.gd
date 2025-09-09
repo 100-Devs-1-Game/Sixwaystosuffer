@@ -14,4 +14,4 @@ func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		revolver.fire()
 		shooted.emit()
-		is_ready_to_fire = false
+		#is_ready_to_fire = false

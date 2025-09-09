@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=22 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="Script" uid="uid://lavn4gocuq3b" path="res://gameloop/states/revolver_loading_state.gd" id="14_qt76e"]
+[ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -183,6 +184,10 @@ self_label = NodePath("../../../Table/table_01/Choice Labels/You Label")
 dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
+
+[node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop"]
+stream = ExtResource("16_sq7yr")
+autoplay = true
 
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]

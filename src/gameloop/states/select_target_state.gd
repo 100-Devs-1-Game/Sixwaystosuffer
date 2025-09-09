@@ -8,7 +8,7 @@ extends State
 @export var player: Player
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("back"):
+	if event.is_action_pressed("back") and player.is_aiming():
 		return_to_select_target()
 
 func enter() -> void:

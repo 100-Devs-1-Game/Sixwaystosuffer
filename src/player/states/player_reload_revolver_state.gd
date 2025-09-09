@@ -5,6 +5,9 @@ extends StateAsync
 @export var revolver: Revolver
 
 func handle_input(event: InputEvent) -> void:
+	if event.is_action_pressed("back"):
+		state_machine.switch_to(PlayerIdleState)
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
 			revolver.spin_up()

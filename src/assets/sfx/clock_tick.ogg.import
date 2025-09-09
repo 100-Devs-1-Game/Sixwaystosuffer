@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/clock_tick.ogg-c5b5e646bfdeb28afa3b98824ae5f1
 [params]
 
 loop=false
-loop_offset=0
+loop_offset=0.0
 bpm=0
 beat_count=0
 bar_beats=4

@@ -20,3 +20,6 @@ func to_idle() -> void:
 
 func to_revolver_loading() -> void:
 	await state_machine.switch_to(PlayerReloadRevolverState)
+
+func is_aiming() -> bool:
+	return state_machine.current_state is PlayerAimingState

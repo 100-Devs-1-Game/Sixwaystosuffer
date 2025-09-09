@@ -1,7 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://b33dr7k4v11mv"]
+[gd_scene load_steps=10 format=3 uid="uid://b33dr7k4v11mv"]
 
 [ext_resource type="PackedScene" uid="uid://vn4ia8o6gxf8" path="res://assets/characters/dealer/dealer.tscn" id="1_26k6d"]
 [ext_resource type="Script" uid="uid://bd0vq5eerrkbc" path="res://dealer/dealer.gd" id="1_thisu"]
+[ext_resource type="AudioStream" uid="uid://csoud1jtcyh3x" path="res://assets/sfx/woosh_01.ogg" id="3_my7y1"]
+[ext_resource type="AudioStream" uid="uid://c0y3ekplebwui" path="res://assets/sfx/woosh_02.ogg" id="4_ri56x"]
+[ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="5_1il7k"]
+
+[sub_resource type="Animation" id="Animation_hry3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dealer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.31534, -0.543338)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dealer2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.170013, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dealer2/Dealer Spotlight:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dealer2/Dealer Spotlight2:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_thisu"]
 resource_name = "entry"
@@ -55,62 +109,19 @@ tracks/3/keys = {
 "values": [0.0, 0.15]
 }
 
-[sub_resource type="Animation" id="Animation_hry3u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("dealer2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -2.31534, -0.543338)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("dealer2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.170013, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("dealer2/Dealer Spotlight:light_energy")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("dealer2/Dealer Spotlight2:light_energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db6vp"]
 _data = {
 &"RESET": SubResource("Animation_hry3u"),
 &"entry": SubResource("Animation_thisu")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_my7y1"]
+random_pitch = 1.2
+random_volume_offset_db = 5.0
+streams_count = 3
+stream_0/stream = ExtResource("3_my7y1")
+stream_1/stream = ExtResource("4_ri56x")
+stream_2/stream = ExtResource("5_1il7k")
 
 [node name="Dealer" type="Node3D"]
 script = ExtResource("1_thisu")
@@ -149,5 +160,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_db6vp")
 }
 speed_scale = 0.3
+
+[node name="Head Rotation Audio Player" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_my7y1")
+
+[node name="Head Rotation Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [editable path="dealer2"]
