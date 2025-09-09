@@ -52,7 +52,7 @@ _data = {
 [node name="Lamp" type="Node3D"]
 
 [node name="lamps_02" parent="." instance=ExtResource("1_ilcwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0.238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.82, 0.238)
 
 [node name="Lamp SpotLight" type="SpotLight3D" parent="lamps_02"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0110378, -1.75185, -0.0345973)

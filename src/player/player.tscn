@@ -488,6 +488,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
 
 [node name="Revolver" parent="Player Hand/Tremor" instance=ExtResource("3_qjkh3")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Revolver Hand" parent="Player Hand/Tremor/Revolver" index="0"]
 transform = Transform3D(0.999997, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.103854, 0.0988467)
@@ -523,6 +524,7 @@ transform = Transform3D(-0.820253, -0.279553, -0.498893, 0, 0.87231, -0.488814, 
 loop = false
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
 script = ExtResource("5_qjkh3")
 initial_state = NodePath("PlayerIdleState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"

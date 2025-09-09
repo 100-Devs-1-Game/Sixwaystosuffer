@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=20 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
@@ -6,10 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
+[ext_resource type="Script" uid="uid://d0dwks7c5xd3d" path="res://interactions/clicked_on_area.gd" id="5_qw60f"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b2q6630p7t6iy" path="res://table/table_label.tscn" id="6_huihk"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://lamps/lamp.tscn" id="6_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
+[ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
+[ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
+[ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -89,9 +93,8 @@ shadow_enabled = true
 
 [node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
-[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" node_paths=PackedStringArray("initial_revolver_position") instance=ExtResource("1_vvh5c")]
+[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
-initial_revolver_position = NodePath("../Table/Revolver Place/Initial Revolver Position")
 
 [node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
 transform = Transform3D(-0.820301, -0.279567, -0.498913, 0, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
@@ -120,6 +123,10 @@ script = ExtResource("5_gd4vy")
 target = NodePath("..")
 monitor = NodePath("../Area3D")
 
+[node name="Clicked On Area" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position" node_paths=PackedStringArray("area")]
+script = ExtResource("5_qw60f")
+area = NodePath("../Area3D")
+
 [node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)
 
@@ -127,14 +134,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.009789
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 
 [node name="Choice Labels" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01"]
-visible = false
 
 [node name="Dealer Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.794756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.638386)
+visible = false
 text = "DEALER"
 
 [node name="You Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 0.87533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 1.44612)
+visible = false
 text = "YOU"
 
 [node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
@@ -146,6 +154,28 @@ is_blinking = true
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)
+
+[node name="GameLoop" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
+
+[node name="StateMachine" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_qw60f")
+initial_state = NodePath("IntroState")
+metadata/_custom_type_script = "uid://dfrwjwp73xpko"
+
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "clicked_on_revolver", "player")]
+script = ExtResource("13_qwhpj")
+initial_revolver_position = NodePath("../../../Table/Revolver Place/Initial Revolver Position")
+clicked_on_revolver = NodePath("../../../Table/Revolver Place/Initial Revolver Position/Clicked On Area")
+player = NodePath("../../../Player")
+metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
+
+[node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("dealer_label", "self_label", "dealer", "player")]
+script = ExtResource("13_eji0w")
+dealer_label = NodePath("../../../Table/table_01/Choice Labels/Dealer Label")
+self_label = NodePath("../../../Table/table_01/Choice Labels/You Label")
+dealer = NodePath("../../../Dealer")
+player = NodePath("../../../Player")
+metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]

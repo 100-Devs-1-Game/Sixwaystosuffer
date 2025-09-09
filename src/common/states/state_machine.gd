@@ -13,9 +13,7 @@ func _ready() -> void:
 			state_mapping[script] = child
 			child.state_machine = self
 	
-	if initial_state:
-		current_state = initial_state
-		current_state.enter()
+	switch_to(initial_state.get_script())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state:

@@ -1,13 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2q6630p7t6iy"]
+[gd_scene load_steps=4 format=3 uid="uid://b2q6630p7t6iy"]
 
 [ext_resource type="Script" uid="uid://da60hn08673om" path="res://table/table_label.gd" id="1_adi1r"]
+[ext_resource type="Script" uid="uid://d0dwks7c5xd3d" path="res://interactions/clicked_on_area.gd" id="2_ujq7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv1ch"]
+size = Vector3(1.5, 0.1, 0.5)
 
 [node name="Table Label" type="Node3D"]
 script = ExtResource("1_adi1r")
+hovered_color = Color(1, 1, 1, 0.65)
+normal_color = Color(1, 1, 1, 0.35)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.0574172)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 modulate = Color(1, 1, 1, 0.4)
 text = "DEALER"
 font_size = 64
 outline_size = 0
+
+[node name="Area3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00512695, 0)
+shape = SubResource("BoxShape3D_bv1ch")
+
+[node name="ClickedOnArea3D" type="Node" parent="." node_paths=PackedStringArray("area")]
+unique_name_in_owner = true
+script = ExtResource("2_ujq7e")
+area = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://d0dwks7c5xd3d"
