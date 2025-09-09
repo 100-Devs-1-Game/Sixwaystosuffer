@@ -118,11 +118,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 [node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
 transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 3.87915, -1.2514)
 text = "READY?"
+is_blinking = true
 
 [node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)
 
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
 [editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]
