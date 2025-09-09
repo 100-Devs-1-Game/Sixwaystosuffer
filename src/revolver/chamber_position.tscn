@@ -17,3 +17,4 @@ skeleton = NodePath("../..")
 
 [node name="bullet" parent="." instance=ExtResource("2_dyfkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100353, 0)
+visible = false

@@ -90,8 +90,11 @@ shadow_enabled = true
 [node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
 [node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" node_paths=PackedStringArray("initial_revolver_position") instance=ExtResource("1_vvh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 4.21509, 2.80201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
 initial_revolver_position = NodePath("../Table/Revolver Place/Initial Revolver Position")
+
+[node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
+transform = Transform3D(-0.820301, -0.279567, -0.498913, 0, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 

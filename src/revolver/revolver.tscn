@@ -12,7 +12,7 @@ height = 0.04
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su5x2"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0, 0, 0.52549)
+albedo_color = Color(0.062, 0.592, 0.73, 0.4)
 disable_receive_shadows = true
 
 [sub_resource type="Animation" id="Animation_lhmy8"]
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333334, 0.1, 0.166667, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.256078, 0.001409, -0.0121985), Vector3(-0.3, 0.001, -0.012), Vector3(0.000376823, 0.001409, -0.0121985), Vector3(0.000376823, 0.001409, -0.0121985)]
+"values": [Vector3(-0.18, 0.001, -0.012), Vector3(-0.22, 0.001, -0.012), Vector3(0.000376823, 0.001409, -0.0121985), Vector3(0.000376823, 0.001409, -0.0121985)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -232,7 +232,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_su5x2"]
 resource_name = "load"
-length = 0.400003
+length = 0.200003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -240,10 +240,10 @@ tracks/0/path = NodePath("Revolver Hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.103854, 0.0988467), Vector3(0, -0.149, 0.019), Vector3(0, -0.103854, 0.0988467)]
+"values": [Vector3(0, -0.103854, 0.0988467), Vector3(0, -0.103854, 0.0988467)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -252,10 +252,10 @@ tracks/1/path = NodePath("Revolver Hand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.266667, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.389208, 0.226893, 0.00698132), Vector3(-0.677188, 0.226893, 0.00698132), Vector3(-0.607375, 0.174533, 0.00698132), Vector3(-0.275762, 0.10472, 0.00698132), Vector3(-0.389208, 0.226893, 0.00698132)]
+"values": [Vector3(-0.389208, 0.226893, 0.00698132), Vector3(-0.523599, 0.279253, 0.00698132), Vector3(-0.453786, 0.279253, 0.00698132), Vector3(-0.389208, 0.226893, 0.00698132)]
 }
 
 [sub_resource type="Animation" id="Animation_sfe4l"]
@@ -271,7 +271,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133333, 0.2, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.000376823, 0.001409, -0.0121985), Vector3(0.000376823, 0.001409, -0.0121985), Vector3(-0.3, 0.001, -0.012), Vector3(-0.256078, 0.001409, -0.0121985)]
+"values": [Vector3(0.000376823, 0.001409, -0.0121985), Vector3(0.000376823, 0.001409, -0.0121985), Vector3(-0.22, 0.001, -0.012), Vector3(-0.18, 0.001, -0.012)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -347,11 +347,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000521243, -0.197496, 0.176
 
 [node name="Current Position Hover" type="Node3D" parent="Revolver Hand/revolver"]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.312115, -0.0501525, 0.0852206)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.237374, 0.0331891, 0.0965368)
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Revolver Hand/revolver/Current Position Hover"]
-transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, -0.0835679, -0.0102037, 2.78045e-05)
+transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, 0, 0, 0)
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("CylinderMesh_ub1ss")

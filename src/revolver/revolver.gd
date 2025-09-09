@@ -26,7 +26,7 @@ func get_current_chamber_position() -> Node3D:
 
 func load_patron(patron: Patron) -> void:
 	_partons[_current_index] = patron
-	print(_partons)
+	animation_player.play("load")
 
 func spin_down() -> void:
 	if _tween != null and _tween.is_running():

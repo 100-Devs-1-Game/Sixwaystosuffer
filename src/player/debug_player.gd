@@ -10,12 +10,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_load"):
 		pickup.load_patron(debug_patron)
 	
-	if event.is_action_pressed("debug_back"):
+	if event.is_action_pressed("debug_back") and state_machine.current_state is PlayerIdleState:
 		state_machine.switch_to(PlayerTakeRevolver)
-		#state_machine.switch_to(PlayerIdleState)
 	
 	if event.is_action_pressed("debug_interact"):
-		state_machine.switch_to(PlayerReloadRevolverState)
+		if state_machine.current_state is PlayerReloadRevolverState:
+			state_machine.switch_to(PlayerIdleState)
+		else:
+			state_machine.switch_to(PlayerReloadRevolverState)
 	
 	if event.is_action_pressed("debug_fire"):
 		revolver.fire()
