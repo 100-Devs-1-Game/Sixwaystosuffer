@@ -30,6 +30,9 @@ func load_patron(patron: Patron) -> void:
 	_partons[_current_index] = patron
 	animation_player.play("load")
 
+func has_current_patron() -> bool:
+	return _partons[_current_index] != null
+
 func spin_down() -> void:
 	if _tween != null and _tween.is_running():
 		return
@@ -49,8 +52,12 @@ func spin_up() -> void:
 	chamber_scrolling_audio_player.play()
 
 func fire() -> void:
-	animation_player.play("fire")
 	spin_down()
+	
+	if has_current_patron():
+		animation_player.play("fire")
+	else:
+		animation_player.play("fire_empty")
 
 func open_drum() -> void:
 	animation_player.play("drum_open")
