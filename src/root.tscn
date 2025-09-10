@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
+[ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
@@ -24,8 +25,8 @@ shader = ExtResource("1_bf3um")
 shader_parameter/exposure = 1.0
 shader_parameter/contrast = 1.1
 shader_parameter/saturation = 0.9
-shader_parameter/enable_pixelate = false
-shader_parameter/pixel_factor = 1.2
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_factor = 1.1
 shader_parameter/enable_posterize = true
 shader_parameter/color_levels = 8.0
 shader_parameter/dither_strength = 0.3
@@ -35,16 +36,6 @@ shader_parameter/grain_strength = 0.2
 shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
 shader_parameter/tint_strength = 0.15
 shader_parameter/viewport_size_override = Vector2(0, 0)
-
-[sub_resource type="Environment" id="Environment_28aoi"]
-background_mode = 1
-ambient_light_source = 1
-ambient_light_energy = 1.67
-tonemap_mode = 2
-adjustment_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_jnlp7"]
-size = Vector3(1, 1, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_huihk"]
 size = Vector3(0.289307, 0.739746, 1.37439)
@@ -86,12 +77,7 @@ mouse_filter = 2
 [node name="World3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/World3D"]
-environment = SubResource("Environment_28aoi")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/World3D/WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.9826, 0)
-visible = false
-shadow_enabled = true
+environment = ExtResource("2_r3r3k")
 
 [node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
@@ -102,11 +88,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
 transform = Transform3D(-0.820301, -0.279567, -0.498913, -2.98018e-08, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.368759)
-visible = false
-mesh = SubResource("BoxMesh_jnlp7")
 
 [node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)

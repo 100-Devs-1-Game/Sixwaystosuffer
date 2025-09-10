@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://caqpp7b26nyw"]
-
-[ext_resource type="PackedScene" uid="uid://befj4erigje7p" path="res://assets/VFX/light_cone/light_cone.gltf" id="1_gw3h0"]
-
-[node name="light_cone" instance=ExtResource("1_gw3h0")]
-
-[node name="Ray (Spot)" parent="." index="0"]
-cast_shadow = 0

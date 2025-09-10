@@ -22,6 +22,11 @@ uniform float tint_strength : hint_range(0.0, 1.0) = 0.15;
 
 uniform vec2  viewport_size_override = vec2(0.0);
 
+vec4 overlay(vec4 base, vec4 blend){
+	vec4 limit = step(0.5, base);
+	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
+}
+
 float bayer4x4(vec2 p){
     int x = int(mod(p.x, 4.0));
     int y = int(mod(p.y, 4.0));
