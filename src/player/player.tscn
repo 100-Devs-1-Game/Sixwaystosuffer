@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="5_8t03j"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
-[ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://interactions/clickable_area3d.gd" id="5_wodsf"]
+[ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_wodsf"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cob23grtlvb82" path="res://player/states/player_reload_revolver_state.gd" id="6_g6k8r"]
 [ext_resource type="Script" uid="uid://bnk40dsy0isd7" path="res://player/states/player_take_revolver.gd" id="7_2ieo8"]

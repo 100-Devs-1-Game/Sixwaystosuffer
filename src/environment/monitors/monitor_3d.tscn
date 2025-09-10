@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvuberatoghu0"]
 
 [ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="1_he7nu"]
-[ext_resource type="Script" uid="uid://ji1rm8ch2jps" path="res://monitors/monitor_3d.gd" id="1_phl4j"]
+[ext_resource type="Script" uid="uid://ji1rm8ch2jps" path="res://environment/monitors/monitor_3d.gd" id="1_phl4j"]
 [ext_resource type="FontFile" uid="uid://dttythi2jdv8j" path="res://assets/fonts/ErbosdracoNovaOpenNbpRegular-yGa5.ttf" id="3_phl4j"]
 [ext_resource type="AudioStream" uid="uid://3f8itkgyo2fo" path="res://assets/sfx/clock_tick.ogg" id="4_axbb4"]
 

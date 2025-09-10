@@ -85,5 +85,6 @@ speed_scale = 0.1
 
 [node name="Lamp Audio Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vs57c")
+volume_db = -40.0
 autoplay = true
 parameters/looping = true
