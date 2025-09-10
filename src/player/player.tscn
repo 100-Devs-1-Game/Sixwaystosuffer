@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=35 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="5_8t03j"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://interactions/clickable_area3d.gd" id="5_wodsf"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cob23grtlvb82" path="res://player/states/player_reload_revolver_state.gd" id="6_g6k8r"]
 [ext_resource type="Script" uid="uid://bnk40dsy0isd7" path="res://player/states/player_take_revolver.gd" id="7_2ieo8"]
@@ -60,6 +61,9 @@ _data = {
 &"RESET": SubResource("Animation_28aoi"),
 &"idle": SubResource("Animation_vvh5c")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32hag"]
+size = Vector3(0.16, 0.83, 1.26845)
 
 [sub_resource type="Animation" id="Animation_2ieo8"]
 length = 0.001
@@ -564,6 +568,15 @@ unique_name_in_owner = true
 visible = false
 camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
+[node name="Revolver Interact Area3D" type="Area3D" parent="Player Hand/Tremor/Revolver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+monitoring = false
+script = ExtResource("5_wodsf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player Hand/Tremor/Revolver/Revolver Interact Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.485467)
+shape = SubResource("BoxShape3D_32hag")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player Hand/Tremor"]
 libraries = {
 &"": SubResource("AnimationLibrary_ebec5")
@@ -603,8 +616,9 @@ script = ExtResource("5_qjkh3")
 initial_state = NodePath("PlayerIdleState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="PlayerIdleState" type="Node" parent="StateMachine"]
+[node name="PlayerIdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("revolver_interact")]
 script = ExtResource("6_boad6")
+revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
 metadata/_custom_type_script = "uid://deqs4bhyfhrhb"
 
 [node name="PlayerTakeRevolver" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "revolver", "audio_player")]
@@ -614,10 +628,11 @@ revolver = NodePath("../../Player Hand/Tremor/Revolver")
 audio_player = NodePath("../../Player Hand/Load Audio Stream")
 metadata/_custom_type_script = "uid://bnk40dsy0isd7"
 
-[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
+[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver", "revolver_interact")]
 script = ExtResource("6_g6k8r")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
+revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
 [node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]

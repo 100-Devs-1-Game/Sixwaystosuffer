@@ -37,6 +37,12 @@ func load_patron(patron: Patron) -> void:
 	_partons[_current_index] = patron
 	animation_player.play("load")
 
+func has_patrons() -> bool:
+	for patron in _partons:
+		if patron != null:
+			return true
+	return false
+
 func has_current_patron() -> bool:
 	return _partons[_current_index] != null
 
@@ -57,7 +63,7 @@ func spin(count: int) -> void:
 	if _tween != null and _tween.is_running():
 		return
 	
-	var duration := minf(SPIN_CHAMBER_DURATION * count, MAX_SPIN_CHAMBER_DURATION)
+	var duration := minf(abs(SPIN_CHAMBER_DURATION * count), MAX_SPIN_CHAMBER_DURATION)
 	_tween = create_tween()
 	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle * count), duration).set_trans(Tween.TRANS_CUBIC)
 	

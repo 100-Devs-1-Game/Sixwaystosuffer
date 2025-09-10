@@ -7,15 +7,8 @@ extends Node
 @export var debug_patron: Patron
 @export var camera_shaker: CameraShaker
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_load"):
-		state_machine.switch_to(PlayerReloadRevolverState)
-	
+func _unhandled_input(event: InputEvent) -> void:	
 	if event.is_action_pressed("debug_fire"):
 		var duplicated_patron := debug_patron.duplicate()
 		debug_patron.get_parent().add_child(duplicated_patron)
 		pickup.load_patron(duplicated_patron)
-	
-	if event.is_action_pressed("debug_self_aim"):
-		revolver.spin_random()
-		camera_shaker.shake()

@@ -3,6 +3,7 @@ extends StateAsync
 
 @export var player_hand_animation: AnimationPlayer
 @export var revolver: Revolver
+@export var revolver_interact: ClickableArea3D
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back"):
@@ -17,7 +18,14 @@ func handle_input(event: InputEvent) -> void:
 func enter_async() -> void:
 	player_hand_animation.play("open_drum")
 	await current_animation_ended(player_hand_animation)
+	revolver_interact.clicked.connect(_on_revolver_clicked)
+	revolver_interact.monitorable = true
 
 func exit_async() -> void:
+	revolver_interact.clicked.disconnect(_on_revolver_clicked)
+	revolver_interact.monitorable = false
 	player_hand_animation.play("close_drum")
 	await current_animation_ended(player_hand_animation)
+
+func _on_revolver_clicked() -> void:
+	state_machine.switch_to(PlayerIdleState)
