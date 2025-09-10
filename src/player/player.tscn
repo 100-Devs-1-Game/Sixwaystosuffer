@@ -569,7 +569,6 @@ visible = false
 camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
 [node name="Revolver Interact Area3D" type="Area3D" parent="Player Hand/Tremor/Revolver"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 monitoring = false
 script = ExtResource("5_wodsf")
 
@@ -591,15 +590,6 @@ libraries = {
 
 [node name="Load Audio Stream" type="AudioStreamPlayer" parent="Player Hand"]
 stream = SubResource("AudioStreamRandomizer_32hag")
-
-[node name="Patron Pickup" type="Node" parent="." node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "path", "path_follow", "chamber_node")]
-script = ExtResource("4_yw30f")
-target_point = NodePath("../Patron Pickup Trajectory")
-drum_target_point = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
-revolver = NodePath("../Player Hand/Tremor/Revolver")
-path = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory")
-path_follow = NodePath("../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
-chamber_node = NodePath("../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
 
 [node name="Patron Pickup Trajectory" type="Node3D" parent="."]
 
@@ -628,12 +618,22 @@ revolver = NodePath("../../Player Hand/Tremor/Revolver")
 audio_player = NodePath("../../Player Hand/Load Audio Stream")
 metadata/_custom_type_script = "uid://bnk40dsy0isd7"
 
-[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver", "revolver_interact")]
+[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver", "revolver_interact", "patron_pickup")]
 script = ExtResource("6_g6k8r")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
+patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
+
+[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "path", "path_follow", "chamber_node")]
+script = ExtResource("4_yw30f")
+target_point = NodePath("../../../Patron Pickup Trajectory")
+drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
+revolver = NodePath("../../../Player Hand/Tremor/Revolver")
+path = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory")
+path_follow = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
+chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
 
 [node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]
 script = ExtResource("8_rgyib")
@@ -648,13 +648,10 @@ player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 
-[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver", "pickup", "debug_patron", "camera_shaker")]
+[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("pickup", "debug_patron")]
 script = ExtResource("9_hg6s5")
-state_machine = NodePath("../StateMachine")
-revolver = NodePath("../Player Hand/Tremor/Revolver")
-pickup = NodePath("../Patron Pickup")
+pickup = NodePath("../StateMachine/PlayerReloadRevolverState/Patron Pickup")
 debug_patron = NodePath("../Patron")
-camera_shaker = NodePath("../Player Head/Camera Point/CameraShaker")
 metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

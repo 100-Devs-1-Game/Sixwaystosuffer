@@ -4,6 +4,7 @@ extends StateAsync
 @export var player_hand_animation: AnimationPlayer
 @export var revolver: Revolver
 @export var revolver_interact: ClickableArea3D
+@export var patron_pickup: PatronPickup
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back"):

@@ -10,6 +10,7 @@ extends Node
 @export var chamber_node: Node3D
 
 func load_patron(target: Patron) -> void:
+	target.disable()
 	path_follow.progress_ratio = 1
 	path.curve.set_point_position(2, target.position)
 	target.reparent(path_follow)

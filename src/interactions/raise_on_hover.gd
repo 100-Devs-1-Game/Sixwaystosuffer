@@ -10,9 +10,13 @@ var init_position: Vector3
 var tween: Tween
 
 func _ready() -> void:
-	init_position = target.position
+	reset()
 	monitor.mouse_entered.connect(_on_mouse_entered)
 	monitor.mouse_exited.connect(_on_mouse_exited)
+
+func reset() -> void:
+	_stop_tween_if_needed()
+	target.position = init_position
 
 func _on_mouse_entered() -> void:
 	_stop_tween_if_needed()

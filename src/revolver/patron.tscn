@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsrippgh7mwp4"]
+[gd_scene load_steps=6 format=3 uid="uid://bsrippgh7mwp4"]
 
 [ext_resource type="Script" uid="uid://bhjtihgl4s7he" path="res://revolver/patron.gd" id="1_q0qsk"]
 [ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/chamber_position.tscn" id="2_m1fkb"]
+[ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://interactions/clickable_area3d.gd" id="3_yftuu"]
+[ext_resource type="Script" uid="uid://beatoaa760esh" path="res://interactions/raise_on_hover.gd" id="4_4xv3t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1fkb"]
+radius = 0.05
+height = 0.25
 
 [node name="Patron" type="Node3D"]
 script = ExtResource("1_q0qsk")
@@ -11,5 +17,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
 
 [node name="bullet" parent="Chamber Position" index="1"]
 visible = true
+
+[node name="Interact Area3d" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0217674, 0)
+monitoring = false
+script = ExtResource("3_yftuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Area3d"]
+shape = SubResource("CapsuleShape3D_m1fkb")
+
+[node name="RaiseOnHover" type="Node" parent="." node_paths=PackedStringArray("target", "monitor")]
+unique_name_in_owner = true
+script = ExtResource("4_4xv3t")
+target = NodePath("../Chamber Position")
+monitor = NodePath("../Interact Area3d")
+height = 0.05
+duration = 0.25
+metadata/_custom_type_script = "uid://beatoaa760esh"
 
 [editable path="Chamber Position"]
