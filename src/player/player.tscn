@@ -122,7 +122,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ebec5"]
 resource_name = "tremor"
-length = 0.200003
+length = 0.100003
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -131,10 +131,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.00872665, 0), Vector3(0, -0.00872665, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.00523599, 0), Vector3(0, -0.00523599, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebec5"]
@@ -396,10 +396,10 @@ tracks/0/path = NodePath("Player Hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.291667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.291667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.902, -0.392), Vector3(-0.373, -0.2, -0.67), Vector3(-0.298, -0.16, -0.764)]
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.902, -0.392), Vector3(-0.373, -0.2, -0.67), Vector3(-0.373, -0.4, -0.67), Vector3(-0.298, -0.16, -0.764)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -420,10 +420,10 @@ tracks/2/path = NodePath("Player Head/Camera Point/Camera3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.291667, 0.458333, 0.5),
+"times": PackedFloat32Array(0, 0.25, 0.333333, 0.458333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(-0.20944, 0, 0), Vector3(-0.0523599, 0, 0), Vector3(-0.0698132, 0, 0)]
+"values": [Vector3(-0.174533, -1.8062e-09, -3.25081e-10), Vector3(-0.331613, 0, 0), Vector3(-0.349066, 0, 0), Vector3(-0.0349066, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -564,7 +564,6 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.165, 0.894, -
 
 [node name="Revolver" parent="Player Hand/Tremor" node_paths=PackedStringArray("camera_shaker") instance=ExtResource("3_qjkh3")]
 unique_name_in_owner = true
-visible = false
 camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
 [node name="Revolver Interact Area3D" type="Area3D" parent="Player Hand/Tremor/Revolver"]

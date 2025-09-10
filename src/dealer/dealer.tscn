@@ -91,10 +91,10 @@ tracks/2/path = NodePath("dealer2/Dealer Spotlight:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.0, 1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -103,10 +103,10 @@ tracks/3/path = NodePath("dealer2/Dealer Spotlight2:light_energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.15]
+"values": [0.0, 0.0, 0.15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db6vp"]
@@ -128,6 +128,9 @@ script = ExtResource("1_thisu")
 
 [node name="dealer2" parent="." instance=ExtResource("1_26k6d")]
 transform = Transform3D(1, 0, 0, 0, 0.985583, -0.169195, 0, 0.169195, 0.985583, 0, -2.31534, -0.543338)
+
+[node name="Cube_Head" parent="dealer2/HG_Dealer" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000862201, 7.92602, -0.000313817)
 
 [node name="Skeleton3D" parent="dealer2/HG_Dealer" index="1"]
 bones/6/rotation = Quaternion(0.220245, 0.678015, 0.662949, 0.228663)

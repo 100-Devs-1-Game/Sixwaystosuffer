@@ -33,8 +33,15 @@ func _ready() -> void:
 
 func entry() -> void:
 	animation_player.play("entry")
+	_tween_head_rotation(face_angles[DealerFace.NEUTRAL], 2.0)
 
 func change_face(new_face: DealerFace) -> void:
+	var target_angle := face_angles[new_face]
+	var duration := clampf(abs(current_face - new_face), min_face_time_change, max_face_time_change)
+	_tween_head_rotation(target_angle, duration)
+	current_face = new_face
+
+func _tween_head_rotation(target_angle: float, duration: float) -> void:
 	head_rotation_timer.stop()
 	
 	if face_tweening:
@@ -42,10 +49,7 @@ func change_face(new_face: DealerFace) -> void:
 		face_tweening = null
 	
 	face_tweening = create_tween()
-	var angle_in_rads := deg_to_rad(face_angles[new_face])
-	var duration := clampf(abs(current_face - new_face), min_face_time_change, max_face_time_change)
-	face_tweening.tween_property(cube_head, "rotation:y", angle_in_rads, duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
-	current_face = new_face
+	face_tweening.tween_property(cube_head, "rotation:y", deg_to_rad(target_angle), duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 	
 	head_rotation_timer.wait_time = duration / 3.0
 	head_rotation_timer.start()

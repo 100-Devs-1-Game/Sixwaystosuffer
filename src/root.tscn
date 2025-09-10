@@ -57,7 +57,7 @@ handle_input_locally = false
 msaa_3d = 3
 screen_space_aa = 1
 physics_object_picking = true
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Post Processing" type="PanelContainer" parent="SubViewportContainer/SubViewport"]
@@ -83,15 +83,6 @@ environment = ExtResource("2_r3r3k")
 
 [node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
-
-[node name="Revolver Interact Area3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver/Revolver Interact Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.485467)
-
-[node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
-transform = Transform3D(-0.820301, -0.279567, -0.498913, -2.98018e-08, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
 
 [node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
 
@@ -165,7 +156,3 @@ metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 [node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop"]
 stream = ExtResource("16_sq7yr")
 autoplay = true
-
-[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player"]
-[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver"]
-[editable path="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Hand/Tremor/Revolver/Revolver Hand/revolver"]
