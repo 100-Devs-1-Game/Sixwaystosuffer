@@ -167,6 +167,7 @@ speed_scale = 0.3
 [node name="Head Rotation Audio Player" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_my7y1")
+volume_db = 16.0
 
 [node name="Head Rotation Timer" type="Timer" parent="."]
 unique_name_in_owner = true
