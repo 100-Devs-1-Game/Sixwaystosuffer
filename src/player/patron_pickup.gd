@@ -36,8 +36,10 @@ func enable_patrons_interaction() -> void:
 	for child in patrons_node.get_children():
 		if child is Patron:
 			child.enable()
+			child.clicked.connect(load_patron)
 
 func disable_patrons_interaction() -> void:
 	for child in patrons_node.get_children():
 		if child is Patron:
 			child.disable()
+			child.clicked.disconnect(load_patron)
