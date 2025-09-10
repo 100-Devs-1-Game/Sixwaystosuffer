@@ -53,11 +53,10 @@ func spin_up() -> void:
 
 func fire() -> void:
 	spin_down()
-	
-	if has_current_patron():
-		animation_player.play("fire")
-	else:
-		animation_player.play("fire_empty")
+	animation_player.play(_get_fire_animation_name())
+
+func _get_fire_animation_name() -> String:
+	return &"fire" if has_current_patron() else &"fire_empty"
 
 func open_drum() -> void:
 	animation_player.play("drum_open")
