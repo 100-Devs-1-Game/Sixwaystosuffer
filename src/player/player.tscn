@@ -570,6 +570,7 @@ camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
 [node name="Revolver Interact Area3D" type="Area3D" parent="Player Hand/Tremor/Revolver"]
 monitoring = false
+monitorable = false
 script = ExtResource("5_wodsf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player Hand/Tremor/Revolver/Revolver Interact Area3D"]

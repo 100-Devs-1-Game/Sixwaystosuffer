@@ -102,6 +102,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
 transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.97734e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
 
 [node name="Initial Revolver Area3d" type="Area3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position"]
+monitoring = false
+monitorable = false
 script = ExtResource("5_blcw0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d"]
