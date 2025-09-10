@@ -21,7 +21,9 @@ visible = true
 [node name="Interact Area3d" type="Area3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0217674, 0)
+input_ray_pickable = false
 monitoring = false
+monitorable = false
 script = ExtResource("3_yftuu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Area3d"]

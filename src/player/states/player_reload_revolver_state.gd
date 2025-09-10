@@ -20,11 +20,13 @@ func enter_async() -> void:
 	player_hand_animation.play("open_drum")
 	await current_animation_ended(player_hand_animation)
 	revolver_interact.clicked.connect(_on_revolver_clicked)
-	revolver_interact.monitorable = true
+	revolver_interact.enable()
+	patron_pickup.enable_patrons_interaction()
 
 func exit_async() -> void:
+	patron_pickup.disable_patrons_interaction()
 	revolver_interact.clicked.disconnect(_on_revolver_clicked)
-	revolver_interact.monitorable = false
+	revolver_interact.disable()
 	player_hand_animation.play("close_drum")
 	await current_animation_ended(player_hand_animation)
 

@@ -9,6 +9,8 @@ extends Node
 @export var path_follow: PathFollow3D
 @export var chamber_node: Node3D
 
+@export var patrons_node: Node3D
+
 func load_patron(target: Patron) -> void:
 	target.disable()
 	path_follow.progress_ratio = 1
@@ -29,3 +31,13 @@ func _on_start_loading_to_chamber(patron: Patron) -> void:
 
 func _on_setup_target_point(patron: Patron, target_point: Node3D) -> void:
 	patron.global_position = target_point.global_position
+
+func enable_patrons_interaction() -> void:
+	for child in patrons_node.get_children():
+		if child is Patron:
+			child.enable()
+
+func disable_patrons_interaction() -> void:
+	for child in patrons_node.get_children():
+		if child is Patron:
+			child.disable()

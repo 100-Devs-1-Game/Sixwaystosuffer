@@ -626,7 +626,7 @@ revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interac
 patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "path", "path_follow", "chamber_node")]
+[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "path", "path_follow", "chamber_node", "patrons_node")]
 script = ExtResource("4_yw30f")
 target_point = NodePath("../../../Patron Pickup Trajectory")
 drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
@@ -634,6 +634,7 @@ revolver = NodePath("../../../Player Hand/Tremor/Revolver")
 path = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory")
 path_follow = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
 chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
+patrons_node = NodePath("../../../Patrons")
 
 [node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]
 script = ExtResource("8_rgyib")
@@ -651,12 +652,14 @@ metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 [node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("pickup", "debug_patron")]
 script = ExtResource("9_hg6s5")
 pickup = NodePath("../StateMachine/PlayerReloadRevolverState/Patron Pickup")
-debug_patron = NodePath("../Patron")
+debug_patron = NodePath("../Patrons/Patron")
 metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)
 omni_range = 2.0
 
-[node name="Patron" parent="." instance=ExtResource("5_8t03j")]
+[node name="Patrons" type="Node3D" parent="."]
+
+[node name="Patron" parent="Patrons" instance=ExtResource("5_8t03j")]
 transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -1.3, 0, -2)

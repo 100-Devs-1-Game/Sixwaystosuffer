@@ -12,8 +12,8 @@ func _ready() -> void:
 	interact_area_3d.clicked.connect(func(): clicked.emit(self))
 
 func enable() -> void:
-	interact_area_3d.monitorable = true
+	interact_area_3d.enable()
 
 func disable() -> void:
 	raise_on_hover.reset()
-	interact_area_3d.monitorable = false
+	interact_area_3d.disable()
