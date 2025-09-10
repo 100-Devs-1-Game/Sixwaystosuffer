@@ -55,10 +55,17 @@ _data = {
 [node name="lamps_02" parent="." instance=ExtResource("1_ilcwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.82, 0.238)
 
+[node name="Hanging Industrial Lamp" parent="lamps_02" index="0"]
+cast_shadow = 0
+
+[node name="Hanging Industrial Lamp_001" parent="lamps_02" index="1"]
+cast_shadow = 0
+
 [node name="Lamp SpotLight" type="SpotLight3D" parent="lamps_02"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0110378, -1.75185, -0.0345973)
 light_color = Color(1, 0.946, 0.82, 1)
 light_energy = 5.0
+shadow_enabled = true
 spot_range = 8.0
 spot_attenuation = 1.25
 spot_angle = 40.0
@@ -73,6 +80,7 @@ omni_attenuation = -0.46
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="lamps_02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01886, 0)
+cast_shadow = 0
 mesh = SubResource("SphereMesh_ilcwl")
 surface_material_override/0 = SubResource("StandardMaterial3D_vs57c")
 
@@ -88,3 +96,5 @@ stream = ExtResource("2_vs57c")
 volume_db = -40.0
 autoplay = true
 parameters/looping = true
+
+[editable path="lamps_02"]
