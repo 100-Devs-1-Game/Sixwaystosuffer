@@ -46,6 +46,10 @@ func has_patrons() -> bool:
 func has_current_patron() -> bool:
 	return _partons[_current_index] != null
 
+func is_live_patron_now() -> bool:
+	var current_patron := get_current_patron()
+	return current_patron != null and current_patron.is_live
+
 func get_current_patron() -> Patron:
 	return _partons[_current_index]
 
@@ -74,8 +78,10 @@ func spin(count: int) -> void:
 func fire() -> void:
 	spin_down()
 	
-	if has_current_patron():
-		shoot_happened.emit(get_current_patron())
+	if is_live_patron_now():
+		var patron := get_current_patron()
+		patron.is_live = false
+		shoot_happened.emit(patron)
 		animation_player.play("fire")
 	else:
 		animation_player.play("fire_empty")
