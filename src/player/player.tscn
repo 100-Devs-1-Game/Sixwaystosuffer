@@ -564,6 +564,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.165, 0.894, -
 
 [node name="Revolver" parent="Player Hand/Tremor" node_paths=PackedStringArray("camera_shaker") instance=ExtResource("3_qjkh3")]
 unique_name_in_owner = true
+visible = false
 camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
 [node name="Revolver Interact Area3D" type="Area3D" parent="Player Hand/Tremor/Revolver"]
