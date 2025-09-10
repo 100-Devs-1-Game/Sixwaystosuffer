@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://btj7p6v75j8f2"]
+[gd_scene load_steps=8 format=3 uid="uid://btj7p6v75j8f2"]
 
 [ext_resource type="PackedScene" uid="uid://drf01hhhjk27h" path="res://assets/props/lamps/lamps_02.tscn" id="1_ilcwl"]
+[ext_resource type="AudioStream" uid="uid://cjet78xpdeqn1" path="res://assets/sfx/lamp_static.ogg" id="2_vs57c"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ilcwl"]
 radius = 0.1
@@ -81,3 +82,8 @@ libraries = {
 }
 autoplay = "shaking"
 speed_scale = 0.1
+
+[node name="Lamp Audio Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vs57c")
+autoplay = true
+parameters/looping = true
