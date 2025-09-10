@@ -16,8 +16,8 @@
 [ext_resource type="Script" uid="uid://c88mh0j26u8nj" path="res://player/states/player_target_aiming_state.gd" id="10_ebec5"]
 
 [sub_resource type="Curve" id="Curve_kb6p2"]
-_data = [Vector2(0, 0.800297), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.195767, 0.786228), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_wodsf"]
 _data = [Vector2(0, 0.400892), 0.0, 0.0, 0, 0, Vector2(1, 0.800297), 0.0, 0.0, 0, 0]
