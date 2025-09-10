@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bipg2ekrwq3vr"]
+
+[ext_resource type="Script" uid="uid://bfjj7lubph7ab" path="res://table/choice_labels.gd" id="1_eu1o8"]
+[ext_resource type="PackedScene" uid="uid://b2q6630p7t6iy" path="res://table/table_label.tscn" id="1_r65by"]
+
+[node name="Choice Labels" type="Node3D"]
+script = ExtResource("1_eu1o8")
+
+[node name="Dealer Label" parent="." instance=ExtResource("1_r65by")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.638386)
+visible = false
+text = "DEALER"
+
+[node name="You Label" parent="." instance=ExtResource("1_r65by")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 1.44612)
+visible = false
+text = "YOU"

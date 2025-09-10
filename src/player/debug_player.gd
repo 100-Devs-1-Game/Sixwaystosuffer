@@ -16,4 +16,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		pickup.load_patron(duplicated_patron)
 	
 	if event.is_action_pressed("debug_self_aim"):
-		state_machine.switch_to(PlayerSelfAimingState)
+		revolver.spin_random()

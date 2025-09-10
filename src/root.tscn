@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="Script" uid="uid://d0dwks7c5xd3d" path="res://interactions/clicked_on_area.gd" id="5_qw60f"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://monitors/monitor_3d.tscn" id="5_vyht1"]
-[ext_resource type="PackedScene" uid="uid://b2q6630p7t6iy" path="res://table/table_label.tscn" id="6_huihk"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://lamps/lamp.tscn" id="6_vyht1"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
+[ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://table/choice_labels.tscn" id="9_r3r3k"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
@@ -116,17 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.009789
 [node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 
-[node name="Choice Labels" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01"]
-
-[node name="Dealer Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.638386)
-visible = false
-text = "DEALER"
-
-[node name="You Label" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01/Choice Labels" instance=ExtResource("6_huihk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 1.44612)
-visible = false
-text = "YOU"
+[node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01" instance=ExtResource("9_r3r3k")]
 
 [node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
 transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 3.87915, -1.2514)
@@ -158,10 +148,9 @@ script = ExtResource("14_qt76e")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://lavn4gocuq3b"
 
-[node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("dealer_label", "self_label", "dealer", "player")]
+[node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player")]
 script = ExtResource("13_eji0w")
-dealer_label = NodePath("../../../Table/table_01/Choice Labels/Dealer Label")
-self_label = NodePath("../../../Table/table_01/Choice Labels/You Label")
+choices = NodePath("../../../Table/table_01/Choice Labels")
 dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
