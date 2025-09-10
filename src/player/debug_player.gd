@@ -5,6 +5,7 @@ extends Node
 @export var revolver: Revolver
 @export var pickup: PatronPickup
 @export var debug_patron: Patron
+@export var camera_shaker: CameraShaker
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_load"):
@@ -17,3 +18,4 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_self_aim"):
 		revolver.spin_random()
+		camera_shaker.shake()

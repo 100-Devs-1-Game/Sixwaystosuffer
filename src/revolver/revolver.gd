@@ -1,12 +1,15 @@
 class_name Revolver
 extends Node3D
 
+signal shoot_happened(patron: Patron)
+
 const MAX_BULLETS_IN_CHAMBER: int = 6
 const SPIN_CHAMBER_DURATION: float = 0.25
 const MAX_SPIN_CHAMBER_DURATION: float = 1.5
 
 @export var drum: Node3D
 @export var chamber_rotate_angle: float = 60.0
+@export var camera_shaker: CameraShaker
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var current_position_hover: Node3D = %"Current Position Hover"
@@ -37,6 +40,9 @@ func load_patron(patron: Patron) -> void:
 func has_current_patron() -> bool:
 	return _partons[_current_index] != null
 
+func get_current_patron() -> Patron:
+	return _partons[_current_index]
+
 func spin_random(min: int = 7, max: int = 21) -> void:
 	var offset := _random.randi_range(min, max)
 	spin(offset)
@@ -61,7 +67,12 @@ func spin(count: int) -> void:
 
 func fire() -> void:
 	spin_down()
-	animation_player.play(_get_fire_animation_name())
+	
+	if has_current_patron():
+		shoot_happened.emit(get_current_patron())
+		animation_player.play("fire")
+	else:
+		animation_player.play("fire_empty")
 
 func _get_fire_animation_name() -> String:
 	return &"fire" if has_current_patron() else &"fire_empty"

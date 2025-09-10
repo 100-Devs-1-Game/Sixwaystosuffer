@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=33 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://tsoag28itu8l" path="res://player/camera/camera_shaker.gd" id="3_kb6p2"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://c3u4424s0t8o1" path="res://assets/sfx/load_01.ogg" id="4_kb6p2"]
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
@@ -13,6 +14,14 @@
 [ext_resource type="Script" uid="uid://1yyenj6p76lf" path="res://player/states/player_self_aiming_state.gd" id="8_rgyib"]
 [ext_resource type="Script" uid="uid://bnlv7dn4y50h0" path="res://player/debug_player.gd" id="9_hg6s5"]
 [ext_resource type="Script" uid="uid://c88mh0j26u8nj" path="res://player/states/player_target_aiming_state.gd" id="10_ebec5"]
+
+[sub_resource type="Curve" id="Curve_kb6p2"]
+_data = [Vector2(0, 0.800297), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wodsf"]
+_data = [Vector2(0, 0.400892), 0.0, 0.0, 0, 0, Vector2(1, 0.800297), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_28aoi"]
 length = 0.001
@@ -529,6 +538,15 @@ transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0
 transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
 fov = 60.0
 
+[node name="CameraShaker" type="Node" parent="Player Head/Camera Point" node_paths=PackedStringArray("camera")]
+unique_name_in_owner = true
+script = ExtResource("3_kb6p2")
+camera = NodePath("../Camera3D")
+shake_amount = SubResource("Curve_kb6p2")
+shake_duration = SubResource("Curve_wodsf")
+shake_range = Vector2i(5, 8)
+metadata/_custom_type_script = "uid://tsoag28itu8l"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player Head"]
 libraries = {
 &"": SubResource("AnimationLibrary_jnlp7")
@@ -541,12 +559,10 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.165, 0.894, -
 
 [node name="Tremor" type="Node3D" parent="Player Hand"]
 
-[node name="Revolver" parent="Player Hand/Tremor" instance=ExtResource("3_qjkh3")]
+[node name="Revolver" parent="Player Hand/Tremor" node_paths=PackedStringArray("camera_shaker") instance=ExtResource("3_qjkh3")]
 unique_name_in_owner = true
 visible = false
-
-[node name="Revolver Hand" parent="Player Hand/Tremor/Revolver" index="0"]
-transform = Transform3D(0.999997, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.103854, 0.0988467)
+camera_shaker = NodePath("../../../Player Head/Camera Point/CameraShaker")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player Hand/Tremor"]
 libraries = {
@@ -617,12 +633,13 @@ player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 
-[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver", "pickup", "debug_patron")]
+[node name="DebugPlayer" type="Node" parent="." node_paths=PackedStringArray("state_machine", "revolver", "pickup", "debug_patron", "camera_shaker")]
 script = ExtResource("9_hg6s5")
 state_machine = NodePath("../StateMachine")
 revolver = NodePath("../Player Hand/Tremor/Revolver")
 pickup = NodePath("../Patron Pickup")
 debug_patron = NodePath("../Patron")
+camera_shaker = NodePath("../Player Head/Camera Point/CameraShaker")
 metadata/_custom_type_script = "uid://bnlv7dn4y50h0"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -631,6 +648,3 @@ omni_range = 2.0
 
 [node name="Patron" parent="." instance=ExtResource("5_8t03j")]
 transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -1.3, 0, -2)
-
-[editable path="Player Hand/Tremor/Revolver"]
-[editable path="Player Hand/Tremor/Revolver/Revolver Hand/revolver"]

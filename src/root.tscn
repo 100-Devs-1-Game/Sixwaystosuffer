@@ -84,6 +84,12 @@ environment = ExtResource("2_r3r3k")
 [node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
 
+[node name="Camera Point" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head" index="0"]
+transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174498, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 0, 0, 0)
+
+[node name="Camera3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Player Head/Camera Point" index="0"]
+transform = Transform3D(1, 6.38725e-10, -1.77876e-09, -3.20142e-10, 0.984808, 0.173648, 1.86265e-09, -0.173648, 0.984808, 0.00252759, 0.144804, 0.00252795)
+
 [node name="PathFollow3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Player/Patron Pickup Trajectory/Patron Load Trajectory" index="0"]
 transform = Transform3D(-0.820301, -0.279567, -0.498913, -2.98018e-08, 0.872356, -0.488834, 0.5719, -0.400996, -0.715612, -0.380372, 0.866075, -0.653451)
 
