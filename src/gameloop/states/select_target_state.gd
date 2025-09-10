@@ -12,9 +12,13 @@ func handle_input(event: InputEvent) -> void:
 
 func enter() -> void:
 	choices.show_labels()
+	choices.dealer_selected.connect(_on_dealer_clicked)
+	choices.self_selected.connect(_on_self_clicked)
 
 func exit() -> void:
 	choices.hide_labels()
+	choices.dealer_selected.disconnect(_on_dealer_clicked)
+	choices.self_selected.disconnect(_on_self_clicked)
 
 func _on_dealer_clicked() -> void:
 	choices.hide_labels()
