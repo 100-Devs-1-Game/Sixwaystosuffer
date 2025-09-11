@@ -11,13 +11,22 @@ extends Node
 
 @export var patrons_node: Node3D
 
+var tween: Tween
+
 func load_patron(target: Patron) -> void:
+	if tween != null and tween.is_running():
+		return
+	
+	if revolver.has_current_patron():
+		# TODO: indication about wrond action?
+		return
+	
 	target.disable()
 	path_follow.progress_ratio = 1
 	path.curve.set_point_position(2, target.position)
 	target.reparent(path_follow)
 	
-	var tween := create_tween()
+	tween = create_tween()
 	tween.tween_property(path_follow, "progress_ratio", 0.0, 0.6)
 	var chamber_point := revolver.get_current_chamber_position()
 	tween.parallel().tween_property(target, "global_rotation", drum_target_point.global_rotation, 0.6)
