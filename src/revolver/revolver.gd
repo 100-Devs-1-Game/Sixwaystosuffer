@@ -3,103 +3,41 @@ extends Node3D
 
 signal shoot_happened(patron: Patron)
 
-const MAX_BULLETS_IN_CHAMBER: int = 6
-const SPIN_CHAMBER_DURATION: float = 0.25
-const MAX_SPIN_CHAMBER_DURATION: float = 1.5
-
-@export var drum: Node3D
-@export var chamber_rotate_angle: float = 60.0
-
+@onready var chamber: Chamber = %Chamber
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var current_position_hover: CurrentPositionHover = %"Current Position Hover"
-
-@onready var chamber: MeshInstance3D = $"Revolver Hand/revolver/revolver_chamber"
-
-@onready var chamber_scrolling_audio_player: AudioStreamPlayer = %"Chamber Scrolling Audio Player"
-
-var _chamber_position: Array[Node3D]
-var _partons: Array[Patron]
-var _current_index: int = 0
-var _tween: Tween
-
-var _random := RandomNumberGenerator.new()
-
-func _ready() -> void:
-	for child in chamber.get_children():
-		_chamber_position.append(child)
-	_partons.resize(MAX_BULLETS_IN_CHAMBER)
 
 func get_current_chamber_position() -> Node3D:
-	return _chamber_position[_current_index]
+	return chamber.get_current_chamber_position()
 
 func load_patron(patron: Patron) -> void:
-	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
-	_partons[load_index] = patron
+	chamber.load_patron(patron)
 	animation_player.play("load")
-	_update_position_hover()
+
+func can_load_on_current_point() -> bool:
+	return chamber.is_hovered_position_empty()
 
 func has_patrons() -> bool:
-	for patron in _partons:
-		if patron != null:
-			return true
-	return false
-
-func has_current_patron() -> bool:
-	return _partons[_current_index] != null
-
-func can_load_in_loading_position() -> bool:
-	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
-	return _partons[load_index] != null
-
-func is_live_patron_now() -> bool:
-	var current_patron := get_current_patron()
-	return current_patron != null and current_patron.is_live
+	return chamber.has_patrons()
 
 func get_current_patron() -> Patron:
-	return _partons[_current_index]
-
-func spin_random(min: int = 7, max: int = 21) -> void:
-	var offset := _random.randi_range(min, max)
-	spin(offset)
-
-func spin_down() -> void:
-	spin(-1)
+	return chamber.get_current_patron()
 
 func spin_up() -> void:
-	spin(1)
+	chamber.spin_up()
 
-func spin(count: int) -> void:
-	if _tween != null and _tween.is_running():
-		return
-	
-	var duration := minf(abs(SPIN_CHAMBER_DURATION * count), MAX_SPIN_CHAMBER_DURATION)
-	_tween = create_tween()
-	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle * count), duration).set_trans(Tween.TRANS_CUBIC)
-	
-	_current_index = (_current_index + count) % MAX_BULLETS_IN_CHAMBER
-	_update_position_hover()
-	
-	chamber_scrolling_audio_player.play()
+func spin_down() -> void:
+	chamber.spin_down()
 
 func fire() -> void:
-	spin_down()
+	chamber.spin_down()
 	
-	if is_live_patron_now():
+	if chamber.is_live_patron_now():
 		var patron := get_current_patron()
 		patron.is_live = false
 		shoot_happened.emit(patron)
 		animation_player.play("fire")
 	else:
 		animation_player.play("fire_empty")
-
-func _update_position_hover() -> void:
-	if can_load_in_loading_position():
-		current_position_hover.make_invalid()
-	else:
-		current_position_hover.make_valid()
-
-func _get_fire_animation_name() -> String:
-	return &"fire" if has_current_patron() else &"fire_empty"
 
 func open_drum() -> void:
 	animation_player.play("drum_open")

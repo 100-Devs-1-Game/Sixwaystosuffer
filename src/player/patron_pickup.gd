@@ -18,7 +18,7 @@ func load_patron(target: Patron) -> void:
 	if tween != null and tween.is_running():
 		return
 	
-	if revolver.has_current_patron():
+	if not revolver.can_load_on_current_point():
 		tremor_animation.play("invalid_action")
 		return
 	

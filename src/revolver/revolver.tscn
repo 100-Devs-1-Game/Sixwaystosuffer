@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://dvbqsel4ymb2x"]
+[gd_scene load_steps=34 format=3 uid="uid://dvbqsel4ymb2x"]
 
 [ext_resource type="Script" uid="uid://nofefg6jsoiu" path="res://revolver/revolver.gd" id="1_su5x2"]
 [ext_resource type="PackedScene" uid="uid://cs8wjjhrmln2d" path="res://assets/revolver/revolver.tscn" id="2_su5x2"]
 [ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/components/chamber_position.tscn" id="3_opjbe"]
 [ext_resource type="AudioStream" uid="uid://bwk574ti6htqr" path="res://assets/sfx/shoot_01.ogg" id="4_kwryb"]
 [ext_resource type="PackedScene" uid="uid://6jwia8yl20yt" path="res://revolver/components/current_position_hover.tscn" id="4_qj68n"]
+[ext_resource type="Script" uid="uid://c367lyk8l2w12" path="res://revolver/components/chamber.gd" id="5_knvnr"]
 [ext_resource type="AudioStream" uid="uid://dppngmbga5lp" path="res://assets/sfx/shoot_02.ogg" id="5_lhmy8"]
 [ext_resource type="AudioStream" uid="uid://ciustso8iqyew" path="res://assets/sfx/shoot_03.ogg" id="6_arl7n"]
 [ext_resource type="AudioStream" uid="uid://c6opsqbbwnrg5" path="res://assets/sfx/shoot_04.ogg" id="7_p42ak"]
@@ -574,9 +575,8 @@ stream_1/stream = ExtResource("16_ncoxx")
 stream_2/stream = ExtResource("17_qj68n")
 stream_3/stream = ExtResource("18_knvnr")
 
-[node name="Revolver" type="Node3D" node_paths=PackedStringArray("drum")]
+[node name="Revolver" type="Node3D"]
 script = ExtResource("1_su5x2")
-drum = NodePath("Revolver Hand/revolver/revolver_chamber")
 
 [node name="Revolver Hand" type="Marker3D" parent="."]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.103854, 0.0988467)
@@ -622,7 +622,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_arl7n")
 }
 
-[node name="Revolver Model" type="Node" parent="."]
+[node name="Chamber Model" type="Node" parent="."]
+
+[node name="Chamber" type="Node" parent="." node_paths=PackedStringArray("chamber", "position_hover", "spin_audio")]
+unique_name_in_owner = true
+script = ExtResource("5_knvnr")
+chamber = NodePath("../Revolver Hand/revolver/revolver_chamber")
+position_hover = NodePath("../Revolver Hand/revolver/Current Position Hover")
+spin_audio = NodePath("../Audio Players/Chamber Scrolling Audio Player")
+metadata/_custom_type_script = "uid://c367lyk8l2w12"
 
 [node name="Audio Players" type="Node" parent="."]
 
