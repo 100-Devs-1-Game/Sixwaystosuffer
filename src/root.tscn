@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=25 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://environment/monitors/monitor_3d.tscn" id="5_vyht1"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://environment/lamps/lamp.tscn" id="6_vyht1"]
+[ext_resource type="AudioStream" uid="uid://difed6gqnkh83" path="res://assets/sfx/load_02.ogg" id="7_3dlgs"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
+[ext_resource type="Script" uid="uid://dgx7u8h426p70" path="res://common/interactions/hover_sound_player.gd" id="8_vte5o"]
 [ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://environment/table/choice_labels.tscn" id="9_r3r3k"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
@@ -18,11 +20,18 @@
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 [ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
+[ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_huihk"]
 size = Vector3(0.289307, 0.739746, 1.37439)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_po8fv"]
+random_pitch = 1.5
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_3dlgs")
 
 [node name="Root" type="Node"]
 
@@ -92,6 +101,14 @@ monitor = NodePath("../Initial Revolver Area3d")
 height = 0.05
 duration = 0.25
 
+[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position" node_paths=PackedStringArray("area")]
+stream = SubResource("AudioStreamRandomizer_po8fv")
+volume_db = -6.0
+pitch_scale = 1.6
+script = ExtResource("8_vte5o")
+area = NodePath("../Initial Revolver Area3d")
+metadata/_custom_type_script = "uid://dgx7u8h426p70"
+
 [node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 
@@ -114,12 +131,13 @@ script = ExtResource("12_qw60f")
 initial_state = NodePath("IntroState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "initial_revolver_area3d", "dealer", "player")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "initial_revolver_area3d", "dealer", "player", "main_theme_audio")]
 script = ExtResource("13_qwhpj")
 initial_revolver_position = NodePath("../../../Table/Revolver Place/Initial Revolver Position")
 initial_revolver_area3d = NodePath("../../../Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
 dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
+main_theme_audio = NodePath("../../Main Theme Audio Player")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
 
 [node name="RevolverLoadingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("player")]
@@ -157,4 +175,5 @@ stream = ExtResource("17_blcw0")
 
 [node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop"]
 stream = ExtResource("16_sq7yr")
-autoplay = true
+script = ExtResource("21_vte5o")
+metadata/_custom_type_script = "uid://cpelv7p3e1pqj"

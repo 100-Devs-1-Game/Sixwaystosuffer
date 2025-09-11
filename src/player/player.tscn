@@ -701,7 +701,7 @@ process_audio = NodePath("Woosh Audio Player")
 
 [node name="Woosh Audio Player" type="AudioStreamPlayer" parent="StateMachine/PlayerReloadRevolverState/Patron Pickup"]
 stream = SubResource("AudioStreamRandomizer_x7c3f")
-volume_db = 16.0
+volume_db = 10.0
 
 [node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]
 unique_name_in_owner = true
