@@ -23,7 +23,9 @@ func load_patron(target: Patron) -> void:
 	
 	target.disable()
 	path_follow.progress_ratio = 1
-	path.curve.set_point_position(2, target.position)
+	
+	var position_on_path := target.global_position - path.global_position
+	path.curve.set_point_position(2, position_on_path)
 	target.reparent(path_follow)
 	
 	tween = create_tween()

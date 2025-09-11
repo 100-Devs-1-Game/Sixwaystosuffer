@@ -654,12 +654,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)
 omni_range = 2.0
 
 [node name="Patrons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4733, 0, -2.05937)
 
 [node name="Patron" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -1.3, 0.0242003, -2)
+transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -0.071775, 0.0242003, -0.0111128)
 
 [node name="Patron2" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -1.22594, 0.0242003, -1.87417)
+transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, 0.002285, 0.0242003, 0.114717)
 
 [node name="Patron3" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.929413, 0.369014, 1.61301e-08, 0, -4.37111e-08, 0.999992, 0.369013, -0.929416, -4.0626e-08, -1.17549, -0.0541641, -2.05106)
+transform = Transform3D(0.929413, 0.369014, 1.61301e-08, 0, -4.37111e-08, 0.999992, 0.369013, -0.929416, -4.0626e-08, 0.052735, -0.0541641, -0.0621728)
