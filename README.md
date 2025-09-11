@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/100-Devs-1-Game/Sixwaystosuffer/blob/main/src/icon.png" />
+  <img src="./src/icon.png" />
 </p>
 
 # Six Ways To Suffer
@@ -16,5 +16,5 @@ This project was developed as part of the 100Devs community challenge. Join us o
 ## License
 
 This project is dual-licensed:
-- `CC BY-NC-SA 4.0` for all assets
-- `MIT` for everything else
+- [CC BY-NC-SA 4.0](./src/assets/LICENSE) for all assets
+- [MIT](./LICENSE) for everything else
