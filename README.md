@@ -2,6 +2,10 @@
   <img src="./src/icon.png" />
 </p>
 
+<p align="left">
+  <i>Accept or vanish...</i>
+</p>
+
 # Six Ways To Suffer
 [![Made with Godot](https://img.shields.io/badge/Made%20with-Godot-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org)
 [![](https://tokei.rs/b1/github/100-Devs-1-Game/Sixwaystosuffer?category=code&style=flat&label=Lines%20Of%20Code)](https://github.com/XAMPPRocky/tokei)
