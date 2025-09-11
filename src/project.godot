@@ -15,6 +15,10 @@ run/main_scene="uid://catmh6bdnn6fa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://cnts1qims4ssu"
 
+[autoload]
+
+Cursor="*res://autoloads/cursor.gd"
+
 [input]
 
 interact={
