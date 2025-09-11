@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Six Ways To Suffer"
+config/tags=PackedStringArray("100devs", "3d", "demo")
 run/main_scene="uid://catmh6bdnn6fa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://cnts1qims4ssu"
-config/tags=PackedStringArray("100devs", "3d", "demo")
 
 [autoload]
 
