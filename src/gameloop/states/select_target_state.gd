@@ -51,5 +51,6 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 		await state_machine.switch_to(GameOverState)
 		player.block()
 	else:
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.15).timeout
+		dealer.take_damage()
 		await player.to_idle()

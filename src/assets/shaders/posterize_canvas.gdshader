@@ -22,6 +22,9 @@ uniform float tint_strength : hint_range(0.0, 1.0) = 0.15;
 
 uniform vec2  viewport_size_override = vec2(0.0);
 
+uniform bool overlay_enable;
+uniform vec4 overlay_color : source_color;
+
 vec4 overlay(vec4 base, vec4 blend){
 	vec4 limit = step(0.5, base);
 	return mix(2.0 * base * blend, 1.0 - 2.0 * (1.0 - base) * (1.0 - blend), limit);
@@ -125,5 +128,7 @@ void fragment(){
     float n = fract(sin(dot(floor(uv/px), vec2(12.9898, 78.233)) + TIME * 37.0) * 43758.5453);
     col += (n - 0.5) * (px.x + px.y) * 2.0 * grain_strength;
 
-    COLOR = vec4(clamp(col, 0.0, 1.0), 1.0);
+	vec4 result = vec4(clamp(col, 0.0, 1.0), 1.0);
+	vec4 overlay_result = overlay(result, overlay_color);
+	COLOR = mix(result, overlay_result, float(overlay_enable));
 }

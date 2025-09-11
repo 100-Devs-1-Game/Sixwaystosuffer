@@ -4,7 +4,7 @@ extends Node3D
 @export var min_face_time_change: float = 1.3
 @export var max_face_time_change: float = 2.1
 
-@onready var cube_head: MeshInstance3D = $dealer2/HG_Dealer/Cube_Head
+@onready var cube_head: MeshInstance3D = %Cube_Head
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var head_rotation_audio_player: AudioStreamPlayer = %"Head Rotation Audio Player"
@@ -34,6 +34,9 @@ func _ready() -> void:
 func entry() -> void:
 	animation_player.play("entry")
 	_tween_head_rotation(face_angles[DealerFace.NEUTRAL], 2.0)
+
+func take_damage() -> void:
+	animation_player.play("take_damage")
 
 func change_face(new_face: DealerFace) -> void:
 	if current_face == new_face:
