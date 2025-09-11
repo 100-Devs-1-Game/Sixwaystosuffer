@@ -14,7 +14,9 @@ func _ready() -> void:
 
 func enable() -> void:
 	interact_area_3d.enable()
+	raise_on_hover.is_enabled = true
 
 func disable() -> void:
-	raise_on_hover.reset()
 	interact_area_3d.disable()
+	raise_on_hover.is_enabled = false
+	raise_on_hover.reset()

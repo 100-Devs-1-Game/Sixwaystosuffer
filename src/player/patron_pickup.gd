@@ -10,6 +10,7 @@ extends Node
 @export var chamber_node: Node3D
 
 @export var patrons_node: Node3D
+@export var tremor_animation: AnimationPlayer
 
 var tween: Tween
 
@@ -18,7 +19,7 @@ func load_patron(target: Patron) -> void:
 		return
 	
 	if revolver.has_current_patron():
-		# TODO: indication about wrond action?
+		tremor_animation.play("invalid_action")
 		return
 	
 	target.disable()
