@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=37 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
@@ -544,6 +544,13 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve3D" id="Curve3D_tqiix"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.495, 0.5, 0.71, -0.380372, 0.866075, -0.653451, 0, 0, 0, -0.655, -0.5, 0, -0.916347, 0.590686, -0.0383798, 0, 0.225, 0.45, 0, 0, 0, -1.3, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_g1dw6")
 
@@ -608,14 +615,13 @@ libraries = {
 [node name="Load Audio Stream" type="AudioStreamPlayer" parent="Player Hand"]
 stream = SubResource("AudioStreamRandomizer_32hag")
 
-[node name="Patron Pickup Trajectory" type="Node3D" parent="."]
+[node name="Patron Load Trajectories" type="Node3D" parent="."]
 
-[node name="Patron Load Trajectory" type="Path3D" parent="Patron Pickup Trajectory"]
+[node name="Trajectory 1" type="Path3D" parent="Patron Load Trajectories"]
 curve = SubResource("Curve3D_hg6s5")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Patron Pickup Trajectory/Patron Load Trajectory"]
-transform = Transform3D(-0.820253, -0.279553, -0.498893, -2.98e-08, 0.87231, -0.488814, 0.571867, -0.400974, -0.715584, -0.380372, 0.866075, -0.653451)
-loop = false
+[node name="Trajectory 2" type="Path3D" parent="Patron Load Trajectories"]
+curve = SubResource("Curve3D_tqiix")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -647,16 +653,15 @@ revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interac
 patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "path", "path_follow", "chamber_node", "patrons_node", "tremor_animation")]
+[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "chamber_node", "patrons_node", "tremor_animation", "trajectories_node")]
 script = ExtResource("4_yw30f")
-target_point = NodePath("../../../Patron Pickup Trajectory")
+target_point = NodePath("../../../Patron Load Trajectories")
 drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
 revolver = NodePath("../../../Player Hand/Tremor/Revolver")
-path = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory")
-path_follow = NodePath("../../../Patron Pickup Trajectory/Patron Load Trajectory/PathFollow3D")
 chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
 patrons_node = NodePath("../../../Patrons")
 tremor_animation = NodePath("../../../Player Hand/Tremor/AnimationPlayer")
+trajectories_node = NodePath("../../../Patron Load Trajectories")
 
 [node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]
 unique_name_in_owner = true

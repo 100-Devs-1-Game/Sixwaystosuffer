@@ -8,6 +8,7 @@ extends StateAsync
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		## TODO: restart game
+		state_machine.switch_to(IntroState)
 		pass
 
 func enter_async() -> void:
