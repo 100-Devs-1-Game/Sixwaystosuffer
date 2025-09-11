@@ -48,7 +48,6 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 		return
 	
 	if not to_dealer:
-		await get_tree().create_timer(0.2).timeout
 		await state_machine.switch_to(GameOverState)
 		player.block()
 	else:

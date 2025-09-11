@@ -12,10 +12,11 @@ func handle_input(event: InputEvent) -> void:
 		pass
 
 func enter_async() -> void:
+	audio.play()
+	await get_tree().create_timer(0.2).timeout
 	curtain.show()
 	var tween := create_tween()
 	tween.tween_property(curtain, "color:a", 1, 0.05)
-	audio.play()
 
 func exit_async() -> void:
 	curtain.color.a = 0

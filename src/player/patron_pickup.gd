@@ -11,6 +11,7 @@ extends Node
 @export var tremor_animation: AnimationPlayer
 
 @export var trajectories_node: Node3D
+@export var process_audio: AudioStreamPlayer
 
 var tween: Tween
 var follow: PathFollow3D
@@ -41,6 +42,8 @@ func load_patron(target: Patron) -> void:
 	var position_on_path := target.global_position - path.global_position
 	path.curve.set_point_position(2, position_on_path)
 	target.reparent(follow)
+	
+	process_audio.play()
 	
 	tween = create_tween()
 	tween.tween_property(follow, "progress_ratio", 0.0, 0.6)
