@@ -10,13 +10,13 @@ height = 0.04
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su5x2"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.062, 0.592, 0.73, 0.4)
+albedo_color = Color(0.0584, 0.59568, 0.73, 0.313726)
 disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byuxl"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.73, 0.0584, 0.0584, 0.4)
+albedo_color = Color(0.73, 0.0584, 0.0584, 0.313726)
 disable_receive_shadows = true
 
 [node name="Current Position Hover" type="Node3D"]

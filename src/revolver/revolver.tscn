@@ -614,7 +614,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000521243, -0.197496, 0.176
 
 [node name="Current Position Hover" parent="Revolver Hand/revolver" instance=ExtResource("4_qj68n")]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 3.59989e-21, 4.37114e-08, -1, -4.37114e-08, -0.237374, 0.0331891, 0.0965368)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 3.59989e-21, 4.37114e-08, -1, -4.37114e-08, -0.237374, 0.0339802, 0.0789238)
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
