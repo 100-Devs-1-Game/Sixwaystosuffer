@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=19 format=3 uid="uid://catmh6bdnn6fa"]
 
-[ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
+[ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
@@ -18,23 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_huihk"]
-shader = ExtResource("1_bf3um")
-shader_parameter/exposure = 1.0
-shader_parameter/contrast = 1.1
-shader_parameter/saturation = 0.9
-shader_parameter/enable_pixelate = true
-shader_parameter/pixel_factor = 1.1
-shader_parameter/enable_posterize = true
-shader_parameter/color_levels = 8.0
-shader_parameter/dither_strength = 0.3
-shader_parameter/chrom_aberration = 0.01
-shader_parameter/vignette_strength = 2.0
-shader_parameter/grain_strength = 0.2
-shader_parameter/tint_color = Vector3(0.95, 1.03, 0.9)
-shader_parameter/tint_strength = 0.15
-shader_parameter/viewport_size_override = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_huihk"]
 size = Vector3(0.289307, 0.739746, 1.37439)
@@ -69,7 +52,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bf3um")
 
 [node name="Posterize Canvas" type="ColorRect" parent="SubViewportContainer/SubViewport/Post Processing"]
-material = SubResource("ShaderMaterial_huihk")
+material = ExtResource("1_sq7yr")
 layout_mode = 2
 mouse_filter = 2
 
