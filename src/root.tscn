@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
-[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/patron.tscn" id="3_vvh5c"]
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="3_vvh5c"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]

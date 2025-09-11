@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://6jwia8yl20yt"]
+
+[ext_resource type="Script" uid="uid://c1x6f3e2hros6" path="res://revolver/components/current_position_hover.gd" id="1_byuxl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ub1ss"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su5x2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.062, 0.592, 0.73, 0.4)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byuxl"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.73, 0.0584, 0.0584, 0.4)
+disable_receive_shadows = true
+
+[node name="Current Position Hover" type="Node3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_byuxl")
+
+[node name="Valid Hover" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, 0, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_ub1ss")
+surface_material_override/0 = SubResource("StandardMaterial3D_su5x2")
+
+[node name="Invalid Hover" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, 0, 0, 0)
+visible = false
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_ub1ss")
+surface_material_override/0 = SubResource("StandardMaterial3D_byuxl")

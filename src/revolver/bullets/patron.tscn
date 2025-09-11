@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsrippgh7mwp4"]
 
-[ext_resource type="Script" uid="uid://bhjtihgl4s7he" path="res://revolver/patron.gd" id="1_q0qsk"]
-[ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/chamber_position.tscn" id="2_m1fkb"]
+[ext_resource type="Script" uid="uid://bhjtihgl4s7he" path="res://revolver/bullets/patron.gd" id="1_q0qsk"]
+[ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/components/chamber_position.tscn" id="2_m1fkb"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_yftuu"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="4_4xv3t"]
 

@@ -12,7 +12,7 @@ const MAX_SPIN_CHAMBER_DURATION: float = 1.5
 @export var camera_shaker: CameraShaker
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var current_position_hover: Node3D = %"Current Position Hover"
+@onready var current_position_hover: CurrentPositionHover = %"Current Position Hover"
 
 @onready var chamber: MeshInstance3D = $"Revolver Hand/revolver/revolver_chamber"
 
@@ -36,6 +36,7 @@ func get_current_chamber_position() -> Node3D:
 func load_patron(patron: Patron) -> void:
 	_partons[_current_index] = patron
 	animation_player.play("load")
+	_update_position_hover()
 
 func has_patrons() -> bool:
 	for patron in _partons:
@@ -72,6 +73,7 @@ func spin(count: int) -> void:
 	_tween.tween_property(drum, "rotation:z", drum.rotation.z + deg_to_rad(chamber_rotate_angle * count), duration).set_trans(Tween.TRANS_CUBIC)
 	
 	_current_index = (_current_index + count) % MAX_BULLETS_IN_CHAMBER
+	_update_position_hover()
 	
 	chamber_scrolling_audio_player.play()
 
@@ -85,6 +87,12 @@ func fire() -> void:
 		animation_player.play("fire")
 	else:
 		animation_player.play("fire_empty")
+
+func _update_position_hover() -> void:
+	if has_current_patron():
+		current_position_hover.make_invalid()
+	else:
+		current_position_hover.make_valid()
 
 func _get_fire_animation_name() -> String:
 	return &"fire" if has_current_patron() else &"fire_empty"

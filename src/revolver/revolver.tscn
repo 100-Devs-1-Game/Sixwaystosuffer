@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvbqsel4ymb2x"]
+[gd_scene load_steps=33 format=3 uid="uid://dvbqsel4ymb2x"]
 
 [ext_resource type="Script" uid="uid://nofefg6jsoiu" path="res://revolver/revolver.gd" id="1_su5x2"]
 [ext_resource type="PackedScene" uid="uid://cs8wjjhrmln2d" path="res://assets/revolver/revolver.tscn" id="2_su5x2"]
-[ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/chamber_position.tscn" id="3_opjbe"]
+[ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/components/chamber_position.tscn" id="3_opjbe"]
 [ext_resource type="AudioStream" uid="uid://bwk574ti6htqr" path="res://assets/sfx/shoot_01.ogg" id="4_kwryb"]
+[ext_resource type="PackedScene" uid="uid://6jwia8yl20yt" path="res://revolver/components/current_position_hover.tscn" id="4_qj68n"]
 [ext_resource type="AudioStream" uid="uid://dppngmbga5lp" path="res://assets/sfx/shoot_02.ogg" id="5_lhmy8"]
 [ext_resource type="AudioStream" uid="uid://ciustso8iqyew" path="res://assets/sfx/shoot_03.ogg" id="6_arl7n"]
 [ext_resource type="AudioStream" uid="uid://c6opsqbbwnrg5" path="res://assets/sfx/shoot_04.ogg" id="7_p42ak"]
@@ -19,17 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://cvy61tdrxf01c" path="res://assets/sfx/load_03.ogg" id="17_qj68n"]
 [ext_resource type="AudioStream" uid="uid://b7a3m8ghbty1g" path="res://assets/sfx/load_04.ogg" id="18_knvnr"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="19_ncoxx"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ub1ss"]
-top_radius = 0.03
-bottom_radius = 0.03
-height = 0.04
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su5x2"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.062, 0.592, 0.73, 0.4)
-disable_receive_shadows = true
 
 [sub_resource type="Animation" id="Animation_lhmy8"]
 length = 0.001
@@ -622,17 +612,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00109884, -0.0738967, 0.34
 [node name="revolver_base_trigger" parent="Revolver Hand/revolver" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000521243, -0.197496, 0.176397)
 
-[node name="Current Position Hover" type="Node3D" parent="Revolver Hand/revolver"]
+[node name="Current Position Hover" parent="Revolver Hand/revolver" instance=ExtResource("4_qj68n")]
 unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.237374, 0.0331891, 0.0965368)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 3.59989e-21, 4.37114e-08, -1, -4.37114e-08, -0.237374, 0.0331891, 0.0965368)
 visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Revolver Hand/revolver/Current Position Hover"]
-transform = Transform3D(1, 5.96046e-08, 6.70552e-08, 5.96046e-08, 1, 1.49012e-07, 1.11759e-07, 8.9407e-08, 1, 0, 0, 0)
-cast_shadow = 0
-gi_mode = 0
-mesh = SubResource("CylinderMesh_ub1ss")
-surface_material_override/0 = SubResource("StandardMaterial3D_su5x2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
