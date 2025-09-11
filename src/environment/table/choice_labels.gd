@@ -10,6 +10,9 @@ signal self_selected()
 var is_visible: bool
 
 func show_labels() -> void:
+	if is_visible:
+		return
+	
 	is_visible = true
 	dealer_label.smooth_show()
 	you_label.smooth_show()
@@ -18,6 +21,9 @@ func show_labels() -> void:
 	you_label.clicked.connect(_on_self_clicked)
 
 func hide_labels() -> void:
+	if not is_visible:
+		return
+	
 	is_visible = false
 	dealer_label.clicked.disconnect(_on_dealer_clicked)
 	you_label.clicked.disconnect(_on_self_clicked)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
@@ -15,7 +15,9 @@
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="Script" uid="uid://lavn4gocuq3b" path="res://gameloop/states/revolver_loading_state.gd" id="14_qt76e"]
+[ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
+[ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -131,6 +133,26 @@ choices = NodePath("../../../Table/table_01/Choice Labels")
 dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
+
+[node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("curtain", "audio")]
+script = ExtResource("16_r3r3k")
+curtain = NodePath("CanvasLayer/GameOver Curtain")
+audio = NodePath("Game Over Audio")
+metadata/_custom_type_script = "uid://cy6wfx5xalpb6"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine/GameOverState"]
+
+[node name="GameOver Curtain" type="ColorRect" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine/GameOverState/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Game Over Audio" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine/GameOverState"]
+stream = ExtResource("17_blcw0")
 
 [node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop"]
 stream = ExtResource("16_sq7yr")
