@@ -3,7 +3,8 @@ extends StateAsync
 
 @export var curtain: ColorRect
 @export var fade_in: Color
-@export var audio: AudioStreamPlayer
+@export var selfshot_audio: AudioStreamPlayer
+@export var main_theme_audio: AudioStreamPlayer
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
@@ -12,7 +13,8 @@ func handle_input(event: InputEvent) -> void:
 		pass
 
 func enter_async() -> void:
-	audio.play()
+	selfshot_audio.play()
+	main_theme_audio.stop()
 	await get_tree().create_timer(0.2).timeout
 	curtain.show()
 	var tween := create_tween()

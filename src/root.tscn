@@ -134,10 +134,11 @@ dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 
-[node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("curtain", "audio")]
+[node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("curtain", "selfshot_audio", "main_theme_audio")]
 script = ExtResource("16_r3r3k")
 curtain = NodePath("CanvasLayer/GameOver Curtain")
-audio = NodePath("Game Over Audio")
+selfshot_audio = NodePath("Game Over Audio")
+main_theme_audio = NodePath("../../Main Theme Audio Player")
 metadata/_custom_type_script = "uid://cy6wfx5xalpb6"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine/GameOverState"]

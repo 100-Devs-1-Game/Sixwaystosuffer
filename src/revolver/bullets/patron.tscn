@@ -1,13 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsrippgh7mwp4"]
+[gd_scene load_steps=12 format=3 uid="uid://bsrippgh7mwp4"]
 
 [ext_resource type="Script" uid="uid://bhjtihgl4s7he" path="res://revolver/bullets/patron.gd" id="1_q0qsk"]
 [ext_resource type="PackedScene" uid="uid://b3jox7dwuvty2" path="res://revolver/components/chamber_position.tscn" id="2_m1fkb"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_yftuu"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="4_4xv3t"]
+[ext_resource type="Script" uid="uid://dgx7u8h426p70" path="res://common/interactions/hover_sound_player.gd" id="5_c8uq7"]
+[ext_resource type="AudioStream" uid="uid://difed6gqnkh83" path="res://assets/sfx/load_02.ogg" id="5_jh1bd"]
+[ext_resource type="AudioStream" uid="uid://ctsy3ce8qyo0l" path="res://assets/sfx/open_drum.ogg" id="7_3g4rw"]
+[ext_resource type="Script" uid="uid://2xqmvb6pvfyt" path="res://common/interactions/clicked_sound_player.gd" id="7_yc0db"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1fkb"]
 radius = 0.05
 height = 0.25
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jh1bd"]
+random_pitch = 2.0
+random_volume_offset_db = 6.0
+streams_count = 1
+stream_0/stream = ExtResource("5_jh1bd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o87kb"]
+random_pitch = 2.0
+random_volume_offset_db = 6.0
+streams_count = 1
+stream_0/stream = ExtResource("7_3g4rw")
 
 [node name="Patron" type="Node3D"]
 script = ExtResource("1_q0qsk")
@@ -37,5 +53,21 @@ monitor = NodePath("../Interact Area3d")
 height = 0.05
 duration = 0.25
 metadata/_custom_type_script = "uid://beatoaa760esh"
+
+[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("area")]
+stream = SubResource("AudioStreamRandomizer_jh1bd")
+volume_db = -6.0
+pitch_scale = 1.2
+script = ExtResource("5_c8uq7")
+area = NodePath("../Interact Area3d")
+metadata/_custom_type_script = "uid://dgx7u8h426p70"
+
+[node name="ClickedSoundPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("clickable_area3d")]
+stream = SubResource("AudioStreamRandomizer_o87kb")
+volume_db = -2.0
+pitch_scale = 1.8
+script = ExtResource("7_yc0db")
+clickable_area3d = NodePath("../Interact Area3d")
+metadata/_custom_type_script = "uid://2xqmvb6pvfyt"
 
 [editable path="Chamber Position"]
