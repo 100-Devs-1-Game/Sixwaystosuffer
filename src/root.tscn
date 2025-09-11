@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=20 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Shader" uid="uid://b85uhaxqgvm8c" path="res://assets/shaders/posterize_canvas.gdshader" id="1_bf3um"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
-[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="3_vvh5c"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
@@ -107,9 +106,6 @@ target = NodePath("..")
 monitor = NodePath("../Initial Revolver Area3d")
 height = 0.05
 duration = 0.25
-
-[node name="Patron" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("3_vvh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782962, 0.552589, 0.00978923)
 
 [node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
