@@ -622,8 +622,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_arl7n")
 }
 
-[node name="Chamber Model" type="Node" parent="."]
-
 [node name="Chamber" type="Node" parent="." node_paths=PackedStringArray("chamber", "position_hover", "spin_audio")]
 unique_name_in_owner = true
 script = ExtResource("5_knvnr")
