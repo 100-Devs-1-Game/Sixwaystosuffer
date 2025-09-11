@@ -33,10 +33,10 @@ func _on_dealer_clicked() -> void:
 
 func _on_self_clicked() -> void:
 	choices.hide_labels()
-	dealer.change_face(Dealer.DealerFace.HYPED_TEETH)
+	dealer.change_face(Dealer.DealerFace.HYPED)
 	await player.to_self_aiming()
 
 func return_to_select_target() -> void:
 	choices.show_labels()
-	dealer.change_face(Dealer.DealerFace.HYPED)
+	dealer.change_face(Dealer.DealerFace.SAD)
 	await player.to_idle()

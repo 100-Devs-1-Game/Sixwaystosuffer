@@ -14,8 +14,8 @@ enum DealerFace {
 	UNKNOWN = 0,
 	NEUTRAL = 1,
 	HAPPY = 2,
-	HYPED = 3,
-	HYPED_TEETH = 4
+	SAD = 3,
+	HYPED = 4
 }
 
 var face_angles: Dictionary[DealerFace, float]
@@ -27,8 +27,8 @@ func _ready() -> void:
 	face_angles = {
 		DealerFace.NEUTRAL: 0.0,
 		DealerFace.HAPPY: 90.0,
-		DealerFace.HYPED: 180.0,
-		DealerFace.HYPED_TEETH: 270.0
+		DealerFace.SAD: 180.0,
+		DealerFace.HYPED: 270.0
 	}
 
 func entry() -> void:

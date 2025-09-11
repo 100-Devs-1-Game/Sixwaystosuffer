@@ -56,6 +56,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("dealer2/Bottom Red Light:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_thisu"]
 resource_name = "entry"
@@ -67,7 +79,7 @@ tracks/0/path = NodePath("dealer2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -2.315, -2), Vector3(0, -2.31534, -0.543338)]
@@ -79,7 +91,7 @@ tracks/1/path = NodePath("dealer2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.366667),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.170013, 0, 0), Vector3(0.170013, 0, 0)]
@@ -91,7 +103,7 @@ tracks/2/path = NodePath("dealer2/Dealer Spotlight:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
@@ -103,10 +115,22 @@ tracks/3/path = NodePath("dealer2/Dealer Spotlight2:light_energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.15]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("dealer2/Bottom Red Light:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.35]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db6vp"]
@@ -130,7 +154,7 @@ script = ExtResource("1_thisu")
 transform = Transform3D(1, 0, 0, 0, 0.985583, -0.169195, 0, 0.169195, 0.985583, 0, -2.31534, -0.543338)
 
 [node name="Cube_Head" parent="dealer2/HG_Dealer" index="0"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000862201, 7.92602, -0.000313817)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.000862201, 7.92602, -0.000313817)
 
 [node name="Skeleton3D" parent="dealer2/HG_Dealer" index="1"]
 bones/6/rotation = Quaternion(0.220245, 0.678015, 0.662949, 0.228663)
@@ -145,10 +169,18 @@ bones/100/rotation = Quaternion(0.0135199, 0.998588, -0.0513174, -0.00250554)
 bones/101/rotation = Quaternion(-0.671888, 0.718163, -0.171633, -0.0578788)
 
 [node name="Dealer Spotlight" type="SpotLight3D" parent="dealer2"]
-transform = Transform3D(1, 0, 0, 0, 0.419626, 0.907696, 0, -0.907696, 0.419626, -0.0110378, 9.11585, 1.63895)
+transform = Transform3D(1, 0, 0, 0, 0.324049, 0.94604, 0, -0.94604, 0.324049, -0.0110378, 9.08036, 1.43222)
 light_energy = 0.0
 spot_range = 2.41991
 spot_angle = 34.776
+spot_angle_attenuation = 3.4822
+
+[node name="Bottom Red Light" type="SpotLight3D" parent="dealer2"]
+transform = Transform3D(1, 0, 0, 0, 0.526258, -0.850324, 0, 0.850324, 0.526258, -0.0110378, 6.45695, 1.64377)
+light_color = Color(1, 0.792157, 0.788235, 1)
+light_energy = 0.0
+spot_range = 2.41991
+spot_angle = 16.99
 spot_angle_attenuation = 3.4822
 
 [node name="Dealer Spotlight2" type="SpotLight3D" parent="dealer2"]
