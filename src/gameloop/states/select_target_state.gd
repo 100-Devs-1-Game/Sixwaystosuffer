@@ -20,11 +20,13 @@ func enter() -> void:
 	choices.show_labels()
 	choices.dealer_selected.connect(_on_dealer_clicked)
 	choices.self_selected.connect(_on_self_clicked)
+	player.shooted.connect(_on_player_shooted)
 
 func exit() -> void:
 	choices.hide_labels()
 	choices.dealer_selected.disconnect(_on_dealer_clicked)
 	choices.self_selected.disconnect(_on_self_clicked)
+	player.shooted.disconnect(_on_player_shooted)
 
 func _on_dealer_clicked() -> void:
 	choices.hide_labels()
@@ -39,4 +41,8 @@ func _on_self_clicked() -> void:
 func return_to_select_target() -> void:
 	choices.show_labels()
 	dealer.change_face(Dealer.DealerFace.SAD)
+	await player.to_idle()
+
+func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
+	await get_tree().create_timer(0.5).timeout
 	await player.to_idle()

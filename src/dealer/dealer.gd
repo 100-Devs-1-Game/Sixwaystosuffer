@@ -36,6 +36,9 @@ func entry() -> void:
 	_tween_head_rotation(face_angles[DealerFace.NEUTRAL], 2.0)
 
 func change_face(new_face: DealerFace) -> void:
+	if current_face == new_face:
+		return
+	
 	var target_angle := face_angles[new_face]
 	var duration := clampf(abs(current_face - new_face), min_face_time_change, max_face_time_change)
 	_tween_head_rotation(target_angle, duration)

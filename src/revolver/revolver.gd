@@ -9,7 +9,6 @@ const MAX_SPIN_CHAMBER_DURATION: float = 1.5
 
 @export var drum: Node3D
 @export var chamber_rotate_angle: float = 60.0
-@export var camera_shaker: CameraShaker
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var current_position_hover: CurrentPositionHover = %"Current Position Hover"
@@ -34,7 +33,8 @@ func get_current_chamber_position() -> Node3D:
 	return _chamber_position[_current_index]
 
 func load_patron(patron: Patron) -> void:
-	_partons[_current_index] = patron
+	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
+	_partons[load_index] = patron
 	animation_player.play("load")
 	_update_position_hover()
 
@@ -46,6 +46,10 @@ func has_patrons() -> bool:
 
 func has_current_patron() -> bool:
 	return _partons[_current_index] != null
+
+func can_load_in_loading_position() -> bool:
+	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
+	return _partons[load_index] != null
 
 func is_live_patron_now() -> bool:
 	var current_patron := get_current_patron()
@@ -89,7 +93,7 @@ func fire() -> void:
 		animation_player.play("fire_empty")
 
 func _update_position_hover() -> void:
-	if has_current_patron():
+	if can_load_in_loading_position():
 		current_position_hover.make_invalid()
 	else:
 		current_position_hover.make_valid()
