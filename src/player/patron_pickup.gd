@@ -17,6 +17,8 @@ var tween: Tween
 var follow: PathFollow3D
 var trajectories: Array[Path3D]
 
+var is_working: bool
+
 func _ready() -> void:
 	follow = PathFollow3D.new()
 	add_child(follow)
@@ -34,6 +36,7 @@ func load_patron(target: Patron) -> void:
 		return
 	
 	target.disable()
+	is_working = true
 	
 	var path: Path3D = trajectories.pick_random()
 	follow.reparent(path, false)
@@ -59,6 +62,7 @@ func _on_start_loading_to_chamber(patron: Patron) -> void:
 
 func _on_setup_target_point(patron: Patron, target_point: Node3D) -> void:
 	patron.global_position = target_point.global_position
+	is_working = false
 
 func enable_patrons_interaction() -> void:
 	for child in patrons_node.get_children():

@@ -27,4 +27,7 @@ func exit_async() -> void:
 	await current_animation_ended(player_hand_animation)
 
 func _on_revolver_clicked() -> void:
+	if patron_pickup.is_working:
+		return
+	
 	state_machine.switch_to(PlayerIdleState)
