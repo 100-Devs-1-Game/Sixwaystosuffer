@@ -18,9 +18,11 @@ var follow: PathFollow3D
 var trajectories: Array[Path3D]
 
 var is_working: bool
+var previous_trajectory_index: int
 
 func _ready() -> void:
 	follow = PathFollow3D.new()
+	follow.loop = false
 	add_child(follow)
 	
 	for child in trajectories_node.get_children():
@@ -28,7 +30,8 @@ func _ready() -> void:
 			trajectories.append(child)
 
 func place_patron_on_random_path(target: Patron, progress: float = 1.0) -> void:
-	var path: Path3D = trajectories.pick_random()
+	previous_trajectory_index = (previous_trajectory_index + 1) % trajectories.size()
+	var path: Path3D = trajectories[previous_trajectory_index]
 	follow.reparent(path, false)
 	follow.progress_ratio = progress
 	var position_on_path := target.on_table_position - path.global_position
@@ -77,8 +80,8 @@ func unload_patron(target: Patron) -> void:
 
 func _on_unloaded(target: Patron) -> void:
 	is_working = false
-	target.global_position = target.on_table_position
 	target.reparent(patrons_node)
+	target.global_position = target.on_table_position
 	target.enable()
 
 func _on_start_loading_to_chamber(patron: Patron) -> void:
