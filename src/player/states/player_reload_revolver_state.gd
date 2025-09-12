@@ -7,14 +7,10 @@ extends StateAsync
 @export var patron_pickup: PatronPickup
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("back"):
-		state_machine.switch_to(PlayerIdleState)
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
-			revolver.spin_up()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
-			revolver.spin_down()
+	if event.is_action_pressed("spin_up"):
+		revolver.spin_up()
+	elif event.is_action_pressed("spin_down"):
+		revolver.spin_down()
 
 func enter_async() -> void:
 	player_hand_animation.play("open_drum")
