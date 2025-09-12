@@ -28,7 +28,15 @@ func get_current_chamber_position() -> Node3D:
 func load_patron(patron: Patron) -> void:
 	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
 	_partons[load_index] = patron
-	#animation_player.play("load")
+	_update_position_hover()
+
+func unload_patron(patron: Patron) -> void:
+	var index := _partons.find(patron)
+	
+	if index == -1:
+		return
+	
+	_partons[index] = null
 	_update_position_hover()
 
 func has_patrons() -> bool:
@@ -41,8 +49,11 @@ func has_current_patron() -> bool:
 	return _partons[_current_index] != null
 
 func is_hovered_position_empty() -> bool:
+	return get_hovered_patron() == null
+
+func get_hovered_patron() -> Patron:
 	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
-	return _partons[load_index] == null
+	return _partons[load_index]
 
 func is_live_patron_now() -> bool:
 	var current_patron := get_current_patron()

@@ -27,6 +27,16 @@ func _ready() -> void:
 		if child is Path3D:
 			trajectories.append(child)
 
+func place_patron_on_random_path(target: Patron, progress: float = 1.0) -> void:
+	var path: Path3D = trajectories.pick_random()
+	follow.reparent(path, false)
+	follow.progress_ratio = progress
+	var position_on_path := target.on_table_position - path.global_position
+	path.curve.set_point_position(2, position_on_path)
+	target.reparent(follow)
+	
+	process_audio.play()
+
 func load_patron(target: Patron) -> void:
 	if tween != null and tween.is_running():
 		return
@@ -35,26 +45,41 @@ func load_patron(target: Patron) -> void:
 		tremor_animation.play("invalid_action")
 		return
 	
-	target.disable()
 	is_working = true
-	
-	var path: Path3D = trajectories.pick_random()
-	follow.reparent(path, false)
-	follow.progress_ratio = 1
-	
-	var position_on_path := target.global_position - path.global_position
-	path.curve.set_point_position(2, position_on_path)
-	target.reparent(follow)
-	
-	process_audio.play()
+	target.disable()
+	place_patron_on_random_path(target, 1.0)
 	
 	tween = create_tween()
 	tween.tween_property(follow, "progress_ratio", 0.0, 0.6)
 	var chamber_point := revolver.get_current_chamber_position()
 	tween.parallel().tween_property(target, "global_rotation", drum_target_point.global_rotation, 0.6)
 	tween.tween_callback(_on_start_loading_to_chamber.bind(target))
-	#tween.tween_property(target, "global_position", chamber_point.global_position, 0.3)
 	tween.tween_callback(_on_setup_target_point.bind(target, chamber_point))
+
+func unload_patron(target: Patron) -> void:
+	if target == null:
+		return
+	
+	if tween != null and tween.is_running():
+		return
+	
+	if revolver.get_hovered_patron() == null:
+		return
+	
+	is_working = true
+	place_patron_on_random_path(target, 0.0)
+	revolver.unload_patron(target)
+	
+	tween = create_tween()
+	tween.tween_property(follow, "progress_ratio", 1.0, 0.6)
+	tween.parallel().tween_property(target, "global_rotation", target.on_table_rotation, 0.6)
+	tween.tween_callback(_on_unloaded.bind(target))
+
+func _on_unloaded(target: Patron) -> void:
+	is_working = false
+	target.global_position = target.on_table_position
+	target.reparent(patrons_node)
+	target.enable()
 
 func _on_start_loading_to_chamber(patron: Patron) -> void:
 	patron.reparent(chamber_node)

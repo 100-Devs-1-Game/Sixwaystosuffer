@@ -11,6 +11,8 @@ func handle_input(event: InputEvent) -> void:
 		revolver.spin_up()
 	elif event.is_action_pressed("spin_down"):
 		revolver.spin_down()
+	elif event.is_action_pressed("back"):
+		patron_pickup.unload_patron(revolver.get_hovered_patron())
 
 func enter_async() -> void:
 	player_hand_animation.play("open_drum")

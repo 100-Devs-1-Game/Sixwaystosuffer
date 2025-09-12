@@ -9,8 +9,13 @@ signal clicked(patron: Patron)
 @onready var raise_on_hover: RaiseOnHover = %RaiseOnHover
 @onready var chamber_position: Node3D = $"Chamber Position"
 
+var on_table_position: Vector3
+var on_table_rotation: Vector3
+
 func _ready() -> void:
 	interact_area_3d.clicked.connect(func(): clicked.emit(self))
+	on_table_position = global_position
+	on_table_rotation = global_rotation
 
 func enable() -> void:
 	interact_area_3d.enable()

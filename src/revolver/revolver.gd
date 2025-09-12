@@ -13,6 +13,10 @@ func load_patron(patron: Patron) -> void:
 	chamber.load_patron(patron)
 	animation_player.play("load")
 
+func unload_patron(patron: Patron) -> void:
+	chamber.unload_patron(patron)
+	animation_player.play("load")
+
 func can_load_on_current_point() -> bool:
 	return chamber.is_hovered_position_empty()
 
@@ -21,6 +25,9 @@ func has_patrons() -> bool:
 
 func get_current_patron() -> Patron:
 	return chamber.get_current_patron()
+
+func get_hovered_patron() -> Patron:
+	return chamber.get_hovered_patron()
 
 func spin_up() -> void:
 	chamber.spin_up()
