@@ -5,6 +5,7 @@ extends StateAsync
 @export var revolver: Revolver
 @export var duration: float = 1.0
 @export var audio_player: AudioStreamPlayer
+@export var woosh_player: AudioStreamPlayer
 
 func enter_async() -> void:
 	var initial_revolver_position := player.initial_revolver_position
@@ -15,6 +16,8 @@ func enter_async() -> void:
 	revolver.global_rotation = initial_revolver_position.global_rotation
 	
 	audio_player.play()
+	woosh_player.play()
+	
 	await tween_taking_revolver(start_position, start_rotation)
 
 func tween_taking_revolver(target_position: Vector3, target_rotation: Vector3) -> void:
