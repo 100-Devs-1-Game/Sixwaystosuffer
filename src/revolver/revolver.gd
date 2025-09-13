@@ -26,6 +26,9 @@ func has_patrons() -> bool:
 func get_current_patron() -> Patron:
 	return chamber.get_current_patron()
 
+func has_hovered_patron() -> bool:
+	return chamber.get_hovered_patron() != null
+
 func get_hovered_patron() -> Patron:
 	return chamber.get_hovered_patron()
 

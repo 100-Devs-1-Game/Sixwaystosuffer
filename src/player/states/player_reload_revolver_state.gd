@@ -15,7 +15,10 @@ func handle_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("spin_down"):
 		revolver.spin_down()
 	elif event.is_action_pressed("back"):
-		patron_pickup.unload_patron(revolver.get_hovered_patron())
+		if revolver.has_hovered_patron():
+			patron_pickup.unload_patron(revolver.get_hovered_patron())
+		else:
+			state_machine.switch_to(PlayerIdleState)
 
 func enter_async() -> void:
 	player_hand_animation.play("open_drum")
