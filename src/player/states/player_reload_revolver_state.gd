@@ -32,6 +32,7 @@ func exit_async() -> void:
 	revolver_interact.clicked.disconnect(_on_revolver_clicked)
 	revolver_interact.disable()
 	player_hand_animation.play("close_drum")
+	#revolver.chamber.spin_random()
 	await current_animation_ended(player_hand_animation)
 
 func _on_revolver_clicked() -> void:

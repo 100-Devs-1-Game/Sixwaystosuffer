@@ -8,11 +8,16 @@ extends StateAsync
 @export var player: Player
 
 @export var main_theme_audio: SmoothAudioStreamPlayer
+@export var player_patrons: PlayerPatrons
 
 func _ready() -> void:
 	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
 
 func enter_async() -> void:
+	player_patrons.add(load("res://revolver/bullets/patron.tscn").instantiate())
+	player_patrons.add(load("res://revolver/bullets/patron.tscn").instantiate())
+	player_patrons.add(load("res://revolver/bullets/patron.tscn").instantiate())
+	
 	main_theme_audio.smooth_play()
 	await pause(1.0)
 	dealer.entry()

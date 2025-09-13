@@ -19,9 +19,11 @@ var trajectories: Array[Path3D]
 
 var is_working: bool
 var previous_trajectory_index: int
+var table_patrons: PlayerPatrons
 
 func _ready() -> void:
-	player.patrons.clicked.connect(load_patron)
+	table_patrons = player.patrons
+	table_patrons.clicked.connect(load_patron)
 	
 	follow = PathFollow3D.new()
 	follow.loop = false
@@ -52,6 +54,7 @@ func load_patron(target: Patron) -> void:
 	
 	is_working = true
 	target.disable()
+	table_patrons.remove(target)
 	place_patron_on_random_path(target, 1.0)
 	
 	tween = create_tween()
@@ -82,7 +85,8 @@ func unload_patron(target: Patron) -> void:
 
 func _on_unloaded(target: Patron) -> void:
 	is_working = false
-	target.reparent(player.patrons)
+	target.reparent(table_patrons)
+	table_patrons.return_patron(target)
 	target.global_position = target.on_table_position
 	target.enable()
 
@@ -95,7 +99,7 @@ func _on_setup_target_point(patron: Patron, target_point: Node3D) -> void:
 	is_working = false
 
 func enable_patrons_interaction() -> void:
-	player.patrons.enable_patrons_interaction()
+	table_patrons.enable_patrons_interaction()
 
 func disable_patrons_interaction() -> void:
-	player.patrons.disable_patrons_interaction()
+	table_patrons.disable_patrons_interaction()
