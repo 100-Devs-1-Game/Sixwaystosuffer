@@ -34,6 +34,9 @@ func _on_clicked() -> void:
 	clicked.emit()
 
 func smooth_show() -> void:
+	label_3d.modulate = normal_color
+	label_3d.scale = Vector3.ONE
+	
 	clickable_area_3d.mouse_entered.connect(_on_mouse_entered)
 	clickable_area_3d.mouse_exited.connect(_on_mouse_exited)
 	clickable_area_3d.clicked.connect(_on_clicked)
@@ -52,6 +55,7 @@ func smooth_hide() -> void:
 	_stop_tween_if_needed()
 	tween = create_tween()
 	tween.tween_property(label_3d, "modulate:a", 0.0, hover_duration * 3)
+	
 	tween.tween_callback(hide)
 
 func _stop_tween_if_needed() -> void:

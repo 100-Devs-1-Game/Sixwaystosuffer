@@ -57,7 +57,7 @@ points = PackedVector3Array(-0.00497242, -0.00947151, -6.81123e-06, -0.00459082,
 script = ExtResource("1_qwfah")
 
 [node name="Patron Position Hover" type="Node3D" parent="."]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -0.071775, 0.0242003, -0.0111128)
+transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -0.0196234, 0.0242003, -0.0341202)
 
 [node name="Chamber Position" type="Node3D" parent="Patron Position Hover"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000203723, 0.0105694, 0.00
 shape = SubResource("ConvexPolygonShape3D_cw4v1")
 
 [node name="Patron Position Hover2" type="Node3D" parent="."]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, 0.002285, 0.0242003, 0.114717)
+transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -0.107678, 0.0242003, 0.0443169)
 
 [node name="Chamber Position" type="Node3D" parent="Patron Position Hover2"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
@@ -113,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000203723, 0.0105694, 0.00
 shape = SubResource("ConvexPolygonShape3D_cw4v1")
 
 [node name="Patron Position Hover3" type="Node3D" parent="."]
-transform = Transform3D(0.874941, -0.484211, -2.11655e-08, -1.12103e-15, -4.37111e-08, 0.999992, -0.484209, -0.874944, -3.82449e-08, 0.0449521, -0.0541641, -0.0239069)
+transform = Transform3D(0.959908, 0.28028, 1.22514e-08, -4.77835e-15, -4.37111e-08, 0.999992, 0.280279, -0.959912, -4.1959e-08, 0.0858779, -0.0541641, -0.0251211)
 
 [node name="Chamber Position" type="Node3D" parent="Patron Position Hover3"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
@@ -137,5 +137,33 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f2u7a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000203723, -0.0105694, -0.000121789)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Patron Position Hover3/Chamber Position/bullet/Casing_002/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000203723, 0.0105694, 0.000121789)
+shape = SubResource("ConvexPolygonShape3D_cw4v1")
+
+[node name="Patron Position Hover4" type="Node3D" parent="."]
+transform = Transform3D(0.280279, -0.959912, -4.1959e-08, -5.63092e-15, -4.37111e-08, 0.999992, -0.959908, -0.28028, -1.22514e-08, -0.178692, -0.0541641, 0.14037)
+
+[node name="Chamber Position" type="Node3D" parent="Patron Position Hover4"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Patron Position Hover4/Chamber Position"]
+visible = false
+mesh = SubResource("CylinderMesh_4tgr6")
+skeleton = NodePath("../../../Patron Position Hover3")
+
+[node name="bullet" type="Node3D" parent="Patron Position Hover4/Chamber Position"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100353, 0)
+
+[node name="Casing_002" type="MeshInstance3D" parent="Patron Position Hover4/Chamber Position/bullet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00122234, 0.0634165, 0.000730734)
+mesh = SubResource("ArrayMesh_20o28")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2u7a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Patron Position Hover4/Chamber Position/bullet/Casing_002"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000203723, -0.0105694, -0.000121789)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Patron Position Hover4/Chamber Position/bullet/Casing_002/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000203723, 0.0105694, 0.000121789)
 shape = SubResource("ConvexPolygonShape3D_cw4v1")
