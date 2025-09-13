@@ -3,6 +3,8 @@ extends Node3D
 
 signal shooted(patron: Patron, to_dealer: bool)
 
+@export var patrons: PlayerPatrons
+
 @onready var state_machine: StateMachine = %StateMachine
 @onready var revolver: Revolver = %Revolver
 @onready var camera_shaker: CameraShaker = %CameraShaker

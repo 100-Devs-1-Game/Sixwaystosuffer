@@ -1,13 +1,13 @@
 class_name PatronPickup
 extends Node
 
+@export var player: Player
+
 @export var target_point: Node3D
 @export var drum_target_point: Node3D
 @export var revolver: Revolver
 
 @export var chamber_node: Node3D
-
-@export var patrons_node: Node3D
 @export var tremor_animation: AnimationPlayer
 
 @export var trajectories_node: Node3D
@@ -21,6 +21,8 @@ var is_working: bool
 var previous_trajectory_index: int
 
 func _ready() -> void:
+	player.patrons.clicked.connect(load_patron)
+	
 	follow = PathFollow3D.new()
 	follow.loop = false
 	add_child(follow)
@@ -80,7 +82,7 @@ func unload_patron(target: Patron) -> void:
 
 func _on_unloaded(target: Patron) -> void:
 	is_working = false
-	target.reparent(patrons_node)
+	target.reparent(player.patrons)
 	target.global_position = target.on_table_position
 	target.enable()
 
@@ -93,13 +95,7 @@ func _on_setup_target_point(patron: Patron, target_point: Node3D) -> void:
 	is_working = false
 
 func enable_patrons_interaction() -> void:
-	for child in patrons_node.get_children():
-		if child is Patron:
-			child.enable()
-			child.clicked.connect(load_patron)
+	player.patrons.enable_patrons_interaction()
 
 func disable_patrons_interaction() -> void:
-	for child in patrons_node.get_children():
-		if child is Patron:
-			child.disable()
-			child.clicked.disconnect(load_patron)
+	player.patrons.disable_patrons_interaction()

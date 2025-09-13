@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=41 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://c3u4424s0t8o1" path="res://assets/sfx/load_01.ogg" id="4_kb6p2"]
 [ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
-[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="5_8t03j"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_wodsf"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
@@ -698,13 +697,13 @@ revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interac
 patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("target_point", "drum_target_point", "revolver", "chamber_node", "patrons_node", "tremor_animation", "trajectories_node", "process_audio")]
+[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "target_point", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
 script = ExtResource("4_yw30f")
+player = NodePath("../../..")
 target_point = NodePath("../../../Patron Load Trajectories")
 drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
 revolver = NodePath("../../../Player Hand/Tremor/Revolver")
 chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
-patrons_node = NodePath("../../../Patrons")
 tremor_animation = NodePath("../../../Player Hand/Tremor/AnimationPlayer")
 trajectories_node = NodePath("../../../Patron Load Trajectories")
 process_audio = NodePath("Woosh Audio Player")
@@ -731,15 +730,3 @@ metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)
 omni_range = 2.0
-
-[node name="Patrons" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4733, 0, -2.05937)
-
-[node name="Patron" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, -0.071775, 0.0242003, -0.0111128)
-
-[node name="Patron2" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.99999, 0, 0, 0, 0.999993, 0, 0, 0, 0.999992, 0.002285, 0.0242003, 0.114717)
-
-[node name="Patron3" parent="Patrons" instance=ExtResource("5_8t03j")]
-transform = Transform3D(0.929413, 0.369014, 1.61301e-08, 0, -4.37111e-08, 0.999992, 0.369013, -0.929416, -4.0626e-08, 0.052735, -0.0541641, -0.0621728)
