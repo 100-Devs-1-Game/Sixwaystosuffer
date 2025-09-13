@@ -7,6 +7,9 @@ extends StateAsync
 @export var patron_pickup: PatronPickup
 
 func handle_input(event: InputEvent) -> void:
+	if patron_pickup.is_working:
+		return
+	
 	if event.is_action_pressed("spin_up"):
 		revolver.spin_up()
 	elif event.is_action_pressed("spin_down"):
