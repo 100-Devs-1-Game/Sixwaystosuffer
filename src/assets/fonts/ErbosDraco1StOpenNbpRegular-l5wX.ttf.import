@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dttythi2jdv8j"
-path="res://.godot/imported/ErbosdracoNovaOpenNbpRegular-yGa5.ttf-9eb960b4335f73577da7954603c2fd94.fontdata"
+uid="uid://c0lnvpfj1lfe7"
+path="res://.godot/imported/ErbosDraco1StOpenNbpRegular-l5wX.ttf-caac83e969ff6db0b6bf334b24275ce0.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/ErbosdracoNovaOpenNbpRegular-yGa5.ttf"
-dest_files=["res://.godot/imported/ErbosdracoNovaOpenNbpRegular-yGa5.ttf-9eb960b4335f73577da7954603c2fd94.fontdata"]
+source_file="res://assets/fonts/ErbosDraco1StOpenNbpRegular-l5wX.ttf"
+dest_files=["res://.godot/imported/ErbosDraco1StOpenNbpRegular-l5wX.ttf-caac83e969ff6db0b6bf334b24275ce0.fontdata"]
 
 [params]
 
@@ -33,8 +33,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "Новая конфигурация",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}
