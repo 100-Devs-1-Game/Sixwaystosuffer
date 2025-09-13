@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=26 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="Script" uid="uid://lavn4gocuq3b" path="res://gameloop/states/revolver_loading_state.gd" id="14_qt76e"]
-[ext_resource type="PackedScene" uid="uid://csxkayjtko5qi" path="res://assets/props/slot_machine/slot_machine.tscn" id="14_ub8w1"]
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 [ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
@@ -126,9 +125,6 @@ is_blinking = true
 
 [node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14708, 3.95817, 0.778834)
-
-[node name="slot_machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("14_ub8w1")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0860394, 3.85472, 0.0130926)
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)
