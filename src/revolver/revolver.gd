@@ -5,6 +5,13 @@ signal shoot_happened(patron: Patron)
 
 @onready var chamber: Chamber = %Chamber
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var current_position_hover: CurrentPositionHover = %"Current Position Hover"
+
+func show_hover_position() -> void:
+	current_position_hover.show()
+
+func hide_hover_position() -> void:
+	current_position_hover.hide()
 
 func get_current_chamber_position() -> Node3D:
 	return chamber.get_current_chamber_position()
