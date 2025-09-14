@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvuberatoghu0"]
+[gd_scene load_steps=10 format=3 uid="uid://bvuberatoghu0"]
 
 [ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="1_he7nu"]
 [ext_resource type="Script" uid="uid://ji1rm8ch2jps" path="res://environment/monitors/monitor_3d.gd" id="1_phl4j"]
 [ext_resource type="FontFile" uid="uid://c0lnvpfj1lfe7" path="res://assets/fonts/ErbosDraco1StOpenNbpRegular-l5wX.ttf" id="3_tod4r"]
-[ext_resource type="AudioStream" uid="uid://3f8itkgyo2fo" path="res://assets/sfx/clock_tick.ogg" id="4_axbb4"]
+[ext_resource type="AudioStream" uid="uid://1lw70cknvwuw" path="res://assets/sfx/clock_tick_01.ogg" id="4_e0sc5"]
+[ext_resource type="AudioStream" uid="uid://34jau7ktu6i1" path="res://assets/sfx/clock_tick_02.ogg" id="5_38we1"]
 
 [sub_resource type="Animation" id="Animation_axbb4"]
 length = 0.001
@@ -18,6 +19,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tick Audio Player:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_phl4j"]
@@ -36,31 +49,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
-tracks/1/type = "audio"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tick Audio Player")
+tracks/1/path = NodePath("Tick Audio Player:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.324,
-"start_offset": 0.2575,
-"stream": ExtResource("4_axbb4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.5255,
-"stream": ExtResource("4_axbb4")
-}],
-"times": PackedFloat32Array(0.233333, 0.6)
+"times": PackedFloat32Array(0.233333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
-tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu85g"]
 _data = {
 &"RESET": SubResource("Animation_axbb4"),
 &"blinking": SubResource("Animation_phl4j")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ixvfv"]
+random_volume_offset_db = 6.0
+streams_count = 2
+stream_0/stream = ExtResource("4_e0sc5")
+stream_1/stream = ExtResource("5_38we1")
 
 [node name="Monitor 3D" type="Node3D"]
 script = ExtResource("1_phl4j")
@@ -85,5 +97,6 @@ libraries = {
 }
 
 [node name="Tick Audio Player" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ixvfv")
 
 [editable path="counter_01"]
