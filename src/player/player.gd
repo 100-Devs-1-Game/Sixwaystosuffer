@@ -9,6 +9,7 @@ signal shooted(patron: Patron, to_dealer: bool)
 @onready var revolver: Revolver = %Revolver
 @onready var camera_shaker: CameraShaker = %CameraShaker
 
+@onready var player_idle_state: PlayerIdleState = %PlayerIdleState
 @onready var player_self_aiming_state: PlayerSelfAimingState = %PlayerSelfAimingState
 @onready var player_target_aiming_state: PlayerTargetAimingState = %PlayerTargetAimingState
 
@@ -40,6 +41,12 @@ func is_idle() -> bool:
 
 func block() -> void:
 	await state_machine.switch_to(PlayerBlockState)
+
+func block_reloading() -> void:
+	player_idle_state.is_reloading_blocked = true
+
+func unblock_reloading() -> void:
+	player_idle_state.is_reloading_blocked = false
 
 func to_revolver_loading() -> void:
 	await state_machine.switch_to(PlayerReloadRevolverState)

@@ -733,9 +733,11 @@ metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 script = ExtResource("8_wodsf")
 metadata/_custom_type_script = "uid://7ip3t48mhmvi"
 
-[node name="PlayerIdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("revolver_interact")]
+[node name="PlayerIdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("revolver_interact", "tremor_animation")]
+unique_name_in_owner = true
 script = ExtResource("6_boad6")
 revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
+tremor_animation = NodePath("../../Player Hand/Tremor/AnimationPlayer")
 metadata/_custom_type_script = "uid://deqs4bhyfhrhb"
 
 [node name="PlayerTakeRevolver" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "revolver", "audio_player", "woosh_player")]

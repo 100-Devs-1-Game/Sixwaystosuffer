@@ -42,7 +42,11 @@ func return_to_select_target() -> void:
 	await player.to_idle()
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
+	player.block_reloading()
+	
 	if not patron:
+		await get_tree().create_timer(0.15).timeout
+		await player.to_idle()
 		return
 	
 	if not to_dealer:

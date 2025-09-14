@@ -64,7 +64,7 @@ func get_current_patron() -> Patron:
 
 func spin_random(min: int = 7, max: int = 21) -> void:
 	var offset := _random.randi_range(min, max)
-	spin(offset)
+	spin(-offset)
 
 func spin_down() -> void:
 	spin(-1)

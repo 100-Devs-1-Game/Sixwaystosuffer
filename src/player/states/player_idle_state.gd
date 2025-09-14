@@ -2,6 +2,9 @@ class_name PlayerIdleState
 extends State
 
 @export var revolver_interact: ClickableArea3D
+@export var tremor_animation: AnimationPlayer
+
+var is_reloading_blocked: bool
 
 func enter() -> void:
 	revolver_interact.enable()
@@ -12,4 +15,8 @@ func exit() -> void:
 	revolver_interact.disable()
 
 func _on_revolver_clicked() -> void:
-	state_machine.switch_to(PlayerReloadRevolverState)
+	if not is_reloading_blocked:
+		state_machine.switch_to(PlayerReloadRevolverState)
+	else:
+		tremor_animation.play("invalid_action")
+	
