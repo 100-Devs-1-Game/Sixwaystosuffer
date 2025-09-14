@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvbqsel4ymb2x"]
+[gd_scene load_steps=35 format=3 uid="uid://dvbqsel4ymb2x"]
 
 [ext_resource type="Script" uid="uid://nofefg6jsoiu" path="res://revolver/revolver.gd" id="1_su5x2"]
 [ext_resource type="PackedScene" uid="uid://cs8wjjhrmln2d" path="res://assets/revolver/revolver.tscn" id="2_su5x2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6jwia8yl20yt" path="res://revolver/components/current_position_hover.tscn" id="4_qj68n"]
 [ext_resource type="Script" uid="uid://c367lyk8l2w12" path="res://revolver/components/chamber.gd" id="5_knvnr"]
 [ext_resource type="AudioStream" uid="uid://dppngmbga5lp" path="res://assets/sfx/shoot_02.ogg" id="5_lhmy8"]
+[ext_resource type="Script" uid="uid://d177ao6uk1xvs" path="res://revolver/components/chamber_audio_scroll.gd" id="6_3nfdl"]
 [ext_resource type="AudioStream" uid="uid://ciustso8iqyew" path="res://assets/sfx/shoot_03.ogg" id="6_arl7n"]
 [ext_resource type="AudioStream" uid="uid://c6opsqbbwnrg5" path="res://assets/sfx/shoot_04.ogg" id="7_p42ak"]
 [ext_resource type="AudioStream" uid="uid://mm5v73p5a1t5" path="res://assets/sfx/chamber_scrolling_01.ogg" id="8_b0p7j"]
@@ -545,7 +546,7 @@ stream_2/stream = ExtResource("6_arl7n")
 stream_3/stream = ExtResource("7_p42ak")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pugi4"]
-random_pitch = 1.1
+random_pitch = 1.2
 random_volume_offset_db = 2.0
 streams_count = 5
 stream_0/stream = ExtResource("8_b0p7j")
@@ -630,6 +631,12 @@ position_hover = NodePath("../Revolver Hand/revolver/Current Position Hover")
 spin_audio = NodePath("../Audio Players/Chamber Scrolling Audio Player")
 metadata/_custom_type_script = "uid://c367lyk8l2w12"
 
+[node name="ChamberAudioScroll" type="Node" parent="Chamber" node_paths=PackedStringArray("chamber", "chamber_audio_player")]
+script = ExtResource("6_3nfdl")
+chamber = NodePath("../../Revolver Hand/revolver/revolver_chamber")
+chamber_audio_player = NodePath("../../Audio Players/Chamber Scrolling Audio Player")
+metadata/_custom_type_script = "uid://d177ao6uk1xvs"
+
 [node name="Audio Players" type="Node" parent="."]
 
 [node name="Shoot Audio Player" type="AudioStreamPlayer" parent="Audio Players"]
@@ -638,6 +645,8 @@ stream = SubResource("AudioStreamRandomizer_sfe4l")
 [node name="Chamber Scrolling Audio Player" type="AudioStreamPlayer" parent="Audio Players"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_pugi4")
+volume_db = -12.0
+pitch_scale = 1.4
 
 [node name="Open Drum Audio Player" type="AudioStreamPlayer" parent="Audio Players"]
 stream = SubResource("AudioStreamRandomizer_me2wh")

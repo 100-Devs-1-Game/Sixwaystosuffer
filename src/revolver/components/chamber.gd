@@ -83,7 +83,7 @@ func spin(count: int) -> void:
 	_current_index = (_current_index + count) % MAX_BULLETS_IN_CHAMBER
 	_update_position_hover()
 	
-	spin_audio.play()
+	#spin_audio.play()
 
 func _update_position_hover() -> void:
 	if is_hovered_position_empty():
