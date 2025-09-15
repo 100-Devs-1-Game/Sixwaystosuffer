@@ -49,15 +49,6 @@ func return_to_select_target() -> void:
 	await player.to_idle()
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
-	player.block_reloading()
-	current_round += 1
-	
-	if current_round == max_rounds:
-		current_round = 0
-		player.unblock_reloading()
-		print("Round end!")
-		# TODO: drop bullets in chamber, calculate score, show shop, etc
-	
 	var modifier: int = 1 if to_dealer else 10
 	var worth := player.get_chamber_worth()
 	var result := modifier * worth
