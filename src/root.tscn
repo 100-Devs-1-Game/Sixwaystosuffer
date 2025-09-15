@@ -79,10 +79,13 @@ environment = ExtResource("2_r3r3k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
 patrons = NodePath("../Table/Patrons")
 
-[node name="Table" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room"]
+[node name="Table" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("5_l8v81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
+
+[node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("9_r3r3k")]
 
 [node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 3.94544, 0.381624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 4.12209, 0.381624)
 
 [node name="Initial Revolver Position" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
 transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.97734e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
@@ -111,20 +114,16 @@ script = ExtResource("8_vte5o")
 area = NodePath("../Initial Revolver Area3d")
 metadata/_custom_type_script = "uid://dgx7u8h426p70"
 
-[node name="table_01" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_l8v81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
-
-[node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/table_01" instance=ExtResource("9_r3r3k")]
-
-[node name="Monitor 3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
-transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 3.87915, -1.2514)
-text = "READY?"
+[node name="Left Monitor3d" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
+transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 4.0558, -1.2514)
+text = "999/999$"
 is_blinking = true
 
 [node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 
 [node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14708, 3.95817, 0.778834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14708, 4.13482, 0.778834)
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)
@@ -153,7 +152,7 @@ metadata/_custom_type_script = "uid://lavn4gocuq3b"
 
 [node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player")]
 script = ExtResource("13_eji0w")
-choices = NodePath("../../../Table/table_01/Choice Labels")
+choices = NodePath("../../../Table/Choice Labels")
 dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
