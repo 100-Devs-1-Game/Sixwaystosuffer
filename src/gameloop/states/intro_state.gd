@@ -10,9 +10,12 @@ extends StateAsync
 @export var main_theme_audio: SmoothAudioStreamPlayer
 @export var player_patrons: PlayerPatrons
 
-func enter_async() -> void:
+@export var monitor_3d: Monitor3D
+
+func enter_async() -> void:	
 	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
 	_spawn_start_bullets(4)
+	show_intro_on_monitor()
 	
 	main_theme_audio.smooth_play()
 	await pause(1.0)
@@ -33,3 +36,7 @@ func _on_revolver_clicked() -> void:
 	initial_revolver_position.queue_free()
 	await player.to_idle()
 	state_machine.switch_to(SelectTargetState)
+
+func show_intro_on_monitor() -> void:
+	var phrase: Array[String] = ["reach", "1000$", "to be", "rescued"]
+	monitor_3d.setup_phrase(phrase)

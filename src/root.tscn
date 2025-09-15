@@ -135,7 +135,7 @@ script = ExtResource("12_qw60f")
 initial_state = NodePath("IntroState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "initial_revolver_area3d", "dealer", "player", "main_theme_audio", "player_patrons")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "initial_revolver_area3d", "dealer", "player", "main_theme_audio", "player_patrons", "monitor_3d")]
 script = ExtResource("13_qwhpj")
 initial_revolver_position = NodePath("../../../Table/Revolver Place/Initial Revolver Position")
 initial_revolver_area3d = NodePath("../../../Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
@@ -143,6 +143,7 @@ dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
 player_patrons = NodePath("../../../Table/Patrons")
+monitor_3d = NodePath("../../../Table/Left Monitor3d")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
 
 [node name="RevolverLoadingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("player")]
