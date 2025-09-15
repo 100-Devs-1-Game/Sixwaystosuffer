@@ -22,6 +22,13 @@ func _ready() -> void:
 		_chamber_position.append(child)
 	_partons.resize(MAX_BULLETS_IN_CHAMBER)
 
+func get_worth() -> int:
+	var result: int = 0
+	for patron in _partons:
+		if patron is Patron:
+			result += patron.bonus_score
+	return result
+
 func get_current_chamber_position() -> Node3D:
 	return _chamber_position[_current_index]
 

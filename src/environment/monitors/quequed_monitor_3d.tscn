@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci6kjbj6cbjwm"]
+
+[ext_resource type="Script" uid="uid://dknseka8a3tkh" path="res://environment/monitors/queued_monitor_3d.gd" id="1_es6gk"]
+[ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://environment/monitors/monitor_3d.tscn" id="2_l418r"]
+
+[node name="Quequed Monitor3D" type="Node3D"]
+script = ExtResource("1_es6gk")
+
+[node name="Monitor 3D" parent="." instance=ExtResource("2_l418r")]
+is_blinking = true

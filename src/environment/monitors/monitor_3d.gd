@@ -22,11 +22,11 @@ func _ready() -> void:
 		phrase_change_timer.timeout.connect(_on_phrase_change_timeout)
 
 func switch_text(new_text: String) -> void:
+	phrase_change_timer.stop()
 	animation_player.seek(0, true)
 	label_3d.text = new_text
 
 func setup_phrase(phrase: Array[String], duration: float = 2.0) -> void:
-	phrase_change_timer.stop()
 	self.phrases = phrase
 	self.phrase_index = 0
 	switch_text(phrases[0])

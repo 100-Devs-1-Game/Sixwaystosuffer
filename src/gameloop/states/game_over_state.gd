@@ -8,9 +8,7 @@ extends StateAsync
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		## TODO: restart game
-		state_machine.switch_to(IntroState)
-		pass
+		get_tree().reload_current_scene()
 
 func enter_async() -> void:
 	selfshot_audio.play()

@@ -1,10 +1,17 @@
-class_name SelectTargetState
+class_name GameplayState
 extends State
 
 @export var choices: ChoiceLabels
 
 @export var dealer: Dealer
 @export var player: Player
+
+@export var monitor_3d: Monitor3D
+
+var max_rounds: int = 3
+var current_round: int = 0
+var round_goal: int = 100
+var total_worth: int = 0
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back") and player.is_aiming():
@@ -17,13 +24,13 @@ func process(delta: float) -> void:
 		choices.show_labels()
 
 func enter() -> void:
-	choices.dealer_selected.connect(_on_dealer_clicked)
-	choices.self_selected.connect(_on_self_clicked)
+	choices.dealer_label.clicked.connect(_on_dealer_clicked)
+	choices.you_label.clicked.connect(_on_self_clicked)
 	player.shooted.connect(_on_player_shooted)
 
 func exit() -> void:
-	choices.dealer_selected.disconnect(_on_dealer_clicked)
-	choices.self_selected.disconnect(_on_self_clicked)
+	choices.dealer_label.clicked.disconnect(_on_dealer_clicked)
+	choices.you_label.clicked.disconnect(_on_self_clicked)
 	player.shooted.disconnect(_on_player_shooted)
 
 func _on_dealer_clicked() -> void:
@@ -43,9 +50,22 @@ func return_to_select_target() -> void:
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 	player.block_reloading()
+	current_round += 1
+	
+	if current_round == max_rounds:
+		current_round = 0
+		player.unblock_reloading()
+		print("Round end!")
+		# TODO: drop bullets in chamber, calculate score, show shop, etc
+	
+	var modifier: int = 1 if to_dealer else 10
+	var worth := player.get_chamber_worth()
+	var result := modifier * worth
+	total_worth += result
+	#monitor_3d.setup_phrase(["%s$/100$" % total_worth, "round:%s/3" % current_round])
 	
 	if not patron:
-		await get_tree().create_timer(0.15).timeout
+		await pause_async(0.15)
 		await player.to_idle()
 		return
 	
@@ -53,6 +73,9 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 		await state_machine.switch_to(GameOverState)
 		player.block()
 	else:
-		await get_tree().create_timer(0.15).timeout
+		await pause_async(0.15)
 		dealer.take_damage()
 		await player.to_idle()
+
+func pause_async(duration: float) -> void:
+	await get_tree().create_timer(0.15).timeout

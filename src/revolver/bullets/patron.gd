@@ -4,6 +4,7 @@ extends Node3D
 signal clicked(patron: Patron)
 
 @export var is_live: bool = true
+@export var bonus_score: int = 10
 
 @onready var interact_area_3d: ClickableArea3D = %"Interact Area3d"
 @onready var raise_on_hover: RaiseOnHover = %RaiseOnHover

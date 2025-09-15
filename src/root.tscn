@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
-[ext_resource type="PackedScene" uid="uid://bvuberatoghu0" path="res://environment/monitors/monitor_3d.tscn" id="5_vyht1"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://environment/lamps/lamp.tscn" id="6_vyht1"]
 [ext_resource type="AudioStream" uid="uid://difed6gqnkh83" path="res://assets/sfx/load_02.ogg" id="7_3dlgs"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
 [ext_resource type="Script" uid="uid://dgx7u8h426p70" path="res://common/interactions/hover_sound_player.gd" id="8_vte5o"]
 [ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://environment/table/choice_labels.tscn" id="9_r3r3k"]
+[ext_resource type="PackedScene" uid="uid://ci6kjbj6cbjwm" path="res://environment/monitors/quequed_monitor_3d.tscn" id="11_po8fv"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
-[ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/select_target_state.gd" id="13_eji0w"]
+[ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="Script" uid="uid://lavn4gocuq3b" path="res://gameloop/states/revolver_loading_state.gd" id="14_qt76e"]
@@ -82,7 +82,8 @@ patrons = NodePath("../Table/Patrons")
 [node name="Table" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 
-[node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("9_r3r3k")]
+[node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("monitor") instance=ExtResource("9_r3r3k")]
+monitor = NodePath("../Quequed Monitor3D")
 
 [node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 4.12209, 0.381624)
@@ -114,10 +115,8 @@ script = ExtResource("8_vte5o")
 area = NodePath("../Initial Revolver Area3d")
 metadata/_custom_type_script = "uid://dgx7u8h426p70"
 
-[node name="Left Monitor3d" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("5_vyht1")]
+[node name="Quequed Monitor3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("11_po8fv")]
 transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 4.0558, -1.2514)
-text = "999/999$"
-is_blinking = true
 
 [node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
@@ -143,7 +142,7 @@ dealer = NodePath("../../../Dealer")
 player = NodePath("../../../Player")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
 player_patrons = NodePath("../../../Table/Patrons")
-monitor_3d = NodePath("../../../Table/Left Monitor3d")
+monitor_3d = NodePath("../../../Table/Quequed Monitor3D")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
 
 [node name="RevolverLoadingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("player")]
@@ -151,7 +150,7 @@ script = ExtResource("14_qt76e")
 player = NodePath("../../../Player")
 metadata/_custom_type_script = "uid://lavn4gocuq3b"
 
-[node name="SelectTargetState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player")]
+[node name="GameplayState" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player")]
 script = ExtResource("13_eji0w")
 choices = NodePath("../../../Table/Choice Labels")
 dealer = NodePath("../../../Dealer")

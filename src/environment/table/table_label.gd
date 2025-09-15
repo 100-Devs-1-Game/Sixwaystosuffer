@@ -2,9 +2,11 @@
 class_name TableLabel
 extends Node3D
 
+signal mouse_entered()
+signal mouse_exited()
 signal clicked()
 
-@export var text: String:
+@export_multiline var text: String:
 	set(value):
 		text = value
 		%Label3D.text = value
@@ -23,12 +25,14 @@ func _on_mouse_entered() -> void:
 	tween = create_tween()
 	tween.tween_property(label_3d, "modulate", hovered_color, hover_duration)
 	tween.parallel().tween_property(label_3d, "scale", Vector3.ONE * 1.1, hover_duration)
+	mouse_entered.emit()
 
 func _on_mouse_exited() -> void:
 	_stop_tween_if_needed()
 	tween = create_tween()
 	tween.tween_property(label_3d, "modulate", normal_color, hover_duration)
 	tween.parallel().tween_property(label_3d, "scale", Vector3.ONE, hover_duration)
+	mouse_exited.emit()
 
 func _on_clicked() -> void:
 	clicked.emit()
