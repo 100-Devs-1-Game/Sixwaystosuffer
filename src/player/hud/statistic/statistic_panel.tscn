@@ -54,41 +54,41 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ab83r")
 [node name="Playtime Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Playtime"
+title = "[STAT_PLAYTIME]"
 content = "00.00.00"
 
 [node name="Reached Worth Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Reached worth"
+title = "[STAT_REACHED_WORTH]"
 content = "999$"
 
 [node name="Record Per Shot Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Round record"
+title = "[STAT_ROUND_RECORD]"
 content = "400$"
 
 [node name="Bullets Dropped Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Total bullets"
+title = "[STAT_TOTAL_BULLETS]"
 content = "23"
 
 [node name="Total Shots Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Total shots"
+title = "[STAT_TOTAL_SHOTS]"
 content = "2"
 
 [node name="Self Aimed Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Aimed self"
+title = "[STAT_AIMED_SELF]"
 content = "0"
 
 [node name="Dealer Aimed Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
 unique_name_in_owner = true
 layout_mode = 2
-title = "Aimed dealer"
+title = "[STAT_AIMED_DEALER]"
 content = "0"

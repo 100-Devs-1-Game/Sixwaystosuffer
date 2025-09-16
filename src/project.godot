@@ -45,6 +45,10 @@ spin_down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/localization.en.translation")
+
 [layer_names]
 
 3d_physics/layer_1="default"

@@ -23,11 +23,11 @@ func _ready() -> void:
 	choices.you_label.mouse_exited.connect(_on_you_label_exited)
 	profit_timer.timeout.connect(_on_profit_timeout)
 	
-	monitor_3d.push("take")
+	monitor_3d.push("[TUTOR_TAKE]")
 
 func show_target_reach() -> void:
 	monitor_3d.clear()
-	monitor_3d.push_back("reach", ["reach", "999$", "rescue"])
+	monitor_3d.push_back("[TUTOR_REACH]", ["[TUTOR_REACH]", "999$", "[TUTOR_RESCUE]"])
 
 func show_current_score(score: String) -> void:
 	monitor_3d.clear()
@@ -42,10 +42,10 @@ func _on_profit_timeout() -> void:
 	monitor_3d.pop_back("profit")
 
 func show_good_luck() -> void:
-	monitor_3d.push("good")
+	monitor_3d.push("[GAMEPLAY_GOOD]")
 
 func show_sad() -> void:
-	monitor_3d.push("sure?")
+	monitor_3d.push("[GAMEPLAY_SURE]")
 
 func _on_dealer_label_entered() -> void:
 	monitor_3d.pop_back("x1")
@@ -62,14 +62,14 @@ func _on_you_label_exited() -> void:
 	monitor_3d.pop_back("x10")
 
 func _on_revolver_clicked() -> void:
-	monitor_3d.pop_back("take")
-	monitor_3d.push("reload")
+	monitor_3d.pop_back("[TUTOR_TAKE]")
+	monitor_3d.push("[TUTOR_RELOAD]")
 
 func _on_revolver_entered() -> void:
-	monitor_3d.push("good")
+	monitor_3d.push("[TUTOR_GOOD]")
 
 func _on_revolver_exited() -> void:
-	monitor_3d.pop_back("good")
+	monitor_3d.pop_back("[TUTOR_GOOD]")
 
 func _on_patron_hovered(patron: Patron) -> void:
 	monitor_3d.push_back("patron", ["+10$"])

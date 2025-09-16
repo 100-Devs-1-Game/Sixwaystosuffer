@@ -1,0 +1,17 @@
+key,en
+[TUTOR_TAKE],take
+[TUTOR_GOOD],good
+[TUTOR_REACH],reach
+[TUTOR_RESCUE],rescue
+[TUTOR_RELOAD],reload
+[GAMEPLAY_SURE],sure?
+[GAMEPLAY_GOOD],good
+[GAMEPLAY_DEALER],dealer
+[GAMEPLAY_YOU],you
+[STAT_PLAYTIME],Playtime
+[STAT_REACHED_WORTH],Reached worth
+[STAT_ROUND_RECORD],Round record
+[STAT_TOTAL_BULLETS],Total bullets
+[STAT_TOTAL_SHOTS],Total shots
+[STAT_AIMED_SELF],Aimed self
+[STAT_AIMED_DEALER],Aimed dealer

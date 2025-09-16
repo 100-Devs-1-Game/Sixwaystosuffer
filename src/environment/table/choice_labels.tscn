@@ -10,10 +10,10 @@ script = ExtResource("1_eu1o8")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0787, -0.638386)
 visible = false
-text = "DEALER"
+text = "[GAMEPLAY_DEALER]"
 
 [node name="You Label" parent="." instance=ExtResource("1_r65by")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385482, 4.0787, 1.44612)
 visible = false
-text = "YOU"
+text = "[GAMEPLAY_YOU]"
