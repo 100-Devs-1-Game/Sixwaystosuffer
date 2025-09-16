@@ -24,6 +24,13 @@ func get_free_index() -> int:
 			return index
 	return -1
 
+func get_available_space() -> int:
+	var space: int = 0
+	for bullet in bullets:
+		if bullet == null:
+			space += 1
+	return space
+
 func add(patron: Patron) -> void:
 	var index := get_free_index()
 	var patron_position := positions[index]

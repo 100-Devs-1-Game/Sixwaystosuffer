@@ -36,6 +36,9 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	_update_statistic(patron, result, to_dealer)
 	return result
 
+func make_purchase(cost: int) -> void:
+	pass
+
 func get_score_line() -> String:
 	return "%s/%s$" % [total_worth, target_worth]
 

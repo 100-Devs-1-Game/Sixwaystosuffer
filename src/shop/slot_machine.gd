@@ -9,7 +9,8 @@ func purchase(product: ShopProduct) -> void:
 		purchase_bullet(product)
 
 func purchase_bullet(product: BulletProduct) -> void:
-	session.total_worth -= product.cost
+	print("available space: %s" % ammo.get_available_space())
+	session.make_purchase(product.cost)
 	
 	for i in product.quantity:
 		# TODO: make animation?
