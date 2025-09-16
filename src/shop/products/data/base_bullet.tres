@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BulletProduct" load_steps=3 format=3 uid="uid://cb76gbf1m43db"]
+
+[ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="1_naabw"]
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_rm7p4"]
+
+[resource]
+script = ExtResource("1_naabw")
+quantity = 3
+scene = ExtResource("1_rm7p4")
+name = "Base Bullets"
+description = "+10$ for load"
+cost = 30
+metadata/_custom_type_script = "uid://gtdxgikb4wii"

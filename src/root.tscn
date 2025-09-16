@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=32 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
+[ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="16_ab83r"]
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 [ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
@@ -185,6 +186,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 
 [node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14708, 4.13482, 0.778834)
+
+[node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("ammo", "session") instance=ExtResource("16_ab83r")]
+ammo = NodePath("../Patrons")
+session = NodePath("../../../GameLoop/GameSession")
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)

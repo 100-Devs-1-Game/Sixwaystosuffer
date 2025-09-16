@@ -37,7 +37,7 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	return result
 
 func get_score_line() -> String:
-	return "%s$/%s$" % [total_worth, target_worth]
+	return "%s/%s$" % [total_worth, target_worth]
 
 func _update_statistic(patron: Patron, worth: int,  to_dealer: bool) -> void:
 	if worth > round_record_worth:
