@@ -8,10 +8,10 @@ extends StateAsync
 @export var selfshot_audio: AudioStreamPlayer
 @export var main_theme_audio: AudioStreamPlayer
 
-var is_press_restarted: bool
+var is_can_been_restarted: bool
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if is_can_been_restarted and event.is_action_pressed("interact"):
 		get_tree().reload_current_scene()
 
 func enter_async() -> void:
@@ -24,7 +24,7 @@ func enter_async() -> void:
 	await pause_async(1.0)
 	player_hud.show_statistic(2.0)
 	await pause_async(2.5)
-	is_press_restarted = true
+	is_can_been_restarted = true
 
 func pause_async(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

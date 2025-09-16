@@ -1,8 +1,6 @@
 class_name GameSession
 extends Node
 
-signal updated
-
 var start_time: int
 var end_time: int
 
@@ -36,7 +34,6 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> void:
 	total_worth += result
 	
 	_update_statistic(patron, result, to_dealer)
-	updated.emit()
 
 func get_score_line() -> String:
 	return "%s$/%s$" % [total_worth, target_worth]
