@@ -185,7 +185,7 @@ transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 
 [node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
-transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.13482, 0.759733)
+transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.14031, 0.759733)
 
 [node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("ammo", "session") instance=ExtResource("16_ab83r")]
 ammo = NodePath("../Patrons")
