@@ -12,7 +12,7 @@ var is_can_been_restarted: bool
 
 func handle_input(event: InputEvent) -> void:
 	if is_can_been_restarted and event.is_action_pressed("interact"):
-		get_tree().reload_current_scene()
+		reload_root.call_deferred()
 
 func enter_async() -> void:
 	session.stop()
@@ -25,6 +25,9 @@ func enter_async() -> void:
 	player_hud.show_statistic(2.0)
 	await pause_async(2.5)
 	is_can_been_restarted = true
+
+func reload_root() -> void:
+	get_tree().reload_current_scene()
 
 func pause_async(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
