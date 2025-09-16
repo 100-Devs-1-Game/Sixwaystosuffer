@@ -65,7 +65,7 @@ func return_to_select_target() -> void:
 	await player.to_idle()
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
-	session.make_shot(player.revolver, to_dealer)
+	session.make_shot(patron, player.revolver, to_dealer)
 	is_second_shoot = true
 	
 	if to_dealer:
@@ -78,20 +78,20 @@ func process_self_shooting(patron: Patron) -> void:
 		await state_machine.switch_to(GameOverState)
 		player.block()
 		return
-	
 	monitor_controller.show_current_score(session.get_score_line())
 	await pause_async(0.15)
-	await player.drop_bullets()
-	await player.to_idle()
+	end_player_turn()
 
 func process_dealer_shooting(patron: Patron) -> void:
 	monitor_controller.show_current_score(session.get_score_line())
 	await pause_async(0.15)
-	
 	if patron:
 		dealer.take_damage()
-	
-	await player.drop_bullets()
+	end_player_turn()
+
+func end_player_turn() -> void:
+	var dropped_bullets: int = await player.drop_bullets()
+	session.dropped_bullets += dropped_bullets
 	await player.to_idle()
 
 func pause_async(duration: float) -> void:

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctnywjwuiyrka"]
+
+[ext_resource type="Script" uid="uid://dav0wnu6v0hy8" path="res://player/hud/player_hud.gd" id="1_vai5t"]
+[ext_resource type="PackedScene" uid="uid://230joxf853v3" path="res://player/hud/statistic/statistic_panel.tscn" id="2_sabkn"]
+
+[node name="Player HUD" type="CanvasLayer"]
+script = ExtResource("1_vai5t")
+
+[node name="Curtain" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Statistic Panel" parent="." instance=ExtResource("2_sabkn")]
+unique_name_in_owner = true
+visible = false
+offset_left = -114.5
+offset_top = -126.5
+offset_right = 114.5
+offset_bottom = 126.5

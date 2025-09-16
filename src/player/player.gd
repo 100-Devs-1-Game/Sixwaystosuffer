@@ -40,9 +40,9 @@ func to_self_aiming() -> void:
 func to_idle() -> void:
 	await state_machine.switch_to(PlayerIdleState)
 
-func drop_bullets() -> void:
+func drop_bullets() -> int:
 	# TODO: make animation for drop bullets
-	revolver.drop_bullets()
+	return revolver.drop_bullets()
 
 func is_idle() -> bool:
 	return state_machine.current_state is PlayerIdleState

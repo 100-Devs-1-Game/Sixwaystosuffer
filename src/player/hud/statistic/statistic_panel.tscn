@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://230joxf853v3"]
+
+[ext_resource type="PackedScene" uid="uid://b8f3m38vjqs7" path="res://player/hud/statistic/statistic_label.tscn" id="1_25yb5"]
+[ext_resource type="Theme" uid="uid://b1xm55edwim1j" path="res://player/hud/statistic/statistic_panel.tres" id="1_b6225"]
+[ext_resource type="Script" uid="uid://x572djaaaxvb" path="res://player/hud/statistic/statistic_panel.gd" id="2_3l06n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab83r"]
+
+[node name="Statistic Panel" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_b6225")
+script = ExtResource("2_3l06n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title Container" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = -5
+
+[node name="Label" type="Label" parent="VBoxContainer/Title Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "SIX WAYS TO SUFFER"
+horizontal_alignment = 1
+
+[node name="Separator Container" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Separator Container"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ab83r")
+
+[node name="Playtime Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Playtime"
+content = "00.00.00"
+
+[node name="Reached Worth Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Reached worth"
+content = "999$"
+
+[node name="Record Per Shot Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Round record"
+content = "400$"
+
+[node name="Bullets Dropped Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Total bullets"
+content = "23"
+
+[node name="Total Shots Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Total shots"
+content = "2"
+
+[node name="Self Aimed Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Aimed self"
+content = "0"
+
+[node name="Dealer Aimed Label" parent="VBoxContainer" instance=ExtResource("1_25yb5")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Aimed dealer"
+content = "0"

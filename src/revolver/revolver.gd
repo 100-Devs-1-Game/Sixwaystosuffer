@@ -15,8 +15,8 @@ func show_hover_position() -> void:
 func hide_hover_position() -> void:
 	current_position_hover.hide()
 
-func drop_bullets() -> void:
-	chamber.drop_bullets()
+func drop_bullets() -> int:
+	return chamber.drop_bullets()
 
 func get_current_chamber_position() -> Node3D:
 	return chamber.get_current_chamber_position()

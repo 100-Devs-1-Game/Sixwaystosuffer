@@ -1,26 +1,27 @@
 class_name IntroState
 extends StateAsync
 
+@export var session: GameSession
+
 @export var initial_revolver_position: Node3D
 @export var initial_revolver_area3d: ClickableArea3D
 
-@export var dealer: Dealer
 @export var player: Player
 
 @export var main_theme_audio: SmoothAudioStreamPlayer
 @export var player_patrons: PlayerPatrons
 
-@export var curtain: ColorRect
+@export var player_hud: PlayerHUD
 @export var intro_animation: AnimationPlayer
 
 func enter_async() -> void:
-	curtain.show()
+	player_hud.hide_curtain(0.2)
 	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
-	_spawn_start_bullets(4)
+	_spawn_start_bullets(session.initial_bullets_count)
 	intro_animation.play("intro")
 	
 	await get_tree().create_timer(0.1).timeout
-	curtain.hide()
+	session.start()
 
 func exit_async() -> void:
 	initial_revolver_area3d.clicked.disconnect(_on_revolver_clicked)

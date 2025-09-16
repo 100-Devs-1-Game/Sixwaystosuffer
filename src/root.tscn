@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=31 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
+[ext_resource type="PackedScene" uid="uid://ctnywjwuiyrka" path="res://player/hud/player_hud.tscn" id="1_ynlg5"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
 [ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="5_gd4vy"]
@@ -97,16 +98,7 @@ _data = {
 
 [node name="Root" type="Node"]
 
-[node name="Player HUD" type="CanvasLayer" parent="."]
-
-[node name="GameOver Curtain" type="ColorRect" parent="Player HUD"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Player HUD" parent="." instance=ExtResource("1_ynlg5")]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -204,15 +196,15 @@ script = ExtResource("12_qw60f")
 initial_state = NodePath("IntroState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("initial_revolver_position", "initial_revolver_area3d", "dealer", "player", "main_theme_audio", "player_patrons", "curtain", "intro_animation")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "initial_revolver_position", "initial_revolver_area3d", "player", "main_theme_audio", "player_patrons", "player_hud", "intro_animation")]
 script = ExtResource("13_qwhpj")
+session = NodePath("../../GameSession")
 initial_revolver_position = NodePath("../../../Play Room/Table/Revolver Place/Initial Revolver Position")
 initial_revolver_area3d = NodePath("../../../Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
-dealer = NodePath("../../../Play Room/Dealer")
 player = NodePath("../../../Play Room/Player")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
 player_patrons = NodePath("../../../Play Room/Table/Patrons")
-curtain = NodePath("../../../../../../Player HUD/GameOver Curtain")
+player_hud = NodePath("../../../../../../Player HUD")
 intro_animation = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
 
@@ -234,9 +226,10 @@ monitor_controller = NodePath("../../Monitor Controller")
 session = NodePath("../../GameSession")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 
-[node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("curtain", "selfshot_audio", "main_theme_audio")]
+[node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "player_hud", "selfshot_audio", "main_theme_audio")]
 script = ExtResource("16_r3r3k")
-curtain = NodePath("../../../../../../Player HUD/GameOver Curtain")
+session = NodePath("../../GameSession")
+player_hud = NodePath("../../../../../../Player HUD")
 selfshot_audio = NodePath("Game Over Audio")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
 metadata/_custom_type_script = "uid://cy6wfx5xalpb6"

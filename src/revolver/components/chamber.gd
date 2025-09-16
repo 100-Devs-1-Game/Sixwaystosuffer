@@ -29,13 +29,16 @@ func get_worth() -> int:
 			result += patron.bonus_score
 	return result
 
-func drop_bullets() -> void:
+func drop_bullets() -> int:
+	var dropped_bullets_count: int = 0
 	for patron in _partons:
 		if patron != null:
 			patron.queue_free()
+			dropped_bullets_count += 1
 	_partons.clear()
 	_partons.resize(MAX_BULLETS_IN_CHAMBER)
 	_update_position_hover()
+	return dropped_bullets_count
 
 func get_current_chamber_position() -> Node3D:
 	return _chamber_position[_current_index]

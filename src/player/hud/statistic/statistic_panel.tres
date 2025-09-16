@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b1xm55edwim1j"]
+
+[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="1_yfud6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfud6"]
+
+[resource]
+Label/fonts/font = ExtResource("1_yfud6")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_yfud6")
