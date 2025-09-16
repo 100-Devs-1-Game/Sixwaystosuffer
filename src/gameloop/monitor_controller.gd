@@ -1,0 +1,72 @@
+class_name MonitorController
+extends Node
+
+@export var player: Player
+@export var initial_revolver_area3d: ClickableArea3D
+@export var patrons: PlayerPatrons
+@export var monitor_3d: QueuedMonitor3D
+@export var choices: ChoiceLabels
+
+func _ready() -> void:
+	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
+	initial_revolver_area3d.mouse_entered.connect(_on_revolver_entered)
+	initial_revolver_area3d.mouse_exited.connect(_on_revolver_exited)
+	patrons.hovered.connect(_on_patron_hovered)
+	patrons.unhovered.connect(_on_patron_unhovered)
+	player.chamber_updated.connect(_on_chamber_updated)
+	choices.dealer_label.mouse_entered.connect(_on_dealer_label_entered)
+	choices.dealer_label.mouse_exited.connect(_on_dealer_label_exited)
+	
+	choices.you_label.mouse_entered.connect(_on_you_label_entered)
+	choices.you_label.mouse_exited.connect(_on_you_label_exited)
+	monitor_3d.push("take")
+
+func show_target_reach() -> void:
+	monitor_3d.clear()
+	monitor_3d.push_back("reach", ["reach", "999$", "rescue"])
+
+func show_current_score(score: String) -> void:
+	monitor_3d.clear()
+	monitor_3d.push_back("score", [score])
+
+func show_good_luck() -> void:
+	monitor_3d.push("good")
+
+func show_sad() -> void:
+	monitor_3d.push("sure?")
+
+func _on_dealer_label_entered() -> void:
+	monitor_3d.pop_back("x1")
+	monitor_3d.push("x1")
+
+func _on_dealer_label_exited() -> void:
+	monitor_3d.pop_back("x1")
+
+func _on_you_label_entered() -> void:
+	monitor_3d.pop_back("x1")
+	monitor_3d.push("x10")
+
+func _on_you_label_exited() -> void:
+	monitor_3d.pop_back("x10")
+
+func _on_revolver_clicked() -> void:
+	monitor_3d.pop_back("take")
+	monitor_3d.push("reload")
+
+func _on_revolver_entered() -> void:
+	monitor_3d.push("good")
+
+func _on_revolver_exited() -> void:
+	monitor_3d.pop_back("good")
+
+func _on_patron_hovered(patron: Patron) -> void:
+	monitor_3d.push_back("patron", ["+10$"])
+
+func _on_patron_unhovered(patron: Patron) -> void:
+	monitor_3d.pop_back("patron")
+
+func _on_chamber_updated(revolver: Revolver) -> void:
+	monitor_3d.pop_back("chamber")
+	var value := player.get_chamber_worth()
+	var line := "=%s$" % [value]
+	monitor_3d.push_back("chamber", [line])

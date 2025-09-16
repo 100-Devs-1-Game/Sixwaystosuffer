@@ -2,6 +2,8 @@ class_name Revolver
 extends Node3D
 
 signal shoot_happened(patron: Patron)
+signal loaded(patron: Patron)
+signal unloaded(patron: Patron)
 
 @onready var chamber: Chamber = %Chamber
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -13,16 +15,21 @@ func show_hover_position() -> void:
 func hide_hover_position() -> void:
 	current_position_hover.hide()
 
+func drop_bullets() -> void:
+	chamber.drop_bullets()
+
 func get_current_chamber_position() -> Node3D:
 	return chamber.get_current_chamber_position()
 
 func load_patron(patron: Patron) -> void:
 	chamber.load_patron(patron)
 	animation_player.play("load")
+	loaded.emit(patron)
 
 func unload_patron(patron: Patron) -> void:
 	chamber.unload_patron(patron)
 	animation_player.play("load")
+	unloaded.emit(patron)
 
 func can_load_on_current_point() -> bool:
 	return chamber.is_hovered_position_empty()

@@ -6,6 +6,14 @@ extends Node3D
 var items: Dictionary[String, Array]
 var queue: Array[String] 
 
+func clear() -> void:
+	items.clear()
+	queue.clear()
+	monitor_3d.setup_phrase([""])
+
+func push(content: String) -> void:
+	push_back(content, [content])
+
 func push_back(id: String, content: Array[String]) -> void:
 	items[id] = content
 	queue.push_back(id)
@@ -13,7 +21,12 @@ func push_back(id: String, content: Array[String]) -> void:
 
 func pop_back(id: String) -> void:
 	items.erase(id)
-	queue.remove_at(queue.find(id))
+	var index := queue.find(id)
+	
+	if index < 0:
+		return
+	
+	queue.remove_at(index)
 	show_last()
 
 func show_last() -> void:

@@ -2,6 +2,7 @@ class_name Player
 extends Node3D
 
 signal shooted(patron: Patron, to_dealer: bool)
+signal chamber_updated(revolver: Revolver)
 
 @export var patrons: PlayerPatrons
 
@@ -17,6 +18,9 @@ var initial_revolver_position: Node3D
 
 func _ready() -> void:
 	revolver.shoot_happened.connect(_on_shoot_happened)
+	revolver.loaded.connect(func(_b): chamber_updated.emit(revolver))
+	revolver.unloaded.connect(func(_b): chamber_updated.emit(revolver))
+	
 	player_self_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), false))
 	player_target_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), true))
 
@@ -35,6 +39,10 @@ func to_self_aiming() -> void:
 
 func to_idle() -> void:
 	await state_machine.switch_to(PlayerIdleState)
+
+func drop_bullets() -> void:
+	# TODO: make animation for drop bullets
+	revolver.drop_bullets()
 
 func is_idle() -> bool:
 	return state_machine.current_state is PlayerIdleState

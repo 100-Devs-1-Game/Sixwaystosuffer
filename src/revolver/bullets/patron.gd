@@ -2,6 +2,8 @@ class_name Patron
 extends Node3D
 
 signal clicked(patron: Patron)
+signal hovered(patron: Patron)
+signal unhovered(patron: Patron)
 
 @export var is_live: bool = true
 @export var bonus_score: int = 10
@@ -17,6 +19,8 @@ var on_table_rotation: Vector3
 
 func _ready() -> void:
 	interact_area_3d.clicked.connect(func(): clicked.emit(self))
+	interact_area_3d.mouse_entered.connect(func(): hovered.emit(self))
+	interact_area_3d.mouse_exited.connect(func(): unhovered.emit(self))
 
 func enable() -> void:
 	interact_area_3d.enable()

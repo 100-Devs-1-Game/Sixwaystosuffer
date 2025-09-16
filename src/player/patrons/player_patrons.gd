@@ -2,6 +2,8 @@ class_name PlayerPatrons
 extends Node3D
 
 signal clicked(patron: Patron)
+signal hovered(patron: Patron)
+signal unhovered(patron: Patron)
 
 var positions: Array[Node3D]
 var bullets: Array[Patron]
@@ -52,6 +54,8 @@ func enable_patrons_interaction() -> void:
 		
 		bullet.enable()
 		bullet.clicked.connect(_on_patron_clicked)
+		bullet.hovered.connect(_on_patron_hovered)
+		bullet.unhovered.connect(_on_patron_unhovered)
 
 func disable_patrons_interaction() -> void:
 	for bullet in bullets:
@@ -60,6 +64,14 @@ func disable_patrons_interaction() -> void:
 		
 		bullet.disable()
 		bullet.clicked.disconnect(_on_patron_clicked)
+		bullet.hovered.disconnect(_on_patron_hovered)
+		bullet.unhovered.disconnect(_on_patron_unhovered)
 
 func _on_patron_clicked(patron: Patron) -> void:
 	clicked.emit(patron)
+
+func _on_patron_hovered(patron: Patron) -> void:
+	hovered.emit(patron)
+
+func _on_patron_unhovered(patron: Patron) -> void:
+	unhovered.emit(patron)
