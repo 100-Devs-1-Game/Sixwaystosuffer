@@ -72,13 +72,17 @@ func process_self_shooting(patron: Patron) -> void:
 		await state_machine.switch_to(GameOverState)
 		player.block()
 		return
+	
 	await pause_async(0.15)
+	dealer.change_face(Dealer.DealerFace.SAD)
 	end_player_turn()
 
 func process_dealer_shooting(patron: Patron) -> void:
 	await pause_async(0.15)
 	if patron:
 		dealer.take_damage()
+	else:
+		dealer.change_face(Dealer.DealerFace.NEUTRAL)
 	end_player_turn()
 
 func end_player_turn() -> void:

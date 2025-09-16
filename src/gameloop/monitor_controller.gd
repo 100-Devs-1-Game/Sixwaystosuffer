@@ -34,7 +34,7 @@ func show_current_score(score: String) -> void:
 	monitor_3d.push_back("score", [score])
 
 func show_profit(profit: int) -> void:
-	var profit_line := "+%s$!" % profit
+	var profit_line := "+%s$" % profit
 	monitor_3d.push_back("profit", [profit_line])
 	profit_timer.start()
 
