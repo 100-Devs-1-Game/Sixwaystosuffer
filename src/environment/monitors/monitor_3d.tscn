@@ -69,7 +69,8 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ixvfv"]
-random_volume_offset_db = 6.0
+random_pitch = 1.05
+random_volume_offset_db = 3.0
 streams_count = 2
 stream_0/stream = ExtResource("4_e0sc5")
 stream_1/stream = ExtResource("5_38we1")
@@ -98,6 +99,7 @@ libraries = {
 
 [node name="Tick Audio Player" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ixvfv")
+volume_db = -10.0
 
 [node name="Phrase Change Timer" type="Timer" parent="."]
 one_shot = true

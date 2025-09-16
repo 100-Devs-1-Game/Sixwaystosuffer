@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func switch_text(new_text: String) -> void:
 	phrase_change_timer.stop()
-	animation_player.seek(0, true)
+	animation_player.seek(0)
 	label_3d.text = new_text
 
 func setup_phrase(phrase: Array[String], duration: float = 2.0) -> void:

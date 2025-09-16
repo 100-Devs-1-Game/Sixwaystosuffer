@@ -5,5 +5,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfud6"]
 
 [resource]
+Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_yfud6")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_yfud6")

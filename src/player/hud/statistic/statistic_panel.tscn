@@ -35,7 +35,7 @@ theme_override_constants/margin_right = -5
 
 [node name="Label" type="Label" parent="VBoxContainer/Title Container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 42
 text = "SIX WAYS TO SUFFER"
 horizontal_alignment = 1
 
