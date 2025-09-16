@@ -7,6 +7,8 @@ extends Node
 @export var monitor_3d: QueuedMonitor3D
 @export var choices: ChoiceLabels
 
+@export var profit_timer: Timer
+
 func _ready() -> void:
 	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
 	initial_revolver_area3d.mouse_entered.connect(_on_revolver_entered)
@@ -19,6 +21,8 @@ func _ready() -> void:
 	
 	choices.you_label.mouse_entered.connect(_on_you_label_entered)
 	choices.you_label.mouse_exited.connect(_on_you_label_exited)
+	profit_timer.timeout.connect(_on_profit_timeout)
+	
 	monitor_3d.push("take")
 
 func show_target_reach() -> void:
@@ -28,6 +32,14 @@ func show_target_reach() -> void:
 func show_current_score(score: String) -> void:
 	monitor_3d.clear()
 	monitor_3d.push_back("score", [score])
+
+func show_profit(profit: int) -> void:
+	var profit_line := "+%s$!" % profit
+	monitor_3d.push_back("profit", [profit_line])
+	profit_timer.start()
+
+func _on_profit_timeout() -> void:
+	monitor_3d.pop_back("profit")
 
 func show_good_luck() -> void:
 	monitor_3d.push("good")

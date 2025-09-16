@@ -10,26 +10,19 @@ extends State
 @export var session: GameSession
 
 var is_first_dealer_apperence: bool = true
-var is_second_shoot: bool
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back") and player.is_aiming():
 		return_to_select_target()
 
 func process(delta: float) -> void:	
-	if choices.is_visible and not is_player_can_shoot():
+	if choices.is_visible and not player.can_shoot():
 		choices.hide_labels()
-	elif not choices.is_visible and is_player_can_shoot():
+	elif not choices.is_visible and player.can_shoot():
 		choices.show_labels()
 		
 		if is_first_dealer_apperence:
 			entry_dealer()
-		
-		if is_second_shoot:
-			monitor_controller.show_current_score(session.get_score_line())
-
-func is_player_can_shoot() -> bool:
-	return player.is_idle() and player.revolver.has_patrons()
 
 func entry_dealer() -> void:
 	dealer.entry()
@@ -65,8 +58,9 @@ func return_to_select_target() -> void:
 	await player.to_idle()
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
-	session.make_shot(patron, player.revolver, to_dealer)
-	is_second_shoot = true
+	var profit := session.make_shot(patron, player.revolver, to_dealer)
+	monitor_controller.show_current_score(session.get_score_line())
+	monitor_controller.show_profit(profit)
 	
 	if to_dealer:
 		process_dealer_shooting(patron)
@@ -78,12 +72,10 @@ func process_self_shooting(patron: Patron) -> void:
 		await state_machine.switch_to(GameOverState)
 		player.block()
 		return
-	monitor_controller.show_current_score(session.get_score_line())
 	await pause_async(0.15)
 	end_player_turn()
 
 func process_dealer_shooting(patron: Patron) -> void:
-	monitor_controller.show_current_score(session.get_score_line())
 	await pause_async(0.15)
 	if patron:
 		dealer.take_damage()

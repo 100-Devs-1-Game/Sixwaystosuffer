@@ -242,14 +242,19 @@ stream = ExtResource("16_sq7yr")
 script = ExtResource("21_vte5o")
 metadata/_custom_type_script = "uid://cpelv7p3e1pqj"
 
-[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("player", "initial_revolver_area3d", "patrons", "monitor_3d", "choices")]
+[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("player", "initial_revolver_area3d", "patrons", "monitor_3d", "choices", "profit_timer")]
 script = ExtResource("21_ub8w1")
 player = NodePath("../../Play Room/Player")
 initial_revolver_area3d = NodePath("../../Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
 patrons = NodePath("../../Play Room/Table/Patrons")
 monitor_3d = NodePath("../../Play Room/Table/Quequed Monitor3D")
 choices = NodePath("../../Play Room/Table/Choice Labels")
+profit_timer = NodePath("Profit Timer")
 metadata/_custom_type_script = "uid://cnkfjgrw7evpu"
+
+[node name="Profit Timer" type="Timer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/Monitor Controller"]
+wait_time = 4.0
+one_shot = true
 
 [node name="GameSession" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 script = ExtResource("23_ub8w1")

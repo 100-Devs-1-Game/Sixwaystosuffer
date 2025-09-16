@@ -27,13 +27,14 @@ func get_playtime_line() -> String:
 	var dt := Time.get_datetime_dict_from_unix_time(unix_time)
 	return "%02d:%02d:%02d" % [dt.hour, dt.minute, dt.second]
 
-func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> void:
+func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	var modifier: int = 1 if to_dealer else 10
 	var worth := revolver.chamber.get_worth()
 	var result := modifier * worth
 	total_worth += result
 	
 	_update_statistic(patron, result, to_dealer)
+	return result
 
 func get_score_line() -> String:
 	return "%s$/%s$" % [total_worth, target_worth]
