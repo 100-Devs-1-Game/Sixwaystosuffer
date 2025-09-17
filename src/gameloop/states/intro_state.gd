@@ -3,8 +3,7 @@ extends StateAsync
 
 @export var session: GameSession
 
-@export var initial_revolver_position: Node3D
-@export var initial_revolver_area3d: ClickableArea3D
+@export var revolver_table_mockup: ClickableArea3D
 
 @export var player: Player
 
@@ -16,7 +15,7 @@ extends StateAsync
 
 func enter_async() -> void:
 	player_hud.hide_curtain(0.2)
-	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
+	revolver_table_mockup.clicked.connect(_on_revolver_clicked)
 	_spawn_start_bullets(session.initial_bullets_count)
 	intro_animation.play("intro")
 	
@@ -24,7 +23,7 @@ func enter_async() -> void:
 	session.start()
 
 func exit_async() -> void:
-	initial_revolver_area3d.clicked.disconnect(_on_revolver_clicked)
+	revolver_table_mockup.clicked.disconnect(_on_revolver_clicked)
 
 func _spawn_start_bullets(count: int) -> void:
 	var base_patron := load("res://revolver/bullets/patron.tscn")
@@ -35,8 +34,9 @@ func _spawn_start_bullets(count: int) -> void:
 func _on_revolver_clicked() -> void:
 	main_theme_audio.smooth_play()
 	
-	await player.take_revolver_from(initial_revolver_position)
-	initial_revolver_position.queue_free()
+	await player.take_revolver_from(revolver_table_mockup)
+	revolver_table_mockup.disable()
+	revolver_table_mockup.hide()
 	
 	await player.to_idle()
 	state_machine.switch_to(GameplayState)

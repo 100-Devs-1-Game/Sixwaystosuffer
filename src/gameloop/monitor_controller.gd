@@ -2,7 +2,7 @@ class_name MonitorController
 extends Node
 
 @export var player: Player
-@export var initial_revolver_area3d: ClickableArea3D
+@export var revolver_mockup: ClickableArea3D
 @export var patrons: PlayerPatrons
 @export var monitor_3d: QueuedMonitor3D
 @export var choices: ChoiceLabels
@@ -10,9 +10,9 @@ extends Node
 @export var profit_timer: Timer
 
 func _ready() -> void:
-	initial_revolver_area3d.clicked.connect(_on_revolver_clicked)
-	initial_revolver_area3d.mouse_entered.connect(_on_revolver_entered)
-	initial_revolver_area3d.mouse_exited.connect(_on_revolver_exited)
+	revolver_mockup.clicked.connect(_on_revolver_clicked)
+	revolver_mockup.mouse_entered.connect(_on_revolver_entered)
+	revolver_mockup.mouse_exited.connect(_on_revolver_exited)
 	patrons.hovered.connect(_on_patron_hovered)
 	patrons.unhovered.connect(_on_patron_unhovered)
 	player.chamber_updated.connect(_on_chamber_updated)

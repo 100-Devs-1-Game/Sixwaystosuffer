@@ -1,17 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=26 format=3 uid="uid://catmh6bdnn6fa"]
 
-[ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="1_pq8q7"]
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
 [ext_resource type="PackedScene" uid="uid://ctnywjwuiyrka" path="res://player/hud/player_hud.tscn" id="1_ynlg5"]
 [ext_resource type="Environment" uid="uid://blb6sexedwx1w" path="res://environment/world_environment.tres" id="2_r3r3k"]
-[ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_blcw0"]
-[ext_resource type="Script" uid="uid://beatoaa760esh" path="res://common/interactions/raise_on_hover.gd" id="5_gd4vy"]
 [ext_resource type="PackedScene" uid="uid://c76i00ukwlksk" path="res://assets/furniture/table_01/table_01.tscn" id="5_l8v81"]
 [ext_resource type="PackedScene" uid="uid://btj7p6v75j8f2" path="res://environment/lamps/lamp.tscn" id="6_vyht1"]
-[ext_resource type="AudioStream" uid="uid://difed6gqnkh83" path="res://assets/sfx/load_02.ogg" id="7_3dlgs"]
+[ext_resource type="PackedScene" uid="uid://c5rkeo6ndeq1d" path="res://revolver/mockup/revolver_table_mockup.tscn" id="7_vte5o"]
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
-[ext_resource type="Script" uid="uid://dgx7u8h426p70" path="res://common/interactions/hover_sound_player.gd" id="8_vte5o"]
 [ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://environment/table/choice_labels.tscn" id="9_r3r3k"]
 [ext_resource type="PackedScene" uid="uid://ci6kjbj6cbjwm" path="res://environment/monitors/quequed_monitor_3d.tscn" id="11_po8fv"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
@@ -27,15 +23,6 @@
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_huihk"]
-size = Vector3(0.289307, 0.739746, 1.37439)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_po8fv"]
-random_pitch = 1.5
-random_volume_offset_db = 3.0
-streams_count = 1
-stream_0/stream = ExtResource("7_3dlgs")
 
 [sub_resource type="Animation" id="Animation_ub8w1"]
 length = 0.001
@@ -124,35 +111,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
 [node name="Choice Labels" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("monitor") instance=ExtResource("9_r3r3k")]
 monitor = NodePath("../Quequed Monitor3D")
 
-[node name="Revolver Place" type="Marker3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231696, 4.12209, 0.381624)
-
-[node name="Initial Revolver Position" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place" instance=ExtResource("1_pq8q7")]
-transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -3.97734e-14, 3.78552e-08, -0.866026, 0.5, 0, 0, 0)
-
-[node name="Initial Revolver Area3d" type="Area3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position"]
-monitoring = false
-monitorable = false
-script = ExtResource("5_blcw0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d"]
-transform = Transform3D(1, -7.53175e-13, 0, 0, 1, 0, 3.55271e-15, 0, 1, 0.0289307, 0.0617676, -0.460022)
-shape = SubResource("BoxShape3D_huihk")
-
-[node name="Raise On Hover" type="Node" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position" node_paths=PackedStringArray("target", "monitor")]
-script = ExtResource("5_gd4vy")
-target = NodePath("..")
-monitor = NodePath("../Initial Revolver Area3d")
-height = 0.05
-duration = 0.25
-
-[node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Revolver Place/Initial Revolver Position" node_paths=PackedStringArray("area")]
-stream = SubResource("AudioStreamRandomizer_po8fv")
-volume_db = -6.0
-pitch_scale = 1.6
-script = ExtResource("8_vte5o")
-area = NodePath("../Initial Revolver Area3d")
-metadata/_custom_type_script = "uid://dgx7u8h426p70"
+[node name="Revolver Table Mockup" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("7_vte5o")]
+transform = Transform3D(-2.18557e-08, 0.5, 0.866026, -1, -4.37114e-08, -4.24626e-15, 3.78552e-08, -0.866026, 0.5, 0.231696, 4.12209, 0.381624)
 
 [node name="Quequed Monitor3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("11_po8fv")]
 transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, -1.7803, 4.0558, -1.2514)
@@ -164,6 +124,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.14031, 0.759733)
 
 [node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("ammo", "session") instance=ExtResource("16_ab83r")]
+visible = false
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
 
@@ -177,11 +138,10 @@ script = ExtResource("12_qw60f")
 initial_state = NodePath("IntroState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "initial_revolver_position", "initial_revolver_area3d", "player", "main_theme_audio", "player_patrons", "player_hud", "intro_animation")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "revolver_table_mockup", "player", "main_theme_audio", "player_patrons", "player_hud", "intro_animation")]
 script = ExtResource("13_qwhpj")
 session = NodePath("../../GameSession")
-initial_revolver_position = NodePath("../../../Play Room/Table/Revolver Place/Initial Revolver Position")
-initial_revolver_area3d = NodePath("../../../Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
+revolver_table_mockup = NodePath("../../../Play Room/Table/Revolver Table Mockup")
 player = NodePath("../../../Play Room/Player")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
 player_patrons = NodePath("../../../Play Room/Table/Patrons")
@@ -223,10 +183,10 @@ stream = ExtResource("16_sq7yr")
 script = ExtResource("21_vte5o")
 metadata/_custom_type_script = "uid://cpelv7p3e1pqj"
 
-[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("player", "initial_revolver_area3d", "patrons", "monitor_3d", "choices", "profit_timer")]
+[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("player", "revolver_mockup", "patrons", "monitor_3d", "choices", "profit_timer")]
 script = ExtResource("21_ub8w1")
 player = NodePath("../../Play Room/Player")
-initial_revolver_area3d = NodePath("../../Play Room/Table/Revolver Place/Initial Revolver Position/Initial Revolver Area3d")
+revolver_mockup = NodePath("../../Play Room/Table/Revolver Table Mockup")
 patrons = NodePath("../../Play Room/Table/Patrons")
 monitor_3d = NodePath("../../Play Room/Table/Quequed Monitor3D")
 choices = NodePath("../../Play Room/Table/Choice Labels")
