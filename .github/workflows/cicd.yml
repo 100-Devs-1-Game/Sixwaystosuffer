@@ -1,7 +1,7 @@
 name: Release
 
 env:
-  GODOT_VERSION: 4.4.1
+  GODOT_VERSION: 4.5
 
 on:
   push:
