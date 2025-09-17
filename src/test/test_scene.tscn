@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnw7ctybrdt5w"]
+
+[ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="1_m5cd5"]
+
+[node name="TestScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.273963, 0.832893, -0.480868, 0, 0.499998, 0.866027, 0.96174, -0.237259, 0.136981, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Slot Machine" parent="." instance=ExtResource("1_m5cd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730963)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.954548, 0.298058, 0, -0.298058, 0.954548, 0, 1.46474, 0.84704)

@@ -4,6 +4,47 @@ extends Node3D
 @export var ammo: PlayerPatrons
 @export var session: GameSession
 
+@onready var clickable_lever: ClickableArea3D = %ClickableLever
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
+@onready var slot_spinner: SlotSpinner = %"Slot Spinner"
+@onready var box_spawner: BoxSpawner = %BoxSpawner
+
+var is_working: bool
+
+func _ready() -> void:
+	clickable_lever.mouse_entered.connect(_on_lever_entered)
+	clickable_lever.mouse_exited.connect(_on_lever_entered)
+	
+	clickable_lever.clicked.connect(_on_lever_clicked)
+	slot_spinner.done.connect(_on_slots_done)
+	
+	box_spawner.is_box_3_blocked = true
+
+func _on_lever_entered() -> void:
+	if is_working:
+		return
+	
+	animation_player.play("hover")
+
+func _on_lever_clicked() -> void:
+	is_working = true
+	clickable_lever.disable()
+	animation_player.play("use")
+	box_spawner.close()
+
+func start_spin() -> void:
+	slot_spinner.spin()
+
+func _on_slots_done() -> void:
+	open_items()
+
+func open_items() -> void:
+	#animation_player.play("open")
+	box_spawner.open()
+	is_working = false
+	clickable_lever.enable()
+
 func purchase(product: ShopProduct) -> void:
 	if product is BulletProduct:
 		purchase_bullet(product)
