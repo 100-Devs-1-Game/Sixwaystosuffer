@@ -75,7 +75,6 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 msaa_3d = 3
-screen_space_aa = 1
 physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
