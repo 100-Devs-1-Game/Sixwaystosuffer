@@ -20,6 +20,7 @@ func _on_timer_timeout() -> void:
 
 func spin() -> void:
 	var target_slot := get_random_slot()
+	max_duration = 0
 	
 	for cylinder in cylinders:
 		var steps := target_slot + get_random_steps()
