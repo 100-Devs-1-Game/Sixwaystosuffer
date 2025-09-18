@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cn1xctd7xddt2" path="res://assets/counter/counter_01.tscn" id="1_he7nu"]
 [ext_resource type="Script" uid="uid://ji1rm8ch2jps" path="res://environment/monitors/monitor_3d.gd" id="1_phl4j"]
-[ext_resource type="FontFile" uid="uid://c0lnvpfj1lfe7" path="res://assets/fonts/ErbosDraco1StOpenNbpRegular-l5wX.ttf" id="3_tod4r"]
+[ext_resource type="PackedScene" uid="uid://okag7g8u08rt" path="res://environment/monitors/digital_label_3d.tscn" id="3_e0sc5"]
 [ext_resource type="AudioStream" uid="uid://1lw70cknvwuw" path="res://assets/sfx/clock_tick_01.ogg" id="4_e0sc5"]
 [ext_resource type="AudioStream" uid="uid://34jau7ktu6i1" path="res://assets/sfx/clock_tick_02.ogg" id="5_38we1"]
 
@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("counter_01/Label3D:visible")
+tracks/0/path = NodePath("counter_01/Digital Label3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +40,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("counter_01/Label3D:visible")
+tracks/0/path = NodePath("counter_01/Digital Label3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,17 +80,9 @@ script = ExtResource("1_phl4j")
 
 [node name="counter_01" parent="." instance=ExtResource("1_he7nu")]
 
-[node name="Label3D" type="Label3D" parent="counter_01"]
+[node name="Digital Label3D" parent="counter_01" instance=ExtResource("3_e0sc5")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.988704, 0.14988, 0, -0.14988, 0.988704, 0.0178061, 0.158101, 0.134663)
-double_sided = false
-modulate = Color(0.376, 0.99, 0.468, 0.7)
-outline_modulate = Color(0.148, 0.37, 0.185, 0.7)
-text = "READY?"
-font = ExtResource("3_tod4r")
-font_size = 18
-outline_size = 8
-uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

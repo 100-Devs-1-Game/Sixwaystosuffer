@@ -5,12 +5,12 @@ extends Node3D
 @export var text: String:
 	set(value):
 		text = value
-		%Label3D.text = value
+		%"Digital Label3D".text = value
 
 @export var is_blinking: bool
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var label_3d: Label3D = %Label3D
+@onready var label_3d: Label3D = %"Digital Label3D"
 @onready var phrase_change_timer: Timer = $"Phrase Change Timer"
 
 var phrases: Array[String]

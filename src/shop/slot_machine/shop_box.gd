@@ -5,6 +5,11 @@ extends Node3D
 @export var switch_duration: float = 0.25
 @export var is_blocked: bool = false
 
+@onready var product_position: Marker3D = $"Product Position"
+@onready var clickable_area_3d: ClickableArea3D = $ClickableArea3D
+
+var product: ShopProduct
+
 var base_offset: float
 var is_opened: bool
 
@@ -21,6 +26,7 @@ func open() -> void:
 	
 	_tween = _create_box_tween(open_offset, switch_duration, Tween.EASE_OUT)
 	is_opened = true
+	clickable_area_3d.enable()
 
 func close() -> void:
 	_stop_tween_if_needed()
@@ -30,6 +36,7 @@ func close() -> void:
 	
 	_tween = _create_box_tween(base_offset, switch_duration, Tween.EASE_IN)
 	is_opened = false
+	clickable_area_3d.disable()
 
 func _create_box_tween(target_position: float, duration: float, easing: Tween.EaseType) -> Tween:
 	var tween := create_tween()

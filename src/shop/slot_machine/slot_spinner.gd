@@ -3,6 +3,7 @@ extends Node
 
 const ITEMS_ON_CYLINDER: int = 9
 
+signal started()
 signal done()
 
 @export var cylinders: Array[StepSpinner]
@@ -27,6 +28,7 @@ func spin() -> void:
 		cylinder.spin(steps)
 		max_duration = maxf(max_duration, steps * cylinder.duration_per_step)
 	
+	started.emit()
 	timer.start(max_duration)
 
 func get_random_slot() -> int:

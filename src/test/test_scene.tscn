@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnw7ctybrdt5w"]
+[gd_scene load_steps=5 format=3 uid="uid://bnw7ctybrdt5w"]
 
 [ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="1_m5cd5"]
+[ext_resource type="Script" uid="uid://d26x6wuwwmbmt" path="res://shop/products/shop_product.gd" id="2_56kpk"]
+[ext_resource type="Resource" uid="uid://cb76gbf1m43db" path="res://shop/products/data/base_bullet.tres" id="3_gaudv"]
+[ext_resource type="Resource" uid="uid://byfptsgre6o4" path="res://shop/products/data/empty.tres" id="4_gaudv"]
 
 [node name="TestScene" type="Node3D"]
 
@@ -11,6 +14,7 @@ shadow_enabled = true
 
 [node name="Slot Machine" parent="." instance=ExtResource("1_m5cd5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730963)
+products = Array[ExtResource("2_56kpk")]([ExtResource("3_gaudv"), ExtResource("4_gaudv")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.954548, 0.298058, 0, -0.298058, 0.954548, 0, 1.46474, 0.84704)

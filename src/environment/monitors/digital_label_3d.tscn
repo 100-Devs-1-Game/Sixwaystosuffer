@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://okag7g8u08rt"]
+
+[ext_resource type="FontFile" uid="uid://c0lnvpfj1lfe7" path="res://assets/fonts/ErbosDraco1StOpenNbpRegular-l5wX.ttf" id="1_goxy8"]
+
+[node name="Digital Label3D" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, 0.988704, 0.14988, 0, -0.14988, 0.988704, 0, 0, 0)
+double_sided = false
+modulate = Color(0.376, 0.99, 0.468, 0.7)
+outline_modulate = Color(0.148, 0.37, 0.185, 0.7)
+text = "READY?"
+font = ExtResource("1_goxy8")
+font_size = 18
+outline_size = 8
+uppercase = true
