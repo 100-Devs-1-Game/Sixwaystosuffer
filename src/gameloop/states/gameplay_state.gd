@@ -15,7 +15,11 @@ func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back") and player.is_aiming():
 		return_to_select_target()
 
-func process(delta: float) -> void:	
+func process(_delta: float) -> void:
+	process_choices_on_table()
+	process_game_over()
+
+func process_choices_on_table() -> void:
 	if choices.is_visible and not player.can_shoot():
 		choices.hide_labels()
 	elif not choices.is_visible and player.can_shoot():
@@ -23,6 +27,11 @@ func process(delta: float) -> void:
 		
 		if is_first_dealer_apperence:
 			entry_dealer()
+
+func process_game_over() -> void:
+	# TODO: Dealer force end of game
+	if not player.patrons.has_bullets() and not player.revolver.has_patrons():
+		state_machine.switch_to(DealerForceOverState)
 
 func entry_dealer() -> void:
 	dealer.entry()
@@ -91,4 +100,4 @@ func end_player_turn() -> void:
 	await player.to_idle()
 
 func pause_async(duration: float) -> void:
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(duration).timeout

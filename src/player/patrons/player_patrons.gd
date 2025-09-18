@@ -31,6 +31,9 @@ func get_available_space() -> int:
 			space += 1
 	return space
 
+func has_bullets() -> bool:
+	return get_available_space() < 13
+
 func add(patron: Patron) -> void:
 	var index := get_free_index()
 	var patron_position := positions[index]

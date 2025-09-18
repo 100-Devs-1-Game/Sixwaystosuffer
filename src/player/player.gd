@@ -24,7 +24,7 @@ func _ready() -> void:
 	player_self_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), false))
 	player_target_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), true))
 
-func _on_shoot_happened(patron: Patron) -> void:
+func _on_shoot_happened(_patron: Patron) -> void:
 	camera_shaker.shake(0.2)
 
 func take_revolver_from(initial_position: Node3D) -> void:
