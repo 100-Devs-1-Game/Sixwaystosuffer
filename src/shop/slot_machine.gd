@@ -6,6 +6,7 @@ extends Node3D
 
 @onready var clickable_lever: ClickableArea3D = %ClickableLever
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var slot_machine_animation_player: AnimationPlayer = %"Slot Machine AnimationPlayer"
 
 @onready var slot_spinner: SlotSpinner = %"Slot Spinner"
 @onready var box_spawner: BoxSpawner = %BoxSpawner
@@ -18,8 +19,6 @@ func _ready() -> void:
 	
 	clickable_lever.clicked.connect(_on_lever_clicked)
 	slot_spinner.done.connect(_on_slots_done)
-	
-	box_spawner.is_box_3_blocked = true
 
 func _on_lever_entered() -> void:
 	if is_working:
@@ -35,15 +34,27 @@ func _on_lever_clicked() -> void:
 
 func start_spin() -> void:
 	slot_spinner.spin()
+	slot_machine_animation_player.play("work")
+	slot_machine_animation_player.speed_scale = 1.0
+	
+	var tween := create_tween()
+	tween.tween_property(slot_machine_animation_player, "speed_scale", 0, slot_spinner.max_duration)
 
 func _on_slots_done() -> void:
 	open_items()
+	slot_machine_animation_player.play("idle")
 
 func open_items() -> void:
 	#animation_player.play("open")
 	box_spawner.open()
 	is_working = false
 	clickable_lever.enable()
+
+func open_boxes() -> void:
+	#box_spawner.open()
+	#is_working = false
+	#clickable_lever.enable()
+	pass
 
 func purchase(product: ShopProduct) -> void:
 	if product is BulletProduct:
