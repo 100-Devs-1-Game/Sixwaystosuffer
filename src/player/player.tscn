@@ -1,7 +1,6 @@
-[gd_scene load_steps=43 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=46 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
-[ext_resource type="Script" uid="uid://drivgd6dxexp8" path="res://player/player_head.gd" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://tsoag28itu8l" path="res://player/camera/camera_shaker.gd" id="3_kb6p2"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://c3u4424s0t8o1" path="res://assets/sfx/load_01.ogg" id="4_kb6p2"]
@@ -17,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://csoud1jtcyh3x" path="res://assets/sfx/woosh_01.ogg" id="13_e7oew"]
 [ext_resource type="AudioStream" uid="uid://c0y3ekplebwui" path="res://assets/sfx/woosh_02.ogg" id="14_c35mf"]
 [ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="15_65viv"]
+[ext_resource type="Script" uid="uid://cklc006ph4e6u" path="res://player/states/player_shopping_state.gd" id="18_e7oew"]
 
 [sub_resource type="Curve" id="Curve_kb6p2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.195767, 0.786228), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -62,6 +62,115 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_28aoi"),
 &"idle": SubResource("Animation_vvh5c")
+}
+
+[sub_resource type="Animation" id="Animation_e7oew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.322175, 1.35497, 1.24169)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player Hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Player Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tqiix"]
+resource_name = "to_shop"
+length = 0.80000335
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.322175, 1.35497, 1.24169), Vector3(-0.322, 1.355, 1.4), Vector3(-0.322, 1.355, -0.726)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.34906584, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player Hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.131, 0.8, -0.392), Vector3(0.45611805, 0.894, 0.09273538)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Player Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.12463641, 0.062078457, 0.2805944), Vector3(1.3962634, -0.5794493, -0.49218285)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c35mf"]
+_data = {
+&"RESET": SubResource("Animation_e7oew"),
+&"to_shop": SubResource("Animation_tqiix")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32hag"]
@@ -677,8 +786,6 @@ script = ExtResource("1_g1dw6")
 
 [node name="Player Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322175, 1.35497, 1.24169)
-script = ExtResource("2_yw30f")
-mouse_sensitivity = 0.001
 
 [node name="Camera Point" type="Node3D" parent="Player Head"]
 transform = Transform3D(0.99970096, -0.017145207, -0.017449748, 0.017449759, 0.999695, 0.017452406, 0.017145218, -0.017751677, 0.999695, 0, 0, 0)
@@ -703,8 +810,13 @@ libraries = {
 autoplay = "idle"
 speed_scale = 0.1
 
+[node name="Player Head AnimationPlayer" type="AnimationPlayer" parent="Player Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_c35mf")
+}
+
 [node name="Player Hand" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999988, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
 
 [node name="Tremor" type="Node3D" parent="Player Hand"]
 
@@ -818,6 +930,11 @@ script = ExtResource("10_ebec5")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://c88mh0j26u8nj"
+
+[node name="PlayerShoppingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_head_animation")]
+script = ExtResource("18_e7oew")
+player_head_animation = NodePath("../../Player Head/Player Head AnimationPlayer")
+metadata/_custom_type_script = "uid://cklc006ph4e6u"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)

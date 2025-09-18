@@ -47,6 +47,9 @@ func drop_bullets() -> int:
 	# TODO: make animation for drop bullets
 	return revolver.drop_bullets()
 
+func to_shopping(shop: SlotMachine) -> void:
+	await state_machine.switch_to(PlayerShoppingState)
+
 func is_idle() -> bool:
 	return state_machine.current_state is PlayerIdleState
 

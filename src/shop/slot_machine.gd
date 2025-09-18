@@ -11,6 +11,7 @@ extends Node3D
 
 @onready var slot_spinner: SlotSpinner = %"Slot Spinner"
 @onready var box_spawner: BoxSpawner = %BoxSpawner
+@onready var clickable_area_3d: ClickableArea3D = $ClickableArea3D
 
 var is_working: bool
 
@@ -20,6 +21,13 @@ func _ready() -> void:
 	
 	clickable_lever.clicked.connect(_on_lever_clicked)
 	slot_spinner.done.connect(_on_slots_done)
+
+func enable() -> void:
+	clickable_lever.enable()
+
+func disable() -> void:
+	clickable_lever.disable()
+	box_spawner.close()
 
 func _on_lever_entered() -> void:
 	if is_working:

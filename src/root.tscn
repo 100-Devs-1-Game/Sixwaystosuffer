@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=31 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -10,15 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
 [ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://environment/table/choice_labels.tscn" id="9_r3r3k"]
 [ext_resource type="PackedScene" uid="uid://ci6kjbj6cbjwm" path="res://environment/monitors/quequed_monitor_3d.tscn" id="11_po8fv"]
+[ext_resource type="Script" uid="uid://d26x6wuwwmbmt" path="res://shop/products/shop_product.gd" id="12_ab83r"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
+[ext_resource type="Resource" uid="uid://cb76gbf1m43db" path="res://shop/products/data/base_bullet.tres" id="13_1xb4a"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
+[ext_resource type="Resource" uid="uid://byfptsgre6o4" path="res://shop/products/data/empty.tres" id="14_0dnjj"]
 [ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="16_ab83r"]
 [ext_resource type="Script" uid="uid://cdgedpgmh1mco" path="res://gameloop/states/dealer_force_over_state.gd" id="16_po8fv"]
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 [ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
+[ext_resource type="Script" uid="uid://wugaqok4wmho" path="res://gameloop/states/shopping_state.gd" id="19_1xb4a"]
 [ext_resource type="Script" uid="uid://cnkfjgrw7evpu" path="res://gameloop/monitor_controller.gd" id="21_ub8w1"]
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
@@ -124,9 +128,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.14031, 0.759733)
 
 [node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("ammo", "session") instance=ExtResource("16_ab83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06826681, 4.0467315, 0.27297744)
 visible = false
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
+products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_0dnjj")])
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.68618)
@@ -166,6 +172,12 @@ player = NodePath("../../../Play Room/Player")
 monitor_controller = NodePath("../../Monitor Controller")
 session = NodePath("../../GameSession")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
+
+[node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "slot_machine")]
+script = ExtResource("19_1xb4a")
+player = NodePath("../../../Play Room/Player")
+slot_machine = NodePath("../../../Play Room/Table/Slot Machine")
+metadata/_custom_type_script = "uid://wugaqok4wmho"
 
 [node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("monitor", "dealer")]
 script = ExtResource("16_po8fv")

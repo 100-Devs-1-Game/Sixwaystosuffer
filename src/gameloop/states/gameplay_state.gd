@@ -94,7 +94,9 @@ func end_player_turn() -> void:
 	await player.to_idle()
 	
 	if not player.patrons.has_bullets() and not player.revolver.has_patrons():
-		state_machine.switch_to(DealerForceOverState)
+		await state_machine.switch_to(DealerForceOverState)
+	else:
+		await state_machine.switch_to(ShoppingState)
 
 func pause_async(duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
