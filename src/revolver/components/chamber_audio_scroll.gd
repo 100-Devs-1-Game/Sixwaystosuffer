@@ -11,7 +11,7 @@ var previous_rotation: float
 func _ready() -> void:
 	previous_rotation = chamber.rotation.z
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var diff = abs(chamber.rotation.z - previous_rotation)
 	
 	if diff > deg_to_rad(ANGLE_ROTATION_FOR_SOUND):

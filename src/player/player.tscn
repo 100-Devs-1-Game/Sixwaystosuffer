@@ -789,10 +789,9 @@ revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interac
 patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "target_point", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
+[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
 script = ExtResource("4_yw30f")
 player = NodePath("../../..")
-target_point = NodePath("../../../Patron Load Trajectories")
 drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")
 revolver = NodePath("../../../Player Hand/Tremor/Revolver")
 chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")

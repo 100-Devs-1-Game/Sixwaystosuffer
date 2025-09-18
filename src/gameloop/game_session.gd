@@ -17,10 +17,10 @@ var self_aiming_count: int
 var dealer_aiming_count: int
 
 func start() -> void:
-	start_time = Time.get_unix_time_from_system()
+	start_time = int(Time.get_unix_time_from_system())
 
 func stop() -> void:
-	end_time = Time.get_unix_time_from_system()
+	end_time = int(Time.get_unix_time_from_system())
 
 func get_playtime_line() -> String:
 	var unix_time := end_time - start_time
@@ -36,7 +36,7 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	_update_statistic(patron, result, to_dealer)
 	return result
 
-func make_purchase(cost: int) -> void:
+func make_purchase(_cost: int) -> void:
 	pass
 
 func get_score_line() -> String:

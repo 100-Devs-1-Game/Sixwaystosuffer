@@ -3,7 +3,6 @@ extends Node
 
 @export var player: Player
 
-@export var target_point: Node3D
 @export var drum_target_point: Node3D
 @export var revolver: Revolver
 
@@ -94,8 +93,8 @@ func _on_start_loading_to_chamber(patron: Patron) -> void:
 	patron.reparent(chamber_node)
 	revolver.load_patron(patron)
 
-func _on_setup_target_point(patron: Patron, target_point: Node3D) -> void:
-	patron.global_position = target_point.global_position
+func _on_setup_target_point(patron: Patron, point: Node3D) -> void:
+	patron.global_position = point.global_position
 	is_working = false
 
 func enable_patrons_interaction() -> void:

@@ -80,8 +80,8 @@ func is_live_patron_now() -> bool:
 func get_current_patron() -> Patron:
 	return _partons[_current_index]
 
-func spin_random(min: int = 7, max: int = 21) -> void:
-	var offset := _random.randi_range(min, max)
+func spin_random(min_steps: int = 7, max_steps: int = 21) -> void:
+	var offset := _random.randi_range(min_steps, max_steps)
 	spin(-offset)
 
 func spin_down() -> void:

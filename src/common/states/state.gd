@@ -3,7 +3,7 @@ extends Node
 
 var state_machine: StateMachine
 
-func handle_input(event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	pass
 
 func enter() -> void:
@@ -12,5 +12,5 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	pass

@@ -38,6 +38,9 @@ func show_profit(profit: int) -> void:
 	monitor_3d.push_back("profit", [profit_line])
 	profit_timer.start()
 
+func show_game_end() -> void:
+	monitor_3d.push("[GAMEPLAY_SADLY]")
+
 func _on_profit_timeout() -> void:
 	monitor_3d.pop_back("profit")
 
@@ -71,13 +74,13 @@ func _on_revolver_entered() -> void:
 func _on_revolver_exited() -> void:
 	monitor_3d.pop_back("[TUTOR_GOOD]")
 
-func _on_patron_hovered(patron: Patron) -> void:
+func _on_patron_hovered(_patron: Patron) -> void:
 	monitor_3d.push_back("patron", ["+10$"])
 
-func _on_patron_unhovered(patron: Patron) -> void:
+func _on_patron_unhovered(_patron: Patron) -> void:
 	monitor_3d.pop_back("patron")
 
-func _on_chamber_updated(revolver: Revolver) -> void:
+func _on_chamber_updated(_revolver: Revolver) -> void:
 	monitor_3d.pop_back("chamber")
 	var value := player.get_chamber_worth()
 	var line := "=%s$" % [value]

@@ -167,8 +167,10 @@ monitor_controller = NodePath("../../Monitor Controller")
 session = NodePath("../../GameSession")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 
-[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine"]
+[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("monitor", "dealer")]
 script = ExtResource("16_po8fv")
+monitor = NodePath("../../Monitor Controller")
+dealer = NodePath("../../../Play Room/Dealer")
 metadata/_custom_type_script = "uid://cdgedpgmh1mco"
 
 [node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "player_hud", "selfshot_audio", "main_theme_audio")]
