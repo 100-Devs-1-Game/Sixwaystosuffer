@@ -6,7 +6,7 @@ extends Node
 @export var spinner: SlotSpinner
 @export var lever: ClickableArea3D
 
-var base_text: String = "welcome back"
+var base_text: String = "[SLOT_WELCOME]"
 
 func _ready() -> void:
 	spawner.hovered.connect(_on_box_hovered)
@@ -19,7 +19,7 @@ func _ready() -> void:
 	digital.text = base_text
 
 func clear() -> void:
-	base_text = "welcome back"
+	base_text = "[SLOT_WELCOME]"
 
 func _on_box_hovered(box: ShopBox) -> void:
 	var product := box.product
@@ -29,17 +29,17 @@ func _on_box_unhovered(_box: ShopBox) -> void:
 	digital.text = base_text
 
 func _on_box_clicked(_box: ShopBox) -> void:
-	digital.text = "sure?"
+	digital.text = "[SLOT_SURE]"
 
 func _on_lever_entered() -> void:
-	digital.text = "roll for 5$"
+	digital.text = tr("[SLOT_ROLL_PRICE]") % 5
 
 func _on_lever_exited() -> void:
 	digital.text = base_text
 
 func _on_roll_started() -> void:
-	digital.text = "wait..."
+	digital.text = "[SLOT_WAIT]"
 
 func _on_roll_done() -> void:
-	base_text = "choose"
+	base_text = "[SLOT_CHOOSE]"
 	digital.text = base_text

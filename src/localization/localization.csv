@@ -9,6 +9,11 @@ key,en
 [GAMEPLAY_DEALER],dealer
 [GAMEPLAY_YOU],you
 [GAMEPLAY_SADLY],sadly
+[SLOT_WELCOME],Welcome Back
+[SLOT_SURE],Sure?
+[SLOT_ROLL_PRICE],roll for %s$
+[SLOT_WAIT],wait
+[SLOT_CHOOSE],choose
 [STAT_TITLE],Six ways to suffer
 [STAT_PLAYTIME],Playtime
 [STAT_REACHED_WORTH],Reached worth
