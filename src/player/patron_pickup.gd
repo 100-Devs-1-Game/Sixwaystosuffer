@@ -95,6 +95,7 @@ func _on_start_loading_to_chamber(patron: Patron) -> void:
 
 func _on_setup_target_point(patron: Patron, point: Node3D) -> void:
 	patron.global_position = point.global_position
+	revolver.chamber.spin_up()
 	is_working = false
 
 func enable_patrons_interaction() -> void:
