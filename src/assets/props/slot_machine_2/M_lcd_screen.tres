@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dem1gmuqki65i"]
+
+[ext_resource type="Texture2D" uid="uid://k3nt0u4x4dxu" path="res://assets/props/slot_machine_2/lcd_screen_albedo.png" id="1_kycpp"]
+
+[resource]
+albedo_texture = ExtResource("1_kycpp")
