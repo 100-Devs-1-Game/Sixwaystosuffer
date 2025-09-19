@@ -24,7 +24,7 @@ func handle_input(event: InputEvent) -> void:
 func enter_async() -> void:
 	if dealer.current_face != Dealer.DealerFace.NEUTRAL:
 		dealer.change_face(Dealer.DealerFace.NEUTRAL)
-		await pause(1.0)
+		await pause(1.4)
 	
 	shop_animation.play("show")
 	await current_animation_ended(shop_animation)
