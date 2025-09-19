@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=37 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
 [ext_resource type="Script" uid="uid://bjd1hlgp5pw0k" path="res://gameloop/states/wining_state.gd" id="23_0dnjj"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
+[ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -403,6 +404,10 @@ monitor = NodePath("../../../Play Room/Table/Quequed Monitor3D")
 player_hud = NodePath("../../../../../../Player HUD")
 game_session = NodePath("../../GameSession")
 metadata/_custom_type_script = "uid://bjd1hlgp5pw0k"
+
+[node name="GameReloadState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine"]
+script = ExtResource("24_uwexw")
+metadata/_custom_type_script = "uid://b7yful5yxqc8a"
 
 [node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 stream = ExtResource("16_sq7yr")
