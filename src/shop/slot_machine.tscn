@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://derlu8q1eb2jx"]
+[gd_scene load_steps=30 format=3 uid="uid://derlu8q1eb2jx"]
 
 [ext_resource type="Script" uid="uid://bqtdtdw48u2h5" path="res://shop/slot_machine.gd" id="1_2njt7"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_1co26"]
@@ -6,9 +6,16 @@
 [ext_resource type="Script" uid="uid://tnkdnrhaxat6" path="res://shop/slot_machine/slot_spinner.gd" id="4_2p75k"]
 [ext_resource type="PackedScene" uid="uid://okag7g8u08rt" path="res://environment/monitors/digital_label_3d.tscn" id="4_aaf27"]
 [ext_resource type="PackedScene" uid="uid://5rifllx08xxc" path="res://shop/slot_machine/box.tscn" id="5_6jkie"]
+[ext_resource type="AudioStream" uid="uid://bu4q6a236e7oa" path="res://assets/sfx/slot_machine/level_pull_01.wav" id="6_7jj2a"]
 [ext_resource type="Script" uid="uid://c5yhj7vwcomgx" path="res://shop/slot_machine/box_spawner.gd" id="6_h6o38"]
+[ext_resource type="AudioStream" uid="uid://c20dck4uoaydv" path="res://assets/sfx/slot_machine/level_pull_02.wav" id="7_13xgx"]
 [ext_resource type="PackedScene" uid="uid://b0y802ebnhvd5" path="res://assets/props/slot_machine_2/slot_machine.glb" id="8_6jkie"]
+[ext_resource type="AudioStream" uid="uid://cxkcjnnwr8311" path="res://assets/sfx/slot_machine/level_pull_03.wav" id="8_rosq1"]
 [ext_resource type="Script" uid="uid://doq52rt8oocmd" path="res://shop/slot_machine/shop_label.gd" id="9_aaf27"]
+[ext_resource type="AudioStream" uid="uid://dxey4awrp2tvq" path="res://assets/sfx/slot_machine/level_pull_04.wav" id="9_sjuok"]
+[ext_resource type="AudioStream" uid="uid://dccxb1yortm2y" path="res://assets/sfx/slot_machine/spinning.wav" id="10_hvgmg"]
+[ext_resource type="AudioStream" uid="uid://ckpjbrkhduime" path="res://assets/sfx/slot_machine/level_pull_05.wav" id="10_ii2y4"]
+[ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="10_l42sb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p75k"]
 size = Vector3(0.2, 0.8, 0.2)
@@ -130,6 +137,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Hover Stream Player:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2p75k"]
 resource_name = "hover"
@@ -145,6 +164,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, -2, -2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.0872665, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Hover Stream Player:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0sub2"]
@@ -271,6 +302,37 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1.05, 1), Vector3(1, 1, 1), Vector3(1, 0.95, 1), Vector3(1, 1, 1), Vector3(1, 1, 1)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/Pull Lever Audio Player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.4511245,
+"start_offset": 0.0,
+"stream": ExtResource("6_7jj2a")
+}, {
+"end_offset": 0.44851747,
+"start_offset": 0.0,
+"stream": ExtResource("7_13xgx")
+}, {
+"end_offset": 0.4496705,
+"start_offset": 0.0,
+"stream": ExtResource("8_rosq1")
+}, {
+"end_offset": 0.44851747,
+"start_offset": 0.0,
+"stream": ExtResource("9_sjuok")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_ii2y4")
+}],
+"times": PackedFloat32Array(0.03333333, 0.1, 0.16666667, 0.23333333, 0.3)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2p75k"]
 _data = {
@@ -280,6 +342,15 @@ _data = {
 &"open": SubResource("Animation_h6o38"),
 &"use": SubResource("Animation_7gwbg")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7jj2a"]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("6_7jj2a")
+stream_1/stream = ExtResource("7_13xgx")
+stream_2/stream = ExtResource("8_rosq1")
+stream_3/stream = ExtResource("9_sjuok")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aaf27"]
 size = Vector3(1.3273437, 1.286, 0.826416)
@@ -354,6 +425,7 @@ libraries = {
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7728111, -0.6346361, 0, 0.6346361, 0.7728111, 0, -0.028108984, 1.1712333)
 light_color = Color(1, 0.85, 0.85, 1)
+light_energy = 0.0
 spot_range = 2.0
 spot_attenuation = -2.0
 
@@ -363,6 +435,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_2p75k")
 }
 autoplay = "idle"
+
+[node name="Pull Lever Audio Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+pitch_scale = 2.0
+
+[node name="Hover Stream Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+stream = SubResource("AudioStreamRandomizer_7jj2a")
+volume_db = -12.0
 
 [node name="Slot Spinner" type="Node" parent="." node_paths=PackedStringArray("cylinders", "timer")]
 unique_name_in_owner = true
@@ -418,5 +497,12 @@ metadata/_custom_type_script = "uid://dvh37wnsy4miy"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07115835, 0.6548462, -0.06604004)
 shape = SubResource("BoxShape3D_aaf27")
+
+[node name="Spining Audio Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_hvgmg")
+script = ExtResource("10_l42sb")
+initial_db = 0.0
+target_db = -30.0
+metadata/_custom_type_script = "uid://cpelv7p3e1pqj"
 
 [editable path="slot_machine2"]

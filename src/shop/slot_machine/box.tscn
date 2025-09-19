@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://5rifllx08xxc"]
+[gd_scene load_steps=11 format=4 uid="uid://5rifllx08xxc"]
 
 [ext_resource type="Script" uid="uid://ccf2hgnaclnva" path="res://shop/slot_machine/shop_box.gd" id="2_bvhbr"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_lvb47"]
 [ext_resource type="Material" uid="uid://crr2rtuyv5uib" path="res://assets/revolver/M_revolver.tres" id="3_nlkvk"]
+[ext_resource type="AudioStream" uid="uid://ctd6coeiygr24" path="res://assets/sfx/slot_machine/box_pull_02.wav" id="4_nlkvk"]
+[ext_resource type="AudioStream" uid="uid://dxc2ov4jc2afr" path="res://assets/sfx/slot_machine/box_pull_01.wav" id="5_yjfjk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlkvk"]
 size = Vector3(0.3, 0.2, 0.3)
@@ -41,6 +43,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8dtpd")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yjfjk"]
+random_pitch = 1.2
+random_volume_offset_db = 6.0
+streams_count = 1
+stream_0/stream = ExtResource("4_nlkvk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_om6o4"]
+random_pitch = 1.2
+random_volume_offset_db = 6.0
+streams_count = 1
+stream_0/stream = ExtResource("5_yjfjk")
+
 [node name="ShopBox" type="Node3D"]
 script = ExtResource("2_bvhbr")
 
@@ -60,3 +74,13 @@ shape = SubResource("BoxShape3D_nlkvk")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_yjfjk")
 skeleton = NodePath("")
+
+[node name="Open AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_yjfjk")
+volume_db = -8.0
+pitch_scale = 0.9
+
+[node name="Close AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_om6o4")
+volume_db = -8.0
+pitch_scale = 0.9

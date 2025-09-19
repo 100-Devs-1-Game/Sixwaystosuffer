@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=44 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -23,11 +23,16 @@
 [ext_resource type="AudioStream" uid="uid://dbuboxh6nrwe" path="res://assets/sfx/music_main_menu.ogg" id="16_sq7yr"]
 [ext_resource type="AudioStream" uid="uid://uuj0ag6xyihm" path="res://assets/sfx/kill_self_headshot.ogg" id="17_blcw0"]
 [ext_resource type="Script" uid="uid://wugaqok4wmho" path="res://gameloop/states/shopping_state.gd" id="19_1xb4a"]
+[ext_resource type="AudioStream" uid="uid://bt8yjtlru24ka" path="res://assets/sfx/slot_machine/box_down.ogg" id="20_8pgb7"]
+[ext_resource type="AudioStream" uid="uid://csoud1jtcyh3x" path="res://assets/sfx/woosh_01.ogg" id="21_cj3xu"]
 [ext_resource type="Script" uid="uid://cnkfjgrw7evpu" path="res://gameloop/monitor_controller.gd" id="21_ub8w1"]
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
+[ext_resource type="AudioStream" uid="uid://c0y3ekplebwui" path="res://assets/sfx/woosh_02.ogg" id="22_ql764"]
 [ext_resource type="Script" uid="uid://bjd1hlgp5pw0k" path="res://gameloop/states/wining_state.gd" id="23_0dnjj"]
+[ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="23_qoqhg"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
 [ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
+[ext_resource type="AudioStream" uid="uid://b7a3m8ghbty1g" path="res://assets/sfx/load_04.ogg" id="28_ql764"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -105,6 +110,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/On Table Audio Player:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Woosh Audio Player:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_uwexw"]
 resource_name = "hide"
@@ -170,6 +199,18 @@ tracks/4/keys = {
 "method": &"smooth_light_off"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/Woosh Audio Player:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_1xb4a"]
 resource_name = "show"
@@ -182,7 +223,7 @@ tracks/0/path = NodePath("../../../Play Room/Table/Slot Machine:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.75, 0.8333333, 0.9583333),
+"times": PackedFloat32Array(0, 0.5833333, 0.8333333, 0.9166666, 1.0416666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.06826681, 1.1966894, -3.7568364), Vector3(-0.04904175, 4.8754606, -1.4479699), Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.017, 4.0371027, 0.184)]
@@ -194,7 +235,7 @@ tracks/1/path = NodePath("../../../Play Room/Table/Slot Machine:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4166667, 0.6666667, 0.75, 0.8333333, 0.9583333),
+"times": PackedFloat32Array(0, 0.4166667, 0.75, 0.8333333, 0.9166666, 1.0416666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.34906584, 0, 0), Vector3(-0.6981317, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.10471976, 0, 0), Vector3(0, 0, 0)]
@@ -206,7 +247,7 @@ tracks/2/path = NodePath("../../../Play Room/Table/Slot Machine:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.375, 0.9583333),
+"times": PackedFloat32Array(0, 0.29166666, 1.0416666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, true]
@@ -242,12 +283,36 @@ tracks/5/path = NodePath("../../../Play Room/Player")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.75),
+"times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"shake"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/On Table Audio Player:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/Woosh Audio Player:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uwexw"]
@@ -256,6 +321,20 @@ _data = {
 &"hide": SubResource("Animation_uwexw"),
 &"show": SubResource("Animation_1xb4a")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tilu5"]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("20_8pgb7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_udg8a"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("21_cj3xu")
+stream_1/stream = ExtResource("22_ql764")
+stream_2/stream = ExtResource("23_qoqhg")
 
 [node name="Root" type="Node"]
 
@@ -378,6 +457,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_uwexw")
 }
 
+[node name="On Table Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/ShoppingState/AnimationPlayer"]
+stream = SubResource("AudioStreamRandomizer_tilu5")
+volume_db = -8.0
+pitch_scale = 0.7
+
+[node name="Woosh Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/ShoppingState/AnimationPlayer"]
+stream = SubResource("AudioStreamRandomizer_udg8a")
+volume_db = 12.0
+pitch_scale = 0.75
+
 [node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "monitor", "dealer", "player")]
 script = ExtResource("16_po8fv")
 session = NodePath("../../GameSession")
@@ -397,14 +486,21 @@ metadata/_custom_type_script = "uid://cy6wfx5xalpb6"
 [node name="Game Over Audio" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/GameOverState"]
 stream = ExtResource("17_blcw0")
 
-[node name="WiningState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("dealer", "player", "monitor", "player_hud", "game_session")]
+[node name="WiningState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("dealer", "player", "monitor", "player_hud", "game_session", "main_theme", "switch_audio_player")]
 script = ExtResource("23_0dnjj")
 dealer = NodePath("../../../Play Room/Dealer")
 player = NodePath("../../../Play Room/Player")
 monitor = NodePath("../../../Play Room/Table/Quequed Monitor3D")
 player_hud = NodePath("../../../../../../Player HUD")
 game_session = NodePath("../../GameSession")
+main_theme = NodePath("../../Main Theme Audio Player")
+switch_audio_player = NodePath("Switch Audio Player")
 metadata/_custom_type_script = "uid://bjd1hlgp5pw0k"
+
+[node name="Switch Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/WiningState"]
+stream = ExtResource("28_ql764")
+volume_db = 6.0
+pitch_scale = 0.8
 
 [node name="GameReloadState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine"]
 script = ExtResource("24_uwexw")

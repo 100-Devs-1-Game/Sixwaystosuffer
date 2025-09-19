@@ -1,4 +1,5 @@
-[gd_resource type="AudioBusLayout" load_steps=0 format=3 uid="uid://bjf0ssi73dbnh"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://bjf0ssi73dbnh"]
 
 [resource]
 bus/0/volume_db = -20.3764
+bus/0/send = &"PitchShiftBus"

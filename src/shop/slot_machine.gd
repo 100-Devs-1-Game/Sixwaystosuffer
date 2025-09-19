@@ -14,7 +14,7 @@ extends Node3D
 @onready var clickable_area_3d: ClickableArea3D = $ClickableArea3D
 
 @onready var spot_light_3d: SpotLight3D = $SpotLight3D
-
+@onready var spining_audio_player: SmoothAudioStreamPlayer = $"Spining Audio Player"
 
 var is_working: bool
 
@@ -60,11 +60,22 @@ func _on_lever_clicked() -> void:
 func start_spin() -> void:
 	session.make_roll()
 	slot_spinner.spin()
+	
+	
+	spining_audio_player.volume_db = 0
+	spining_audio_player.play()
+	
 	slot_machine_animation_player.play("work")
 	slot_machine_animation_player.speed_scale = 1.0
 	
 	var tween := create_tween()
 	tween.tween_property(slot_machine_animation_player, "speed_scale", 0, slot_spinner.max_duration)
+	
+	var sound_tween := create_tween()
+	sound_tween.tween_interval(slot_spinner.max_duration / 2)
+	sound_tween.tween_property(spining_audio_player, "volume_db", -60.0, slot_spinner.max_duration / 1.5)
+	sound_tween.tween_callback(func(): spining_audio_player.stop())
+	#tween.parallel().tween_property(smooth_pitch_shifter.effect, "pitch_scale", 0.76, slot_spinner.max_duration + 0.4)
 
 func _on_slots_done() -> void:
 	open_items()

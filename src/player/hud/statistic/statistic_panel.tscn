@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://230joxf853v3"]
+[gd_scene load_steps=6 format=3 uid="uid://230joxf853v3"]
 
 [ext_resource type="PackedScene" uid="uid://b8f3m38vjqs7" path="res://player/hud/statistic/statistic_label.tscn" id="1_25yb5"]
 [ext_resource type="Theme" uid="uid://b1xm55edwim1j" path="res://player/hud/statistic/statistic_panel.tres" id="1_b6225"]
 [ext_resource type="Script" uid="uid://x572djaaaxvb" path="res://player/hud/statistic/statistic_panel.gd" id="2_3l06n"]
+[ext_resource type="Script" uid="uid://chreenvoahsqx" path="res://common/floating_control.gd" id="3_0y4m8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab83r"]
 
@@ -40,7 +41,20 @@ text = "[STAT_TITLE]"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Killed by Dealer" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+[node name="Floating Control" type="Control" parent="VBoxContainer/Title Container/Title Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_0y4m8")
+amplitude = 1.0
+scaling = 0.005
+speed = 8.0
+
+[node name="Killed by Dealer" type="Label" parent="VBoxContainer/Title Container/Title Label/Floating Control"]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -57,7 +71,7 @@ text = "[STAT_KILLED]"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Selfshot" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+[node name="Selfshot" type="Label" parent="VBoxContainer/Title Container/Title Label/Floating Control"]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -74,7 +88,7 @@ text = "[STAT_SELFSHOT]"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Winner" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+[node name="Winner" type="Label" parent="VBoxContainer/Title Container/Title Label/Floating Control"]
 unique_name_in_owner = true
 visible = false
 z_index = 1

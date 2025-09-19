@@ -8,6 +8,9 @@ extends StateAsync
 @export var player_hud: PlayerHUD
 @export var game_session: GameSession
 
+@export var main_theme: AudioStreamPlayer
+@export var switch_audio_player: AudioStreamPlayer
+
 var is_can_been_restarted: bool
 
 func handle_input(event: InputEvent) -> void:
@@ -21,12 +24,15 @@ func enter_async() -> void:
 	
 	player.block()
 	await pause(0.5)
-	monitor.push("congrats")
+	monitor.push("[GAMEPLAY_CONGRATS]")
 	dealer.change_face(Dealer.DealerFace.HAPPY)
 	await pause(2.0)
 	dealer.quit();
 	await pause(3.5)
+	switch_audio_player.play()
+	await pause(0.1)
 	player_hud.show_curtain(0.05)
+	main_theme.stop()
 	await pause(1.0)
 	player_hud.show_statistic(2.0)
 	await pause(1.0)

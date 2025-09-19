@@ -9,6 +9,7 @@ key,en
 [GAMEPLAY_DEALER],dealer
 [GAMEPLAY_YOU],you
 [GAMEPLAY_SADLY],sadly
+[GAMEPLAY_CONGRATS],congrats
 [SLOT_WELCOME],Welcome Back
 [SLOT_SURE],Sure?
 [SLOT_ROLL_PRICE],roll for %s$

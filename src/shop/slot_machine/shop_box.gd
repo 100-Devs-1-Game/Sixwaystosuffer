@@ -8,6 +8,10 @@ extends Node3D
 @onready var product_position: Marker3D = $"Product Position"
 @onready var clickable_area_3d: ClickableArea3D = $ClickableArea3D
 
+@onready var open_audio_player: AudioStreamPlayer = $"Open AudioPlayer"
+@onready var close_audio_player: AudioStreamPlayer = $"Close AudioPlayer"
+
+
 var product: ShopProduct
 
 var base_offset: float
@@ -21,21 +25,23 @@ func _ready() -> void:
 func open() -> void:
 	_stop_tween_if_needed()
 	
-	if is_blocked:
+	if is_blocked or is_opened:
 		return
 	
 	_tween = _create_box_tween(open_offset, switch_duration, Tween.EASE_OUT)
 	is_opened = true
+	open_audio_player.play()
 	clickable_area_3d.enable()
 
 func close() -> void:
 	_stop_tween_if_needed()
 	
-	if is_blocked:
+	if is_blocked or not is_opened:
 		return
 	
 	_tween = _create_box_tween(base_offset, switch_duration, Tween.EASE_IN)
 	is_opened = false
+	close_audio_player.play()
 	clickable_area_3d.disable()
 
 func _create_box_tween(target_position: float, duration: float, easing: Tween.EaseType) -> Tween:
