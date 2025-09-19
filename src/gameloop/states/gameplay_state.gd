@@ -9,6 +9,8 @@ extends State
 @export var monitor_controller: MonitorController
 @export var session: GameSession
 
+@export var cash_audio_player: AudioStreamPlayer
+
 var is_first_dealer_apperence: bool = true
 
 func handle_input(event: InputEvent) -> void:
@@ -69,6 +71,7 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 	var profit := session.make_shot(patron, player.revolver, to_dealer)
 	monitor_controller.show_current_score(session.get_score_line())
 	monitor_controller.show_profit(profit)
+	cash_audio_player.play()
 	
 	if to_dealer:
 		process_dealer_shooting(patron)

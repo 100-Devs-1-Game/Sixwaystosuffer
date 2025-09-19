@@ -60,7 +60,7 @@ func update_chamber(chamber: Chamber) -> void:
 func get_selfshot_modifier() -> int:
 	if bullets_in_chamber < 1:
 		return 1
-	elif bullets_in_chamber > modifier_per_bullet.size() - 1:
+	elif bullets_in_chamber > modifier_per_bullet.size():
 		return 0
 	
 	return modifier_per_bullet[bullets_in_chamber - 1]

@@ -63,6 +63,7 @@ func start_spin() -> void:
 	
 	
 	spining_audio_player.volume_db = 0
+	spining_audio_player.pitch_scale = 1.0
 	spining_audio_player.play()
 	
 	slot_machine_animation_player.play("work")
@@ -73,9 +74,9 @@ func start_spin() -> void:
 	
 	var sound_tween := create_tween()
 	sound_tween.tween_interval(slot_spinner.max_duration / 2)
-	sound_tween.tween_property(spining_audio_player, "volume_db", -60.0, slot_spinner.max_duration / 1.5)
+	sound_tween.tween_property(spining_audio_player, "volume_db", -60.0, slot_spinner.max_duration / 2)
+	sound_tween.parallel().tween_property(spining_audio_player, "pitch_scale", 0.01, slot_spinner.max_duration / 2)
 	sound_tween.tween_callback(func(): spining_audio_player.stop())
-	#tween.parallel().tween_property(smooth_pitch_shifter.effect, "pitch_scale", 0.76, slot_spinner.max_duration + 0.4)
 
 func _on_slots_done() -> void:
 	box_spawner.clear_items()

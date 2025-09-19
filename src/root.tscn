@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=57 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -40,8 +40,10 @@
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
 [ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="23_uk3k5"]
 [ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
+[ext_resource type="AudioStream" uid="uid://bo6sdwx3p1hql" path="res://assets/sfx/money/earn_01.ogg" id="27_obcww"]
+[ext_resource type="AudioStream" uid="uid://d0lvdymk7rqop" path="res://assets/sfx/money/earn_02.ogg" id="28_mh7w8"]
 [ext_resource type="AudioStream" uid="uid://b7a3m8ghbty1g" path="res://assets/sfx/load_04.ogg" id="28_ql764"]
-[ext_resource type="AudioStream" uid="uid://cqgved680q8uo" path="res://assets/sfx/slot_machine/win.wav" id="29_qoqhg"]
+[ext_resource type="AudioStream" uid="uid://cigj2lo5movwm" path="res://assets/sfx/global/winning_looped.ogg" id="37_0aysq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -82,6 +84,13 @@ _data = {
 &"RESET": SubResource("Animation_ub8w1"),
 &"intro": SubResource("Animation_po8fv")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_623xu"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("27_obcww")
+stream_1/stream = ExtResource("28_mh7w8")
 
 [sub_resource type="Animation" id="Animation_0dnjj"]
 length = 0.001
@@ -498,14 +507,20 @@ libraries = {
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/IntroState/AnimationPlayer"]
 environment = ExtResource("2_r3r3k")
 
-[node name="GameplayState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player", "monitor_controller", "session")]
+[node name="GameplayState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("choices", "dealer", "player", "monitor_controller", "session", "cash_audio_player")]
 script = ExtResource("13_eji0w")
 choices = NodePath("../../../Play Room/Table/Choice Labels")
 dealer = NodePath("../../../Play Room/Dealer")
 player = NodePath("../../../Play Room/Player")
 monitor_controller = NodePath("../../Monitor Controller")
 session = NodePath("../../GameSession")
+cash_audio_player = NodePath("Cash Audio Player")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
+
+[node name="Cash Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/GameplayState"]
+stream = SubResource("AudioStreamRandomizer_623xu")
+volume_db = -12.0
+pitch_scale = 1.1
 
 [node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "dealer", "slot_machine", "shop_animation")]
 script = ExtResource("19_1xb4a")
@@ -567,8 +582,8 @@ volume_db = 6.0
 pitch_scale = 0.8
 
 [node name="Winning Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/WiningState"]
-stream = ExtResource("29_qoqhg")
-pitch_scale = 0.9
+stream = ExtResource("37_0aysq")
+playback_type = 1
 script = ExtResource("21_vte5o")
 initial_db = -30.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://derlu8q1eb2jx"]
+[gd_scene load_steps=32 format=3 uid="uid://derlu8q1eb2jx"]
 
 [ext_resource type="Script" uid="uid://bqtdtdw48u2h5" path="res://shop/slot_machine.gd" id="1_2njt7"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_1co26"]
@@ -7,15 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://okag7g8u08rt" path="res://environment/monitors/digital_label_3d.tscn" id="4_aaf27"]
 [ext_resource type="PackedScene" uid="uid://5rifllx08xxc" path="res://shop/slot_machine/box.tscn" id="5_6jkie"]
 [ext_resource type="AudioStream" uid="uid://bu4q6a236e7oa" path="res://assets/sfx/slot_machine/level_pull_01.wav" id="6_7jj2a"]
+[ext_resource type="AudioStream" uid="uid://bt8yjtlru24ka" path="res://assets/sfx/slot_machine/box_down.ogg" id="6_13xgx"]
 [ext_resource type="Script" uid="uid://c5yhj7vwcomgx" path="res://shop/slot_machine/box_spawner.gd" id="6_h6o38"]
 [ext_resource type="AudioStream" uid="uid://c20dck4uoaydv" path="res://assets/sfx/slot_machine/level_pull_02.wav" id="7_13xgx"]
 [ext_resource type="PackedScene" uid="uid://b0y802ebnhvd5" path="res://assets/props/slot_machine_2/slot_machine.glb" id="8_6jkie"]
 [ext_resource type="AudioStream" uid="uid://cxkcjnnwr8311" path="res://assets/sfx/slot_machine/level_pull_03.wav" id="8_rosq1"]
 [ext_resource type="Script" uid="uid://doq52rt8oocmd" path="res://shop/slot_machine/shop_label.gd" id="9_aaf27"]
 [ext_resource type="AudioStream" uid="uid://dxey4awrp2tvq" path="res://assets/sfx/slot_machine/level_pull_04.wav" id="9_sjuok"]
-[ext_resource type="AudioStream" uid="uid://dccxb1yortm2y" path="res://assets/sfx/slot_machine/spinning.wav" id="10_hvgmg"]
 [ext_resource type="AudioStream" uid="uid://ckpjbrkhduime" path="res://assets/sfx/slot_machine/level_pull_05.wav" id="10_ii2y4"]
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="10_l42sb"]
+[ext_resource type="AudioStream" uid="uid://b050xikvsy5rv" path="res://assets/sfx/slot_machine/spinning_looped.ogg" id="15_7jj2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p75k"]
 size = Vector3(0.2, 0.8, 0.2)
@@ -45,6 +46,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_aaf27"]
@@ -79,6 +92,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.017453292), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aaf27"]
 _data = {
@@ -86,6 +111,12 @@ _data = {
 &"idle": SubResource("Animation_aaf27"),
 &"work": SubResource("Animation_2njt7")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rosq1"]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("6_13xgx")
 
 [sub_resource type="Animation" id="Animation_1co26"]
 length = 0.001
@@ -422,6 +453,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_aaf27")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="slot_machine2/Slot Machine AnimationPlayer"]
+stream = SubResource("AudioStreamRandomizer_rosq1")
+volume_db = -12.0
+pitch_scale = 2.2
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7728111, -0.6346361, 0, 0.6346361, 0.7728111, 0, -0.028108984, 1.1712333)
 light_color = Color(1, 0.85, 0.85, 1)
@@ -499,7 +535,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07115835, 0.6548462, -0.066
 shape = SubResource("BoxShape3D_aaf27")
 
 [node name="Spining Audio Player" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_hvgmg")
+stream = ExtResource("15_7jj2a")
+volume_db = -6.0
+playback_type = 1
 script = ExtResource("10_l42sb")
 initial_db = 0.0
 target_db = -30.0
