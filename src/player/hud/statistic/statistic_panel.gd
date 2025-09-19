@@ -8,6 +8,9 @@ extends PanelContainer
 @onready var total_shots_label: StatisticLabel = %"Total Shots Label"
 @onready var self_aimed_label: StatisticLabel = %"Self Aimed Label"
 @onready var dealer_aimed_label: StatisticLabel = %"Dealer Aimed Label"
+@onready var roll_count_label: StatisticLabel = %"Roll Count Label"
+@onready var money_wasted_label: StatisticLabel = %"Money Wasted Label"
+
 
 func update(session: GameSession) -> void:
 	playtime_label.content = session.get_playtime_line()
@@ -17,4 +20,5 @@ func update(session: GameSession) -> void:
 	total_shots_label.content = str(session.total_shots)
 	self_aimed_label.content = str(session.self_aiming_count)
 	dealer_aimed_label.content = str(session.dealer_aiming_count)
-	
+	roll_count_label.content = str(session.slot_machine_rolls)
+	money_wasted_label.content = str(session.worth_spent)

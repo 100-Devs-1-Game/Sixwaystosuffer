@@ -51,6 +51,7 @@ func _on_lever_clicked() -> void:
 	box_spawner.close()
 
 func start_spin() -> void:
+	session.make_roll()
 	slot_spinner.spin()
 	slot_machine_animation_player.play("work")
 	slot_machine_animation_player.speed_scale = 1.0

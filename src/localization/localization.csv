@@ -16,3 +16,5 @@ key,en
 [STAT_TOTAL_SHOTS],Total shots
 [STAT_AIMED_SELF],Aimed self
 [STAT_AIMED_DEALER],Aimed dealer
+[STAT_ROLL_COUNT],Number of rolls
+[STAT_MONEY_WASTED],Money spent

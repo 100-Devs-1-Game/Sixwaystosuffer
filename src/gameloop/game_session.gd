@@ -9,12 +9,15 @@ var end_time: int
 @export var target_worth: int = 999
 
 var total_worth: int
+var worth_spent: int
+
 var round_record_worth: int
 
 var dropped_bullets: int
 var total_shots: int
 var self_aiming_count: int
 var dealer_aiming_count: int
+var slot_machine_rolls: int
 
 func start() -> void:
 	start_time = int(Time.get_unix_time_from_system())
@@ -36,8 +39,15 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	_update_statistic(patron, result, to_dealer)
 	return result
 
-func make_purchase(_cost: int) -> void:
-	pass
+func make_roll() -> void:
+	slot_machine_rolls += 1
+
+func can_purchase(cost: int) -> bool:
+	return total_worth >= cost
+
+func make_purchase(cost: int) -> void:
+	total_worth -= cost
+	worth_spent += cost
 
 func get_score_line() -> String:
 	return "%s/%s$" % [total_worth, target_worth]
