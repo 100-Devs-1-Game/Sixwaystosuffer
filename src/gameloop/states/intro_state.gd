@@ -33,10 +33,10 @@ func _spawn_start_bullets(count: int) -> void:
 
 func _on_revolver_clicked() -> void:
 	main_theme_audio.smooth_play()
-	
-	await player.take_revolver_from(revolver_table_mockup)
 	revolver_table_mockup.disable()
 	revolver_table_mockup.hide()
+	
+	await player.take_revolver_from(revolver_table_mockup)
 	
 	await player.to_idle()
 	state_machine.switch_to(GameplayState)

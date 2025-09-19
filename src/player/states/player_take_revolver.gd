@@ -11,7 +11,6 @@ func enter_async() -> void:
 	var initial_revolver_position := player.initial_revolver_position
 	var start_position := revolver.global_position
 	var start_rotation := revolver.global_rotation
-	initial_revolver_position.hide()
 	revolver.global_position = initial_revolver_position.global_position
 	revolver.global_rotation = initial_revolver_position.global_rotation
 	
