@@ -14,7 +14,7 @@ func enter_async() -> void:
 	await pause(2.0)
 	dealer.fire()
 	await pause(1.3)
-	state_machine.switch_to(GameOverState)
+	state_machine.switch_to.call_deferred(GameOverState)
 
 func exit_async() -> void:
 	pass
