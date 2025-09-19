@@ -13,13 +13,14 @@ func handle_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("back"):
 		return
 	
-	if not player.is_idle():
+	if player.is_shopping():
 		slot_machine.clickable_area_3d.enable()
 		await player.to_idle()
-	elif player.can_make_turn():
-		await state_machine.switch_to(GameplayState)
-	else:
-		await state_machine.switch_to(DealerForceOverState)
+	elif player.is_idle():
+		if player.can_make_turn():
+			await state_machine.switch_to(GameplayState)
+		else:
+			await state_machine.switch_to(DealerForceOverState)
 
 func enter_async() -> void:
 	if dealer.current_face != Dealer.DealerFace.NEUTRAL:

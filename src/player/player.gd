@@ -59,6 +59,9 @@ func to_shopping(shop: SlotMachine) -> void:
 func is_idle() -> bool:
 	return state_machine.current_state is PlayerIdleState
 
+func is_shopping() -> bool:
+	return state_machine.current_state is PlayerShoppingState
+
 func block() -> void:
 	await state_machine.switch_to(PlayerBlockState)
 
