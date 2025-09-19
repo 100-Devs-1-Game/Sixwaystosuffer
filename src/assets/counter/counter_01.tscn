@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bxejs2s1c8k8i" path="res://assets/counter/counter_01.gltf" id="1_lo60l"]
 [ext_resource type="Material" uid="uid://bev3cohtxw1lm" path="res://assets/counter/M_counter.tres" id="2_ao4tq"]
-[ext_resource type="Material" uid="uid://ccmcd70vsx8ww" path="res://assets/characters/dealer/materials/simple_no_spec/s_no_spec_black.tres" id="2_xnqml"]
+[ext_resource type="Material" uid="uid://dem1gmuqki65i" path="res://assets/props/slot_machine_2/M_lcd_screen.tres" id="3_ao4tq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps44w"]
 size = Vector3(0.174889, 0.0705338, 0.0845947)
@@ -20,4 +20,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249863, 0.0351295, -0.001
 shape = SubResource("BoxShape3D_ps44w")
 
 [node name="counter_screen" parent="." index="1"]
-surface_material_override/0 = ExtResource("2_xnqml")
+surface_material_override/0 = ExtResource("3_ao4tq")
