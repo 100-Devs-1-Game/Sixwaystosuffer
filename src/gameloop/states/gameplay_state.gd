@@ -87,7 +87,7 @@ func process_dealer_shooting(patron: Patron) -> void:
 		dealer.take_damage()
 	else:
 		dealer.change_face(Dealer.DealerFace.NEUTRAL)
-	end_player_turn(2.0 if patron else 0.5)
+	end_player_turn(1.2 if patron else 0.5)
 
 func end_player_turn(pause: float) -> void:
 	var dropped_bullets: int = await player.drop_bullets()

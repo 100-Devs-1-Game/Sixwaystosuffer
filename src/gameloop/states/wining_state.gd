@@ -25,7 +25,7 @@ func enter_async() -> void:
 	dealer.change_face(Dealer.DealerFace.HAPPY)
 	await pause(2.0)
 	dealer.quit();
-	await pause(2.0)
+	await pause(3.5)
 	player_hud.show_curtain(0.05)
 	await pause(1.0)
 	player_hud.show_statistic(2.0)
