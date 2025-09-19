@@ -293,7 +293,13 @@ script = ExtResource("1_2njt7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128398, 0.00666977)
 
 [node name="cylinder_1" parent="slot_machine2/box_body/body" index="1"]
-transform = Transform3D(0.380447, 0, 0, 0, 0.229365, 0, 0, 0, 0.380447, -0.326, 0, 0)
+transform = Transform3D(0.38044697, 0, 0, 0, 0.21266349, 0.14251795, 0, -0.08592163, 0.35274428, -0.326, -0.00010788441, 9.8243356e-05)
+
+[node name="cylinder_2" parent="slot_machine2/box_body/body" index="2"]
+transform = Transform3D(0.38044655, 0, 0, 0, 0.21266365, 0.14251778, 0, -0.08592169, 0.35274386, -0.0005132538, 0.00020867586, 0.00028329343)
+
+[node name="cylinder_3" parent="slot_machine2/box_body/body" index="3"]
+transform = Transform3D(0.38044655, 0, 0, 0, 0.21266365, 0.14251778, 0, -0.08592169, 0.35274386, 0.3262687, 0.00020867586, 0.00028329343)
 
 [node name="lever" parent="slot_machine2/box_body/body" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.568428, 0, 0)

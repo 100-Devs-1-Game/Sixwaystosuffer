@@ -78,7 +78,7 @@ func process_self_shooting(patron: Patron) -> void:
 	
 	await pause_async(0.15)
 	dealer.change_face(Dealer.DealerFace.SAD)
-	end_player_turn()
+	end_player_turn(0.5)
 
 func process_dealer_shooting(patron: Patron) -> void:
 	await pause_async(0.15)
@@ -86,17 +86,21 @@ func process_dealer_shooting(patron: Patron) -> void:
 		dealer.take_damage()
 	else:
 		dealer.change_face(Dealer.DealerFace.NEUTRAL)
-	end_player_turn()
+	end_player_turn(2.0 if patron else 0.5)
 
-func end_player_turn() -> void:
+func end_player_turn(pause: float) -> void:
 	var dropped_bullets: int = await player.drop_bullets()
 	session.dropped_bullets += dropped_bullets
 	await player.to_idle()
+	await pause_async(pause)
 	
-	if not player.patrons.has_bullets() and not player.revolver.has_patrons():
+	if not can_continue_game():
 		await state_machine.switch_to(DealerForceOverState)
 	else:
 		await state_machine.switch_to(ShoppingState)
+
+func can_continue_game() -> bool:
+	return player.patrons.has_bullets() or player.revolver.has_patrons() or session.total_worth > 0
 
 func pause_async(duration: float) -> void:
 	await get_tree().create_timer(duration).timeout

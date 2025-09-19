@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://c1roh35vyjy4l" path="res://assets/props/slot_machine_2/slot_machine_slot_machine_symbols_done.png" id="1_ywe25"]
 
 [resource]
+albedo_color = Color(0.46440002, 0.5022, 0.54, 1)
 albedo_texture = ExtResource("1_ywe25")

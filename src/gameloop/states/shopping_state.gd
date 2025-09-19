@@ -6,16 +6,18 @@ extends StateAsync
 @export var shop_animation: AnimationPlayer
 
 func handle_input(event: InputEvent) -> void:
+	if slot_machine.is_working:
+		return
+	
 	if event.is_action_pressed("back"):
 		if not player.is_idle():
 			slot_machine.clickable_area_3d.enable()
-			slot_machine.disable()
 			await player.to_idle()
 		else:
 			await state_machine.switch_to(GameplayState)
 
 func enter_async() -> void:
-	await get_tree().create_timer(1.0).timeout
+	await pause(0.5)
 	shop_animation.play("show")
 	await current_animation_ended(shop_animation)
 	slot_machine.enable()

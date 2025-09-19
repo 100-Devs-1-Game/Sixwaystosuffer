@@ -13,6 +13,9 @@ extends Node3D
 @onready var box_spawner: BoxSpawner = %BoxSpawner
 @onready var clickable_area_3d: ClickableArea3D = $ClickableArea3D
 
+@onready var spot_light_3d: SpotLight3D = $SpotLight3D
+
+
 var is_working: bool
 
 func _ready() -> void:
@@ -28,6 +31,12 @@ func enable() -> void:
 func disable() -> void:
 	clickable_lever.disable()
 	box_spawner.close()
+
+func smooth_light_on() -> void:
+	create_tween().tween_property(spot_light_3d, "light_energy", 1.0, 0.3)
+
+func smooth_light_off() -> void:
+	create_tween().tween_property(spot_light_3d, "light_energy", 0.0, 0.3)
 
 func _on_lever_entered() -> void:
 	if is_working:
