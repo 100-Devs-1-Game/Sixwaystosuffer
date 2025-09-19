@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
-[ext_resource type="Resource" uid="uid://byfptsgre6o4" path="res://shop/products/data/empty.tres" id="14_0dnjj"]
+[ext_resource type="Resource" uid="uid://cay385jyhric" path="res://shop/products/data/empty_product.tres" id="14_qoqhg"]
 [ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="16_ab83r"]
 [ext_resource type="Script" uid="uid://cdgedpgmh1mco" path="res://gameloop/states/dealer_force_over_state.gd" id="16_po8fv"]
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
@@ -138,7 +138,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_uwexw"]
 resource_name = "hide"
-length = 1.5
+length = 1.0000042
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -215,7 +215,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_1xb4a"]
 resource_name = "show"
-length = 1.5
+length = 1.0416709
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -404,7 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06826681, 1.1966894, -3.75
 visible = false
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
-products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_0dnjj")])
+products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_qoqhg")])
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -3.68618)

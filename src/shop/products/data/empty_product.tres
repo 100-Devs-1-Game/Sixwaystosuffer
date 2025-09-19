@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopProduct" load_steps=3 format=3 uid="uid://cay385jyhric"]
+
+[ext_resource type="Script" uid="uid://d26x6wuwwmbmt" path="res://shop/products/shop_product.gd" id="1_28p4i"]
+[ext_resource type="PackedScene" uid="uid://dr46l4hfsuudp" path="res://shop/products/items/empty_item.tscn" id="2_uurpw"]
+
+[resource]
+script = ExtResource("1_28p4i")
+name = "Empty"
+description = "empty"
+shop_item = ExtResource("2_uurpw")
+metadata/_custom_type_script = "uid://d26x6wuwwmbmt"
