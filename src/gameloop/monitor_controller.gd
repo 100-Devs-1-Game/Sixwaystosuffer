@@ -1,6 +1,7 @@
 class_name MonitorController
 extends Node
 
+@export var session: GameSession
 @export var player: Player
 @export var revolver_mockup: ClickableArea3D
 @export var patrons: PlayerPatrons
@@ -26,8 +27,9 @@ func _ready() -> void:
 	monitor_3d.push("[TUTOR_TAKE]")
 
 func show_target_reach() -> void:
+	var target := "%s$" % session.target_worth
 	monitor_3d.clear()
-	monitor_3d.push_back("[TUTOR_REACH]", ["[TUTOR_REACH]", "999$", "[TUTOR_RESCUE]"])
+	monitor_3d.push_back("[TUTOR_REACH]", ["[TUTOR_REACH]", target, "[TUTOR_RESCUE]"])
 
 func show_current_score(score: String) -> void:
 	monitor_3d.clear()

@@ -36,6 +36,9 @@ func entry() -> void:
 	animation_player.play("entry")
 	_tween_head_rotation(face_angles[DealerFace.NEUTRAL], 2.0)
 
+func quit() -> void:
+	animation_player.play_backwards("entry")
+
 func fire() -> void:
 	fire_animation_player.play("fire")
 

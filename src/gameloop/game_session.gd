@@ -39,6 +39,9 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	_update_statistic(patron, result, to_dealer)
 	return result
 
+func is_target_reached() -> bool:
+	return total_worth >= target_worth
+
 func make_roll() -> void:
 	slot_machine_rolls += 1
 

@@ -140,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.322175, 1.35497, 1.24169), Vector3(-0.322, 1.355, 1.4), Vector3(-0.322, 1.355, -0.726)]
+"values": [Vector3(-0.322175, 1.35497, 1.24169), Vector3(-0.322, 1.355, 1.4), Vector3(-0.322, 1.4, -0.726)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -152,7 +152,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.23333335, 0.70000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.34906584, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.27925268, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -893,8 +893,9 @@ script = ExtResource("5_qjkh3")
 initial_state = NodePath("PlayerIdleState")
 metadata/_custom_type_script = "uid://dfrwjwp73xpko"
 
-[node name="PlayerBlockState" type="Node" parent="StateMachine"]
+[node name="PlayerBlockState" type="Node" parent="StateMachine" node_paths=PackedStringArray("revolver_interact_area3d")]
 script = ExtResource("8_wodsf")
+revolver_interact_area3d = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
 metadata/_custom_type_script = "uid://7ip3t48mhmvi"
 
 [node name="PlayerIdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("revolver_interact", "tremor_animation")]

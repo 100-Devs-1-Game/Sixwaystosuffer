@@ -22,8 +22,10 @@ func handle_input(event: InputEvent) -> void:
 		await state_machine.switch_to(DealerForceOverState)
 
 func enter_async() -> void:
-	dealer.change_face(Dealer.DealerFace.NEUTRAL)
-	await pause(2.2)
+	if dealer.current_face != Dealer.DealerFace.NEUTRAL:
+		dealer.change_face(Dealer.DealerFace.NEUTRAL)
+		await pause(1.0)
+	
 	shop_animation.play("show")
 	await current_animation_ended(shop_animation)
 	slot_machine.enable()

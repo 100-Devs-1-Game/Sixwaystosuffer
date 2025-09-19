@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=36 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://wugaqok4wmho" path="res://gameloop/states/shopping_state.gd" id="19_1xb4a"]
 [ext_resource type="Script" uid="uid://cnkfjgrw7evpu" path="res://gameloop/monitor_controller.gd" id="21_ub8w1"]
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
+[ext_resource type="Script" uid="uid://bjd1hlgp5pw0k" path="res://gameloop/states/wining_state.gd" id="23_0dnjj"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
@@ -394,13 +395,23 @@ metadata/_custom_type_script = "uid://cy6wfx5xalpb6"
 [node name="Game Over Audio" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/GameOverState"]
 stream = ExtResource("17_blcw0")
 
+[node name="WiningState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("dealer", "player", "monitor", "player_hud", "game_session")]
+script = ExtResource("23_0dnjj")
+dealer = NodePath("../../../Play Room/Dealer")
+player = NodePath("../../../Play Room/Player")
+monitor = NodePath("../../../Play Room/Table/Quequed Monitor3D")
+player_hud = NodePath("../../../../../../Player HUD")
+game_session = NodePath("../../GameSession")
+metadata/_custom_type_script = "uid://bjd1hlgp5pw0k"
+
 [node name="Main Theme Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 stream = ExtResource("16_sq7yr")
 script = ExtResource("21_vte5o")
 metadata/_custom_type_script = "uid://cpelv7p3e1pqj"
 
-[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("player", "revolver_mockup", "patrons", "monitor_3d", "choices", "profit_timer")]
+[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("session", "player", "revolver_mockup", "patrons", "monitor_3d", "choices", "profit_timer")]
 script = ExtResource("21_ub8w1")
+session = NodePath("../GameSession")
 player = NodePath("../../Play Room/Player")
 revolver_mockup = NodePath("../../Play Room/Table/Revolver Table Mockup")
 patrons = NodePath("../../Play Room/Table/Patrons")
@@ -415,4 +426,5 @@ one_shot = true
 
 [node name="GameSession" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 script = ExtResource("23_ub8w1")
+target_worth = 50
 metadata/_custom_type_script = "uid://pdty0hrt0vly"

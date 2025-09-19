@@ -94,7 +94,9 @@ func end_player_turn(pause: float) -> void:
 	await player.to_idle()
 	await pause_async(pause)
 	
-	if not can_continue_game():
+	if session.is_target_reached():
+		await state_machine.switch_to(WiningState)
+	elif not can_continue_game():
 		await state_machine.switch_to(DealerForceOverState)
 	else:
 		await state_machine.switch_to(ShoppingState)
