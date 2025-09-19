@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=54 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cpelv7p3e1pqj" path="res://common/audio/smooth_audio_stream_player.gd" id="21_vte5o"]
 [ext_resource type="Material" uid="uid://dem1gmuqki65i" path="res://assets/props/slot_machine_2/M_lcd_screen.tres" id="22_0aysq"]
 [ext_resource type="AudioStream" uid="uid://c0y3ekplebwui" path="res://assets/sfx/woosh_02.ogg" id="22_ql764"]
+[ext_resource type="Material" uid="uid://cs0vhalyqvc3y" path="res://assets/props/slot_machine_2/M_lcd_border.tres" id="23_0aysq"]
 [ext_resource type="Script" uid="uid://bjd1hlgp5pw0k" path="res://gameloop/states/wining_state.gd" id="23_0dnjj"]
 [ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="23_qoqhg"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
@@ -461,6 +462,11 @@ surface_material_override/0 = ExtResource("22_0aysq")
 mesh = SubResource("PlaneMesh_sc48t")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("22_0aysq")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/ShaderWarmupState/Materials"]
+mesh = SubResource("PlaneMesh_sc48t")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("23_0aysq")
 
 [node name="Label3D" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/ShaderWarmupState/Materials"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.0658141e-14, 0, -1.0658141e-14, 1, 0, 0.22269435, 0.87252235)

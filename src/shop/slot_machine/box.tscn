@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://5rifllx08xxc"]
+[gd_scene load_steps=13 format=4 uid="uid://5rifllx08xxc"]
 
 [ext_resource type="Script" uid="uid://ccf2hgnaclnva" path="res://shop/slot_machine/shop_box.gd" id="2_bvhbr"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="3_lvb47"]
 [ext_resource type="Material" uid="uid://crr2rtuyv5uib" path="res://assets/revolver/M_revolver.tres" id="3_nlkvk"]
 [ext_resource type="AudioStream" uid="uid://ctd6coeiygr24" path="res://assets/sfx/slot_machine/box_pull_02.wav" id="4_nlkvk"]
 [ext_resource type="AudioStream" uid="uid://dxc2ov4jc2afr" path="res://assets/sfx/slot_machine/box_pull_01.wav" id="5_yjfjk"]
+[ext_resource type="PackedScene" uid="uid://dcthfwhis2mxu" path="res://assets/props/slot_machine_2/box_indicator.glb" id="6_5kasf"]
+[ext_resource type="PackedScene" uid="uid://okag7g8u08rt" path="res://environment/monitors/digital_label_3d.tscn" id="6_om6o4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlkvk"]
 size = Vector3(0.3, 0.2, 0.3)
@@ -84,3 +86,13 @@ pitch_scale = 0.9
 stream = SubResource("AudioStreamRandomizer_om6o4")
 volume_db = -8.0
 pitch_scale = 0.9
+
+[node name="box_indicator2" parent="." instance=ExtResource("6_5kasf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0017710924, 0.03877706, 0.10453163)
+
+[node name="Digital Label3D" parent="box_indicator2" instance=ExtResource("6_om6o4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0.006669201, 0.0049251914, 0.0020470768)
+text = ""
+font_size = 15
+outline_size = 7

@@ -78,10 +78,10 @@ func start_spin() -> void:
 	#tween.parallel().tween_property(smooth_pitch_shifter.effect, "pitch_scale", 0.76, slot_spinner.max_duration + 0.4)
 
 func _on_slots_done() -> void:
-	open_items()
-	slot_machine_animation_player.play("idle")
 	box_spawner.clear_items()
 	box_spawner.spawn_items(products)
+	open_items()
+	slot_machine_animation_player.play("idle")
 
 func _on_box_clicked(box: ShopBox) -> void:
 	var product := box.product

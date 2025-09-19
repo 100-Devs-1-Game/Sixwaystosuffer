@@ -11,6 +11,7 @@ extends Node3D
 @onready var open_audio_player: AudioStreamPlayer = $"Open AudioPlayer"
 @onready var close_audio_player: AudioStreamPlayer = $"Close AudioPlayer"
 
+@onready var digital_label_3d: Label3D = %"Digital Label3D"
 
 var product: ShopProduct
 
@@ -32,6 +33,9 @@ func open() -> void:
 	is_opened = true
 	open_audio_player.play()
 	clickable_area_3d.enable()
+	
+	if product.cost != 0:
+		digital_label_3d.text = "%s$" % product.cost
 
 func close() -> void:
 	_stop_tween_if_needed()
@@ -43,6 +47,7 @@ func close() -> void:
 	is_opened = false
 	close_audio_player.play()
 	clickable_area_3d.disable()
+	digital_label_3d.text = ""
 
 func _create_box_tween(target_position: float, duration: float, easing: Tween.EaseType) -> Tween:
 	var tween := create_tween()
