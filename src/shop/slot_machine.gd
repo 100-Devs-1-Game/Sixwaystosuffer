@@ -113,12 +113,14 @@ func purchase(product: ShopProduct) -> void:
 		purchase_bullet(product)
 
 func purchase_bullet(product: BulletProduct) -> void:
-	print("available space: %s" % ammo.get_available_space())
+	if ammo.get_available_space() < product.quantity:
+		print("Not enough space for bullets")
+		# TODO: make visual error for this state
+		return
+	
 	session.make_purchase(product.cost)
 	
 	for i in product.quantity:
 		# TODO: make animation?
 		var instance = product.scene.instantiate()
 		ammo.add(instance)
-	
-	print("purchased success")
