@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=45 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
 [ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
 [ext_resource type="AudioStream" uid="uid://b7a3m8ghbty1g" path="res://assets/sfx/load_04.ogg" id="28_ql764"]
+[ext_resource type="AudioStream" uid="uid://cqgved680q8uo" path="res://assets/sfx/slot_machine/win.wav" id="29_qoqhg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf3um"]
 
@@ -486,7 +487,7 @@ metadata/_custom_type_script = "uid://cy6wfx5xalpb6"
 [node name="Game Over Audio" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/GameOverState"]
 stream = ExtResource("17_blcw0")
 
-[node name="WiningState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("dealer", "player", "monitor", "player_hud", "game_session", "main_theme", "switch_audio_player")]
+[node name="WiningState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("dealer", "player", "monitor", "player_hud", "game_session", "main_theme", "switch_audio_player", "winning_audio_player")]
 script = ExtResource("23_0dnjj")
 dealer = NodePath("../../../Play Room/Dealer")
 player = NodePath("../../../Play Room/Player")
@@ -495,12 +496,19 @@ player_hud = NodePath("../../../../../../Player HUD")
 game_session = NodePath("../../GameSession")
 main_theme = NodePath("../../Main Theme Audio Player")
 switch_audio_player = NodePath("Switch Audio Player")
+winning_audio_player = NodePath("Winning Audio Player")
 metadata/_custom_type_script = "uid://bjd1hlgp5pw0k"
 
 [node name="Switch Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/WiningState"]
 stream = ExtResource("28_ql764")
 volume_db = 6.0
 pitch_scale = 0.8
+
+[node name="Winning Audio Player" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/WiningState"]
+stream = ExtResource("29_qoqhg")
+pitch_scale = 0.9
+script = ExtResource("21_vte5o")
+initial_db = -30.0
 
 [node name="GameReloadState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine"]
 script = ExtResource("24_uwexw")

@@ -10,6 +10,7 @@ extends StateAsync
 
 @export var main_theme: AudioStreamPlayer
 @export var switch_audio_player: AudioStreamPlayer
+@export var winning_audio_player: SmoothAudioStreamPlayer
 
 var is_can_been_restarted: bool
 
@@ -27,8 +28,11 @@ func enter_async() -> void:
 	monitor.push("[GAMEPLAY_CONGRATS]")
 	dealer.change_face(Dealer.DealerFace.HAPPY)
 	await pause(2.0)
+	switch_audio_player.play()
+	await pause(0.1)
+	winning_audio_player.smooth_play()
 	dealer.quit();
-	await pause(3.5)
+	await pause(2.0)
 	switch_audio_player.play()
 	await pause(0.1)
 	player_hud.show_curtain(0.05)
