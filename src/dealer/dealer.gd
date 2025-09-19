@@ -6,6 +6,7 @@ extends Node3D
 
 @onready var cube_head: MeshInstance3D = %Cube_Head
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var fire_animation_player: AnimationPlayer = $"Fire AnimationPlayer"
 
 @onready var head_rotation_audio_player: AudioStreamPlayer = %"Head Rotation Audio Player"
 @onready var head_rotation_timer: Timer = %"Head Rotation Timer"
@@ -34,6 +35,9 @@ func _ready() -> void:
 func entry() -> void:
 	animation_player.play("entry")
 	_tween_head_rotation(face_angles[DealerFace.NEUTRAL], 2.0)
+
+func fire() -> void:
+	fire_animation_player.play("fire")
 
 func take_damage() -> void:
 	animation_player.play("take_damage")

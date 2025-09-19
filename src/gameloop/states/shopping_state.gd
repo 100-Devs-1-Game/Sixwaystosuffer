@@ -2,6 +2,7 @@ class_name ShoppingState
 extends StateAsync
 
 @export var player: Player
+@export var dealer: Dealer
 @export var slot_machine: SlotMachine
 @export var shop_animation: AnimationPlayer
 
@@ -9,15 +10,20 @@ func handle_input(event: InputEvent) -> void:
 	if slot_machine.is_working:
 		return
 	
-	if event.is_action_pressed("back"):
-		if not player.is_idle():
-			slot_machine.clickable_area_3d.enable()
-			await player.to_idle()
-		else:
-			await state_machine.switch_to(GameplayState)
+	if not event.is_action_pressed("back"):
+		return
+	
+	if not player.is_idle():
+		slot_machine.clickable_area_3d.enable()
+		await player.to_idle()
+	elif player.can_make_turn():
+		await state_machine.switch_to(GameplayState)
+	else:
+		await state_machine.switch_to(DealerForceOverState)
 
 func enter_async() -> void:
-	await pause(0.5)
+	dealer.change_face(Dealer.DealerFace.NEUTRAL)
+	await pause(2.2)
 	shop_animation.play("show")
 	await current_animation_ended(shop_animation)
 	slot_machine.enable()

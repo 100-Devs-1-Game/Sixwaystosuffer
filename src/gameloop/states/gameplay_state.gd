@@ -100,7 +100,7 @@ func end_player_turn(pause: float) -> void:
 		await state_machine.switch_to(ShoppingState)
 
 func can_continue_game() -> bool:
-	return player.patrons.has_bullets() or player.revolver.has_patrons() or session.total_worth > 0
+	return player.can_make_turn() or session.total_worth > 0
 
 func pause_async(duration: float) -> void:
 	await get_tree().create_timer(duration).timeout

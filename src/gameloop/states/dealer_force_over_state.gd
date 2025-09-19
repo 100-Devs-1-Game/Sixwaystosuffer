@@ -3,11 +3,16 @@ extends StateAsync
 
 @export var monitor: MonitorController
 @export var dealer: Dealer
+@export var player: Player
 
 func enter_async() -> void:
+	player.block()
 	monitor.show_game_end()
-	dealer.change_face(Dealer.DealerFace.SAD)
-	pass
+	dealer.change_face(Dealer.DealerFace.HAPPY)
+	await pause(1.0)
+	dealer.fire()
+	await pause(0.95)
+	state_machine.switch_to(GameOverState)
 
 func exit_async() -> void:
 	pass

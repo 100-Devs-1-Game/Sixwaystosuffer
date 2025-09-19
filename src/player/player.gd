@@ -27,6 +27,9 @@ func _ready() -> void:
 func _on_shoot_happened(_patron: Patron) -> void:
 	camera_shaker.shake(0.2)
 
+func shake() -> void:
+	camera_shaker.shake(0.1)
+
 func take_revolver_from(initial_position: Node3D) -> void:
 	initial_revolver_position = initial_position
 	await state_machine.switch_to(PlayerTakeRevolver)
@@ -42,6 +45,9 @@ func to_idle() -> void:
 
 func can_shoot() -> bool:
 	return is_idle() and revolver.has_patrons()
+
+func can_make_turn() -> bool:
+	return revolver.has_patrons() or patrons.has_bullets()
 
 func drop_bullets() -> int:
 	# TODO: make animation for drop bullets

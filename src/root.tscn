@@ -104,6 +104,71 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_uwexw"]
+resource_name = "hide"
+length = 1.5
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../Play Room/Table/Slot Machine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2916667, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.04904175, 4.8754606, -1.4479699), Vector3(-0.06826681, 1.1966894, -3.7568364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Play Room/Table/Slot Machine:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2916667, 0.4166667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.34906584, 0, 0), Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Play Room/Table/Slot Machine:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5416667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../Play Room/Dealer/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("show"),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../Play Room/Table/Slot Machine")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.29166666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"smooth_light_off"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_1xb4a"]
 resource_name = "show"
 length = 1.5
@@ -168,69 +233,18 @@ tracks/4/keys = {
 "method": &"smooth_light_on"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_uwexw"]
-resource_name = "hide"
-length = 1.5
-step = 0.041666668
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../Play Room/Table/Slot Machine:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2916667, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.017, 4.0371027, 0.184), Vector3(-0.04904175, 4.8754606, -1.4479699), Vector3(-0.06826681, 1.1966894, -3.7568364)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../Play Room/Table/Slot Machine:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2916667, 0.4166667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.17453292, 0, 0), Vector3(-0.34906584, 0, 0), Vector3(-1.5707964, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../../Play Room/Table/Slot Machine:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5416667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../../Play Room/Dealer/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": PackedStringArray("show"),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../../Play Room/Table/Slot Machine")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.29166666),
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../Play Room/Player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.75),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"smooth_light_off"
+"method": &"shake"
 }]
 }
 
@@ -349,9 +363,10 @@ monitor_controller = NodePath("../../Monitor Controller")
 session = NodePath("../../GameSession")
 metadata/_custom_type_script = "uid://ri6a1tiv3y61"
 
-[node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "slot_machine", "shop_animation")]
+[node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "dealer", "slot_machine", "shop_animation")]
 script = ExtResource("19_1xb4a")
 player = NodePath("../../../Play Room/Player")
+dealer = NodePath("../../../Play Room/Dealer")
 slot_machine = NodePath("../../../Play Room/Table/Slot Machine")
 shop_animation = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://wugaqok4wmho"
@@ -361,10 +376,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_uwexw")
 }
 
-[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("monitor", "dealer")]
+[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("monitor", "dealer", "player")]
 script = ExtResource("16_po8fv")
 monitor = NodePath("../../Monitor Controller")
 dealer = NodePath("../../../Play Room/Dealer")
+player = NodePath("../../../Play Room/Player")
 metadata/_custom_type_script = "uid://cdgedpgmh1mco"
 
 [node name="GameOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "player_hud", "selfshot_audio", "main_theme_audio")]
