@@ -3,6 +3,7 @@ extends StateAsync
 
 @export var player: Player
 @export var slot_machine: SlotMachine
+@export var shop_animation: AnimationPlayer
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back"):
@@ -15,11 +16,14 @@ func handle_input(event: InputEvent) -> void:
 
 func enter_async() -> void:
 	await get_tree().create_timer(1.0).timeout
-	slot_machine.show()
+	shop_animation.play("show")
+	await current_animation_ended(shop_animation)
+	slot_machine.enable()
 	slot_machine.clickable_area_3d.clicked.connect(_on_slot_machine_clicked)
 
 func exit_async() -> void:
-	slot_machine.hide()
+	shop_animation.play("hide")
+	await current_animation_ended(shop_animation)
 	slot_machine.clickable_area_3d.clicked.disconnect(_on_slot_machine_clicked)
 	slot_machine.disable()
 
