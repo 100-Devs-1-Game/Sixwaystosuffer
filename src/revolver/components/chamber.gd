@@ -29,6 +29,13 @@ func get_worth() -> int:
 			result += patron.bonus_score
 	return result
 
+func get_patron_count() -> int:
+	var counter := 0
+	for patron in _partons:
+		if patron != null:
+			counter += 1
+	return counter
+
 func drop_bullets() -> int:
 	var dropped_bullets_count: int = 0
 	for patron in _partons:

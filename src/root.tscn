@@ -593,5 +593,5 @@ one_shot = true
 
 [node name="GameSession" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 script = ExtResource("23_ub8w1")
-target_worth = 50
+modifier_per_bullet = Array[int]([2, 3, 4, 8, 12, 25])
 metadata/_custom_type_script = "uid://pdty0hrt0vly"

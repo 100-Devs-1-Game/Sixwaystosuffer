@@ -14,6 +14,7 @@ enum Reason {
 @export var max_rounds: int = 10
 @export var target_worth: int = 999
 @export var reroll_price: int = 5
+@export var modifier_per_bullet: Array[int]
 
 var start_time: int
 var end_time: int
@@ -31,6 +32,8 @@ var slot_machine_rolls: int
 
 var game_end_reason: Reason
 
+var bullets_in_chamber: int
+
 func start() -> void:
 	start_time = int(Time.get_unix_time_from_system())
 
@@ -43,13 +46,24 @@ func get_playtime_line() -> String:
 	return "%02d:%02d:%02d" % [dt.hour, dt.minute, dt.second]
 
 func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
-	var modifier: int = 1 if to_dealer else 10
+	var modifier: int = 1 if to_dealer else get_selfshot_modifier()
 	var worth := revolver.chamber.get_worth()
 	var result := modifier * worth
 	total_worth += result
 	worth_changed.emit(total_worth)
 	_update_statistic(patron, result, to_dealer)
 	return result
+
+func update_chamber(chamber: Chamber) -> void:
+	bullets_in_chamber = chamber.get_patron_count()
+
+func get_selfshot_modifier() -> int:
+	if bullets_in_chamber < 1:
+		return 1
+	elif bullets_in_chamber > modifier_per_bullet.size() - 1:
+		return 0
+	
+	return modifier_per_bullet[bullets_in_chamber - 1]
 
 func is_target_reached() -> bool:
 	return total_worth >= target_worth

@@ -64,10 +64,10 @@ func _on_dealer_label_exited() -> void:
 
 func _on_you_label_entered() -> void:
 	monitor_3d.pop_back("x1")
-	monitor_3d.push("x10")
+	monitor_3d.push_back("self", ["x%s" % session.get_selfshot_modifier()])
 
 func _on_you_label_exited() -> void:
-	monitor_3d.pop_back("x10")
+	monitor_3d.pop_back("self")
 
 func _on_revolver_clicked() -> void:
 	monitor_3d.pop_back("[TUTOR_TAKE]")

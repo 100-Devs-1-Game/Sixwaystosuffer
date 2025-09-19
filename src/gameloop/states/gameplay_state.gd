@@ -36,11 +36,16 @@ func enter() -> void:
 	choices.dealer_label.clicked.connect(_on_dealer_clicked)
 	choices.you_label.clicked.connect(_on_self_clicked)
 	player.shooted.connect(_on_player_shooted)
+	player.chamber_updated.connect(_on_chamber_updated)
 
 func exit() -> void:
 	choices.dealer_label.clicked.disconnect(_on_dealer_clicked)
 	choices.you_label.clicked.disconnect(_on_self_clicked)
 	player.shooted.disconnect(_on_player_shooted)
+	player.chamber_updated.disconnect(_on_chamber_updated)
+
+func _on_chamber_updated(revolver: Revolver) -> void:
+	session.update_chamber(revolver.chamber)
 
 func _on_dealer_clicked() -> void:
 	choices.hide_labels()
