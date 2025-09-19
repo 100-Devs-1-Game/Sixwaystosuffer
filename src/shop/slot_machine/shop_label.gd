@@ -1,6 +1,7 @@
 class_name ShopLabel
 extends Node
 
+@export var slot_machine: SlotMachine
 @export var digital: Label3D
 @export var spawner: BoxSpawner
 @export var spinner: SlotSpinner
@@ -32,7 +33,7 @@ func _on_box_clicked(_box: ShopBox) -> void:
 	digital.text = "[SLOT_SURE]"
 
 func _on_lever_entered() -> void:
-	digital.text = tr("[SLOT_ROLL_PRICE]") % 5
+	digital.text = tr("[SLOT_ROLL_PRICE]") % slot_machine.session.reroll_price
 
 func _on_lever_exited() -> void:
 	digital.text = base_text

@@ -23,7 +23,7 @@ func _ready() -> void:
 	choices.you_label.mouse_entered.connect(_on_you_label_entered)
 	choices.you_label.mouse_exited.connect(_on_you_label_exited)
 	profit_timer.timeout.connect(_on_profit_timeout)
-	
+	session.worth_changed.connect(_on_worth_changed)
 	monitor_3d.push("[TUTOR_TAKE]")
 
 func show_target_reach() -> void:
@@ -34,6 +34,9 @@ func show_target_reach() -> void:
 func show_current_score(score: String) -> void:
 	monitor_3d.clear()
 	monitor_3d.push_back("score", [score])
+
+func _on_worth_changed(_new_worth: int) -> void:
+	show_current_score(session.get_score_line())
 
 func show_profit(profit: int) -> void:
 	var profit_line := "+%s$" % profit
@@ -76,8 +79,8 @@ func _on_revolver_entered() -> void:
 func _on_revolver_exited() -> void:
 	monitor_3d.pop_back("[TUTOR_GOOD]")
 
-func _on_patron_hovered(_patron: Patron) -> void:
-	monitor_3d.push_back("patron", ["+10$"])
+func _on_patron_hovered(patron: Patron) -> void:
+	monitor_3d.push_back("patron", ["+%s$" % patron.bonus_score])
 
 func _on_patron_unhovered(_patron: Patron) -> void:
 	monitor_3d.pop_back("patron")

@@ -400,8 +400,9 @@ script = ExtResource("6_h6o38")
 boxes = [NodePath("../slot_machine2/box_body/box_4"), NodePath("../slot_machine2/box_body/box_5"), NodePath("../slot_machine2/box_body/box_6")]
 metadata/_custom_type_script = "uid://c5yhj7vwcomgx"
 
-[node name="ShopLabel" type="Node" parent="." node_paths=PackedStringArray("digital", "spawner", "spinner", "lever")]
+[node name="ShopLabel" type="Node" parent="." node_paths=PackedStringArray("slot_machine", "digital", "spawner", "spinner", "lever")]
 script = ExtResource("9_aaf27")
+slot_machine = NodePath("..")
 digital = NodePath("../slot_machine2/box_body/body/monitor/Digital Label3D")
 spawner = NodePath("../BoxSpawner")
 spinner = NodePath("../Slot Spinner")

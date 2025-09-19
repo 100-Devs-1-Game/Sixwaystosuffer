@@ -1,6 +1,8 @@
 class_name GameSession
 extends Node
 
+signal worth_changed(new_value: int)
+
 enum Reason {
 	UNKNOWN		= 0,
 	WINNER		= 1,
@@ -11,6 +13,7 @@ enum Reason {
 @export var initial_bullets_count: int = 4
 @export var max_rounds: int = 10
 @export var target_worth: int = 999
+@export var reroll_price: int = 5
 
 var start_time: int
 var end_time: int
@@ -44,7 +47,7 @@ func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
 	var worth := revolver.chamber.get_worth()
 	var result := modifier * worth
 	total_worth += result
-	
+	worth_changed.emit(total_worth)
 	_update_statistic(patron, result, to_dealer)
 	return result
 
@@ -60,6 +63,7 @@ func can_purchase(cost: int) -> bool:
 func make_purchase(cost: int) -> void:
 	total_worth -= cost
 	worth_spent += cost
+	worth_changed.emit(total_worth)
 
 func get_score_line() -> String:
 	return "%s/%s$" % [total_worth, target_worth]

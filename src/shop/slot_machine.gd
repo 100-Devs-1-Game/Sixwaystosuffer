@@ -24,6 +24,7 @@ func _ready() -> void:
 	
 	clickable_lever.clicked.connect(_on_lever_clicked)
 	slot_spinner.done.connect(_on_slots_done)
+	box_spawner.clicked.connect(_on_box_clicked)
 
 func enable() -> void:
 	clickable_lever.enable()
@@ -45,6 +46,12 @@ func _on_lever_entered() -> void:
 	animation_player.play("hover")
 
 func _on_lever_clicked() -> void:
+	if not session.can_purchase(session.reroll_price):
+		# TODO: make animation for not enouth money
+		return
+	
+	session.make_purchase(session.reroll_price)
+	
 	is_working = true
 	clickable_lever.disable()
 	animation_player.play("use")
@@ -64,6 +71,16 @@ func _on_slots_done() -> void:
 	slot_machine_animation_player.play("idle")
 	box_spawner.clear_items()
 	box_spawner.spawn_items(products)
+
+func _on_box_clicked(box: ShopBox) -> void:
+	var product := box.product
+	if session.can_purchase(product.cost):
+		purchase(box.product)
+		# TODO: animation for purchase
+		box.close()
+	else:
+		# TODO: animation for not enought money
+		pass
 
 func open_items() -> void:
 	#animation_player.play("open")
