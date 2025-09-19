@@ -51,23 +51,21 @@ jobs:
           BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
             "${{ steps.build.outputs.build_directory }}/web_release" \
             "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:web" \
-            "${{ github.ref_name }}"
+            --userversion "${{ github.ref_name }}"
 
       - name: Deploy linux to itch.io
         run: |
-          ./tools/get_butler.sh
-          BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
+          ./butler --verbose push \
             "${{ steps.build.outputs.build_directory }}/linux_release" \
             "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:linux" \
-            "${{ github.ref_name }}"
+            --userversion "${{ github.ref_name }}"
 
       - name: Deploy windows to itch.io
         run: |
-          ./tools/get_butler.sh
-          BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
+          ./butler --verbose push \
             "${{ steps.build.outputs.build_directory }}/windows" \
             "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:windows" \
-            "${{ github.ref_name }}"
+            --userversion "${{ github.ref_name }}"
 
       - name: Send Discord notification
         env:
