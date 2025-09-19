@@ -33,11 +33,63 @@ theme_override_constants/margin_left = -5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = -5
 
-[node name="Label" type="Label" parent="VBoxContainer/Title Container"]
+[node name="Title Label" type="Label" parent="VBoxContainer/Title Container"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "SIX WAYS TO SUFFER"
+text = "[STAT_TITLE]"
 horizontal_alignment = 1
+uppercase = true
+
+[node name="Killed by Dealer" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 143.0
+offset_top = 35.0
+offset_right = 500.0
+offset_bottom = 59.0
+rotation = -0.05928366
+theme_override_colors/font_color = Color(0.87, 0.15660001, 0.15660001, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "[STAT_KILLED]"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Selfshot" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 160.0
+offset_top = 34.0
+offset_right = 517.0
+offset_bottom = 58.0
+rotation = -0.05928366
+theme_override_colors/font_color = Color(0.87, 0.15660001, 0.15660001, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "[STAT_SELFSHOT]"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Winner" type="Label" parent="VBoxContainer/Title Container/Title Label"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 161.0
+offset_top = 34.0
+offset_right = 518.0
+offset_bottom = 58.0
+rotation = -0.05928366
+theme_override_colors/font_color = Color(0.15660001, 0.87, 0.4538501, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "[STAT_WINNER]"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Separator Container" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

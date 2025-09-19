@@ -72,6 +72,7 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 
 func process_self_shooting(patron: Patron) -> void:
 	if patron:
+		session.game_end_reason = GameSession.Reason.SELFSHOT
 		await state_machine.switch_to(GameOverState)
 		player.block()
 		return

@@ -1,12 +1,19 @@
 class_name GameSession
 extends Node
 
-var start_time: int
-var end_time: int
+enum Reason {
+	UNKNOWN		= 0,
+	WINNER		= 1,
+	SELFSHOT	= 2,
+	KILLED 		= 3
+}
 
 @export var initial_bullets_count: int = 4
 @export var max_rounds: int = 10
 @export var target_worth: int = 999
+
+var start_time: int
+var end_time: int
 
 var total_worth: int
 var worth_spent: int
@@ -18,6 +25,8 @@ var total_shots: int
 var self_aiming_count: int
 var dealer_aiming_count: int
 var slot_machine_rolls: int
+
+var game_end_reason: Reason
 
 func start() -> void:
 	start_time = int(Time.get_unix_time_from_system())

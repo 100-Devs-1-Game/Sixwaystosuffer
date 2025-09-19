@@ -9,6 +9,7 @@ key,en
 [GAMEPLAY_DEALER],dealer
 [GAMEPLAY_YOU],you
 [GAMEPLAY_SADLY],sadly
+[STAT_TITLE],Six ways to suffer
 [STAT_PLAYTIME],Playtime
 [STAT_REACHED_WORTH],Reached worth
 [STAT_ROUND_RECORD],Round record
@@ -18,3 +19,6 @@ key,en
 [STAT_AIMED_DEALER],Aimed dealer
 [STAT_ROLL_COUNT],Number of rolls
 [STAT_MONEY_WASTED],Money spent
+[STAT_SELFSHOT],Selfshot
+[STAT_KILLED],Killed by dealer
+[STAT_WINNER],Winner

@@ -378,8 +378,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_uwexw")
 }
 
-[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("monitor", "dealer", "player")]
+[node name="DealerForceOverState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "monitor", "dealer", "player")]
 script = ExtResource("16_po8fv")
+session = NodePath("../../GameSession")
 monitor = NodePath("../../Monitor Controller")
 dealer = NodePath("../../../Play Room/Dealer")
 player = NodePath("../../../Play Room/Player")

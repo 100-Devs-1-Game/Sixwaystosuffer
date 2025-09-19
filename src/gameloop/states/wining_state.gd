@@ -15,6 +15,7 @@ func handle_input(event: InputEvent) -> void:
 		state_machine.switch_to(GameReloadState)
 
 func enter_async() -> void:
+	game_session.game_end_reason = GameSession.Reason.WINNER
 	game_session.stop()
 	player_hud.statistic_panel.update(game_session)
 	
