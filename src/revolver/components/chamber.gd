@@ -16,6 +16,7 @@ var _current_index: int = 0
 var _tween: Tween
 
 var _random := RandomNumberGenerator.new()
+var _target_rotation: float
 
 func _ready() -> void:
 	for child in chamber.get_children():
@@ -99,11 +100,13 @@ func spin_up() -> void:
 
 func spin(count: int) -> void:
 	if _tween != null and _tween.is_running():
-		return
+		_tween.kill()
+		chamber.rotation.z = _target_rotation
 	
+	_target_rotation = chamber.rotation.z + deg_to_rad(chamber_rotate_angle * count)
 	var duration := minf(abs(SPIN_CHAMBER_DURATION * count), MAX_SPIN_CHAMBER_DURATION)
 	_tween = create_tween()
-	_tween.tween_property(chamber, "rotation:z", chamber.rotation.z + deg_to_rad(chamber_rotate_angle * count), duration).set_trans(Tween.TRANS_CUBIC)
+	_tween.tween_property(chamber, "rotation:z", _target_rotation, duration).set_trans(Tween.TRANS_CUBIC)
 	
 	_current_index = (_current_index + count) % MAX_BULLETS_IN_CHAMBER
 	_update_position_hover()
