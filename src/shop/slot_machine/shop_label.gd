@@ -36,12 +36,12 @@ func clear() -> void:
 
 func show_not_enough() -> void:
 	error_digital.alert()
-	try_change_text("not money")
+	try_change_text("[SLOT_NOT_MONEY]")
 
 func show_capacity_reached() -> void:
-	base_text = "capacity reached"
+	base_text = "[SLOT_CAPACITY_REACHED]"
 	error_digital.alert()
-	try_change_text("capacity reached")
+	try_change_text(base_text)
 
 func _on_box_hovered(box: ShopBox) -> void:
 	var product := box.product

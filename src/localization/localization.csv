@@ -15,6 +15,8 @@ key,en
 [SLOT_ROLL_PRICE],roll for %s$
 [SLOT_WAIT],wait
 [SLOT_CHOOSE],choose
+[SLOT_CAPACITY_REACHED],capacity reached
+[SLOT_NOT_MONEY],not enough money
 [STAT_TITLE],Six ways to suffer
 [STAT_PLAYTIME],Playtime
 [STAT_REACHED_WORTH],Reached worth
