@@ -1,6 +1,7 @@
 class_name SlotMachine
 extends Node3D
 
+@export var player: Player
 @export var ammo: PlayerPatrons
 @export var session: GameSession
 @export var products: Array[ShopProduct]
@@ -93,14 +94,12 @@ func _on_slots_done() -> void:
 func _on_box_clicked(box: ShopBox) -> void:
 	var product := box.product
 	if session.can_purchase(product.cost):
-		purchase(box.product)
-		# TODO: animation for purchase
 		box.close()
+		purchase(box.product)
 	else:
 		shop_label.show_not_enough()
 		box.show_not_enough()
 		error_audio_player.play()
-		pass
 
 func open_items() -> void:
 	#animation_player.play("open")
@@ -122,9 +121,10 @@ func purchase(product: ShopProduct) -> void:
 		purchase_bullet(product)
 
 func purchase_bullet(product: BulletProduct) -> void:
-	if ammo.get_available_space() < product.quantity:
+	if get_available_space() < product.quantity:
 		error_audio_player.play()
-		print("Not enough space for bullets")
+		shop_label.show_capacity_reached()
+		shop_label.block()
 		# TODO: make visual error for this state
 		return
 	
@@ -136,3 +136,6 @@ func purchase_bullet(product: BulletProduct) -> void:
 		# TODO: make animation?
 		var instance = product.scene.instantiate()
 		ammo.add(instance)
+
+func get_available_space() -> int:
+	return ammo.get_available_space() - player.revolver.chamber.get_patron_count()

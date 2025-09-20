@@ -7,8 +7,11 @@ extends Node
 @export var spawner: BoxSpawner
 @export var spinner: SlotSpinner
 @export var lever: ClickableArea3D
+@export var block_timer: Timer
 
 var base_text: String = "[SLOT_WELCOME]"
+
+var is_blocked: bool = false
 
 func _ready() -> void:
 	spawner.hovered.connect(_on_box_hovered)
@@ -18,14 +21,27 @@ func _ready() -> void:
 	lever.mouse_exited.connect(_on_lever_exited)
 	spinner.started.connect(_on_roll_started)
 	spinner.done.connect(_on_roll_done)
+	block_timer.timeout.connect(_on_block_timeout)
 	digital.text = base_text
+
+func block(duration: float = 0.5) -> void:
+	is_blocked = true
+	block_timer.start(duration)
+
+func _on_block_timeout() -> void:
+	is_blocked = false
 
 func clear() -> void:
 	base_text = "[SLOT_WELCOME]"
 
 func show_not_enough() -> void:
 	error_digital.alert()
-	digital.text = "not money"
+	try_change_text("not money")
+
+func show_capacity_reached() -> void:
+	base_text = "capacity reached"
+	error_digital.alert()
+	try_change_text("capacity reached")
 
 func _on_box_hovered(box: ShopBox) -> void:
 	var product := box.product
@@ -35,17 +51,25 @@ func _on_box_unhovered(_box: ShopBox) -> void:
 	digital.text = base_text
 
 func _on_box_clicked(_box: ShopBox) -> void:
-	digital.text = "[SLOT_SURE]"
+	try_change_text("[SLOT_SURE]")
 
 func _on_lever_entered() -> void:
-	digital.text = tr("[SLOT_ROLL_PRICE]") % slot_machine.session.reroll_price
+	var line := tr("[SLOT_ROLL_PRICE]") % slot_machine.session.reroll_price
+	try_change_text(line)
 
 func _on_lever_exited() -> void:
 	digital.text = base_text
 
 func _on_roll_started() -> void:
-	digital.text = "[SLOT_WAIT]"
+	try_change_text("[SLOT_WAIT]")
 
 func _on_roll_done() -> void:
 	base_text = "[SLOT_CHOOSE]"
-	digital.text = base_text
+	try_change_text(base_text)
+
+func try_change_text(text: String) -> bool:
+	if is_blocked:
+		return false
+	
+	digital.text = text
+	return true

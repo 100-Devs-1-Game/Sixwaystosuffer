@@ -51,13 +51,13 @@ shadow_mesh = SubResource("ArrayMesh_8dtpd")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yjfjk"]
 random_pitch = 1.2
-random_volume_offset_db = 6.0
+random_volume_offset_db = 4.0
 streams_count = 1
 stream_0/stream = ExtResource("4_nlkvk")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_om6o4"]
-random_pitch = 1.2
-random_volume_offset_db = 6.0
+random_pitch = 1.1
+random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("5_yjfjk")
 
@@ -122,8 +122,8 @@ pitch_scale = 0.9
 
 [node name="Close AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_om6o4")
-volume_db = -8.0
-pitch_scale = 0.9
+volume_db = -6.0
+pitch_scale = 0.8
 
 [node name="Hover AudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0s0xo")

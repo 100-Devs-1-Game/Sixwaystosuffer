@@ -447,8 +447,8 @@ transform = Transform3D(1, 0, 0, 0, 0.19858152, 0.9800842, 0, -0.9800842, 0.1985
 modulate = Color(0.3764706, 0.9882353, 0.46666667, 0.7019608)
 outline_modulate = Color(0.14901961, 0.36862746, 0.18431373, 0.7019608)
 text = "welcome back"
-font_size = 14
-outline_size = 6
+font_size = 12
+outline_size = 5
 
 [node name="ErrorLabel3D" type="Node" parent="slot_machine2/box_body/body/monitor/Digital Label3D" node_paths=PackedStringArray("label")]
 unique_name_in_owner = true
@@ -548,7 +548,7 @@ script = ExtResource("6_h6o38")
 boxes = [NodePath("../slot_machine2/box_body/box_4"), NodePath("../slot_machine2/box_body/box_5"), NodePath("../slot_machine2/box_body/box_6")]
 metadata/_custom_type_script = "uid://c5yhj7vwcomgx"
 
-[node name="ShopLabel" type="Node" parent="." node_paths=PackedStringArray("slot_machine", "digital", "error_digital", "spawner", "spinner", "lever")]
+[node name="ShopLabel" type="Node" parent="." node_paths=PackedStringArray("slot_machine", "digital", "error_digital", "spawner", "spinner", "lever", "block_timer")]
 script = ExtResource("9_aaf27")
 slot_machine = NodePath("..")
 digital = NodePath("../slot_machine2/box_body/body/monitor/Digital Label3D")
@@ -556,7 +556,11 @@ error_digital = NodePath("../slot_machine2/box_body/body/monitor/Digital Label3D
 spawner = NodePath("../BoxSpawner")
 spinner = NodePath("../Slot Spinner")
 lever = NodePath("../slot_machine2/box_body/body/lever/ClickableLever")
+block_timer = NodePath("Block For Changes Timer")
 metadata/_custom_type_script = "uid://doq52rt8oocmd"
+
+[node name="Block For Changes Timer" type="Timer" parent="ShopLabel"]
+one_shot = true
 
 [node name="ClickableArea3D" type="Area3D" parent="."]
 monitoring = false

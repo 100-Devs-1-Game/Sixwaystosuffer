@@ -31,7 +31,7 @@ script = ExtResource("1_q0qsk")
 [node name="Chamber Position" parent="." instance=ExtResource("2_m1fkb")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0)
 
-[node name="bullet" parent="Chamber Position" index="1"]
+[node name="bullet" parent="Chamber Position" index="0"]
 visible = true
 
 [node name="Interact Area3d" type="Area3D" parent="."]

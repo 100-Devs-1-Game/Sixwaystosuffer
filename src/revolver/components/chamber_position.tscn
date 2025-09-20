@@ -1,20 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3jox7dwuvty2"]
+[gd_scene load_steps=2 format=3 uid="uid://b3jox7dwuvty2"]
 
-[ext_resource type="PackedScene" uid="uid://dd50huliab6mx" path="res://assets/bullet/bullet.tscn" id="2_dyfkr"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4tgr6"]
-top_radius = 0.03
-bottom_radius = 0.03
-height = 0.2
+[ext_resource type="PackedScene" uid="uid://rinsurtidmo5" path="res://assets/bullet/bullet.glb" id="1_m0sc4"]
 
 [node name="Chamber Position" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_4tgr6")
-skeleton = NodePath("../..")
-
-[node name="bullet" parent="." instance=ExtResource("2_dyfkr")]
+[node name="bullet" parent="." instance=ExtResource("1_m0sc4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100353, 0)
 visible = false

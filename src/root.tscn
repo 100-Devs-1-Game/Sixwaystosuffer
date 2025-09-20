@@ -418,9 +418,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 [node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
 transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.14031, 0.759733)
 
-[node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("ammo", "session") instance=ExtResource("16_ab83r")]
+[node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("player", "ammo", "session") instance=ExtResource("16_ab83r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06826681, 1.1966894, -3.7568364)
 visible = false
+player = NodePath("../../Player")
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
 products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_qoqhg")])

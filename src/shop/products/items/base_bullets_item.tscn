@@ -7,28 +7,19 @@
 [node name="Chamber Position" parent="." instance=ExtResource("1_v7he8")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.040505648, 0.10159179, -1.0827755e-15)
 
-[node name="MeshInstance3D" parent="Chamber Position" index="0"]
-skeleton = NodePath("")
-
-[node name="bullet" parent="Chamber Position" index="1"]
+[node name="bullet" parent="Chamber Position" index="0"]
 visible = true
 
 [node name="Chamber Position2" parent="." instance=ExtResource("1_v7he8")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0.006021142, 0.10159179, -0.06677958)
 
-[node name="MeshInstance3D" parent="Chamber Position2" index="0"]
-skeleton = NodePath("")
-
-[node name="bullet" parent="Chamber Position2" index="1"]
+[node name="bullet" parent="Chamber Position2" index="0"]
 visible = true
 
 [node name="Chamber Position3" parent="." instance=ExtResource("1_v7he8")]
 transform = Transform3D(-0.008883641, 0.6931481, 0.7207405, -0.99996054, -0.0061579216, -0.0064030522, 4.6566867e-10, -0.7207689, 0.69317544, 0.060639318, 0.02643679, -9.313226e-10)
 
-[node name="MeshInstance3D" parent="Chamber Position3" index="0"]
-skeleton = NodePath("")
-
-[node name="bullet" parent="Chamber Position3" index="1"]
+[node name="bullet" parent="Chamber Position3" index="0"]
 visible = true
 
 [editable path="Chamber Position"]
