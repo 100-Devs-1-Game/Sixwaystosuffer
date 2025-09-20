@@ -23,11 +23,23 @@ func _ready() -> void:
 		_chamber_position.append(child)
 	_partons.resize(MAX_BULLETS_IN_CHAMBER)
 
-func get_worth() -> int:
-	var result: int = 0
+func get_patrons() -> Array[Patron]:
+	var patrons: Array[Patron]
 	for patron in _partons:
 		if patron is Patron:
-			result += patron.bonus_score
+			patrons.append(patron)
+	return patrons
+
+func get_worth() -> int:
+	var result: int = 0
+	for patron in get_patrons():
+		result += patron.bonus_score
+	return result
+
+func get_modifier() -> int:
+	var result: int = 1
+	for patron in get_patrons():
+		result *= patron.modifier
 	return result
 
 func get_patron_count() -> int:

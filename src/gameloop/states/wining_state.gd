@@ -45,5 +45,4 @@ func enter_async() -> void:
 	main_theme.stop()
 	await pause(1.0)
 	player_hud.show_statistic(2.0)
-	await pause(1.0)
 	is_can_been_restarted = true

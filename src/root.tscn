@@ -38,7 +38,7 @@
 [ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="23_uk3k5"]
 [ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
 [ext_resource type="Material" uid="uid://b5n5nl6mjkxew" path="res://assets/bullet/m_dummy_bullet.tres" id="25_623xu"]
-[ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://revolver/bullets/m_marked_bullet.tres" id="27_ans7r"]
+[ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://assets/bullet/m_marked_bullet.tres" id="27_ans7r"]
 [ext_resource type="AudioStream" uid="uid://bo6sdwx3p1hql" path="res://assets/sfx/money/earn_01.ogg" id="27_obcww"]
 [ext_resource type="AudioStream" uid="uid://d0lvdymk7rqop" path="res://assets/sfx/money/earn_02.ogg" id="28_mh7w8"]
 [ext_resource type="AudioStream" uid="uid://b7a3m8ghbty1g" path="res://assets/sfx/load_04.ogg" id="28_ql764"]

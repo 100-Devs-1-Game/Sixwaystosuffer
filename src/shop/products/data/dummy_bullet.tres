@@ -12,5 +12,5 @@ name = "Dummy Bullets"
 description = "Dummy bullets."
 cost = 35
 shop_item = ExtResource("3_sidwo")
-weight = 0.7
+weight = 0.65
 metadata/_custom_type_script = "uid://gtdxgikb4wii"
