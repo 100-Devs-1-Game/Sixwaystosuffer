@@ -7,6 +7,7 @@ signal unhovered(patron: Patron)
 
 @export var is_dummy: bool = false
 @export var bonus_score: int = 10
+@export var passive_income: int = 0
 
 @onready var interact_area_3d: ClickableArea3D = %"Interact Area3d"
 @onready var raise_on_hover: RaiseOnHover = %RaiseOnHover

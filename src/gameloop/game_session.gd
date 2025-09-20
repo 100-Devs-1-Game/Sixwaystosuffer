@@ -46,9 +46,9 @@ func get_playtime_line() -> String:
 	var dt := Time.get_datetime_dict_from_unix_time(unix_time)
 	return "%02d:%02d:%02d" % [dt.hour, dt.minute, dt.second]
 
-func make_shot(patron: Patron, revolver: Revolver, to_dealer: bool) -> int:
+func make_shot(patron: Patron, player: Player, to_dealer: bool) -> int:
 	var modifier: int = 1 if to_dealer else get_selfshot_modifier()
-	var worth := revolver.chamber.get_worth()
+	var worth := player.get_chamber_worth()
 	var result := modifier * worth
 	total_worth += result
 	worth_changed.emit(total_worth)

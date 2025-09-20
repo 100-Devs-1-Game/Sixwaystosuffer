@@ -68,7 +68,7 @@ func return_to_select_target() -> void:
 	await player.to_idle()
 
 func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
-	var profit := session.make_shot(patron, player.revolver, to_dealer)
+	var profit := session.make_shot(patron, player, to_dealer)
 	monitor_controller.show_current_score(session.get_score_line())
 	monitor_controller.show_profit(profit)
 	cash_audio_player.play()

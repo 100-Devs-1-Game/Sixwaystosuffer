@@ -34,12 +34,25 @@ func get_available_space() -> int:
 func has_bullets() -> bool:
 	return get_available_space() < 13
 
+func get_bullets() -> Array[Patron]:
+	var result: Array[Patron]
+	for item in bullets:
+		if item != null:
+			result.append(item)
+	return result
+
 func add(patron: Patron) -> void:
 	var index := get_free_index()
 	var patron_position := positions[index]
 	patron_position.add_child(patron)
 	patron.update_on_table(index, patron_position)
 	bullets[index] = patron
+
+func get_passive_income() -> int:
+	var total_income := 0
+	for bullet in get_bullets():
+		total_income += bullet.passive_income
+	return total_income
 
 func setup_free_position(patron: Patron) -> void:
 	var target_index := patron.on_table_index

@@ -80,4 +80,4 @@ func is_aiming() -> bool:
 	return state_machine.current_state is PlayerAimingState
 
 func get_chamber_worth() -> int:
-	return revolver.chamber.get_worth()
+	return revolver.chamber.get_worth() + patrons.get_passive_income()

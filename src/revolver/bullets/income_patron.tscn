@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyhgf8702wijr"]
+
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_ev4b8"]
+[ext_resource type="PackedScene" uid="uid://buhtfae1pcl4" path="res://assets/bullet/bullet_panel.glb" id="2_ag75p"]
+[ext_resource type="Material" uid="uid://bnmpxyc4t2m8t" path="res://assets/bullet/m_bullet_income_panel.tres" id="3_notba"]
+
+[node name="Patron" instance=ExtResource("1_ev4b8")]
+bonus_score = 5
+passive_income = 5
+
+[node name="bullet_panel" parent="Chamber Position/bullet" index="1" instance=ExtResource("2_ag75p")]
+
+[node name="Bullet Panel" parent="Chamber Position/bullet/bullet_panel" index="0"]
+surface_material_override/0 = ExtResource("3_notba")
+
+[editable path="Chamber Position"]
+[editable path="Chamber Position/bullet/bullet_panel"]
