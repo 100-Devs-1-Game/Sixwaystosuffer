@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dyhgf8702wijr" path="res://revolver/bullets/income_patron.tscn" id="1_fcsyv"]
 [ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_ed66p"]
-[ext_resource type="PackedScene" uid="uid://brxb428igt7ad" path="res://shop/products/items/packs/one_bullets_pack.tscn" id="3_fcsyv"]
+[ext_resource type="PackedScene" uid="uid://cuqae2y2t0ufp" path="res://shop/products/items/packs/two_bullets_pack.tscn" id="3_fcsyv"]
 
 [resource]
 script = ExtResource("2_ed66p")
-quantity = 1
+quantity = 2
 scene = ExtResource("1_fcsyv")
 name = "Base Bullets"
 description = "+5$ for load
-+5$ if not load"
++2$ if not load"
 cost = 20
 shop_item = ExtResource("3_fcsyv")
 weight = 0.8

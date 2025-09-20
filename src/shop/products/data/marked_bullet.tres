@@ -11,7 +11,7 @@ scene = ExtResource("1_rpd2p")
 name = "Base Bullets"
 description = "Marked Bullet
 +10$ for load"
-cost = 80
+cost = 100
 shop_item = ExtResource("3_rpd2p")
-weight = 0.4
+weight = 0.25
 metadata/_custom_type_script = "uid://gtdxgikb4wii"

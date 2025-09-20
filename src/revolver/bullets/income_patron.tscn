@@ -6,7 +6,7 @@
 
 [node name="Patron" instance=ExtResource("1_ev4b8")]
 bonus_score = 5
-passive_income = 5
+passive_income = 2
 
 [node name="bullet_panel" parent="Chamber Position/bullet" index="1" instance=ExtResource("2_ag75p")]
 
