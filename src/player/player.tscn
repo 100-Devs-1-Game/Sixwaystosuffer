@@ -966,18 +966,20 @@ stream = SubResource("AudioStreamRandomizer_x7c3f")
 volume_db = 8.0
 pitch_scale = 0.8
 
-[node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "revolver")]
+[node name="PlayerSelfAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "tremor_animation", "woosh_audo_player", "revolver")]
 unique_name_in_owner = true
 script = ExtResource("8_rgyib")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 tremor_animation = NodePath("../../Player Hand/Tremor/AnimationPlayer")
+woosh_audo_player = NodePath("../../Player Hand/Woosh Audio Stream")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://1yyenj6p76lf"
 
-[node name="PlayerTargetAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
+[node name="PlayerTargetAimingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "woosh_stream_player", "revolver")]
 unique_name_in_owner = true
 script = ExtResource("10_ebec5")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+woosh_stream_player = NodePath("../../Player Hand/Woosh Audio Stream")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 
