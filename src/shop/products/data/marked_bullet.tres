@@ -6,10 +6,10 @@
 
 [resource]
 script = ExtResource("2_prus7")
-quantity = 3
+quantity = 2
 scene = ExtResource("1_rpd2p")
 name = "Base Bullets"
 description = "Marked Bullets"
-cost = 20
+cost = 40
 shop_item = ExtResource("3_prus7")
 metadata/_custom_type_script = "uid://gtdxgikb4wii"

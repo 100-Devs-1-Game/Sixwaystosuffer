@@ -10,6 +10,6 @@ quantity = 3
 scene = ExtResource("1_sidwo")
 name = "Dummy Bullets"
 description = "Dummy bullet"
-cost = 40
+cost = 50
 shop_item = ExtResource("3_erhgt")
 metadata/_custom_type_script = "uid://gtdxgikb4wii"
