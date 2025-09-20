@@ -5,7 +5,7 @@ signal clicked(patron: Patron)
 signal hovered(patron: Patron)
 signal unhovered(patron: Patron)
 
-@export var is_live: bool = true
+@export var is_dummy: bool = false
 @export var bonus_score: int = 10
 
 @onready var interact_area_3d: ClickableArea3D = %"Interact Area3d"

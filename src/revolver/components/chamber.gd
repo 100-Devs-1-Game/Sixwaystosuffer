@@ -81,9 +81,9 @@ func get_hovered_patron() -> Patron:
 	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
 	return _partons[load_index]
 
-func is_live_patron_now() -> bool:
+func is_dummy_patron_now() -> bool:
 	var current_patron := get_current_patron()
-	return current_patron != null and current_patron.is_live
+	return current_patron != null and current_patron.is_dummy
 
 func get_current_patron() -> Patron:
 	return _partons[_current_index]

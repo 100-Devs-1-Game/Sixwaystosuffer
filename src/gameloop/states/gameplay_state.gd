@@ -79,7 +79,7 @@ func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
 		process_self_shooting(patron)
 
 func process_self_shooting(patron: Patron) -> void:
-	if patron:
+	if patron and not patron.is_dummy:
 		session.game_end_reason = GameSession.Reason.SELFSHOT
 		await state_machine.switch_to(GameOverState)
 		player.block()

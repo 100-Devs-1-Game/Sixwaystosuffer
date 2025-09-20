@@ -55,13 +55,18 @@ func spin_down() -> void:
 func fire() -> void:
 	chamber.spin_down()
 	
-	if chamber.is_live_patron_now():
-		var patron := get_current_patron()
-		patron.is_live = false
-		shoot_happened.emit(patron)
-		animation_player.play("fire")
-	else:
+	if not chamber.has_current_patron():
+		shoot_happened.emit(get_current_patron())
 		animation_player.play("fire_empty")
+	else:
+		var patron := get_current_patron()
+		
+		if patron.is_dummy:
+			animation_player.play("fire_empty")
+		else:
+			animation_player.play("fire")
+		
+		shoot_happened.emit(patron)
 
 func open_drum() -> void:
 	animation_player.play("drum_open")

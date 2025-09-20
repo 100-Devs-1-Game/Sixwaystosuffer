@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=58 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="Resource" uid="uid://cay385jyhric" path="res://shop/products/data/empty_product.tres" id="14_qoqhg"]
+[ext_resource type="Resource" uid="uid://vhgaoep3gmv6" path="res://shop/products/data/dummy_bullet.tres" id="15_mh7w8"]
 [ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="16_ab83r"]
 [ext_resource type="Script" uid="uid://cdgedpgmh1mco" path="res://gameloop/states/dealer_force_over_state.gd" id="16_po8fv"]
 [ext_resource type="Script" uid="uid://cy6wfx5xalpb6" path="res://gameloop/states/game_over_state.gd" id="16_r3r3k"]
@@ -424,7 +425,7 @@ visible = false
 player = NodePath("../../Player")
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
-products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_qoqhg")])
+products = Array[ExtResource("12_ab83r")]([ExtResource("13_1xb4a"), ExtResource("14_qoqhg"), ExtResource("15_mh7w8")])
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -3.68618)
@@ -615,5 +616,5 @@ one_shot = true
 
 [node name="GameSession" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop"]
 script = ExtResource("23_ub8w1")
-modifier_per_bullet = Array[int]([2, 3, 4, 8, 12, 25])
+modifier_per_bullet = Array[int]([2, 3, 4, 6, 8, 12])
 metadata/_custom_type_script = "uid://pdty0hrt0vly"

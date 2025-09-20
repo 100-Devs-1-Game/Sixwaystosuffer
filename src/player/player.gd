@@ -17,15 +17,17 @@ signal chamber_updated(revolver: Revolver)
 var initial_revolver_position: Node3D
 
 func _ready() -> void:
-	revolver.shoot_happened.connect(_on_shoot_happened)
 	revolver.loaded.connect(func(_b): chamber_updated.emit(revolver))
 	revolver.unloaded.connect(func(_b): chamber_updated.emit(revolver))
 	
 	player_self_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), false))
+	player_target_aiming_state.shooted.connect(_on_shoot_happened)
 	player_target_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), true))
 
-func _on_shoot_happened(_patron: Patron) -> void:
-	camera_shaker.shake(0.2)
+func _on_shoot_happened() -> void:
+	var patron := revolver.get_current_patron()
+	if patron != null and not patron.is_dummy:
+		camera_shaker.shake(0.2)
 
 func shake() -> void:
 	camera_shaker.shake(0.1)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2miih4i28juj"]
+
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_ltk18"]
+[ext_resource type="Material" uid="uid://b5n5nl6mjkxew" path="res://assets/bullet/m_dummy_bullet.tres" id="2_4r88a"]
+
+[node name="Patron" instance=ExtResource("1_ltk18")]
+is_dummy = true
+bonus_score = 0
+
+[node name="Cylinder" parent="Chamber Position/bullet" index="0"]
+surface_material_override/0 = ExtResource("2_4r88a")
+
+[editable path="Chamber Position"]
+[editable path="Chamber Position/bullet"]
