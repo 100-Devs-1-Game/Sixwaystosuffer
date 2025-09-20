@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2q6630p7t6iy"]
 
 [ext_resource type="Script" uid="uid://da60hn08673om" path="res://environment/table/table_label.gd" id="1_adi1r"]
-[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="2_5vpfp"]
+[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://BigScratchBrush-wo50z.ttf" id="2_5vpfp"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="2_bv1ch"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv1ch"]

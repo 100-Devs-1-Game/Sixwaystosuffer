@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnywjwuiyrka"]
+[gd_scene load_steps=4 format=3 uid="uid://ctnywjwuiyrka"]
 
 [ext_resource type="Script" uid="uid://dav0wnu6v0hy8" path="res://player/hud/player_hud.gd" id="1_vai5t"]
 [ext_resource type="PackedScene" uid="uid://230joxf853v3" path="res://player/hud/statistic/statistic_panel.tscn" id="2_sabkn"]
+[ext_resource type="PackedScene" uid="uid://cc12ycswqao8d" path="res://gameloop/ui/control_tooltip.tscn" id="3_sabkn"]
 
 [node name="Player HUD" type="CanvasLayer"]
 script = ExtResource("1_vai5t")
@@ -24,3 +25,5 @@ offset_top = -126.5
 offset_right = 114.5
 offset_bottom = 126.5
 mouse_filter = 0
+
+[node name="Control Tooltip" parent="." instance=ExtResource("3_sabkn")]

@@ -40,7 +40,7 @@
 [ext_resource type="Script" uid="uid://bjd1hlgp5pw0k" path="res://gameloop/states/wining_state.gd" id="23_0dnjj"]
 [ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="23_qoqhg"]
 [ext_resource type="Script" uid="uid://pdty0hrt0vly" path="res://gameloop/game_session.gd" id="23_ub8w1"]
-[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="23_uk3k5"]
+[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://BigScratchBrush-wo50z.ttf" id="23_uk3k5"]
 [ext_resource type="Script" uid="uid://b7yful5yxqc8a" path="res://gameloop/states/game_reload_state.gd" id="24_uwexw"]
 [ext_resource type="Material" uid="uid://b5n5nl6mjkxew" path="res://assets/bullet/m_dummy_bullet.tres" id="25_623xu"]
 [ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://revolver/bullets/m_marked_bullet.tres" id="27_ans7r"]
