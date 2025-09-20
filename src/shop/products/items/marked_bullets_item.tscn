@@ -5,11 +5,4 @@
 [node name="Marked Bullets Item" type="Node3D"]
 
 [node name="Marked Patron" parent="." instance=ExtResource("1_oe0tc")]
-transform = Transform3D(0.55888903, 0, -0.82924247, 0, 1, 0, 0.82924247, 0, 0.55888903, -0.040990062, 0.10356562, -0.0011302428)
-
-[node name="Marked Patron2" parent="." instance=ExtResource("1_oe0tc")]
-transform = Transform3D(-0.008883641, 0.6931481, 0.7207405, -0.99996054, -0.0061579216, -0.0064030522, 4.6566867e-10, -0.7207689, 0.69317544, 0.062006455, 0.026309637, -0.0014226735)
-visible = false
-
-[node name="Marked Patron3" parent="." instance=ExtResource("1_oe0tc")]
-transform = Transform3D(0.55888903, 0, -0.82924247, 0, 1, 0, 0.82924247, 0, 0.55888903, 0.040389717, 0.10356562, 0.00012937095)
+transform = Transform3D(0.55888903, 0, -0.82924247, 0, 1, 0, 0.82924247, 0, 0.55888903, 0.00063376874, 0.10356562, -0.0011302428)
