@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cuqae2y2t0ufp"]
+
+[node name="Two Bullets Pack" type="Node3D"]
+
+[node name="Patron" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032641146, 0.10356562, 0.025361996)
+
+[node name="Patron3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027975585, 0.10356562, -0.030850114)

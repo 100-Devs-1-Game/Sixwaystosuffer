@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StorageProducts" load_steps=7 format=3 uid="uid://cnco3s76dt180"]
+
+[ext_resource type="Script" uid="uid://d26x6wuwwmbmt" path="res://shop/products/shop_product.gd" id="1_vdqsq"]
+[ext_resource type="Resource" uid="uid://cay385jyhric" path="res://shop/products/data/empty_product.tres" id="2_a4kdn"]
+[ext_resource type="Script" uid="uid://dte6cmohbt7qu" path="res://shop/products/storage_products.gd" id="2_fkurc"]
+[ext_resource type="Resource" uid="uid://cb76gbf1m43db" path="res://shop/products/data/base_bullet.tres" id="3_h2cgw"]
+[ext_resource type="Resource" uid="uid://iwe3flchq0qa" path="res://shop/products/data/marked_bullet.tres" id="4_d4kij"]
+[ext_resource type="Resource" uid="uid://vhgaoep3gmv6" path="res://shop/products/data/dummy_bullet.tres" id="5_3hyuq"]
+
+[resource]
+script = ExtResource("2_fkurc")
+products = Array[ExtResource("1_vdqsq")]([ExtResource("2_a4kdn"), ExtResource("3_h2cgw"), ExtResource("4_d4kij"), ExtResource("5_3hyuq")])
+metadata/_custom_type_script = "uid://dte6cmohbt7qu"

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://s0bc43ckbrm0"]
-
-[ext_resource type="PackedScene" uid="uid://2vspw1onlhbq" path="res://revolver/bullets/marked_patron.tscn" id="1_oe0tc"]
-
-[node name="Marked Bullets Item" type="Node3D"]
-
-[node name="Marked Patron" parent="." instance=ExtResource("1_oe0tc")]
-transform = Transform3D(0.55888903, 0, -0.82924247, 0, 1, 0, 0.82924247, 0, 0.55888903, 0.00063376874, 0.10356562, -0.0011302428)

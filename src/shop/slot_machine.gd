@@ -4,7 +4,7 @@ extends Node3D
 @export var player: Player
 @export var ammo: PlayerPatrons
 @export var session: GameSession
-@export var products: Array[ShopProduct]
+@export var storage: StorageProducts
 
 @onready var clickable_lever: ClickableArea3D = %ClickableLever
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -88,7 +88,7 @@ func start_spin() -> void:
 
 func _on_slots_done() -> void:
 	box_spawner.clear_items()
-	box_spawner.spawn_items(products)
+	box_spawner.spawn_items(storage.products)
 	open_items()
 	slot_machine_animation_player.play("idle")
 
@@ -103,19 +103,9 @@ func _on_box_clicked(box: ShopBox) -> void:
 		error_audio_player.play()
 
 func open_items() -> void:
-	#animation_player.play("open")
 	box_spawner.open()
 	is_working = false
 	clickable_lever.enable()
-
-func open_boxes() -> void:
-	#box_spawner.open()
-	#is_working = false
-	#clickable_lever.enable()
-	pass
-
-func spawn_items() -> void:
-	box_spawner.spawn_items(products)
 
 func purchase(product: ShopProduct) -> void:
 	if product is BulletProduct:

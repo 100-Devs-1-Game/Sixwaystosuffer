@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="1_naabw"]
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_rm7p4"]
-[ext_resource type="PackedScene" uid="uid://dkwlewvmfbfo1" path="res://shop/products/items/base_bullets_item.tscn" id="3_mentq"]
+[ext_resource type="PackedScene" uid="uid://d2k56grbpisbi" path="res://shop/products/items/packs/three_bullets_pack.tscn" id="3_mentq"]
 
 [resource]
 script = ExtResource("1_naabw")

@@ -23,6 +23,12 @@ func spawn_items(available_resources: Array[ShopProduct]) -> void:
 		
 		var random_product = available_resources.pick_random()
 		var instance = random_product.shop_item.instantiate()
+		
+		if random_product is BulletProduct:
+			for child in instance.get_children():
+				var bullet = random_product.scene.instantiate()
+				child.add_child(bullet)
+		
 		box.product_position.add_child(instance)
 		box.product = random_product
 
