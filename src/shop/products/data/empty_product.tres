@@ -8,4 +8,5 @@ script = ExtResource("1_uurpw")
 name = "Empty"
 description = "empty"
 shop_item = ExtResource("2_uurpw")
+weight = 0.5
 metadata/_custom_type_script = "uid://d26x6wuwwmbmt"

@@ -5,3 +5,6 @@ extends Resource
 @export_multiline var description: String
 @export var cost: int
 @export var shop_item: PackedScene
+@export_range(0, 1) var weight: float
+
+var weight_acc: float
