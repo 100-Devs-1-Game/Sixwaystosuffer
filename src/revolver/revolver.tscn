@@ -535,7 +535,7 @@ stream_3/stream = ExtResource("7_p42ak")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cv3dl"]
 random_pitch = 1.1
-random_volume_offset_db = 3.0
+random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("18_knvnr")
 
@@ -638,7 +638,7 @@ stream = SubResource("AudioStreamRandomizer_sfe4l")
 
 [node name="Empty Audio Player" type="AudioStreamPlayer" parent="Audio Players"]
 stream = SubResource("AudioStreamRandomizer_cv3dl")
-volume_db = 12.0
+volume_db = 6.0
 pitch_scale = 0.9
 
 [node name="Chamber Scrolling Audio Player" type="AudioStreamPlayer" parent="Audio Players"]

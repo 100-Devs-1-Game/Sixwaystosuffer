@@ -15,6 +15,12 @@ extends Node3D
 
 @onready var spot_light_3d: SpotLight3D = $SpotLight3D
 @onready var spining_audio_player: SmoothAudioStreamPlayer = $"Spining Audio Player"
+@onready var buy_audio_player: AudioStreamPlayer = $"Buy Audio Player"
+@onready var error_audio_player: AudioStreamPlayer = $"Error Audio Player"
+@onready var spend_money_audio_player: AudioStreamPlayer = $"Spend Money Audio Player"
+
+@onready var shop_label: ShopLabel = $ShopLabel
+
 
 var is_working: bool
 
@@ -47,7 +53,8 @@ func _on_lever_entered() -> void:
 
 func _on_lever_clicked() -> void:
 	if not session.can_purchase(session.reroll_price):
-		# TODO: make animation for not enouth money
+		error_audio_player.play()
+		shop_label.show_not_enough()
 		return
 	
 	session.make_purchase(session.reroll_price)
@@ -61,8 +68,7 @@ func start_spin() -> void:
 	session.make_roll()
 	slot_spinner.spin()
 	
-	
-	spining_audio_player.volume_db = 0
+	spining_audio_player.volume_db = -6
 	spining_audio_player.pitch_scale = 1.0
 	spining_audio_player.play()
 	
@@ -91,7 +97,9 @@ func _on_box_clicked(box: ShopBox) -> void:
 		# TODO: animation for purchase
 		box.close()
 	else:
-		# TODO: animation for not enought money
+		shop_label.show_not_enough()
+		box.show_not_enough()
+		error_audio_player.play()
 		pass
 
 func open_items() -> void:
@@ -115,11 +123,14 @@ func purchase(product: ShopProduct) -> void:
 
 func purchase_bullet(product: BulletProduct) -> void:
 	if ammo.get_available_space() < product.quantity:
+		error_audio_player.play()
 		print("Not enough space for bullets")
 		# TODO: make visual error for this state
 		return
 	
 	session.make_purchase(product.cost)
+	spend_money_audio_player.play()
+	buy_audio_player.play()
 	
 	for i in product.quantity:
 		# TODO: make animation?

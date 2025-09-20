@@ -14,12 +14,13 @@ enum Reason {
 @export var max_rounds: int = 10
 @export var target_worth: int = 999
 @export var reroll_price: int = 5
+@export var total_worth: int
+
 @export var modifier_per_bullet: Array[int]
 
 var start_time: int
 var end_time: int
 
-var total_worth: int
 var worth_spent: int
 
 var round_record_worth: int

@@ -12,6 +12,8 @@ extends Node3D
 @onready var close_audio_player: AudioStreamPlayer = $"Close AudioPlayer"
 
 @onready var digital_label_3d: Label3D = %"Digital Label3D"
+@onready var clickable_sounds: ClickableSounds = $ClickableSounds
+@onready var error_label_3d: ErrorLabel3D = %ErrorLabel3D
 
 var product: ShopProduct
 
@@ -23,11 +25,19 @@ var _tween: Tween
 func _ready() -> void:
 	base_offset = position.z
 
+func show_not_enough() -> void:
+	error_label_3d.alert()
+
 func open() -> void:
 	_stop_tween_if_needed()
 	
 	if is_blocked or is_opened:
 		return
+	
+	if product is EmptyProduct:
+		clickable_sounds.is_enabled = false
+	else:
+		clickable_sounds.is_enabled = true
 	
 	_tween = _create_box_tween(open_offset, switch_duration, Tween.EASE_OUT)
 	is_opened = true

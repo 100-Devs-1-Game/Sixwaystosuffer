@@ -3,6 +3,7 @@ extends Node
 
 @export var slot_machine: SlotMachine
 @export var digital: Label3D
+@export var error_digital: ErrorLabel3D
 @export var spawner: BoxSpawner
 @export var spinner: SlotSpinner
 @export var lever: ClickableArea3D
@@ -21,6 +22,10 @@ func _ready() -> void:
 
 func clear() -> void:
 	base_text = "[SLOT_WELCOME]"
+
+func show_not_enough() -> void:
+	error_digital.alert()
+	digital.text = "not money"
 
 func _on_box_hovered(box: ShopBox) -> void:
 	var product := box.product
