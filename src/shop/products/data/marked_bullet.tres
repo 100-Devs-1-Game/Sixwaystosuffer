@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BulletProduct" load_steps=4 format=3 uid="uid://iwe3flchq0qa"]
+
+[ext_resource type="PackedScene" uid="uid://2vspw1onlhbq" path="res://revolver/bullets/marked_patron.tscn" id="1_rpd2p"]
+[ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_prus7"]
+[ext_resource type="PackedScene" uid="uid://s0bc43ckbrm0" path="res://shop/products/items/marked_bullets_item.tscn" id="3_prus7"]
+
+[resource]
+script = ExtResource("2_prus7")
+quantity = 3
+scene = ExtResource("1_rpd2p")
+name = "Base Bullets"
+description = "Marked Bullets"
+cost = 20
+shop_item = ExtResource("3_prus7")
+metadata/_custom_type_script = "uid://gtdxgikb4wii"

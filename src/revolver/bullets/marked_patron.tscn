@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://2vspw1onlhbq"]
+
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_6kvoy"]
+[ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://revolver/bullets/m_marked_bullet.tres" id="2_tnk5g"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_tnk5g"]
+material = ExtResource("2_tnk5g")
+inner_radius = 0.025
+outer_radius = 0.04
+rings = 16
+ring_segments = 8
+
+[node name="Marked Patron" instance=ExtResource("1_6kvoy")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chamber Position/bullet" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 4.065758e-20, 0, -4.065758e-20, 1, 0, 0.0063632354, 6.7819916e-17)
+mesh = SubResource("TorusMesh_tnk5g")
+
+[editable path="Chamber Position"]
