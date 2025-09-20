@@ -14,8 +14,8 @@ radius = 0.05
 height = 0.25
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jh1bd"]
-random_pitch = 2.0
-random_volume_offset_db = 2.0
+random_pitch = 1.2
+random_volume_offset_db = 3.0
 streams_count = 1
 stream_0/stream = ExtResource("5_jh1bd")
 
@@ -56,8 +56,8 @@ metadata/_custom_type_script = "uid://beatoaa760esh"
 
 [node name="HoverSoundPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("area")]
 stream = SubResource("AudioStreamRandomizer_jh1bd")
-volume_db = -6.0
-pitch_scale = 1.2
+volume_db = -7.0
+pitch_scale = 1.6
 script = ExtResource("5_c8uq7")
 area = NodePath("../Interact Area3d")
 metadata/_custom_type_script = "uid://dgx7u8h426p70"

@@ -29,11 +29,11 @@ func enter_async() -> void:
 	dealer.change_face(Dealer.DealerFace.HAPPY)
 	await pause(2.0)
 	switch_audio_player.play()
-	await pause(0.1)
 	winning_audio_player.smooth_play()
 	dealer.quit();
 	await pause(3.5)
 	switch_audio_player.play()
+	await pause(0.1)
 	winning_audio_player.stop()
 	
 	await pause(0.1)

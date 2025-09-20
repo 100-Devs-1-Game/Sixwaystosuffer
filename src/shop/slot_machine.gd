@@ -59,6 +59,7 @@ func _on_lever_clicked() -> void:
 		return
 	
 	session.make_purchase(session.reroll_price)
+	spend_money_audio_player.play()
 	
 	is_working = true
 	clickable_lever.disable()
