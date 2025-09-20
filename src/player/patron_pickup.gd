@@ -74,6 +74,7 @@ func unload_patron(target: Patron) -> void:
 		return
 	
 	is_working = true
+	table_patrons.setup_free_position(target)
 	place_patron_on_random_path(target, 0.0)
 	revolver.unload_patron(target)
 	

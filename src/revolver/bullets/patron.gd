@@ -22,6 +22,12 @@ func _ready() -> void:
 	interact_area_3d.mouse_entered.connect(func(): hovered.emit(self))
 	interact_area_3d.mouse_exited.connect(func(): unhovered.emit(self))
 
+func update_on_table(index: int, position_node: Node3D) -> void:
+	on_table_index = index
+	on_table_position = position_node.global_position
+	on_table_rotation = position_node.global_rotation
+	raise_on_hover.setup_init_position(on_table_position)
+
 func enable() -> void:
 	interact_area_3d.enable()
 	raise_on_hover.is_enabled = true

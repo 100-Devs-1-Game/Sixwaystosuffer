@@ -43,9 +43,20 @@ func add(patron: Patron) -> void:
 	patron.on_table_rotation = patron_position.global_rotation
 	patron_position.add_child(patron)
 
+func setup_free_position(patron: Patron) -> void:
+	var target_index := patron.on_table_index
+	
+	if bullets[target_index]:
+		target_index = get_free_index()
+		patron.update_on_table(target_index, positions[target_index])
+		patron.on_table_index = target_index
+		patron.on_table_position = positions[target_index].global_position
+		patron.on_table_rotation = positions[target_index].global_rotation
+
 func return_patron(patron: Patron) -> void:
 	if bullets[patron.on_table_index]:
-		printerr("Already has bullets in this index!")
+		printerr("it's position used!")
+		return
 	
 	bullets[patron.on_table_index] = patron
 

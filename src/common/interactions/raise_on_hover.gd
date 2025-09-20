@@ -16,6 +16,9 @@ func _ready() -> void:
 	monitor.mouse_entered.connect(_on_mouse_entered)
 	monitor.mouse_exited.connect(_on_mouse_exited)
 
+func setup_init_position(new_position: Vector3) -> void:
+	init_position = new_position
+
 func reset() -> void:
 	_stop_tween_if_needed()
 	target.global_position = init_position
