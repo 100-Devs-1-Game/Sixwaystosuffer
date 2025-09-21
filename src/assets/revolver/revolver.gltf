@@ -1,6 +1,6 @@
 {
 	"asset":{
-		"generator":"Khronos glTF Blender I/O v4.5.47",
+		"generator":"Khronos glTF Blender I/O v3.5.30",
 		"version":"2.0"
 	},
 	"scene":0,
@@ -20,15 +20,15 @@
 			"mesh":0,
 			"name":"revolver_base",
 			"rotation":[
-				0.5,
+				0.4999999701976776,
+				-0.4999999701976776,
 				-0.5,
-				-0.5,
-				0.5000000596046448
+				0.5
 			],
 			"scale":[
-				0.006971982307732105,
-				0.006971982307732105,
-				0.006971982307732105
+				0.00697198323905468,
+				0.00697198323905468,
+				0.00697198323905468
 			]
 		},
 		{
@@ -66,8 +66,8 @@
 				{
 					"attributes":{
 						"POSITION":0,
-						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":1,
+						"NORMAL":2
 					},
 					"indices":3
 				}
@@ -79,8 +79,8 @@
 				{
 					"attributes":{
 						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"TEXCOORD_0":5,
+						"NORMAL":6
 					},
 					"indices":7
 				}
@@ -92,8 +92,8 @@
 				{
 					"attributes":{
 						"POSITION":8,
-						"NORMAL":9,
-						"TEXCOORD_0":10
+						"TEXCOORD_0":9,
+						"NORMAL":10
 					},
 					"indices":11
 				}
@@ -105,8 +105,8 @@
 				{
 					"attributes":{
 						"POSITION":12,
-						"NORMAL":13,
-						"TEXCOORD_0":14
+						"TEXCOORD_0":13,
+						"NORMAL":14
 					},
 					"indices":15
 				}
@@ -117,41 +117,41 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":8381,
+			"count":7801,
 			"max":[
 				107.59790802001953,
 				112.19851684570312,
-				17.746551513671875
+				19.28209686279297
 			],
 			"min":[
 				-35.83620071411133,
 				-136.21099853515625,
-				-17.746549606323242
+				-19.282094955444336
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":8381,
-			"type":"VEC3"
+			"count":7801,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":8381,
-			"type":"VEC2"
+			"count":7801,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":8805,
+			"count":8358,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":1616,
+			"count":1610,
 			"max":[
 				0.13309746980667114,
 				0.13305333256721497,
@@ -167,14 +167,14 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":1616,
-			"type":"VEC3"
+			"count":1610,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":1616,
-			"type":"VEC2"
+			"count":1610,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
@@ -185,7 +185,7 @@
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":707,
+			"count":601,
 			"max":[
 				0.03520442917943001,
 				0.22594021260738373,
@@ -201,14 +201,14 @@
 		{
 			"bufferView":9,
 			"componentType":5126,
-			"count":707,
-			"type":"VEC3"
+			"count":601,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":707,
-			"type":"VEC2"
+			"count":601,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":11,
@@ -219,7 +219,7 @@
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":1073,
+			"count":441,
 			"max":[
 				0.019095610827207565,
 				0.031913816928863525,
@@ -235,14 +235,14 @@
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":1073,
-			"type":"VEC3"
+			"count":441,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":14,
 			"componentType":5126,
-			"count":1073,
-			"type":"VEC2"
+			"count":441,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":15,
@@ -254,104 +254,104 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":100572,
+			"byteLength":93612,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":100572,
-			"byteOffset":100572,
+			"byteLength":62408,
+			"byteOffset":93612,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":67048,
-			"byteOffset":201144,
+			"byteLength":93612,
+			"byteOffset":156020,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":17610,
-			"byteOffset":268192,
+			"byteLength":16716,
+			"byteOffset":249632,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":19392,
-			"byteOffset":285804,
+			"byteLength":19320,
+			"byteOffset":266348,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":19392,
-			"byteOffset":305196,
+			"byteLength":12880,
+			"byteOffset":285668,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":12928,
-			"byteOffset":324588,
+			"byteLength":19320,
+			"byteOffset":298548,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":3936,
-			"byteOffset":337516,
+			"byteOffset":317868,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":8484,
-			"byteOffset":341452,
+			"byteLength":7212,
+			"byteOffset":321804,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":8484,
-			"byteOffset":349936,
+			"byteLength":4808,
+			"byteOffset":329016,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5656,
-			"byteOffset":358420,
+			"byteLength":7212,
+			"byteOffset":333824,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":1704,
-			"byteOffset":364076,
+			"byteOffset":341036,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":12876,
-			"byteOffset":365780,
+			"byteLength":5292,
+			"byteOffset":342740,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":12876,
-			"byteOffset":378656,
+			"byteLength":3528,
+			"byteOffset":348032,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":8584,
-			"byteOffset":391532,
+			"byteLength":5292,
+			"byteOffset":351560,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":2400,
-			"byteOffset":400116,
+			"byteOffset":356852,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":402516,
+			"byteLength":359252,
 			"uri":"revolver.bin"
 		}
 	]
