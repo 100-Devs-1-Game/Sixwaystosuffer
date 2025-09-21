@@ -10,6 +10,7 @@ extends StateAsync
 
 @export var main_theme: AudioStreamPlayer
 @export var switch_audio_player: AudioStreamPlayer
+
 @export var winning_audio_player: SmoothAudioStreamPlayer
 
 func enter_async() -> void:
@@ -31,12 +32,12 @@ func enter_async() -> void:
 	dealer.quit();
 	await pause(3.5)
 	switch_audio_player.play()
+	main_theme.stop()
 	await pause(0.1)
 	winning_audio_player.stop()
 	
 	await pause(0.1)
 	player_hud.show_curtain(0.05)
-	main_theme.stop()
 	await pause(1.0)
 	player_hud.show_statistic(2.0)
 	player_hud.statistic_panel.retry_pressed.connect(_on_reload)
