@@ -61,7 +61,7 @@ func fire() -> void:
 	else:
 		var patron := get_current_patron()
 		
-		if patron.is_dummy:
+		if patron.effect.is_dummy:
 			animation_player.play("fire_empty")
 		else:
 			animation_player.play("fire")

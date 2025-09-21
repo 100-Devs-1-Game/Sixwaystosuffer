@@ -33,13 +33,13 @@ func get_patrons() -> Array[Patron]:
 func get_worth() -> int:
 	var result: int = 0
 	for patron in get_patrons():
-		result += patron.bonus_score
+		result += patron.effect.load_bonus
 	return result
 
 func get_modifier() -> int:
 	var result: int = 1
 	for patron in get_patrons():
-		result *= patron.modifier
+		result *= patron.effect.load_modifier
 	return result
 
 func get_patron_count() -> int:
@@ -95,7 +95,7 @@ func get_hovered_patron() -> Patron:
 
 func is_dummy_patron_now() -> bool:
 	var current_patron := get_current_patron()
-	return current_patron != null and current_patron.is_dummy
+	return current_patron != null and current_patron.effect.is_dummy
 
 func get_current_patron() -> Patron:
 	return _partons[_current_index]

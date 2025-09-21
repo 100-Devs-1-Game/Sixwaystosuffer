@@ -9,8 +9,8 @@ script = ExtResource("2_ed66p")
 quantity = 2
 scene = ExtResource("1_fcsyv")
 name = "Base Bullets"
-description = "+5$ for load
-+2$ if not load"
+description = "+3$ for load
++3$ if not load"
 cost = 20
 shop_item = ExtResource("3_fcsyv")
 weight = 0.75

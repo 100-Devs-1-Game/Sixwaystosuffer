@@ -5,10 +5,7 @@ signal clicked(patron: Patron)
 signal hovered(patron: Patron)
 signal unhovered(patron: Patron)
 
-@export var is_dummy: bool = false
-@export var bonus_score: int = 10
-@export var passive_income: int = 0
-@export var modifier: int = 1
+@export var effect: BulletEffectResource
 
 @onready var interact_area_3d: ClickableArea3D = %"Interact Area3d"
 @onready var raise_on_hover: RaiseOnHover = %RaiseOnHover
@@ -38,3 +35,9 @@ func disable() -> void:
 	interact_area_3d.disable()
 	raise_on_hover.is_enabled = false
 	raise_on_hover.reset()
+
+func get_short_description() -> String:
+	return effect.get_short_description()
+
+func get_description() -> String:
+	return ""

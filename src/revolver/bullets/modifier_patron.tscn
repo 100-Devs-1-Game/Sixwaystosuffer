@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnyvlx656lvqd"]
+[gd_scene load_steps=5 format=3 uid="uid://bnyvlx656lvqd"]
 
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_7u7ua"]
+[ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="2_ovl6v"]
 [ext_resource type="Material" uid="uid://b1elofufp0igv" path="res://assets/bullet/m_modifier_bullet.tres" id="2_p7wid"]
 
+[sub_resource type="Resource" id="Resource_mg4p0"]
+script = ExtResource("2_ovl6v")
+load_bonus = 0
+load_modifier = 2
+metadata/_custom_type_script = "uid://bkbkiax67h483"
+
 [node name="Patron" instance=ExtResource("1_7u7ua")]
-bonus_score = 0
-modifier = 2
+effect = SubResource("Resource_mg4p0")
 
 [node name="Cylinder" parent="Chamber Position/bullet" index="0"]
 surface_material_override/0 = ExtResource("2_p7wid")

@@ -51,7 +51,7 @@ func add(patron: Patron) -> void:
 func get_passive_income() -> int:
 	var total_income := 0
 	for bullet in get_bullets():
-		total_income += bullet.passive_income
+		total_income += bullet.effect.on_table_income
 	return total_income
 
 func setup_free_position(patron: Patron) -> void:

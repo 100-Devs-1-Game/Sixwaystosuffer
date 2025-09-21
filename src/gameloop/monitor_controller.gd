@@ -80,7 +80,7 @@ func _on_revolver_exited() -> void:
 	monitor_3d.pop_back("[TUTOR_GOOD]")
 
 func _on_patron_hovered(patron: Patron) -> void:
-	monitor_3d.push_back("patron", ["+%s$" % patron.bonus_score])
+	monitor_3d.push_back("patron", [patron.get_short_description()])
 
 func _on_patron_unhovered(_patron: Patron) -> void:
 	monitor_3d.pop_back("patron")

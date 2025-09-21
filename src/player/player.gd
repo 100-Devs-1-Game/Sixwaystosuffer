@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _on_shoot_happened() -> void:
 	var patron := revolver.get_current_patron()
-	if patron != null and not patron.is_dummy:
+	if patron != null and not patron.effect.is_dummy:
 		camera_shaker.shake(0.2)
 
 func shake() -> void:
