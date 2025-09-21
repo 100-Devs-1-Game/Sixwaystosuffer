@@ -7,8 +7,8 @@
 
 [sub_resource type="Resource" id="Resource_v7owa"]
 script = ExtResource("2_notba")
-load_bonus = 3
-on_table_income = 3
+load_bonus = 5
+on_table_income = 1
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [node name="Patron" instance=ExtResource("1_ev4b8")]

@@ -13,5 +13,5 @@ description = "Marked Bullet
 +10$ for load"
 cost = 100
 shop_item = ExtResource("3_rpd2p")
-weight = 0.25
+weight = 0.3
 metadata/_custom_type_script = "uid://gtdxgikb4wii"

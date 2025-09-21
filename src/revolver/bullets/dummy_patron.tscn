@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_63y6u"]
 script = ExtResource("2_pgld3")
 is_dummy = true
-load_bonus = 0
+load_bonus = 5
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [node name="Patron" instance=ExtResource("1_ltk18")]

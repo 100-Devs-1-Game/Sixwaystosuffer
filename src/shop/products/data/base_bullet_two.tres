@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BulletProduct" load_steps=4 format=3 uid="uid://cnuqg12xvam7k"]
+
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_flv6j"]
+[ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_ljnnk"]
+[ext_resource type="PackedScene" uid="uid://cuqae2y2t0ufp" path="res://shop/products/items/packs/two_bullets_pack.tscn" id="3_vdx4m"]
+
+[resource]
+script = ExtResource("2_ljnnk")
+quantity = 2
+scene = ExtResource("1_flv6j")
+name = "Base Bullets"
+description = "+10$ for load"
+cost = 20
+shop_item = ExtResource("3_vdx4m")
+weight = 0.75
+metadata/_custom_type_script = "uid://gtdxgikb4wii"

@@ -9,8 +9,9 @@ script = ExtResource("2_erhgt")
 quantity = 2
 scene = ExtResource("1_sidwo")
 name = "Dummy Bullets"
-description = "Dummy bullets."
+description = "Dummy bullets
++5$ for load"
 cost = 25
 shop_item = ExtResource("3_sidwo")
-weight = 0.65
+weight = 0.55
 metadata/_custom_type_script = "uid://gtdxgikb4wii"

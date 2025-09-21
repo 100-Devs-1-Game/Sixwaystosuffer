@@ -11,7 +11,6 @@ enum Reason {
 }
 
 @export var initial_bullets_count: int = 4
-@export var max_rounds: int = 10
 @export var target_worth: int = 999
 @export var reroll_price: int = 5
 @export var total_worth: int

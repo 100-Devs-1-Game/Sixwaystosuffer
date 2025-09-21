@@ -9,9 +9,9 @@ script = ExtResource("2_ed66p")
 quantity = 2
 scene = ExtResource("1_fcsyv")
 name = "Base Bullets"
-description = "+3$ for load
-+3$ if not load"
-cost = 24
+description = "+5$ for load
++1$ if not load"
+cost = 20
 shop_item = ExtResource("3_fcsyv")
-weight = 0.7
+weight = 0.72
 metadata/_custom_type_script = "uid://gtdxgikb4wii"
