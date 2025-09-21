@@ -14,6 +14,8 @@ config/name="Six Ways To Suffer"
 config/tags=PackedStringArray("100devs", "3d", "demo")
 run/main_scene="uid://catmh6bdnn6fa"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://cp4rivvcjc3n2"
 config/icon="uid://cnts1qims4ssu"
 
 [autoload]
