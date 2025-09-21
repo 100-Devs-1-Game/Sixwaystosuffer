@@ -52,8 +52,9 @@ func can_make_turn() -> bool:
 	return revolver.has_patrons() or patrons.has_bullets()
 
 func drop_bullets() -> int:
-	# TODO: make animation for drop bullets
-	return revolver.drop_bullets()
+	var dropped_bullets := revolver.chamber.get_patron_count()
+	await state_machine.switch_to(PlayerDropBullets)
+	return dropped_bullets
 
 func to_shopping(shop: SlotMachine) -> void:
 	await state_machine.switch_to(PlayerShoppingState)

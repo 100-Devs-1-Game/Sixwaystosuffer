@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d2tor451umskh"]
+[gd_scene load_steps=48 format=3 uid="uid://d2tor451umskh"]
 
 [ext_resource type="Script" uid="uid://woog8sypojfk" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Script" uid="uid://tsoag28itu8l" path="res://player/camera/camera_shaker.gd" id="3_kb6p2"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://csoud1jtcyh3x" path="res://assets/sfx/woosh_01.ogg" id="13_e7oew"]
 [ext_resource type="AudioStream" uid="uid://c0y3ekplebwui" path="res://assets/sfx/woosh_02.ogg" id="14_c35mf"]
 [ext_resource type="AudioStream" uid="uid://svl4et3sea4m" path="res://assets/sfx/woosh_03.ogg" id="15_65viv"]
+[ext_resource type="Script" uid="uid://cku4lijrlsxd" path="res://player/states/player_drop_bullets.gd" id="18_c35mf"]
 [ext_resource type="Script" uid="uid://cklc006ph4e6u" path="res://player/states/player_shopping_state.gd" id="18_e7oew"]
 
 [sub_resource type="Curve" id="Curve_kb6p2"]
@@ -768,10 +769,75 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_c35mf"]
+resource_name = "drop_bullets"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand/Tremor/Revolver/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("open_drum", "close_drum"),
+"times": PackedFloat32Array(0.23333333, 2.5666666)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 0.4, 0.8333334, 1.0666667, 1.366667, 1.7666667, 2.0000002, 2.0333333, 2.2333333, 2.5666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.894, -0.5), Vector3(0.3, 0.894, -0.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.894, -0.392)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 0.8333334, 1.2333336, 1.366667, 1.4000003, 1.5, 2.0333333, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.8115781, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player Hand/Load Audio Stream:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.366667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/PlayerDropBullets")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4000003),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"drop_bullets"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
 _data = {
 &"RESET": SubResource("Animation_yw30f"),
 &"close_drum": SubResource("Animation_qjkh3"),
+&"drop_bullets": SubResource("Animation_c35mf"),
 &"idle": SubResource("Animation_g6k8r"),
 &"open_drum": SubResource("Animation_g1dw6"),
 &"self_aim": SubResource("Animation_boad6"),
@@ -864,7 +930,7 @@ libraries = {
 }
 
 [node name="Player Hand" type="Marker3D" parent="."]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.9999988, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999875, 0, 0, 0, 0.999999, 0.165, 0.894, -0.392)
 
 [node name="Tremor" type="Node3D" parent="Player Hand"]
 
@@ -987,6 +1053,12 @@ metadata/_custom_type_script = "uid://c88mh0j26u8nj"
 script = ExtResource("18_e7oew")
 player_head_animation = NodePath("../../Player Head/Player Head AnimationPlayer")
 metadata/_custom_type_script = "uid://cklc006ph4e6u"
+
+[node name="PlayerDropBullets" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver")]
+script = ExtResource("18_c35mf")
+player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
+revolver = NodePath("../../Player Hand/Tremor/Revolver")
+metadata/_custom_type_script = "uid://cku4lijrlsxd"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668913, 1.8688, -0.454168)
