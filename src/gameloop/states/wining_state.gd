@@ -12,12 +12,6 @@ extends StateAsync
 @export var switch_audio_player: AudioStreamPlayer
 @export var winning_audio_player: SmoothAudioStreamPlayer
 
-var is_can_been_restarted: bool
-
-func handle_input(event: InputEvent) -> void:
-	if is_can_been_restarted and event.is_action_pressed("interact"):
-		state_machine.switch_to(GameReloadState)
-
 func enter_async() -> void:
 	game_session.game_end_reason = GameSession.Reason.WINNER
 	game_session.stop()
@@ -45,4 +39,7 @@ func enter_async() -> void:
 	main_theme.stop()
 	await pause(1.0)
 	player_hud.show_statistic(2.0)
-	is_can_been_restarted = true
+	player_hud.statistic_panel.retry_pressed.connect(_on_reload)
+
+func _on_reload() -> void:
+	state_machine.switch_to(GameReloadState)

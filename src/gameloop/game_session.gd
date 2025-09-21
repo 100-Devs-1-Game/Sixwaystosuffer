@@ -19,7 +19,7 @@ enum Reason {
 
 var reroll_price: int:
 	get():
-		var value := maxi(min_reroll_price, int(total_worth / 10.0))
+		var value := maxi(min_reroll_price, int(total_worth / 20.0))
 		return value
 
 var start_time: int

@@ -1,6 +1,8 @@
 class_name StatisticPanel
 extends PanelContainer
 
+signal retry_pressed()
+
 @onready var playtime_label: StatisticLabel = %"Playtime Label"
 @onready var reached_worth_label: StatisticLabel = %"Reached Worth Label"
 @onready var record_per_shot_label: StatisticLabel = %"Record Per Shot Label"
@@ -14,6 +16,11 @@ extends PanelContainer
 @onready var killed_by_dealer: Label = %"Killed by Dealer"
 @onready var selfshot: Label = %Selfshot
 @onready var winner: Label = %Winner
+
+@onready var restart_button: Button = %"Restart Button"
+
+func _ready() -> void:
+	restart_button.pressed.connect(func(): retry_pressed.emit())
 
 func update(session: GameSession) -> void:
 	playtime_label.content = session.get_playtime_line()

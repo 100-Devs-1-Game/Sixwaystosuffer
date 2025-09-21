@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StorageProducts" load_steps=11 format=3 uid="uid://cnco3s76dt180"]
+[gd_resource type="Resource" script_class="StorageProducts" load_steps=10 format=3 uid="uid://cnco3s76dt180"]
 
 [ext_resource type="Script" uid="uid://d26x6wuwwmbmt" path="res://shop/products/shop_product.gd" id="1_vdqsq"]
 [ext_resource type="Resource" uid="uid://cay385jyhric" path="res://shop/products/data/empty_product.tres" id="2_a4kdn"]
@@ -9,9 +9,8 @@
 [ext_resource type="Resource" uid="uid://cyy1xxwy56e2m" path="res://shop/products/data/base_income_bullet.tres" id="6_h2cgw"]
 [ext_resource type="Resource" uid="uid://bwe1ajrduj4hn" path="res://shop/products/data/base_modifier_bullet.tres" id="7_d4kij"]
 [ext_resource type="Resource" uid="uid://cnuqg12xvam7k" path="res://shop/products/data/base_bullet_two.tres" id="8_tdbpe"]
-[ext_resource type="Resource" uid="uid://cmg7myes04s81" path="res://shop/products/data/base_bullet_single.tres" id="9_8j2ut"]
 
 [resource]
 script = ExtResource("2_fkurc")
-products = Array[ExtResource("1_vdqsq")]([ExtResource("2_a4kdn"), ExtResource("3_h2cgw"), ExtResource("4_d4kij"), ExtResource("5_3hyuq"), ExtResource("6_h2cgw"), ExtResource("7_d4kij"), ExtResource("8_tdbpe"), ExtResource("9_8j2ut")])
+products = Array[ExtResource("1_vdqsq")]([ExtResource("2_a4kdn"), ExtResource("3_h2cgw"), ExtResource("4_d4kij"), ExtResource("5_3hyuq"), ExtResource("6_h2cgw"), ExtResource("7_d4kij"), ExtResource("8_tdbpe")])
 metadata/_custom_type_script = "uid://dte6cmohbt7qu"

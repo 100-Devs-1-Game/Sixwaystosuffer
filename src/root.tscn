@@ -479,7 +479,7 @@ transform = Transform3D(0.7714382, -0.63630337, -0.0009448794, -0.005204373, -0.
 shaded = true
 modulate = Color(1, 1, 1, 0.20392157)
 outline_modulate = Color(0, 0, 0, 0.3372549)
-text = "10%"
+text = "5%"
 font = ExtResource("12_obcww")
 outline_size = 2
 
