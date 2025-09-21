@@ -24,7 +24,7 @@ func update(session: GameSession) -> void:
 	self_aimed_label.content = str(session.self_aiming_count)
 	dealer_aimed_label.content = str(session.dealer_aiming_count)
 	roll_count_label.content = str(session.slot_machine_rolls)
-	money_wasted_label.content = str(session.worth_spent)
+	money_wasted_label.content = "%s$" % str(session.worth_spent)
 	
 	match session.game_end_reason:
 		GameSession.Reason.WINNER:
