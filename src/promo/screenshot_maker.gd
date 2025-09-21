@@ -1,12 +1,12 @@
 class_name ScreenshotMaker
 extends Node
 
-@export var viewport: Viewport
+@export var viewport: SubViewport
 @export var screenshot_name: String
 
 func _ready() -> void:
-	viewport = get_viewport()
 	get_viewport().transparent_bg = true
+	get_window().size = viewport.size
 	await RenderingServer.frame_post_draw
 	take_transparent_screenshot()
 
