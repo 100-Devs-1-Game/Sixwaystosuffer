@@ -12,5 +12,5 @@ name = "Base Bullets"
 description = "x2 for load"
 cost = 35
 shop_item = ExtResource("3_k2y54")
-weight = 0.45
+weight = 0.5
 metadata/_custom_type_script = "uid://gtdxgikb4wii"

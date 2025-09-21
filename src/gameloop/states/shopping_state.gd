@@ -29,9 +29,8 @@ func enter_async() -> void:
 	
 	shop_animation.play("show")
 	await current_animation_ended(shop_animation)
-	
-	slot_machine.enable()
 	slot_machine.clickable_area_3d.clicked.connect(_on_slot_machine_clicked)
+	slot_machine.enable()
 
 func exit_async() -> void:
 	shop_animation.play("hide")
@@ -42,4 +41,3 @@ func exit_async() -> void:
 func _on_slot_machine_clicked() -> void:
 	slot_machine.clickable_area_3d.disable()
 	await player.to_shopping(slot_machine)
-	slot_machine.enable()

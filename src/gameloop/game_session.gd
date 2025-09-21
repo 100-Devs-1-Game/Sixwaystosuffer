@@ -12,10 +12,15 @@ enum Reason {
 
 @export var initial_bullets_count: int = 4
 @export var target_worth: int = 999
-@export var reroll_price: int = 5
+@export var min_reroll_price: int = 5
 @export var total_worth: int
 
 @export var modifier_per_bullet: Array[int]
+
+var reroll_price: int:
+	get():
+		var value := maxi(min_reroll_price, int(total_worth / 10.0))
+		return value
 
 var start_time: int
 var end_time: int
