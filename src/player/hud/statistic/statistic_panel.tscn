@@ -1,49 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://230joxf853v3"]
+[gd_scene load_steps=8 format=3 uid="uid://230joxf853v3"]
 
 [ext_resource type="PackedScene" uid="uid://b8f3m38vjqs7" path="res://player/hud/statistic/statistic_label.tscn" id="1_25yb5"]
 [ext_resource type="Theme" uid="uid://b1xm55edwim1j" path="res://player/hud/statistic/statistic_panel.tres" id="1_b6225"]
 [ext_resource type="Script" uid="uid://x572djaaaxvb" path="res://player/hud/statistic/statistic_panel.gd" id="2_3l06n"]
 [ext_resource type="Script" uid="uid://chreenvoahsqx" path="res://common/floating_control.gd" id="3_0y4m8"]
+[ext_resource type="Script" uid="uid://b6dutaaykl6le" path="res://common/paint_on_mouse.gd" id="5_kro6n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab83r"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ct4e"]
-content_margin_left = 20.0
-content_margin_top = 4.0
-content_margin_right = 20.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y4m8"]
-content_margin_left = 20.0
-content_margin_top = 4.0
-content_margin_right = 20.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kro6n"]
-content_margin_left = 20.0
-content_margin_top = 4.0
-content_margin_right = 20.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y4m8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kro6n"]
 
 [node name="Statistic Panel" type="PanelContainer"]
 anchors_preset = 8
@@ -215,13 +180,45 @@ layout_mode = 2
 title = "[STAT_MONEY_WASTED]"
 content = "0"
 
-[node name="Restart Button" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="Retry Button Container" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="FloatingControl" type="Control" parent="VBoxContainer/Retry Button Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(153, 26)
+script = ExtResource("3_0y4m8")
+scaling = 0.05
+speed = 5.0
+metadata/_custom_type_script = "uid://chreenvoahsqx"
+
+[node name="Restart Button" type="Button" parent="VBoxContainer/Retry Button Container/FloatingControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.5
+offset_right = 43.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_6ct4e")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0y4m8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_kro6n")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0y4m8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kro6n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kro6n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kro6n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kro6n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kro6n")
 text = "RETRY"
+
+[node name="PaintOnMouse" type="Node" parent="VBoxContainer/Retry Button Container/FloatingControl" node_paths=PackedStringArray("target")]
+script = ExtResource("5_kro6n")
+target = NodePath("../Restart Button")
+normal_color = Color(1, 1, 1, 1)
+mouse_color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://b6dutaaykl6le"
