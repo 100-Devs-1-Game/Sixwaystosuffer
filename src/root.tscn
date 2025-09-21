@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://catmh6bdnn6fa"]
+[gd_scene load_steps=57 format=3 uid="uid://catmh6bdnn6fa"]
 
 [ext_resource type="Material" uid="uid://cqrht8riym6nn" path="res://assets/shaders/posterize_canvas.tres" id="1_sq7yr"]
 [ext_resource type="PackedScene" uid="uid://d2tor451umskh" path="res://player/player.tscn" id="1_vvh5c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b33dr7k4v11mv" path="res://dealer/dealer.tscn" id="8_bf3um"]
 [ext_resource type="PackedScene" uid="uid://bipg2ekrwq3vr" path="res://environment/table/choice_labels.tscn" id="9_r3r3k"]
 [ext_resource type="PackedScene" uid="uid://ci6kjbj6cbjwm" path="res://environment/monitors/quequed_monitor_3d.tscn" id="11_po8fv"]
+[ext_resource type="FontFile" uid="uid://cwh03mx6kuelx" path="res://assets/fonts/HelpMe-Yz7Lq.ttf" id="12_obcww"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
 [ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
@@ -423,6 +424,82 @@ visible = false
 player = NodePath("../../Player")
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
+
+[node name="13Max Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.83165383, -0.55529445, -2.427269e-08, -0.005204376, -0.007794537, 0.9999561, -0.5552701, -0.8316173, -0.009372317, -0.7258826, 4.056409, 1.5017107)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "13 max"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="Modifier Labels" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.8927768, 0.45042503, 0.008157559, -0.005204374, -0.0077945343, 0.99995595, 0.45046887, -0.89278007, -0.0046146023, 1.282296, 4.056409, 1.3375815)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "1-x2
+2-x3
+4-x4
+6-x5"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="Shop Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.8927768, 0.45042503, 0.008157559, -0.005204374, -0.0077945343, 0.99995595, 0.45046887, -0.89278007, -0.0046146023, 1.3929112, 4.0564094, 0.20555055)
+shaded = true
+modulate = Color(1, 1, 1, 0.34901962)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "percent
+roll"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="No Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.9406558, -0.33935413, 0.0022505163, -0.005204374, -0.0077945343, 0.99995595, -0.3393216, -0.94062614, -0.009098103, 0.45784035, 4.056409, 0.5849376)
+shaded = true
+modulate = Color(1, 1, 1, 0.3137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "no"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="No Label2" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.9876114, 0.15678883, 0.006362276, -0.005204373, -0.0077945334, 0.99995595, 0.15683168, -0.98760116, -0.006881987, -0.24325898, 4.056409, 0.5232877)
+shaded = true
+modulate = Color(1, 1, 1, 0.1764706)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "no"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="Percent Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.7714382, -0.63630337, -0.0009448794, -0.005204373, -0.0077945334, 0.99995595, -0.6362827, -0.77139926, -0.009324565, -1.3801496, 4.0708804, -0.034596324)
+shaded = true
+modulate = Color(1, 1, 1, 0.20392157)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "10%"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="No Label3" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.99997246, -0.0052910447, 0.005163217, -0.005204373, -0.0077945334, 0.99995595, -0.0052503794, -0.99995536, -0.00782186, 0.6208613, 4.056409, 0.25770277)
+shaded = true
+modulate = Color(1, 1, 1, 0.27450982)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "no"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="No Label4" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+transform = Transform3D(0.93046767, 0.36629245, 0.0076979212, -0.0052043726, -0.0077945334, 0.99995595, 0.36633655, -0.9304669, -0.005346243, -0.5029478, 4.056409, 0.03179565)
+shaded = true
+modulate = Color(1, 1, 1, 0.3137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "no"
+font = ExtResource("12_obcww")
+outline_size = 2
 
 [node name="Dealer" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("8_bf3um")]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -3.68618)

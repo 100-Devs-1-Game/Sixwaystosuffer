@@ -3,3 +3,6 @@ License: Creative Commons (by-sa) Attribution Share Alike
 
 ErbosDraco Nova Open NBP Regular Font by Nate Halley
 License: Creative Commons (by-sa) Attribution Share Alike
+
+Help Me Font by GGBotNet
+license: SIL Open Font License (OFL)
