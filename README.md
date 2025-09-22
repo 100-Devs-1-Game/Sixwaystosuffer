@@ -3,10 +3,11 @@
 </p>
 
 <p align="left">
-  <i>Accept or vanish...</i>
+  <i>Refusal is not an option.</i>
 </p>
 
 # Six Ways To Suffer
+[![ITCH](https://img.shields.io/badge/Itch.io-FA5C5C?&logo=itch.io&logoColor=white)](https://100devs.itch.io/six-ways-to-suffer)
 [![Release](https://github.com/100-Devs-1-Game/Sixwaystosuffer/actions/workflows/cicd.yml/badge.svg)](/.github/workflows/cicd.yml)
 [![Made with Godot](https://img.shields.io/badge/Made%20with-Godot-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org)
 [![](https://tokei.rs/b1/github/100-Devs-1-Game/Sixwaystosuffer?category=code&style=flat&label=Lines%20Of%20Code)](https://github.com/XAMPPRocky/tokei)
@@ -18,9 +19,11 @@ This game inspired by Buckshot Roulette with a twist: you load the chambers your
 
 This project was developed as part of the 100Devs community challenge. Join us on [Discord](https://discord.gg/UHN4AjMw4d).
 
+You can play it on [itch](https://100devs.itch.io/six-ways-to-suffer).
 
 
-https://github.com/user-attachments/assets/c6230d2a-6104-41f7-935c-17c2fccceed6
+https://github.com/user-attachments/assets/f354344e-37d0-4678-b1fe-2af23feea4fc
+
 
 
 
