@@ -18,6 +18,12 @@ This game inspired by Buckshot Roulette with a twist: you load the chambers your
 
 This project was developed as part of the 100Devs community challenge. Join us on [Discord](https://discord.gg/UHN4AjMw4d).
 
+
+
+https://github.com/user-attachments/assets/c6230d2a-6104-41f7-935c-17c2fccceed6
+
+
+
 ## Rules of Engagement
 
 1. The Dealer agrees to release the subject only if they accumulate a total of 999 dollars (or equivalent) by playing the game designed by the Dealer, effectively "earning" this amount.
