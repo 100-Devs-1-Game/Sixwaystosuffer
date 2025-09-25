@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1roh35vyjy4l"
-path.s3tc="res://.godot/imported/slot_machine_slot_machine_symbols_done.png-ac1f13a741da1cab09c503cd01999233.s3tc.ctex"
+path="res://.godot/imported/slot_machine_slot_machine_symbols_done.png-ac1f13a741da1cab09c503cd01999233.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f80f74a6f81c125dfc6dfbce1ade8b9b"
@@ -15,16 +14,16 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/props/slot_machine_2/slot_machine_slot_machine_symbols_done.png"
-dest_files=["res://.godot/imported/slot_machine_slot_machine_symbols_done.png-ac1f13a741da1cab09c503cd01999233.s3tc.ctex"]
+dest_files=["res://.godot/imported/slot_machine_slot_machine_symbols_done.png-ac1f13a741da1cab09c503cd01999233.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
-compress/hdr_compression=1
+compress/hdr_compression=2
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

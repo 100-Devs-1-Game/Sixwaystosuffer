@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "m_bullet": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/bullet/M_bullet.tres",
+"use_external/fallback_path": "res://assets/bullet/m_base_bullet.tres",
 "use_external/path": "uid://b12spoewigrwc"
 }
 }
