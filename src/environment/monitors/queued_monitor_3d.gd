@@ -20,14 +20,15 @@ func push_back(id: String, content: Array[String]) -> void:
 	show_last()
 
 func pop_back(id: String) -> void:
-	items.erase(id)
-	var index := queue.find(id)
-	
-	if index < 0:
-		return
-	
-	queue.remove_at(index)
+	_erase(id)
 	show_last()
+
+func _erase(id: String) -> void:
+	items.erase(id)
+	
+	for i in queue.count(id):
+		var index := queue.find(id)
+		queue.remove_at(index)
 
 func show_last() -> void:
 	if queue.size() < 1:
