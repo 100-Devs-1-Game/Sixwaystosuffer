@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnywjwuiyrka"]
+[gd_scene load_steps=5 format=3 uid="uid://ctnywjwuiyrka"]
 
 [ext_resource type="Script" uid="uid://dav0wnu6v0hy8" path="res://player/hud/player_hud.gd" id="1_vai5t"]
 [ext_resource type="PackedScene" uid="uid://230joxf853v3" path="res://player/hud/statistic/statistic_panel.tscn" id="2_sabkn"]
+[ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="3_sabkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sabkn"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.37254903)
+shadow_size = 5
 
 [node name="Player HUD" type="CanvasLayer"]
 script = ExtResource("1_vai5t")
@@ -24,3 +34,39 @@ offset_top = -126.5
 offset_right = 114.5
 offset_bottom = 126.5
 mouse_filter = 0
+
+[node name="Global Tooltip Container" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -56.0
+offset_right = 89.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sabkn")
+
+[node name="Container" type="VBoxContainer" parent="Global Tooltip Container"]
+layout_mode = 2
+
+[node name="Single Tooltip Container" type="MarginContainer" parent="Global Tooltip Container/Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Global Tooltip Container/Container/Single Tooltip Container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_sabkn")
+bbcode_enabled = true
+text = "[img=26]res://assets/ui/tooltips/rmb_icon.png[/img] SKIP SLOT MACHINE"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1

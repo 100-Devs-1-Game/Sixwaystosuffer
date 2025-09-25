@@ -425,16 +425,85 @@ player = NodePath("../../Player")
 ammo = NodePath("../Patrons")
 session = NodePath("../../../GameLoop/GameSession")
 
-[node name="13Max Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
-transform = Transform3D(0.83165383, -0.55529445, -2.427269e-08, -0.005204376, -0.007794537, 0.9999561, -0.5552701, -0.8316173, -0.009372317, -0.7258826, 4.056409, 1.5017107)
+[node name="Labels" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+
+[node name="13 Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.6880435, -0.7256665, -0.002075489, -0.0052043754, -0.007794536, 0.9999561, -0.7256509, -0.6880024, -0.009139623, -0.90560037, 4.056409, 1.6207736)
 shaded = true
-modulate = Color(1, 1, 1, 0.43137255)
-outline_modulate = Color(0, 0, 0, 0.3372549)
-text = "13 max"
+modulate = Color(0.79, 0.31599998, 0.31599998, 0.63529414)
+outline_modulate = Color(0.51, 0, 0, 0.3372549)
+text = "13"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="Modifier Labels" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="13Max Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.89817023, -0.43964615, 0.0012476309, -0.0052043744, -0.0077945357, 0.9999561, -0.43961725, -0.89813715, -0.009288903, -0.6360237, 4.056409, 1.460151)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "max"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="13Max Label2" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.92111766, 0.38920602, 0.007827865, -0.005204375, -0.0077945353, 0.9999561, 0.38924986, -0.9211176, -0.00515411, 0.36910802, 4.056409, 1.293247)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "RMB"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="13Max Label7" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.9951855, -0.097912654, 0.0044163265, -0.0052043744, -0.0077945353, 0.9999562, -0.097874194, -0.99516445, -0.008266581, -0.9970591, 4.056409, 1.2947751)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "RMB bullet?"
+font = ExtResource("12_obcww")
+font_size = 20
+outline_size = 2
+
+[node name="13Max Label3" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.9483395, -0.31724796, 0.0024628208, -0.005204375, -0.0077945353, 0.9999561, -0.31721503, -0.9483105, -0.009042944, 0.2642116, 4.056409, 1.5100335)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "LMB"
+font = ExtResource("12_obcww")
+outline_size = 2
+
+[node name="13Max Label4" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.7508489, 0.6604122, 0.009055701, -0.0052043744, -0.0077945367, 0.999956, 0.6604537, -0.7508627, -0.0024154861, -0.04376155, 4.056409, 1.575508)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "wheel"
+font = ExtResource("12_obcww")
+font_size = 16
+outline_size = 2
+
+[node name="13Max Label5" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.94939536, 0.313997, 0.007388792, -0.005204375, -0.0077945367, 0.99995595, 0.31404054, -0.94939196, -0.005765939, -0.26531103, 4.056409, 1.5835102)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "Q?"
+font = ExtResource("12_obcww")
+font_size = 16
+outline_size = 2
+
+[node name="13Max Label6" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
+transform = Transform3D(0.98742485, 0.15796113, 0.006370439, -0.005204376, -0.0077945376, 0.99995595, 0.15800357, -0.98741466, -0.006874432, -0.11704382, 4.056409, 1.6643832)
+shaded = true
+modulate = Color(1, 1, 1, 0.43137255)
+outline_modulate = Color(0, 0, 0, 0.3372549)
+text = "E?"
+font = ExtResource("12_obcww")
+font_size = 16
+outline_size = 2
+
+[node name="Modifier Labels" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.8927768, 0.45042503, 0.008157559, -0.005204374, -0.0077945343, 0.99995595, 0.45046887, -0.89278007, -0.0046146023, 1.282296, 4.056409, 1.3375815)
 shaded = true
 modulate = Color(1, 1, 1, 0.43137255)
@@ -446,7 +515,7 @@ text = "1-x2
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="Shop Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="Shop Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.8927768, 0.45042503, 0.008157559, -0.005204374, -0.0077945343, 0.99995595, 0.45046887, -0.89278007, -0.0046146023, 1.3929112, 4.0564094, 0.20555055)
 shaded = true
 modulate = Color(1, 1, 1, 0.34901962)
@@ -456,7 +525,7 @@ roll"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="No Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="No Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.9406558, -0.33935413, 0.0022505163, -0.005204374, -0.0077945343, 0.99995595, -0.3393216, -0.94062614, -0.009098103, 0.45784035, 4.056409, 0.5849376)
 shaded = true
 modulate = Color(1, 1, 1, 0.3137255)
@@ -465,7 +534,7 @@ text = "no"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="No Label2" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="No Label2" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.9876114, 0.15678883, 0.006362276, -0.005204373, -0.0077945334, 0.99995595, 0.15683168, -0.98760116, -0.006881987, -0.24325898, 4.056409, 0.5232877)
 shaded = true
 modulate = Color(1, 1, 1, 0.1764706)
@@ -474,7 +543,7 @@ text = "no"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="Percent Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="Percent Label" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.7714382, -0.63630337, -0.0009448794, -0.005204373, -0.0077945334, 0.99995595, -0.6362827, -0.77139926, -0.009324565, -1.3801496, 4.0708804, -0.034596324)
 shaded = true
 modulate = Color(1, 1, 1, 0.20392157)
@@ -483,7 +552,7 @@ text = "5%"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="No Label3" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="No Label3" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.99997246, -0.0052910447, 0.005163217, -0.005204373, -0.0077945334, 0.99995595, -0.0052503794, -0.99995536, -0.00782186, 0.6208613, 4.056409, 0.25770277)
 shaded = true
 modulate = Color(1, 1, 1, 0.27450982)
@@ -492,7 +561,7 @@ text = "no"
 font = ExtResource("12_obcww")
 outline_size = 2
 
-[node name="No Label4" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
+[node name="No Label4" type="Label3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table/Labels"]
 transform = Transform3D(0.93046767, 0.36629245, 0.0076979212, -0.0052043726, -0.0077945334, 0.99995595, 0.36633655, -0.9304669, -0.005346243, -0.5029478, 4.056409, 0.03179565)
 shaded = true
 modulate = Color(1, 1, 1, 0.3137255)
@@ -608,12 +677,13 @@ stream = SubResource("AudioStreamRandomizer_623xu")
 volume_db = -18.0
 pitch_scale = 1.1
 
-[node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "dealer", "slot_machine", "shop_animation")]
+[node name="ShoppingState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("player", "dealer", "slot_machine", "shop_animation", "player_hud")]
 script = ExtResource("19_1xb4a")
 player = NodePath("../../../Play Room/Player")
 dealer = NodePath("../../../Play Room/Dealer")
 slot_machine = NodePath("../../../Play Room/Table/Slot Machine")
 shop_animation = NodePath("AnimationPlayer")
+player_hud = NodePath("../../../../../../Player HUD")
 metadata/_custom_type_script = "uid://wugaqok4wmho"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine/ShoppingState"]
