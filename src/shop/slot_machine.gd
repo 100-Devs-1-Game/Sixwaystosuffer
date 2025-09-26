@@ -8,7 +8,7 @@ extends Node3D
 
 @onready var clickable_lever: ClickableArea3D = %ClickableLever
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var slot_machine_animation_player: AnimationPlayer = %"Slot Machine AnimationPlayer"
+@onready var animation_tree: AnimationTree = %AnimationTree
 
 @onready var slot_spinner: SlotSpinner = %"Slot Spinner"
 @onready var box_spawner: BoxSpawner = %BoxSpawner
@@ -69,16 +69,22 @@ func _on_lever_clicked() -> void:
 func start_spin() -> void:
 	session.make_roll()
 	slot_spinner.spin()
+	_animate_spining()
+
+func _animate_spining() -> void:
+	const WORKING_BLEND := "parameters/Working/blend_amount"
+	const SCALING := "parameters/TimeScale/scale"
 	
 	spining_audio_player.volume_db = -6
 	spining_audio_player.pitch_scale = 1.0
 	spining_audio_player.play()
 	
-	slot_machine_animation_player.play("work")
-	slot_machine_animation_player.speed_scale = 1.0
+	animation_tree.set(WORKING_BLEND, 1.0)
+	animation_tree.set(SCALING, 1.0)
 	
 	var tween := create_tween()
-	tween.tween_property(slot_machine_animation_player, "speed_scale", 0, slot_spinner.max_duration)
+	tween.tween_property(animation_tree, WORKING_BLEND, 0, slot_spinner.max_duration)
+	tween.parallel().tween_property(animation_tree, SCALING, 0, slot_spinner.max_duration)
 	
 	var sound_tween := create_tween()
 	sound_tween.tween_interval(slot_spinner.max_duration / 2)
@@ -90,7 +96,6 @@ func _on_slots_done() -> void:
 	box_spawner.clear_items()
 	box_spawner.spawn_items(storage.products)
 	open_items()
-	slot_machine_animation_player.play("idle")
 
 func _on_box_clicked(box: ShopBox) -> void:
 	var product := box.product

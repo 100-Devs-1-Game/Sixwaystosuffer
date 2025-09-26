@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://derlu8q1eb2jx"]
+[gd_scene load_steps=46 format=3 uid="uid://derlu8q1eb2jx"]
 
 [ext_resource type="Script" uid="uid://bqtdtdw48u2h5" path="res://shop/slot_machine.gd" id="1_2njt7"]
 [ext_resource type="Resource" uid="uid://cnco3s76dt180" path="res://shop/products/storage.tres" id="2_ktspq"]
@@ -26,6 +26,29 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p75k"]
 size = Vector3(0.2, 0.8, 0.2)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktspq"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ktspq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5gklw"]
+animation = &"work"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4o6lr"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bw8py"]
+graph_offset = Vector2(-562.90466, 91.493484)
+nodes/output/position = Vector2(420, 140)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_ktspq")
+nodes/Idle/position = Vector2(-280, 60)
+nodes/Work/node = SubResource("AnimationNodeAnimation_5gklw")
+nodes/Work/position = Vector2(-420, 280)
+nodes/Working/node = SubResource("AnimationNodeBlend2_4o6lr")
+nodes/Working/position = Vector2(-40, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ktspq")
+nodes/TimeScale/position = Vector2(-240, 240)
+node_connections = [&"output", 0, &"Working", &"Working", 0, &"Idle", &"Working", 1, &"TimeScale", &"TimeScale", 0, &"Work"]
 
 [sub_resource type="Animation" id="Animation_6jkie"]
 length = 0.001
@@ -56,7 +79,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
+tracks/2/path = NodePath("AnimationTree/Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -101,7 +124,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
+tracks/2/path = NodePath("AnimationTree/Slot Machine AnimationPlayer/AudioStreamPlayer:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -485,13 +508,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020415336, 0.18085803)
 [node name="box_6" parent="slot_machine2/box_body" index="6" instance=ExtResource("5_6jkie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35126036, 0.0020415336, 0.18085803)
 
-[node name="Slot Machine AnimationPlayer" type="AnimationPlayer" parent="slot_machine2"]
+[node name="AnimationTree" type="AnimationTree" parent="slot_machine2"]
 unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+callback_mode_discrete = 0
+tree_root = SubResource("AnimationNodeBlendTree_bw8py")
+anim_player = NodePath("Slot Machine AnimationPlayer")
+parameters/Working/blend_amount = 0.0
+parameters/TimeScale/scale = 1.0
+
+[node name="Slot Machine AnimationPlayer" type="AnimationPlayer" parent="slot_machine2/AnimationTree"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_aaf27")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="slot_machine2/Slot Machine AnimationPlayer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="slot_machine2/AnimationTree/Slot Machine AnimationPlayer"]
 stream = SubResource("AudioStreamRandomizer_rosq1")
 volume_db = -16.0
 pitch_scale = 2.0
