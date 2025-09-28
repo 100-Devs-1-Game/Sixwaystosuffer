@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://beefsjgvjn4sp"]
+
+[ext_resource type="Theme" uid="uid://bosx3ukc7sefd" path="res://player/hud/mobile/mobile_ui.tres" id="1_vu8is"]
+[ext_resource type="Script" uid="uid://c1mcfcktnyqb0" path="res://player/hud/mobile/mobile_device_ui.gd" id="2_gjlva"]
+[ext_resource type="PackedScene" uid="uid://ep30xqs7lovd" path="res://player/hud/mobile/reload_mobile_ui.tscn" id="2_ra1ma"]
+[ext_resource type="PackedScene" uid="uid://bl6tg8rg3uqc6" path="res://player/hud/mobile/shopping_mobile_ui.tscn" id="3_gjlva"]
+[ext_resource type="Script" uid="uid://con5ouh57wfrh" path="res://player/hud/mobile/shopping_mobile_ui.gd" id="5_vu8is"]
+[ext_resource type="Script" uid="uid://21brxpjr0rlt" path="res://player/hud/mobile/action_button.gd" id="6_vgxmm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vu8is"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vgxmm"]
+
+[node name="Mobile Device UI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_vu8is")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("2_gjlva")
+
+[node name="Reload Mobile UI" parent="." instance=ExtResource("2_ra1ma")]
+visible = false
+layout_mode = 2
+
+[node name="Shopping Mobile UI" parent="." instance=ExtResource("3_gjlva")]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vu8is")
+
+[node name="Shop Skip Container" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vgxmm")
+script = ExtResource("5_vu8is")
+
+[node name="Container" type="HBoxContainer" parent="Shop Skip Container"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Skip Slots Button" type="Button" parent="Shop Skip Container/Container"]
+custom_minimum_size = Vector2(260, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "SKIP SLOTS"
+script = ExtResource("6_vgxmm")
+action_name = "back"

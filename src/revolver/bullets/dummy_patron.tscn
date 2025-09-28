@@ -8,6 +8,8 @@
 script = ExtResource("2_pgld3")
 is_dummy = true
 load_bonus = 5
+description = "Dummy bullets
++5$ for load"
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [node name="Patron" instance=ExtResource("1_ltk18")]

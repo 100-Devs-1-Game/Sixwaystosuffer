@@ -8,6 +8,7 @@
 script = ExtResource("2_ovl6v")
 load_bonus = 0
 load_modifier = 2
+description = "x2 for load"
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [node name="Patron" instance=ExtResource("1_7u7ua")]

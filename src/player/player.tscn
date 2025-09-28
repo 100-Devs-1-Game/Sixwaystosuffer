@@ -532,6 +532,70 @@ tracks/6/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_c35mf"]
+resource_name = "drop_bullets"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player Hand/Tremor/Revolver/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("open_drum", "close_drum"),
+"times": PackedFloat32Array(0.23333333, 2.5666666)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 0.4, 0.8333334, 1.0666667, 1.366667, 1.7666667, 2.0000002, 2.0333333, 2.2333333, 2.5666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.894, -0.5), Vector3(0.3, 0.894, -0.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.894, -0.392)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player Hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 0.8333334, 1.2333336, 1.366667, 1.4000003, 1.5, 2.0333333, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.8115781, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player Hand/Load Audio Stream:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.366667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/PlayerDropBullets")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4000003),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"drop_bullets"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_g6k8r"]
 resource_name = "idle"
 length = 1.66667
@@ -769,70 +833,6 @@ tracks/4/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_c35mf"]
-resource_name = "drop_bullets"
-length = 3.0
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player Hand/Tremor/Revolver/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("open_drum", "close_drum"),
-"times": PackedFloat32Array(0.23333333, 2.5666666)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.26666668, 0.4, 0.8333334, 1.0666667, 1.366667, 1.7666667, 2.0000002, 2.0333333, 2.2333333, 2.5666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.165, 0.894, -0.392), Vector3(0.3, 0.894, -0.5), Vector3(0.3, 0.894, -0.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.605, 1.5), Vector3(0.165, 0.605, 1.228), Vector3(0.165, 0.894, -0.392), Vector3(0.165, 0.894, -0.392)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player Hand:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.26666668, 0.8333334, 1.2333336, 1.366667, 1.4000003, 1.5, 2.0333333, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.8115781, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0.47647488, -0.19024089, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player Hand/Load Audio Stream:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.366667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("StateMachine/PlayerDropBullets")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.4000003),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"drop_bullets"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
 _data = {
 &"RESET": SubResource("Animation_yw30f"),
@@ -1018,6 +1018,7 @@ patron_pickup = NodePath("Patron Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
 [node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
+unique_name_in_owner = true
 script = ExtResource("4_yw30f")
 player = NodePath("../../..")
 drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/Current Position Hover")

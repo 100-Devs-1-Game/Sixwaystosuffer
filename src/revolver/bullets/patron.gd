@@ -40,4 +40,4 @@ func get_short_description() -> String:
 	return effect.get_short_description()
 
 func get_description() -> String:
-	return ""
+	return effect.description

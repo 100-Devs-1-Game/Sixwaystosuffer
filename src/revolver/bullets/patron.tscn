@@ -12,6 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_q3mus"]
 script = ExtResource("2_o87kb")
+description = "+10$ for load"
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1fkb"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://ep30xqs7lovd"]
+
+[ext_resource type="Script" uid="uid://cdgf236edivo6" path="res://player/hud/mobile/reload_mobile_ui.gd" id="1_1yxey"]
+[ext_resource type="Script" uid="uid://21brxpjr0rlt" path="res://player/hud/mobile/action_button.gd" id="2_3kg0g"]
+[ext_resource type="PackedScene" uid="uid://cji5ufmhgvqp1" path="res://player/hud/mobile/bullet_button.tscn" id="3_ssjrh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7oew"]
+
+[node name="Reload Mobile UI" type="PanelContainer"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e7oew")
+script = ExtResource("1_1yxey")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Top Panel" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spin Left Button" type="Button" parent="VBoxContainer/Top Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SPIN LEFT"
+script = ExtResource("2_3kg0g")
+action_name = "spin_up"
+
+[node name="Space" type="Control" parent="VBoxContainer/Top Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Unload Button" type="Button" parent="VBoxContainer/Top Panel"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(260, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "UNLOAD"
+
+[node name="Space2" type="Control" parent="VBoxContainer/Top Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Spin Right Button" type="Button" parent="VBoxContainer/Top Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SPIN RIGHT"
+script = ExtResource("2_3kg0g")
+action_name = "spin_down"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Bullets Container" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Bullet Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/Bullets Container" instance=ExtResource("3_ssjrh")]
+layout_mode = 2

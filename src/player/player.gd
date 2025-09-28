@@ -8,6 +8,8 @@ signal chamber_updated(revolver: Revolver)
 
 @onready var state_machine: StateMachine = %StateMachine
 @onready var revolver: Revolver = %Revolver
+@onready var patron_pickup: PatronPickup = %"Patron Pickup"
+
 @onready var camera_shaker: CameraShaker = %CameraShaker
 
 @onready var player_idle_state: PlayerIdleState = %PlayerIdleState

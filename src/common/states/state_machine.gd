@@ -1,6 +1,9 @@
 class_name StateMachine
 extends Node
 
+signal processing_started(target: GDScript)
+signal state_entered(target: GDScript)
+
 @export var initial_state: State
 
 var state_mapping: Dictionary[GDScript, State]
@@ -33,6 +36,7 @@ func switch_to(target_state: GDScript) -> void:
 		return
 	
 	is_processing = true
+	processing_started.emit(target_state)
 	
 	if current_state != null:
 		if current_state is StateAsync:
@@ -48,4 +52,5 @@ func switch_to(target_state: GDScript) -> void:
 	else:
 		current_state.enter()
 	
+	state_entered.emit(target_state)
 	is_processing = false

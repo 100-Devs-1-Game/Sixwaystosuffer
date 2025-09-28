@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cji5ufmhgvqp1"]
+
+[ext_resource type="Script" uid="uid://dabgo7v667vk8" path="res://player/hud/mobile/bullet_button.gd" id="1_m8su8"]
+
+[node name="Bullet Button" type="Button"]
+custom_minimum_size = Vector2(340, 80)
+theme_override_font_sizes/font_size = 32
+text = "BULLET: +10$"
+script = ExtResource("1_m8su8")

@@ -358,7 +358,8 @@ stream_2/stream = ExtResource("23_qoqhg")
 
 [node name="Root" type="Node"]
 
-[node name="Player HUD" parent="." instance=ExtResource("1_ynlg5")]
+[node name="Player HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_ynlg5")]
+player = NodePath("../SubViewportContainer/SubViewport/World3D/Play Room/Player")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

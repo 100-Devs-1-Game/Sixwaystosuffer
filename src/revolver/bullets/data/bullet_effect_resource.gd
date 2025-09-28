@@ -5,6 +5,7 @@ extends Resource
 @export var load_bonus: int = 10
 @export var load_modifier: int = 1
 @export var on_table_income: int = 0
+@export_multiline var description: String
 
 func get_short_description() -> String:
 	var line: String = ""

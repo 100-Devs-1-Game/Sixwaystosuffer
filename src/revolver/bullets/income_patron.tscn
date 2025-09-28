@@ -9,6 +9,8 @@
 script = ExtResource("2_notba")
 load_bonus = 5
 on_table_income = 2
+description = "+5$ for load
++2$ if not load"
 metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [node name="Patron" instance=ExtResource("1_ev4b8")]

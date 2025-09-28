@@ -1,6 +1,8 @@
 class_name PlayerPatrons
 extends Node3D
 
+signal updated()
+
 signal clicked(patron: Patron)
 signal hovered(patron: Patron)
 signal unhovered(patron: Patron)
@@ -47,6 +49,7 @@ func add(patron: Patron) -> void:
 	patron_position.add_child(patron)
 	patron.update_on_table(index, patron_position)
 	bullets[index] = patron
+	updated.emit()
 
 func get_passive_income() -> int:
 	var total_income := 0
@@ -67,6 +70,7 @@ func return_patron(patron: Patron) -> void:
 		return
 	
 	bullets[patron.on_table_index] = patron
+	updated.emit()
 
 func remove(patron: Patron) -> void:
 	var index := bullets.find(patron)
@@ -75,6 +79,7 @@ func remove(patron: Patron) -> void:
 		return
 	
 	bullets[index] = null
+	updated.emit()
 
 func enable_patrons_interaction() -> void:
 	for bullet in bullets:
