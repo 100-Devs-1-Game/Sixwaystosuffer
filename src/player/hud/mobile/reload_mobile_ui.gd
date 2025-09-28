@@ -9,13 +9,19 @@ const BULLET_BUTTON_SCENE := preload("res://player/hud/mobile/bullet_button.tscn
 @export var patron_pickup: PatronPickup
 
 @onready var unload_button: Button = %"Unload Button"
+@onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var bullets_container: VBoxContainer = %"Bullets Container"
+
+func _ready() -> void:
+	scroll_container.get_v_scroll_bar().custom_minimum_size.x = 20
+	
 
 func initialize() -> void:
 	unload_button.pressed.connect(_on_unload_pressed)
 	player.patrons.updated.connect(_on_ammo_updated)
 	state_machine.processing_started.connect(_on_processing_started)
 	state_machine.state_entered.connect(_on_state_entered)
+
 
 func _physics_process(_delta: float) -> void:
 	unload_button.visible = not revolver.chamber.is_hovered_position_empty()

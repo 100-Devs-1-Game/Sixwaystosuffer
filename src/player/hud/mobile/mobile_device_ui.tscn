@@ -47,11 +47,11 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Skip Slots Button" type="Button" parent="Shop Skip Container/Container"]
-custom_minimum_size = Vector2(260, 100)
+custom_minimum_size = Vector2(320, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "SKIP SLOTS"
 script = ExtResource("6_vgxmm")
 action_name = "back"

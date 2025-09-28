@@ -13,11 +13,11 @@ mouse_filter = 2
 alignment = 1
 
 [node name="Back Button" type="Button" parent="Container"]
-custom_minimum_size = Vector2(260, 100)
+custom_minimum_size = Vector2(320, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "BACK"
 script = ExtResource("1_7bplj")
 action_name = "back"

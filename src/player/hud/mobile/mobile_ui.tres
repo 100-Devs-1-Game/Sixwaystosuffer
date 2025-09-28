@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bosx3ukc7sefd"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bosx3ukc7sefd"]
 
 [ext_resource type="FontFile" uid="uid://br68hnl47e3yy" path="res://assets/fonts/BigScratchBrush-wo50z.ttf" id="1_enbme"]
 
@@ -31,6 +31,13 @@ corner_radius_bottom_left = 20
 shadow_color = Color(0, 0, 0, 0.47058824)
 shadow_size = 12
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enbme"]
+bg_color = Color(0.29586658, 0.2958665, 0.29586646, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
 Button/constants/outline_size = 8
 Button/fonts/font = ExtResource("1_enbme")
@@ -39,3 +46,4 @@ Button/styles/hover = SubResource("StyleBoxFlat_lcphy")
 Button/styles/normal = SubResource("StyleBoxFlat_wdtbi")
 Button/styles/pressed = SubResource("StyleBoxFlat_7mfr2")
 Label/fonts/font = ExtResource("1_enbme")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_enbme")
