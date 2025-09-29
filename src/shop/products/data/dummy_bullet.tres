@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BulletProduct" load_steps=4 format=3 uid="uid://vhgaoep3gmv6"]
 
-[ext_resource type="PackedScene" uid="uid://c2miih4i28juj" path="res://revolver/bullets/dummy_patron.tscn" id="1_sidwo"]
+[ext_resource type="PackedScene" uid="uid://c2miih4i28juj" path="res://revolver/bullets/dummy_bullet.tscn" id="1_sidwo"]
 [ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_erhgt"]
 [ext_resource type="PackedScene" uid="uid://cuqae2y2t0ufp" path="res://shop/products/items/packs/two_bullets_pack.tscn" id="3_sidwo"]
 

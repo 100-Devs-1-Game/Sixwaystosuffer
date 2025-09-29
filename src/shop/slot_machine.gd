@@ -2,7 +2,7 @@ class_name SlotMachine
 extends Node3D
 
 @export var player: Player
-@export var ammo: PlayerPatrons
+@export var ammo: PlayerBullets
 @export var session: GameSession
 @export var storage: StorageProducts
 
@@ -134,4 +134,4 @@ func purchase_bullet(product: BulletProduct) -> void:
 		ammo.add(instance)
 
 func get_available_space() -> int:
-	return ammo.get_available_space() - player.revolver.chamber.get_patron_count()
+	return ammo.get_available_space() - player.revolver.chamber.get_bullet_count()

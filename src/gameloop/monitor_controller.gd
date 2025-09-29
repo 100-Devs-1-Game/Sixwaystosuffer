@@ -4,7 +4,7 @@ extends Node
 @export var session: GameSession
 @export var player: Player
 @export var revolver_mockup: ClickableArea3D
-@export var patrons: PlayerPatrons
+@export var bullets: PlayerBullets
 @export var monitor_3d: QueuedMonitor3D
 @export var choices: ChoiceLabels
 
@@ -14,8 +14,8 @@ func _ready() -> void:
 	revolver_mockup.clicked.connect(_on_revolver_clicked)
 	revolver_mockup.mouse_entered.connect(_on_revolver_entered)
 	revolver_mockup.mouse_exited.connect(_on_revolver_exited)
-	patrons.hovered.connect(_on_patron_hovered)
-	patrons.unhovered.connect(_on_patron_unhovered)
+	bullets.hovered.connect(_on_bullet_hovered)
+	bullets.unhovered.connect(_on_bullet_unhovered)
 	player.chamber_updated.connect(_on_chamber_updated)
 	choices.dealer_label.mouse_entered.connect(_on_dealer_label_entered)
 	choices.dealer_label.mouse_exited.connect(_on_dealer_label_exited)
@@ -79,11 +79,11 @@ func _on_revolver_entered() -> void:
 func _on_revolver_exited() -> void:
 	monitor_3d.pop_back("[TUTOR_GOOD]")
 
-func _on_patron_hovered(patron: Patron) -> void:
-	monitor_3d.push_back("patron", [patron.get_short_description()])
+func _on_bullet_hovered(bullet: Bullet) -> void:
+	monitor_3d.push_back("bullet", [bullet.get_short_description()])
 
-func _on_patron_unhovered(_patron: Patron) -> void:
-	monitor_3d.pop_back("patron")
+func _on_bullet_unhovered(_bullet: Bullet) -> void:
+	monitor_3d.pop_back("bullet")
 
 func _on_chamber_updated(_revolver: Revolver) -> void:
 	monitor_3d.pop_back("chamber")

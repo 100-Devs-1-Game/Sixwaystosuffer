@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyhgf8702wijr"]
 
-[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_ev4b8"]
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/bullet.tscn" id="1_ev4b8"]
 [ext_resource type="PackedScene" uid="uid://buhtfae1pcl4" path="res://assets/bullet/bullet_panel.glb" id="2_ag75p"]
 [ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="2_notba"]
 [ext_resource type="Material" uid="uid://bnmpxyc4t2m8t" path="res://assets/bullet/m_bullet_income_panel.tres" id="3_notba"]

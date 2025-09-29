@@ -1,14 +1,14 @@
 class_name Player
 extends Node3D
 
-signal shooted(patron: Patron, to_dealer: bool)
+signal shooted(bullet: Bullet, to_dealer: bool)
 signal chamber_updated(revolver: Revolver)
 
-@export var patrons: PlayerPatrons
+@export var bullets: PlayerBullets
 
 @onready var state_machine: StateMachine = %StateMachine
 @onready var revolver: Revolver = %Revolver
-@onready var patron_pickup: PatronPickup = %"Patron Pickup"
+@onready var bullet_pickup: BulletPickup = %"Bullet Pickup"
 
 @onready var camera_shaker: CameraShaker = %CameraShaker
 
@@ -22,13 +22,13 @@ func _ready() -> void:
 	revolver.loaded.connect(func(_b): chamber_updated.emit(revolver))
 	revolver.unloaded.connect(func(_b): chamber_updated.emit(revolver))
 	
-	player_self_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), false))
+	player_self_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_bullet(), false))
 	player_target_aiming_state.shooted.connect(_on_shoot_happened)
-	player_target_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_patron(), true))
+	player_target_aiming_state.shooted.connect(func(): shooted.emit(revolver.get_current_bullet(), true))
 
 func _on_shoot_happened() -> void:
-	var patron := revolver.get_current_patron()
-	if patron != null and not patron.effect.is_dummy:
+	var bullet := revolver.get_current_bullet()
+	if bullet != null and not bullet.effect.is_dummy:
 		camera_shaker.shake(0.2)
 
 func shake() -> void:
@@ -48,13 +48,13 @@ func to_idle() -> void:
 	await state_machine.switch_to(PlayerIdleState)
 
 func can_shoot() -> bool:
-	return is_idle() and revolver.has_patrons()
+	return is_idle() and revolver.has_bullets()
 
 func can_make_turn() -> bool:
-	return revolver.has_patrons() or patrons.has_bullets()
+	return revolver.has_bullets() or bullets.has_bullets()
 
 func drop_bullets() -> int:
-	var dropped_bullets := revolver.chamber.get_patron_count()
+	var dropped_bullets := revolver.chamber.get_bullet_count()
 	await state_machine.switch_to(PlayerDropBullets)
 	return dropped_bullets
 
@@ -83,4 +83,4 @@ func is_aiming() -> bool:
 	return state_machine.current_state is PlayerAimingState
 
 func get_chamber_worth() -> int:
-	return (revolver.chamber.get_worth() + patrons.get_passive_income()) * revolver.chamber.get_modifier()
+	return (revolver.chamber.get_worth() + bullets.get_passive_income()) * revolver.chamber.get_modifier()

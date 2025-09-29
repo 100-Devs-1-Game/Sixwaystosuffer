@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dac88b174qeox"]
 
-[ext_resource type="Script" uid="uid://b5jtyoeaafoa2" path="res://player/patrons/player_patrons.gd" id="1_qwfah"]
-[ext_resource type="PackedScene" uid="uid://dgq0j8qfr645a" path="res://player/patrons/patron_position_hover.tscn" id="2_7ng5a"]
+[ext_resource type="Script" uid="uid://b5jtyoeaafoa2" path="res://player/patrons/player_bullets.gd" id="1_qwfah"]
+[ext_resource type="PackedScene" uid="uid://dgq0j8qfr645a" path="res://player/patrons/bullet_position_hover.tscn" id="2_7ng5a"]
 
 [node name="Patrons" type="Node3D"]
 script = ExtResource("1_qwfah")

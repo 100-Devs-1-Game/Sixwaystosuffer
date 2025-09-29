@@ -13,7 +13,7 @@ func initialize(player: Player) -> void:
 	reload_mobile_ui.player = player
 	reload_mobile_ui.state_machine = player.state_machine
 	reload_mobile_ui.revolver = player.revolver
-	reload_mobile_ui.patron_pickup = player.patron_pickup
+	reload_mobile_ui.bullet_pickup = player.bullet_pickup
 	reload_mobile_ui.initialize()
 
 func show_skip_shop_button() -> void:

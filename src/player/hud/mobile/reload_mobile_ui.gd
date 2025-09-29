@@ -6,7 +6,7 @@ const BULLET_BUTTON_SCENE := preload("res://player/hud/mobile/bullet_button.tscn
 @export var player: Player
 @export var state_machine: StateMachine
 @export var revolver: Revolver
-@export var patron_pickup: PatronPickup
+@export var bullet_pickup: BulletPickup
 
 @onready var unload_button: Button = %"Unload Button"
 @onready var scroll_container: ScrollContainer = %ScrollContainer
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func initialize() -> void:
 	unload_button.pressed.connect(_on_unload_pressed)
-	player.patrons.updated.connect(_on_ammo_updated)
+	player.bullets.updated.connect(_on_ammo_updated)
 	state_machine.processing_started.connect(_on_processing_started)
 	state_machine.state_entered.connect(_on_state_entered)
 
@@ -34,7 +34,7 @@ func _on_state_entered(target: GDScript) -> void:
 		show()
 
 func _on_unload_pressed() -> void:
-	patron_pickup.unload_patron(revolver.get_hovered_patron())
+	bullet_pickup.unload_bullet(revolver.get_hovered_bullet())
 
 func _on_ammo_updated() -> void:
 	for instance in bullets_container.get_children():
@@ -43,7 +43,7 @@ func _on_ammo_updated() -> void:
 	fetch_bullets()
 
 func fetch_bullets() -> void:
-	for bullet in player.patrons.bullets:
+	for bullet in player.bullets.bullets:
 		if bullet == null:
 			continue
 		
@@ -54,4 +54,4 @@ func fetch_bullets() -> void:
 		instance.pressed.connect(_on_bullet_button_pressed.bind(instance))
 
 func _on_bullet_button_pressed(button: BulletButton) -> void:
-	patron_pickup.load_patron(button.bullet)
+	bullet_pickup.load_bullet(button.bullet)

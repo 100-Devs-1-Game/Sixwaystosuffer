@@ -1,13 +1,13 @@
 class_name DebugPlayer
 extends Node
 
-@export var pickup: PatronPickup
-@export var debug_patron: Patron
+@export var pickup: BulletPickup
+@export var debug_bullet: Bullet
 
 func _ready() -> void:
-	debug_patron.clicked.connect(_on_patron_clicked)
+	debug_bullet.clicked.connect(_on_bullet_clicked)
 
-func _on_patron_clicked(patron: Patron) -> void:
-	var duplicated_patron := debug_patron.duplicate()
-	debug_patron.get_parent().add_child(duplicated_patron)
-	pickup.load_patron(duplicated_patron)
+func _on_bullet_clicked(bullet: Bullet) -> void:
+	var duplicated_bullet := debug_bullet.duplicate()
+	debug_bullet.get_parent().add_child(duplicated_bullet)
+	pickup.load_bullet(duplicated_bullet)

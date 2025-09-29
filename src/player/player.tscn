@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://tsoag28itu8l" path="res://player/camera/camera_shaker.gd" id="3_kb6p2"]
 [ext_resource type="PackedScene" uid="uid://dvbqsel4ymb2x" path="res://revolver/revolver.tscn" id="3_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://c3u4424s0t8o1" path="res://assets/sfx/load_01.ogg" id="4_kb6p2"]
-[ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/patron_pickup.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://cl1e3pibhd4je" path="res://player/bullet_pickup.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://dvh37wnsy4miy" path="res://common/interactions/clickable_area3d.gd" id="5_wodsf"]
 [ext_resource type="Script" uid="uid://deqs4bhyfhrhb" path="res://player/states/player_idle_state.gd" id="6_boad6"]
@@ -967,15 +967,15 @@ stream = SubResource("AudioStreamRandomizer_tqiix")
 volume_db = 4.0
 pitch_scale = 2.0
 
-[node name="Patron Load Trajectories" type="Node3D" parent="."]
+[node name="Bullet Load Trajectories" type="Node3D" parent="."]
 
-[node name="Trajectory 1" type="Path3D" parent="Patron Load Trajectories"]
+[node name="Trajectory 1" type="Path3D" parent="Bullet Load Trajectories"]
 curve = SubResource("Curve3D_hg6s5")
 
-[node name="Trajectory 2" type="Path3D" parent="Patron Load Trajectories"]
+[node name="Trajectory 2" type="Path3D" parent="Bullet Load Trajectories"]
 curve = SubResource("Curve3D_tqiix")
 
-[node name="Trajectory 3" type="Path3D" parent="Patron Load Trajectories"]
+[node name="Trajectory 3" type="Path3D" parent="Bullet Load Trajectories"]
 curve = SubResource("Curve3D_e7oew")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -1009,15 +1009,15 @@ stream = SubResource("AudioStreamRandomizer_e7oew")
 volume_db = 12.0
 pitch_scale = 0.6
 
-[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver", "revolver_interact", "patron_pickup")]
+[node name="PlayerReloadRevolverState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_hand_animation", "revolver", "revolver_interact", "bullet_pickup")]
 script = ExtResource("6_g6k8r")
 player_hand_animation = NodePath("../../Player Hand/AnimationPlayer")
 revolver = NodePath("../../Player Hand/Tremor/Revolver")
 revolver_interact = NodePath("../../Player Hand/Tremor/Revolver/Revolver Interact Area3D")
-patron_pickup = NodePath("Patron Pickup")
+bullet_pickup = NodePath("Bullet Pickup")
 metadata/_custom_type_script = "uid://cob23grtlvb82"
 
-[node name="Patron Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
+[node name="Bullet Pickup" type="Node" parent="StateMachine/PlayerReloadRevolverState" node_paths=PackedStringArray("player", "drum_target_point", "revolver", "chamber_node", "tremor_animation", "trajectories_node", "process_audio")]
 unique_name_in_owner = true
 script = ExtResource("4_yw30f")
 player = NodePath("../../..")
@@ -1025,10 +1025,10 @@ drum_target_point = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand
 revolver = NodePath("../../../Player Hand/Tremor/Revolver")
 chamber_node = NodePath("../../../Player Hand/Tremor/Revolver/Revolver Hand/revolver/revolver_chamber")
 tremor_animation = NodePath("../../../Player Hand/Tremor/AnimationPlayer")
-trajectories_node = NodePath("../../../Patron Load Trajectories")
+trajectories_node = NodePath("../../../Bullet Load Trajectories")
 process_audio = NodePath("Woosh Audio Player")
 
-[node name="Woosh Audio Player" type="AudioStreamPlayer" parent="StateMachine/PlayerReloadRevolverState/Patron Pickup"]
+[node name="Woosh Audio Player" type="AudioStreamPlayer" parent="StateMachine/PlayerReloadRevolverState/Bullet Pickup"]
 stream = SubResource("AudioStreamRandomizer_x7c3f")
 volume_db = 8.0
 pitch_scale = 0.8

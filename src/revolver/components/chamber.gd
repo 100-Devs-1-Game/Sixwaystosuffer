@@ -11,7 +11,7 @@ const MAX_SPIN_CHAMBER_DURATION: float = 1.5
 @export var spin_audio: AudioStreamPlayer
 
 var _chamber_position: Array[Node3D]
-var _partons: Array[Patron]
+var _bullets: Array[Bullet]
 var _current_index: int = 0
 var _tween: Tween
 
@@ -21,84 +21,84 @@ var _target_rotation: float
 func _ready() -> void:
 	for child in chamber.get_children():
 		_chamber_position.append(child)
-	_partons.resize(MAX_BULLETS_IN_CHAMBER)
+	_bullets.resize(MAX_BULLETS_IN_CHAMBER)
 
-func get_patrons() -> Array[Patron]:
-	var patrons: Array[Patron]
-	for patron in _partons:
-		if patron is Patron:
-			patrons.append(patron)
-	return patrons
+func get_bullets() -> Array[Bullet]:
+	var bullets: Array[Bullet]
+	for bullet in _bullets:
+		if bullet is Bullet:
+			bullets.append(bullet)
+	return bullets
 
 func get_worth() -> int:
 	var result: int = 0
-	for patron in get_patrons():
-		result += patron.effect.load_bonus
+	for bullet in get_bullets():
+		result += bullet.effect.load_bonus
 	return result
 
 func get_modifier() -> int:
 	var result: int = 1
-	for patron in get_patrons():
-		result *= patron.effect.load_modifier
+	for bullet in get_bullets():
+		result *= bullet.effect.load_modifier
 	return result
 
-func get_patron_count() -> int:
+func get_bullet_count() -> int:
 	var counter := 0
-	for patron in _partons:
-		if patron != null:
+	for bullet in _bullets:
+		if bullet != null:
 			counter += 1
 	return counter
 
 func drop_bullets() -> int:
 	var dropped_bullets_count: int = 0
-	for patron in _partons:
-		if patron != null:
-			patron.queue_free()
+	for bullet in _bullets:
+		if bullet != null:
+			bullet.queue_free()
 			dropped_bullets_count += 1
-	_partons.clear()
-	_partons.resize(MAX_BULLETS_IN_CHAMBER)
+	_bullets.clear()
+	_bullets.resize(MAX_BULLETS_IN_CHAMBER)
 	_update_position_hover()
 	return dropped_bullets_count
 
 func get_current_chamber_position() -> Node3D:
 	return _chamber_position[_current_index]
 
-func load_patron(patron: Patron) -> void:
+func load_bullet(bullet: Bullet) -> void:
 	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
-	_partons[load_index] = patron
+	_bullets[load_index] = bullet
 	_update_position_hover()
 
-func unload_patron(patron: Patron) -> void:
-	var index := _partons.find(patron)
+func unload_bullet(bullet: Bullet) -> void:
+	var index := _bullets.find(bullet)
 	
 	if index == -1:
 		return
 	
-	_partons[index] = null
+	_bullets[index] = null
 	_update_position_hover()
 
-func has_patrons() -> bool:
-	for patron in _partons:
-		if patron != null:
+func has_bullets() -> bool:
+	for bullet in _bullets:
+		if bullet != null:
 			return true
 	return false
 
-func has_current_patron() -> bool:
-	return _partons[_current_index] != null
+func has_current_bullet() -> bool:
+	return _bullets[_current_index] != null
 
 func is_hovered_position_empty() -> bool:
-	return get_hovered_patron() == null
+	return get_hovered_bullet() == null
 
-func get_hovered_patron() -> Patron:
+func get_hovered_bullet() -> Bullet:
 	var load_index := (_current_index - 1) % MAX_BULLETS_IN_CHAMBER
-	return _partons[load_index]
+	return _bullets[load_index]
 
-func is_dummy_patron_now() -> bool:
-	var current_patron := get_current_patron()
-	return current_patron != null and current_patron.effect.is_dummy
+func is_dummy_bullet_now() -> bool:
+	var current_bullet := get_current_bullet()
+	return current_bullet != null and current_bullet.effect.is_dummy
 
-func get_current_patron() -> Patron:
-	return _partons[_current_index]
+func get_current_bullet() -> Bullet:
+	return _bullets[_current_index]
 
 func spin_random(min_steps: int = 7, max_steps: int = 13) -> void:
 	var offset := _random.randi_range(min_steps, max_steps)

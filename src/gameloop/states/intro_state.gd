@@ -8,7 +8,7 @@ extends StateAsync
 @export var player: Player
 
 @export var main_theme_audio: SmoothAudioStreamPlayer
-@export var player_patrons: PlayerPatrons
+@export var player_bullets: PlayerBullets
 
 @export var player_hud: PlayerHUD
 @export var intro_animation: AnimationPlayer
@@ -26,10 +26,10 @@ func exit_async() -> void:
 	revolver_table_mockup.clicked.disconnect(_on_revolver_clicked)
 
 func _spawn_start_bullets(count: int) -> void:
-	var base_patron := load("res://revolver/bullets/patron.tscn")
+	var base_bullet := load("res://revolver/bullets/bullet.tscn")
 	for i in count:
-		var instance := base_patron.instantiate() as Patron
-		player_patrons.add(instance)
+		var instance := base_bullet.instantiate() as Bullet
+		player_bullets.add(instance)
 
 func _on_revolver_clicked() -> void:
 	main_theme_audio.smooth_play()

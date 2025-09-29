@@ -1,9 +1,9 @@
-class_name Patron
+class_name Bullet
 extends Node3D
 
-signal clicked(patron: Patron)
-signal hovered(patron: Patron)
-signal unhovered(patron: Patron)
+signal clicked(patron: Bullet)
+signal hovered(patron: Bullet)
+signal unhovered(patron: Bullet)
 
 @export var effect: BulletEffectResource
 

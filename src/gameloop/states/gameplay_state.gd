@@ -67,19 +67,19 @@ func return_to_select_target() -> void:
 	dealer.change_face(Dealer.DealerFace.SAD)
 	await player.to_idle()
 
-func _on_player_shooted(patron: Patron, to_dealer: bool) -> void:
-	var profit := session.make_shot(patron, player, to_dealer)
+func _on_player_shooted(bullet: Bullet, to_dealer: bool) -> void:
+	var profit := session.make_shot(bullet, player, to_dealer)
 	monitor_controller.show_current_score(session.get_score_line())
 	monitor_controller.show_profit(profit)
 	cash_audio_player.play()
 	
 	if to_dealer:
-		process_dealer_shooting(patron)
+		process_dealer_shooting(bullet)
 	else:
-		process_self_shooting(patron)
+		process_self_shooting(bullet)
 
-func process_self_shooting(patron: Patron) -> void:
-	if patron and not patron.effect.is_dummy:
+func process_self_shooting(bullet: Bullet) -> void:
+	if bullet and not bullet.effect.is_dummy:
 		session.game_end_reason = GameSession.Reason.SELFSHOT
 		await state_machine.switch_to(GameOverState)
 		player.block()
@@ -89,9 +89,9 @@ func process_self_shooting(patron: Patron) -> void:
 	dealer.change_face(Dealer.DealerFace.SAD)
 	end_player_turn(0.5)
 
-func process_dealer_shooting(patron: Patron) -> void:
+func process_dealer_shooting(bullet: Bullet) -> void:
 	await pause_async(0.15)
-	if patron:
+	if bullet:
 		dealer.take_damage()
 	else:
 		dealer.change_face(Dealer.DealerFace.NEUTRAL)

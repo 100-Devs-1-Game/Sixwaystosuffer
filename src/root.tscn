@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://cwh03mx6kuelx" path="res://assets/fonts/HelpMe-Yz7Lq.ttf" id="12_obcww"]
 [ext_resource type="Script" uid="uid://dfrwjwp73xpko" path="res://common/states/state_machine.gd" id="12_qw60f"]
 [ext_resource type="Script" uid="uid://ri6a1tiv3y61" path="res://gameloop/states/gameplay_state.gd" id="13_eji0w"]
-[ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/patrons.tscn" id="13_po8fv"]
+[ext_resource type="PackedScene" uid="uid://dac88b174qeox" path="res://player/patrons/bullets.tscn" id="13_po8fv"]
 [ext_resource type="Script" uid="uid://cr7ypn0soa8ln" path="res://gameloop/states/intro_state.gd" id="13_qwhpj"]
 [ext_resource type="PackedScene" uid="uid://derlu8q1eb2jx" path="res://shop/slot_machine.tscn" id="16_ab83r"]
 [ext_resource type="Script" uid="uid://cdgedpgmh1mco" path="res://gameloop/states/dealer_force_over_state.gd" id="16_po8fv"]
@@ -397,9 +397,9 @@ environment = ExtResource("2_r3r3k")
 
 [node name="Play Room" type="Node3D" parent="SubViewportContainer/SubViewport/World3D"]
 
-[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" node_paths=PackedStringArray("patrons") instance=ExtResource("1_vvh5c")]
+[node name="Player" parent="SubViewportContainer/SubViewport/World3D/Play Room" node_paths=PackedStringArray("bullets") instance=ExtResource("1_vvh5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340213, 3.96272, 2.80201)
-patrons = NodePath("../Table/Patrons")
+bullets = NodePath("../Table/Player Bullets")
 
 [node name="Table" parent="SubViewportContainer/SubViewport/World3D/Play Room" instance=ExtResource("5_l8v81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176646, 0)
@@ -416,14 +416,14 @@ transform = Transform3D(0.902187, 0, 0.431346, 0, 1, 0, -0.431346, 0, 0.902187, 
 [node name="Lamp" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("6_vyht1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.176646, 0)
 
-[node name="Patrons" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
+[node name="Player Bullets" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" instance=ExtResource("13_po8fv")]
 transform = Transform3D(0.999636, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999636, -1.14361, 4.14031, 0.759733)
 
 [node name="Slot Machine" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table" node_paths=PackedStringArray("player", "ammo", "session") instance=ExtResource("16_ab83r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06826681, 1.1966894, -3.7568364)
 visible = false
 player = NodePath("../../Player")
-ammo = NodePath("../Patrons")
+ammo = NodePath("../Player Bullets")
 session = NodePath("../../../GameLoop/GameSession")
 
 [node name="Labels" type="Node3D" parent="SubViewportContainer/SubViewport/World3D/Play Room/Table"]
@@ -643,13 +643,13 @@ font_size = 90
 outline_size = 0
 uppercase = true
 
-[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "revolver_table_mockup", "player", "main_theme_audio", "player_patrons", "player_hud", "intro_animation")]
+[node name="IntroState" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop/StateMachine" node_paths=PackedStringArray("session", "revolver_table_mockup", "player", "main_theme_audio", "player_bullets", "player_hud", "intro_animation")]
 script = ExtResource("13_qwhpj")
 session = NodePath("../../GameSession")
 revolver_table_mockup = NodePath("../../../Play Room/Table/Revolver Table Mockup")
 player = NodePath("../../../Play Room/Player")
 main_theme_audio = NodePath("../../Main Theme Audio Player")
-player_patrons = NodePath("../../../Play Room/Table/Patrons")
+player_bullets = NodePath("../../../Play Room/Table/Player Bullets")
 player_hud = NodePath("../../../../../../Player HUD")
 intro_animation = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://cr7ypn0soa8ln"
@@ -754,12 +754,12 @@ playback_type = 1
 script = ExtResource("21_vte5o")
 metadata/_custom_type_script = "uid://cpelv7p3e1pqj"
 
-[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("session", "player", "revolver_mockup", "patrons", "monitor_3d", "choices", "profit_timer")]
+[node name="Monitor Controller" type="Node" parent="SubViewportContainer/SubViewport/World3D/GameLoop" node_paths=PackedStringArray("session", "player", "revolver_mockup", "bullets", "monitor_3d", "choices", "profit_timer")]
 script = ExtResource("21_ub8w1")
 session = NodePath("../GameSession")
 player = NodePath("../../Play Room/Player")
 revolver_mockup = NodePath("../../Play Room/Table/Revolver Table Mockup")
-patrons = NodePath("../../Play Room/Table/Patrons")
+bullets = NodePath("../../Play Room/Table/Player Bullets")
 monitor_3d = NodePath("../../Play Room/Table/Quequed Monitor3D")
 choices = NodePath("../../Play Room/Table/Choice Labels")
 profit_timer = NodePath("Profit Timer")

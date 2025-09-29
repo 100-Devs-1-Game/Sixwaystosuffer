@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://2vspw1onlhbq"]
 
-[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/patron.tscn" id="1_6kvoy"]
+[ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/bullet.tscn" id="1_6kvoy"]
 [ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://assets/bullet/m_marked_bullet.tres" id="2_tnk5g"]
 [ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="2_wlq8k"]
 
