@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_u0sdy")
-description = "+10$ for load"
+description = "+10$ [BULLET_FOR_LOAD]"
 metadata/_custom_type_script = "uid://bkbkiax67h483"

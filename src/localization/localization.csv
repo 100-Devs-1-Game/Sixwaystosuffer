@@ -17,6 +17,11 @@ key,en
 [SLOT_CHOOSE],choose
 [SLOT_CAPACITY_REACHED],capacity reached
 [SLOT_NOT_MONEY],not enough money
+[SLOT_EMPTY],empty
+[BULLET_FOR_LOAD],for load
+[BULLET_IF_NOT_LOAD],if not load
+[BULLET_MARKED],marked bullet
+[BULLET_DUMMY],dummy bullet
 [STAT_TITLE],Six ways to suffer
 [STAT_PLAYTIME],Playtime
 [STAT_REACHED_WORTH],Reached worth

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_50rk3")
-description = "Marked Bullet
-+10$ for load"
+is_marked = true
+description = "[BULLET_MARKED]
++10$ [BULLET_FOR_LOAD]"
 metadata/_custom_type_script = "uid://bkbkiax67h483"

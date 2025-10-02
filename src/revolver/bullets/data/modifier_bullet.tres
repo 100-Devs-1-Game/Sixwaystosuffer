@@ -6,5 +6,5 @@
 script = ExtResource("1_vyonf")
 load_bonus = 0
 load_modifier = 2
-description = "x2 for load"
+description = "x2 [BULLET_FOR_LOAD]"
 metadata/_custom_type_script = "uid://bkbkiax67h483"

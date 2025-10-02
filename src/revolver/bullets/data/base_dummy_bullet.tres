@@ -6,6 +6,6 @@
 script = ExtResource("1_os736")
 is_dummy = true
 load_bonus = 5
-description = "Dummy bullets
-+5$ for load"
+description = "[BULLET_DUMMY]
++5$ [BULLET_FOR_LOAD]"
 metadata/_custom_type_script = "uid://bkbkiax67h483"
