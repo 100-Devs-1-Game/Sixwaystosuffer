@@ -20,3 +20,6 @@ func get_short_description() -> String:
 		line += "x%s" % load_modifier
 	
 	return line
+
+func get_description() -> String:
+	return description

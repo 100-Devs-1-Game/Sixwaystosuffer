@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BulletProduct" load_steps=4 format=3 uid="uid://vhgaoep3gmv6"]
+[gd_resource type="Resource" script_class="BulletProduct" load_steps=5 format=3 uid="uid://vhgaoep3gmv6"]
 
+[ext_resource type="Resource" uid="uid://cmk0f3sbuy2bg" path="res://revolver/bullets/data/base_dummy_bullet.tres" id="1_erhgt"]
 [ext_resource type="PackedScene" uid="uid://c2miih4i28juj" path="res://revolver/bullets/dummy_bullet.tscn" id="1_sidwo"]
 [ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_erhgt"]
 [ext_resource type="PackedScene" uid="uid://cuqae2y2t0ufp" path="res://shop/products/items/packs/two_bullets_pack.tscn" id="3_sidwo"]
@@ -8,9 +9,8 @@
 script = ExtResource("2_erhgt")
 quantity = 2
 scene = ExtResource("1_sidwo")
+effect = ExtResource("1_erhgt")
 name = "Dummy Bullets"
-description = "Dummy bullets
-+5$ for load"
 cost = 25
 shop_item = ExtResource("3_sidwo")
 weight = 0.55

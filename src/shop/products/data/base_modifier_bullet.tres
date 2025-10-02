@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BulletProduct" load_steps=4 format=3 uid="uid://bwe1ajrduj4hn"]
+[gd_resource type="Resource" script_class="BulletProduct" load_steps=5 format=3 uid="uid://bwe1ajrduj4hn"]
 
+[ext_resource type="Resource" uid="uid://bunrmehk628c8" path="res://revolver/bullets/data/modifier_bullet.tres" id="1_i42qd"]
 [ext_resource type="PackedScene" uid="uid://bnyvlx656lvqd" path="res://revolver/bullets/modifier_bullet.tscn" id="1_k2y54"]
 [ext_resource type="Script" uid="uid://gtdxgikb4wii" path="res://shop/products/bullet_product.gd" id="2_i42qd"]
 [ext_resource type="PackedScene" uid="uid://brxb428igt7ad" path="res://shop/products/items/packs/one_bullets_pack.tscn" id="3_k2y54"]
@@ -8,8 +9,8 @@
 script = ExtResource("2_i42qd")
 quantity = 1
 scene = ExtResource("1_k2y54")
+effect = ExtResource("1_i42qd")
 name = "Base Bullets"
-description = "x2 for load"
 cost = 30
 shop_item = ExtResource("3_k2y54")
 weight = 0.55

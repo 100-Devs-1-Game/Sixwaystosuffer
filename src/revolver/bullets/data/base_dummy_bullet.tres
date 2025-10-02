@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletEffectResource" load_steps=2 format=3 uid="uid://cmk0f3sbuy2bg"]
+
+[ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="1_os736"]
+
+[resource]
+script = ExtResource("1_os736")
+is_dummy = true
+load_bonus = 5
+description = "Dummy bullets
++5$ for load"
+metadata/_custom_type_script = "uid://bkbkiax67h483"

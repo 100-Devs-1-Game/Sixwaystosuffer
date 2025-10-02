@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BulletEffectResource" load_steps=2 format=3 uid="uid://dcwhy6ljr5bb2"]
+
+[ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="1_u0sdy"]
+
+[resource]
+script = ExtResource("1_u0sdy")
+description = "+10$ for load"
+metadata/_custom_type_script = "uid://bkbkiax67h483"

@@ -1,20 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyhgf8702wijr"]
+[gd_scene load_steps=5 format=3 uid="uid://dyhgf8702wijr"]
 
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/bullet.tscn" id="1_ev4b8"]
 [ext_resource type="PackedScene" uid="uid://buhtfae1pcl4" path="res://assets/bullet/bullet_panel.glb" id="2_ag75p"]
-[ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="2_notba"]
+[ext_resource type="Resource" uid="uid://c7sn8y5xedye1" path="res://revolver/bullets/data/base_income_bullet.tres" id="2_t58ep"]
 [ext_resource type="Material" uid="uid://bnmpxyc4t2m8t" path="res://assets/bullet/m_bullet_income_panel.tres" id="3_notba"]
 
-[sub_resource type="Resource" id="Resource_v7owa"]
-script = ExtResource("2_notba")
-load_bonus = 5
-on_table_income = 2
-description = "+5$ for load
-+2$ if not load"
-metadata/_custom_type_script = "uid://bkbkiax67h483"
-
 [node name="Patron" instance=ExtResource("1_ev4b8")]
-effect = SubResource("Resource_v7owa")
+effect = ExtResource("2_t58ep")
 
 [node name="bullet_panel" parent="Chamber Position/bullet" index="1" instance=ExtResource("2_ag75p")]
 

@@ -45,7 +45,7 @@ func show_capacity_reached() -> void:
 
 func _on_box_hovered(box: ShopBox) -> void:
 	var product := box.product
-	digital.text = product.description
+	digital.text = product.get_description()
 
 func _on_box_unhovered(_box: ShopBox) -> void:
 	digital.text = base_text

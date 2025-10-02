@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://2vspw1onlhbq"]
+[gd_scene load_steps=5 format=3 uid="uid://2vspw1onlhbq"]
 
 [ext_resource type="PackedScene" uid="uid://bsrippgh7mwp4" path="res://revolver/bullets/bullet.tscn" id="1_6kvoy"]
+[ext_resource type="Resource" uid="uid://c1uj1usrpmwi" path="res://revolver/bullets/data/marked_bullet.tres" id="2_0vyat"]
 [ext_resource type="Material" uid="uid://bxkpry05bigx1" path="res://assets/bullet/m_marked_bullet.tres" id="2_tnk5g"]
-[ext_resource type="Script" uid="uid://bkbkiax67h483" path="res://revolver/bullets/data/bullet_effect_resource.gd" id="2_wlq8k"]
-
-[sub_resource type="Resource" id="Resource_7bs4t"]
-script = ExtResource("2_wlq8k")
-description = "Marked Bullet
-+10$ for load"
-metadata/_custom_type_script = "uid://bkbkiax67h483"
 
 [sub_resource type="TorusMesh" id="TorusMesh_tnk5g"]
 material = ExtResource("2_tnk5g")
@@ -18,7 +12,7 @@ rings = 16
 ring_segments = 8
 
 [node name="Marked Patron" instance=ExtResource("1_6kvoy")]
-effect = SubResource("Resource_7bs4t")
+effect = ExtResource("2_0vyat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Chamber Position/bullet" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.435, 4.065758e-20, 0, -1.7787692e-20, 1, 0, 0.007695101, 8.2015024e-17)

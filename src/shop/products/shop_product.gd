@@ -8,3 +8,6 @@ extends Resource
 @export_range(0, 1) var weight: float
 
 var weight_acc: float
+
+func get_description() -> String:
+	return description
