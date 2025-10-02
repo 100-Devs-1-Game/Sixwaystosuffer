@@ -1,6 +1,8 @@
 class_name IntroState
 extends StateAsync
 
+const BASE_BULLET_SCENE := preload("res://revolver/bullets/bullet.tscn")
+
 @export var session: GameSession
 
 @export var revolver_table_mockup: ClickableArea3D
@@ -26,9 +28,8 @@ func exit_async() -> void:
 	revolver_table_mockup.clicked.disconnect(_on_revolver_clicked)
 
 func _spawn_start_bullets(count: int) -> void:
-	var base_bullet := load("res://revolver/bullets/bullet.tscn")
 	for i in count:
-		var instance := base_bullet.instantiate() as Bullet
+		var instance := BASE_BULLET_SCENE.instantiate() as Bullet
 		player_bullets.add(instance)
 
 func _on_revolver_clicked() -> void:
