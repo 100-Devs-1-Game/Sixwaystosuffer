@@ -1,7 +1,7 @@
 name: Release
 
 env:
-  GODOT_VERSION: 4.5
+  GODOT_VERSION: 4.4.1
 
 on:
   push:
@@ -43,29 +43,14 @@ jobs:
           allowUpdates: true
   
       - name: Make get_butler.sh executable
-        run: chmod +x ./tools/get_butler.sh  
+        run: chmod +x ./get_butler.sh  
 
-      - name: Deploy web to itch.io
+      - name: Deploy to itch.io
         run: |
-          ./tools/get_butler.sh
+          ./get_butler.sh
           BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
             "${{ steps.build.outputs.build_directory }}/web_release" \
-            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:web" \
-            --userversion "${{ github.ref_name }}"
-
-      - name: Deploy linux to itch.io
-        run: |
-          BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
-            "${{ steps.build.outputs.build_directory }}/linux_release" \
-            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:linux" \
-            --userversion "${{ github.ref_name }}"
-
-      - name: Deploy windows to itch.io
-        run: |
-          BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
-            "${{ steps.build.outputs.build_directory }}/windows" \
-            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:windows" \
-            --userversion "${{ github.ref_name }}"
+            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:web"
 
       - name: Send Discord notification
         env:
