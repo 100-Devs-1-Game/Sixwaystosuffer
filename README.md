@@ -44,6 +44,20 @@ https://github.com/user-attachments/assets/f354344e-37d0-4678-b1fe-2af23feea4fc
 
 7. Should the subject deplete all ammunition and reach bankruptcy (zero dollars), the Dealer forcibly terminates the session.
 
+## Contributing
+Whether you’re fixing a bug, adding a feature, or diving into the deeper machinery behind the Dealer’s design, contributions are welcome.
+
+Developers should review the full guidelines in **CONTRIBUTING.md** before submitting changes.
+
+- Fork the repository  
+- Create a development branch  
+- Make your changes  
+- Test thoroughly in Godot  
+- Submit a pull request for review  
+
+Your code will be examined with care — and perhaps curiosity.
+
+
 ## License
 
 This project is dual-licensed:
