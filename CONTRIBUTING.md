@@ -23,7 +23,7 @@ Open Godot and select Import.
 Choose the project.godot file inside the cloned folder, you should find it inside a similiar path to: "C:..\Sixwaystosuffer\src\project.godot"
 Press Import, You are now ready to modify, debug, or enhance the project. 
 ----------------------------------------------------------------------------------------------------------------------------------------
-The project follows the structure shown bellow:
+The project follows the structure shown bellow:<br>
 <img width="261" height="549" alt="image" src="https://github.com/user-attachments/assets/e47b1f73-f961-40a5-91d9-a62a00d3ff49" />
 ---------------------------------------------------------------------------------------------------------------------------------------
 Code of Conduct
